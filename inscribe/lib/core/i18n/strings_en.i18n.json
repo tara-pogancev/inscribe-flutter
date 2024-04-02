@@ -1,0 +1,16 @@
+{
+    "appName": "Inscribe",
+    "cancel": "Cancel",
+    
+    "welcomeScreen": {
+      "title": "Welcome to Inscribe!",
+      "slides" : [
+        "Celebrate friendships with personalized notes on likes, birthdays, and gift ideas.",
+        "Never miss a beat - set reminders for special occasions and events.",
+        "Curate thoughtful gift lists for each friend, making every occasion memorable.",
+        "Curate thoughtful gift lists for each friend, making every occasion memorable.",
+        "Your privacy matters - enjoy full offline functionality, keeping your data secure."
+      ],
+      "startButton": "Start noting!"
+    }
+  }
