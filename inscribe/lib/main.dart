@@ -6,6 +6,7 @@ import 'firebase_options.dart';
 
 void main() async {
   runApp(const MyApp());
+  // ignore: unused_local_variable
   final analytics = FirebaseAnalytics.instance;
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
