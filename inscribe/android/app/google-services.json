@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "914898549093",
+    "project_id": "inscribe-app-c3ccf",
+    "storage_bucket": "inscribe-app-c3ccf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914898549093:android:8770978d2f1d80101b898c",
+        "android_client_info": {
+          "package_name": "com.example.inscribe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgR7a79kcJTv0jgFmouBWWMThL6sZigwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
