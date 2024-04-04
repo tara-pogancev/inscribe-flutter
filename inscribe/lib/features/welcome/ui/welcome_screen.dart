@@ -20,6 +20,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // throw Exception();
     return AppScaffold(
       child: SizedBox.expand(
         child: Container(

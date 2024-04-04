@@ -17,7 +17,6 @@ class AppTextStyles {
     return TextStyle(
       color: AppColorScheme.of(context).white,
       fontSize: 20,
-      fontFamily: "Montserat", //TODO
     );
   }
 }
