@@ -25,9 +25,9 @@ class WelcomeBasePage extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       fit: StackFit.expand,
       children: [
+        _buildIllustration(context),
         _buildBackground(context),
         _buildTextDescription(context),
-        _buildIllustration(context),
       ],
     );
   }

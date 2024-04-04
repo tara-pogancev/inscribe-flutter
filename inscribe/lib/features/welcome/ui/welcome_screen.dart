@@ -27,14 +27,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           child: Stack(
             fit: StackFit.expand,
             children: [
-              Positioned(
-                top: 50,
-                left: 50,
-                child: Text(
-                  Translations.of(context).appName,
-                  style: AppTextStyles.of(context).mainTitle,
-                ),
-              ),
               PageView(
                 children: _getWelcomePageWidgets(),
                 onPageChanged: (value) {
@@ -42,6 +34,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     activePageIndex = value;
                   });
                 },
+              ),
+              Positioned(
+                top: 50,
+                left: 50,
+                child: Text(
+                  Translations.of(context).appName,
+                  style: AppTextStyles.of(context).mainTitle,
+                ),
               ),
               _buildPageIndicator(),
             ],
