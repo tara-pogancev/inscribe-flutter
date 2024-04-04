@@ -29,7 +29,7 @@ class InscribeApp extends StatelessWidget {
       locale: TranslationProvider.of(context).flutterLocale,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
         useMaterial3: true,
       ),
     );

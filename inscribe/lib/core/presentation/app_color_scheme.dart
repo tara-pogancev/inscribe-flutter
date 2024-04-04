@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppColorScheme {
-  final Color? black;
-  final Color? gray;
-  final Color? beige;
-  final Color? white;
+  final Color black;
+  final Color gray;
+  final Color beige;
+  final Color white;
 
   BuildContext? context;
 

@@ -6,7 +6,7 @@
 /// Locales: 1
 /// Strings: 9
 ///
-/// Built on 2024-04-02 at 09:55 UTC
+/// Built on 2024-04-04 at 11:35 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -162,10 +162,10 @@ class _StringsWelcomeScreenEn {
 	String get title => 'Welcome to Inscribe!';
 	List<String> get slides => [
 		'Celebrate friendships with personalized notes on likes, birthdays, and gift ideas.',
-		'Never miss a beat - set reminders for special occasions and events.',
 		'Curate thoughtful gift lists for each friend, making every occasion memorable.',
-		'Curate thoughtful gift lists for each friend, making every occasion memorable.',
+		'Take your friendships anywhere - easily download and transfer your data.',
 		'Your privacy matters - enjoy full offline functionality, keeping your data secure.',
+		'Never miss a beat - set reminders for special occasions and events.',
 	];
 	String get startButton => 'Start noting!';
 }
@@ -180,10 +180,10 @@ extension on Translations {
 			case 'cancel': return 'Cancel';
 			case 'welcomeScreen.title': return 'Welcome to Inscribe!';
 			case 'welcomeScreen.slides.0': return 'Celebrate friendships with personalized notes on likes, birthdays, and gift ideas.';
-			case 'welcomeScreen.slides.1': return 'Never miss a beat - set reminders for special occasions and events.';
-			case 'welcomeScreen.slides.2': return 'Curate thoughtful gift lists for each friend, making every occasion memorable.';
-			case 'welcomeScreen.slides.3': return 'Curate thoughtful gift lists for each friend, making every occasion memorable.';
-			case 'welcomeScreen.slides.4': return 'Your privacy matters - enjoy full offline functionality, keeping your data secure.';
+			case 'welcomeScreen.slides.1': return 'Curate thoughtful gift lists for each friend, making every occasion memorable.';
+			case 'welcomeScreen.slides.2': return 'Take your friendships anywhere - easily download and transfer your data.';
+			case 'welcomeScreen.slides.3': return 'Your privacy matters - enjoy full offline functionality, keeping your data secure.';
+			case 'welcomeScreen.slides.4': return 'Never miss a beat - set reminders for special occasions and events.';
 			case 'welcomeScreen.startButton': return 'Start noting!';
 			default: return null;
 		}

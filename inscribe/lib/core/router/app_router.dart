@@ -12,27 +12,26 @@ class AppRouter {
             pageBuilder: defaultPageBuilder(
               const HomeScreen(),
             ),
-            routes: [
-              GoRoute(
-                path: Routes.welcome,
-                pageBuilder: defaultPageBuilder(
-                  const WelcomeScreen(),
-                ),
-              ),
-              GoRoute(
-                path: Routes.noteDetails,
-                pageBuilder: defaultPageBuilder(
-                  const NoteDetailsScreen(),
-                ),
-              )
-            ],
+          ),
+          GoRoute(
+            path: Routes.welcome,
+            pageBuilder: defaultPageBuilder(
+              const WelcomeScreen(),
+            ),
+          ),
+          GoRoute(
+            path: Routes.noteDetails,
+            pageBuilder: defaultPageBuilder(
+              const NoteDetailsScreen(),
+            ),
           )
         ],
+        initialLocation: initialLocation ?? Routes.welcome,
       );
 }
 
 class Routes {
-  static const home = '/';
-  static const welcome = 'welcome';
-  static const noteDetails = 'note';
+  static const home = '/home';
+  static const welcome = '/welcome';
+  static const noteDetails = '/note';
 }
