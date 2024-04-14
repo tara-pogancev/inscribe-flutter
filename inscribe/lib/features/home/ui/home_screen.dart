@@ -7,8 +7,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const AppScaffold(
+      includeDefaultPadding: true,
       child: Column(
-        children: [Text("hi")],
+        children: [Text("data")],
       ),
     );
   }

@@ -24,7 +24,7 @@ class InscribeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: AppRouter.router(Routes.welcome),
+      routerConfig: AppRouter.router(Routes.home),
       debugShowCheckedModeBanner: false,
       title: 'Inscribe - Companion Journal',
       locale: TranslationProvider.of(context).flutterLocale,

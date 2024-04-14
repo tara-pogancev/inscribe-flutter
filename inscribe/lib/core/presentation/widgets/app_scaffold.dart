@@ -18,11 +18,14 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColorScheme.of(context).white,
+      backgroundColor: AppColorScheme.of(context).beige,
       floatingActionButton: fab,
       body: Padding(
-        padding: EdgeInsets.all((includeDefaultPadding) ? 15 : 0),
-        child: child,
+        padding: EdgeInsets.all((includeDefaultPadding) ? 20 : 0),
+        child: Padding(
+          padding: EdgeInsets.only(top: (includeDefaultPadding) ? 30 : 0),
+          child: child,
+        ),
       ),
     );
   }
