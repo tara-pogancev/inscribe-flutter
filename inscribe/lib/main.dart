@@ -11,6 +11,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   IC.setUp();
+  GoogleFonts.config.allowRuntimeFetching = false;
   LocaleSettings.useDeviceLocale();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -31,7 +32,7 @@ class InscribeApp extends StatelessWidget {
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
-        fontFamily: GoogleFonts.montserrat().fontFamily,
+        textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
         useMaterial3: true,
       ),
     );

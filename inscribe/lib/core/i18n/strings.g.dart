@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 9
+/// Strings: 16
 ///
-/// Built on 2024-04-04 at 11:35 UTC
+/// Built on 2024-04-14 at 09:49 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -150,6 +150,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get appName => 'Inscribe';
 	String get cancel => 'Cancel';
 	late final _StringsWelcomeScreenEn welcomeScreen = _StringsWelcomeScreenEn._(_root);
+	late final _StringsHomeScreenEn homeScreen = _StringsHomeScreenEn._(_root);
 }
 
 // Path: welcomeScreen
@@ -170,6 +171,22 @@ class _StringsWelcomeScreenEn {
 	String get startButton => 'Start noting!';
 }
 
+// Path: homeScreen
+class _StringsHomeScreenEn {
+	_StringsHomeScreenEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get welcome => 'Welcome!';
+	String get no_notes_title => 'No notes found!';
+	String get no_notes_subtitle => 'Start by adding a friend memoir.';
+	String get add_note => 'Add note';
+	String get pinned => 'Pinned';
+	String get others => 'Others';
+	String get search => 'Seaarch';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -185,6 +202,13 @@ extension on Translations {
 			case 'welcomeScreen.slides.3': return 'Your privacy matters - enjoy full offline functionality, keeping your data secure.';
 			case 'welcomeScreen.slides.4': return 'Never miss a beat - set reminders for special occasions and events.';
 			case 'welcomeScreen.startButton': return 'Start noting!';
+			case 'homeScreen.welcome': return 'Welcome!';
+			case 'homeScreen.no_notes_title': return 'No notes found!';
+			case 'homeScreen.no_notes_subtitle': return 'Start by adding a friend memoir.';
+			case 'homeScreen.add_note': return 'Add note';
+			case 'homeScreen.pinned': return 'Pinned';
+			case 'homeScreen.others': return 'Others';
+			case 'homeScreen.search': return 'Seaarch';
 			default: return null;
 		}
 	}

@@ -12,5 +12,15 @@
         "Never miss a beat - set reminders for special occasions and events."
       ],
       "startButton": "Start noting!"
+    },
+
+    "homeScreen": {
+      "welcome": "Welcome!", 
+      "no_notes_title": "No notes found!",
+      "no_notes_subtitle": "Start by adding a friend memoir.",
+      "add_note": "Add note",
+      "pinned": "Pinned",
+      "others": "Others",
+      "search": "Seaarch"
     }
   }

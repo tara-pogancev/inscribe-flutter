@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 
-const defaultBorderRadius = 5.0;
+const defaultBorderRadius = 10.0;
 
 class AppButtonStyles {
   BuildContext? context;
@@ -14,7 +14,7 @@ class AppButtonStyles {
           borderRadius: BorderRadius.circular(defaultBorderRadius),
         ),
         foregroundColor: AppColorScheme.of(context).beige,
-        backgroundColor: AppColorScheme.of(context).gray);
+        backgroundColor: AppColorScheme.of(context).black);
   }
 
   ButtonStyle get white {
@@ -24,5 +24,14 @@ class AppButtonStyles {
         ),
         foregroundColor: AppColorScheme.of(context).gray,
         backgroundColor: AppColorScheme.of(context).beige);
+  }
+
+  ButtonStyle get gray {
+    return ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(defaultBorderRadius),
+        ),
+        foregroundColor: AppColorScheme.of(context).beige,
+        backgroundColor: AppColorScheme.of(context).gray);
   }
 }
