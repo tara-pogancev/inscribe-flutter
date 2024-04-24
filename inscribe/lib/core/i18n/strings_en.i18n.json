@@ -22,5 +22,10 @@
       "pinned": "Pinned",
       "others": "Others",
       "search": "Seaarch"
+    },
+
+    "newNoteScreen": {
+      "friend_name_hint": "What's their name?", 
+      "fields_missing_error": "Sorry! Some fields are missing!"
     }
   }

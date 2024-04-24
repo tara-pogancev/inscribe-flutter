@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_button_styles.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/app_button.dart';
+import 'package:inscribe/core/router/app_router.dart';
 
 class NoNotesSection extends StatelessWidget {
   const NoNotesSection({super.key});
+
+  void _navigateNewNote(BuildContext context) {
+    context.push(Routes.newNote);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +46,9 @@ class NoNotesSection extends StatelessWidget {
               child: AppButton(
                 text: Translations.of(context).homeScreen.add_note,
                 style: AppButtonStyles.of(context).black,
-                onPressed: () {},
+                onPressed: () {
+                  _navigateNewNote(context);
+                },
               ),
             )
           ],

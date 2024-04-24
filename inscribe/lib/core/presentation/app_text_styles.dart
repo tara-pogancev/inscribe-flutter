@@ -35,4 +35,17 @@ class AppTextStyles {
       fontWeight: FontWeight.w700,
     );
   }
+
+  TextStyle get whiteNameFormField {
+    return GoogleFonts.montserrat(
+        color: AppColorScheme.of(context).white, fontSize: 20);
+  }
+
+  TextStyle get whiteNameFormFieldHint {
+    return GoogleFonts.montserrat(
+        color: AppColorScheme.of(context).white.withOpacity(0.6),
+        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.w200,
+        fontSize: 20);
+  }
 }

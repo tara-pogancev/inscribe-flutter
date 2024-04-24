@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 16
+/// Strings: 18
 ///
-/// Built on 2024-04-14 at 09:49 UTC
+/// Built on 2024-04-24 at 13:06 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -151,6 +151,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get cancel => 'Cancel';
 	late final _StringsWelcomeScreenEn welcomeScreen = _StringsWelcomeScreenEn._(_root);
 	late final _StringsHomeScreenEn homeScreen = _StringsHomeScreenEn._(_root);
+	late final _StringsNewNoteScreenEn newNoteScreen = _StringsNewNoteScreenEn._(_root);
 }
 
 // Path: welcomeScreen
@@ -187,6 +188,17 @@ class _StringsHomeScreenEn {
 	String get search => 'Seaarch';
 }
 
+// Path: newNoteScreen
+class _StringsNewNoteScreenEn {
+	_StringsNewNoteScreenEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get friend_name_hint => 'What\'s their name?';
+	String get fields_missing_error => 'Sorry! Some fields are missing!';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -209,6 +221,8 @@ extension on Translations {
 			case 'homeScreen.pinned': return 'Pinned';
 			case 'homeScreen.others': return 'Others';
 			case 'homeScreen.search': return 'Seaarch';
+			case 'newNoteScreen.friend_name_hint': return 'What\'s their name?';
+			case 'newNoteScreen.fields_missing_error': return 'Sorry! Some fields are missing!';
 			default: return null;
 		}
 	}

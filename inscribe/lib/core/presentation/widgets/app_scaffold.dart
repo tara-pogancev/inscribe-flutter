@@ -20,6 +20,7 @@ class AppScaffold extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColorScheme.of(context).beige,
       floatingActionButton: fab,
+      resizeToAvoidBottomInset: true,
       body: Padding(
         padding: EdgeInsets.all((includeDefaultPadding) ? 20 : 0),
         child: Padding(

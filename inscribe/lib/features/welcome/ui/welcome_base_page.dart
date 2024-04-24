@@ -2,21 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
+import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_button_styles.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/app_button.dart';
 import 'package:inscribe/core/router/app_router.dart';
+import 'package:inscribe/features/welcome/bloc/welcome_bloc.dart';
 import 'package:inscribe/features/welcome/ui/welcome_divider_const.dart';
 
 class WelcomeBasePage extends StatelessWidget {
-  const WelcomeBasePage({super.key, required this.index, this.isLast = false});
+  WelcomeBasePage({super.key, required this.index, this.isLast = false});
 
   final int index;
   final bool isLast;
 
+  final _bloc = IC.getIt<WelcomeBloc>();
+
   void _navigateHome(BuildContext context) {
     context.pushReplacement(Routes.home);
+    _bloc.add(FinishFirstRunEvent());
   }
 
   @override
