@@ -41,7 +41,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/profile_images/
-    - google_fonts/
+    # - google_fonts/
 
   fonts:
     - family: Brogi

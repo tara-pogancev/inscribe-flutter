@@ -12,7 +12,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   IC.setUp();
-  GoogleFonts.config.allowRuntimeFetching = false;
+  GoogleFonts.config.allowRuntimeFetching = true;
   LocaleSettings.useDeviceLocale();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

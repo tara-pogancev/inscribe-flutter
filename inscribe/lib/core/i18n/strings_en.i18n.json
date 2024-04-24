@@ -29,6 +29,17 @@
       "fields_missing_error": "Sorry! Some fields are missing!",
       "overview": "Overview", 
       "gift_ideas": "Gift ideas", 
-      "reminders": "Reminders" 
+      "reminders": "Reminders" ,
+      "category": "category",
+      "categories": [
+        "Friend 😄",
+        "Work 💼",
+        "Family 🏠",
+        "School 🎒",
+        "Romantic ❤️‍🔥"
+      ],
+      "date_of_birth": "Date of birth",
+      "description": "description",
+      "description_hint": "Add any notes you'd like here..."
     }
   }
