@@ -61,6 +61,6 @@ class NewNoteScreen extends StatelessWidget {
   }
 
   Widget _buildTabRow(BuildContext context) {
-    return TabBar();
+    return Container();
   }
 }
