@@ -26,6 +26,9 @@
 
     "newNoteScreen": {
       "friend_name_hint": "What's their name?", 
-      "fields_missing_error": "Sorry! Some fields are missing!"
+      "fields_missing_error": "Sorry! Some fields are missing!",
+      "overview": "Overview", 
+      "gift_ideas": "Gift ideas", 
+      "reminders": "Reminders" 
     }
   }

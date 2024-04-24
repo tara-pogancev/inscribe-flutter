@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 18
+/// Strings: 21
 ///
-/// Built on 2024-04-24 at 13:06 UTC
+/// Built on 2024-04-24 at 13:33 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -197,6 +197,9 @@ class _StringsNewNoteScreenEn {
 	// Translations
 	String get friend_name_hint => 'What\'s their name?';
 	String get fields_missing_error => 'Sorry! Some fields are missing!';
+	String get overview => 'Overview';
+	String get gift_ideas => 'Gift ideas';
+	String get reminders => 'Reminders';
 }
 
 /// Flat map(s) containing all translations.
@@ -223,6 +226,9 @@ extension on Translations {
 			case 'homeScreen.search': return 'Seaarch';
 			case 'newNoteScreen.friend_name_hint': return 'What\'s their name?';
 			case 'newNoteScreen.fields_missing_error': return 'Sorry! Some fields are missing!';
+			case 'newNoteScreen.overview': return 'Overview';
+			case 'newNoteScreen.gift_ideas': return 'Gift ideas';
+			case 'newNoteScreen.reminders': return 'Reminders';
 			default: return null;
 		}
 	}
