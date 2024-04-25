@@ -30,7 +30,7 @@ class _AppDateFormFieldState extends State<AppDateFormField> {
     super.dispose();
   }
 
-  void showDatePickerDialog() async {
+  void _showDatePickerDialog() async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: _dateValue,
@@ -54,21 +54,28 @@ class _AppDateFormFieldState extends State<AppDateFormField> {
       padding: const EdgeInsets.only(bottom: formFieldBottomPadding),
       child: TextFormField(
         controller: _dateController,
-        enabled: false,
+        readOnly: true,
         keyboardType: TextInputType.none,
         onSaved: (newValue) => widget.onSaved?.call(newValue),
         validator: (value) => widget.validator?.call(value),
         decoration: InputDecoration(
-            disabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                  color: AppColorScheme.of(context).black.withOpacity(0.5)),
-            ),
-            suffixIcon: const Icon(Icons.calendar_month_outlined),
-            suffixIconColor: AppColorScheme.of(context).gray,
-            label: Text(
-              widget.label,
-              style: AppTextStyles.of(context).grayFormLabel,
-            )),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(defaultBorderRadius),
+            borderSide: BorderSide(
+                color: AppColorScheme.of(context).black.withOpacity(0.5)),
+          ),
+          suffixIcon: IconButton(
+            icon: const Icon(Icons.calendar_month_outlined),
+            onPressed: () {
+              _showDatePickerDialog();
+            },
+          ),
+          suffixIconColor: AppColorScheme.of(context).gray,
+          label: Text(
+            widget.label,
+            style: AppTextStyles.of(context).grayFormLabel,
+          ),
+        ),
       ),
     );
   }

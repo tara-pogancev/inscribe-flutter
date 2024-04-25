@@ -29,6 +29,7 @@
       "fields_missing_error": "Sorry! Some fields are missing!",
       "overview": "Overview", 
       "gift_ideas": "Gift ideas", 
+      "gift_ideas_hint": "What would this person love as a gift?", 
       "reminders": "Reminders" ,
       "category": "Category",
       "categories": [

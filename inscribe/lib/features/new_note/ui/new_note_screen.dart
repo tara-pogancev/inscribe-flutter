@@ -6,6 +6,7 @@ import 'package:inscribe/features/new_note/ui/circle_image.dart';
 import 'package:inscribe/features/new_note/ui/note_name_text_field.dart';
 import 'package:inscribe/features/new_note/ui/note_tab_bar.dart';
 import 'package:inscribe/features/new_note/ui/note_tabs_switcher.dart';
+import 'package:inscribe/features/new_note/usecases/get_random_profile_image_usecase.dart';
 
 const noteTabsNumber = 3;
 
@@ -18,26 +19,31 @@ class NewNoteScreen extends StatefulWidget {
 
 class _NewNoteScreenState extends State<NewNoteScreen>
     with SingleTickerProviderStateMixin {
+  final getRandomProfileImageUseCase = GetRandomProfileImageUseCase();
+
   late TabController _tabController;
 
-  int _currentTabIndex = 0;
+  late String initialProfilePicture;
 
-  void _setCurrentTabIndex(int value) {
-    setState(() {
-      _currentTabIndex = value;
-    });
-  }
+  int _currentTabIndex = 0;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(vsync: this, length: noteTabsNumber);
+    initialProfilePicture = getRandomProfileImageUseCase();
   }
 
   @override
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  void _setCurrentTabIndex(int value) {
+    setState(() {
+      _currentTabIndex = value;
+    });
   }
 
   @override
@@ -95,7 +101,9 @@ class _NewNoteScreenState extends State<NewNoteScreen>
               )
             ],
           ),
-          CircleImage(),
+          CircleImage(
+            imageName: initialProfilePicture,
+          ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
             child: NoteNameTextField(),

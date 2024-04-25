@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 30
+/// Strings: 31
 ///
-/// Built on 2024-04-25 at 11:42 UTC
+/// Built on 2024-04-25 at 13:12 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -199,6 +199,7 @@ class _StringsNewNoteScreenEn {
 	String get fields_missing_error => 'Sorry! Some fields are missing!';
 	String get overview => 'Overview';
 	String get gift_ideas => 'Gift ideas';
+	String get gift_ideas_hint => 'What would this person love as a gift?';
 	String get reminders => 'Reminders';
 	String get category => 'Category';
 	List<String> get categories => [
@@ -239,6 +240,7 @@ extension on Translations {
 			case 'newNoteScreen.fields_missing_error': return 'Sorry! Some fields are missing!';
 			case 'newNoteScreen.overview': return 'Overview';
 			case 'newNoteScreen.gift_ideas': return 'Gift ideas';
+			case 'newNoteScreen.gift_ideas_hint': return 'What would this person love as a gift?';
 			case 'newNoteScreen.reminders': return 'Reminders';
 			case 'newNoteScreen.category': return 'Category';
 			case 'newNoteScreen.categories.0': return 'Friend 😄';

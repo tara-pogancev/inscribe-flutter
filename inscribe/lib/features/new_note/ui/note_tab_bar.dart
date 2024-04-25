@@ -17,6 +17,7 @@ class NoteTabBar extends StatelessWidget {
       child: TabBar(
         controller: tabController,
         labelColor: AppColorScheme.of(context).beige,
+        unselectedLabelColor: AppColorScheme.of(context).beige.withOpacity(0.4),
         indicatorColor: AppColorScheme.of(context).beige,
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorPadding: const EdgeInsets.symmetric(vertical: 10),

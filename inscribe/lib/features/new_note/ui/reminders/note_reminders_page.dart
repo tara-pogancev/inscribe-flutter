@@ -5,6 +5,13 @@ class NoteRemindersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("3");
+    return const Padding(
+      padding: EdgeInsets.all(20),
+      child: Column(
+        children: [
+          Text("TODO"),
+        ],
+      ),
+    );
   }
 }

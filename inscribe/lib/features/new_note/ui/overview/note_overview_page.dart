@@ -12,8 +12,6 @@ class NoteOverviewPage extends StatefulWidget {
 }
 
 class _NoteOverviewPageState extends State<NoteOverviewPage> {
-  dynamic _selectedItem;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -39,7 +37,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage> {
           AppFormField(
             label: Translations.of(context).newNoteScreen.description,
             hint: Translations.of(context).newNoteScreen.description_hint,
-            icon: Icons.featured_play_list_outlined,
+            // icon: Icons.featured_play_list_outlined,
             minLines: 4,
             maxLines: 16,
             validator: (value) {

@@ -51,7 +51,12 @@ class _AppDropdownFormFieldState extends State<AppDropdownFormField> {
         onSaved: (newValue) => widget.onSaved?.call(newValue),
         validator: (value) => widget.validator?.call(value),
         decoration: InputDecoration(
-          focusedBorder: UnderlineInputBorder(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(defaultBorderRadius),
+            borderSide: BorderSide(color: AppColorScheme.of(context).black),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(defaultBorderRadius),
             borderSide: BorderSide(color: AppColorScheme.of(context).black),
           ),
           suffixIcon: (widget.icon != null) ? Icon(widget.icon) : null,
