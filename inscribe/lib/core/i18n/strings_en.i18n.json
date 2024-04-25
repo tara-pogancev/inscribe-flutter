@@ -30,7 +30,7 @@
       "overview": "Overview", 
       "gift_ideas": "Gift ideas", 
       "reminders": "Reminders" ,
-      "category": "category",
+      "category": "Category",
       "categories": [
         "Friend 😄",
         "Work 💼",
@@ -39,7 +39,7 @@
         "Romantic ❤️‍🔥"
       ],
       "date_of_birth": "Date of birth",
-      "description": "description",
+      "description": "Description",
       "description_hint": "Add any notes you'd like here..."
     }
   }

@@ -48,4 +48,18 @@ class AppTextStyles {
         fontWeight: FontWeight.w200,
         fontSize: 20);
   }
+
+  TextStyle get grayFormLabel {
+    return GoogleFonts.montserrat(
+      color: AppColorScheme.of(context).gray,
+      fontStyle: FontStyle.italic,
+    );
+  }
+
+  TextStyle get grayFormHint {
+    return GoogleFonts.montserrat(
+      color: AppColorScheme.of(context).gray.withOpacity(0.5),
+      fontStyle: FontStyle.italic,
+    );
+  }
 }

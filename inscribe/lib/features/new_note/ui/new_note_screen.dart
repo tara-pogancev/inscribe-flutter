@@ -3,11 +3,9 @@ import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/widgets/app_button.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
 import 'package:inscribe/features/new_note/ui/circle_image.dart';
-import 'package:inscribe/features/new_note/ui/note_gift_ideas_page.dart';
 import 'package:inscribe/features/new_note/ui/note_name_text_field.dart';
-import 'package:inscribe/features/new_note/ui/note_overview_page.dart';
-import 'package:inscribe/features/new_note/ui/note_reminders_page.dart';
 import 'package:inscribe/features/new_note/ui/note_tab_bar.dart';
+import 'package:inscribe/features/new_note/ui/note_tabs_switcher.dart';
 
 const noteTabsNumber = 3;
 
@@ -23,12 +21,6 @@ class _NewNoteScreenState extends State<NewNoteScreen>
   late TabController _tabController;
 
   int _currentTabIndex = 0;
-
-  final List<Widget> tabs = [
-    const NoteOverviewPage(),
-    const NoteGiftIdeasPage(),
-    const NoteRemindersPage()
-  ];
 
   void _setCurrentTabIndex(int value) {
     setState(() {
@@ -77,7 +69,7 @@ class _NewNoteScreenState extends State<NewNoteScreen>
                   tabController: _tabController,
                   onTabClick: (index) => _setCurrentTabIndex(index),
                 ),
-                _buildTabs()
+                NoteTabsSwitcher(currentTabIndex: _currentTabIndex)
               ],
             )
           ],
@@ -109,19 +101,6 @@ class _NewNoteScreenState extends State<NewNoteScreen>
             child: NoteNameTextField(),
           )
         ],
-      ),
-    );
-  }
-
-  Widget _buildTabs() {
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 200),
-      transitionBuilder: (Widget child, Animation<double> animation) {
-        return ScaleTransition(scale: animation, child: child);
-      },
-      child: SizedBox(
-        key: ValueKey<int>(_currentTabIndex),
-        child: tabs[_currentTabIndex],
       ),
     );
   }

@@ -6,7 +6,7 @@
 /// Locales: 1
 /// Strings: 30
 ///
-/// Built on 2024-04-24 at 13:42 UTC
+/// Built on 2024-04-25 at 11:42 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -200,7 +200,7 @@ class _StringsNewNoteScreenEn {
 	String get overview => 'Overview';
 	String get gift_ideas => 'Gift ideas';
 	String get reminders => 'Reminders';
-	String get category => 'category';
+	String get category => 'Category';
 	List<String> get categories => [
 		'Friend 😄',
 		'Work 💼',
@@ -209,7 +209,7 @@ class _StringsNewNoteScreenEn {
 		'Romantic ❤️‍🔥',
 	];
 	String get date_of_birth => 'Date of birth';
-	String get description => 'description';
+	String get description => 'Description';
 	String get description_hint => 'Add any notes you\'d like here...';
 }
 
@@ -240,14 +240,14 @@ extension on Translations {
 			case 'newNoteScreen.overview': return 'Overview';
 			case 'newNoteScreen.gift_ideas': return 'Gift ideas';
 			case 'newNoteScreen.reminders': return 'Reminders';
-			case 'newNoteScreen.category': return 'category';
+			case 'newNoteScreen.category': return 'Category';
 			case 'newNoteScreen.categories.0': return 'Friend 😄';
 			case 'newNoteScreen.categories.1': return 'Work 💼';
 			case 'newNoteScreen.categories.2': return 'Family 🏠';
 			case 'newNoteScreen.categories.3': return 'School 🎒';
 			case 'newNoteScreen.categories.4': return 'Romantic ❤️‍🔥';
 			case 'newNoteScreen.date_of_birth': return 'Date of birth';
-			case 'newNoteScreen.description': return 'description';
+			case 'newNoteScreen.description': return 'Description';
 			case 'newNoteScreen.description_hint': return 'Add any notes you\'d like here...';
 			default: return null;
 		}
