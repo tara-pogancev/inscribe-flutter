@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 31
+/// Strings: 33
 ///
-/// Built on 2024-04-25 at 13:12 UTC
+/// Built on 2024-04-26 at 10:43 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -152,6 +152,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsWelcomeScreenEn welcomeScreen = _StringsWelcomeScreenEn._(_root);
 	late final _StringsHomeScreenEn homeScreen = _StringsHomeScreenEn._(_root);
 	late final _StringsNewNoteScreenEn newNoteScreen = _StringsNewNoteScreenEn._(_root);
+	late final _StringsErrorMessagesEn errorMessages = _StringsErrorMessagesEn._(_root);
 }
 
 // Path: welcomeScreen
@@ -185,7 +186,7 @@ class _StringsHomeScreenEn {
 	String get add_note => 'Add note';
 	String get pinned => 'Pinned';
 	String get others => 'Others';
-	String get search => 'Seaarch';
+	String get search => 'Search';
 }
 
 // Path: newNoteScreen
@@ -212,6 +213,17 @@ class _StringsNewNoteScreenEn {
 	String get date_of_birth => 'Date of birth';
 	String get description => 'Description';
 	String get description_hint => 'Add any notes you\'d like here...';
+	String get coming_soon => 'Coming soon';
+}
+
+// Path: errorMessages
+class _StringsErrorMessagesEn {
+	_StringsErrorMessagesEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get mandatory_field => 'This field is mandatory.';
 }
 
 /// Flat map(s) containing all translations.
@@ -235,7 +247,7 @@ extension on Translations {
 			case 'homeScreen.add_note': return 'Add note';
 			case 'homeScreen.pinned': return 'Pinned';
 			case 'homeScreen.others': return 'Others';
-			case 'homeScreen.search': return 'Seaarch';
+			case 'homeScreen.search': return 'Search';
 			case 'newNoteScreen.friend_name_hint': return 'What\'s their name?';
 			case 'newNoteScreen.fields_missing_error': return 'Sorry! Some fields are missing!';
 			case 'newNoteScreen.overview': return 'Overview';
@@ -251,6 +263,8 @@ extension on Translations {
 			case 'newNoteScreen.date_of_birth': return 'Date of birth';
 			case 'newNoteScreen.description': return 'Description';
 			case 'newNoteScreen.description_hint': return 'Add any notes you\'d like here...';
+			case 'newNoteScreen.coming_soon': return 'Coming soon';
+			case 'errorMessages.mandatory_field': return 'This field is mandatory.';
 			default: return null;
 		}
 	}

@@ -14,22 +14,22 @@ class NoteTabsSwitcher extends StatefulWidget {
 
 class _NoteTabsSwitcherState extends State<NoteTabsSwitcher>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 2),
-    vsync: this,
-  )..repeat(reverse: true);
+  // late final AnimationController _controller = AnimationController(
+  //   duration: const Duration(milliseconds: 300),
+  //   vsync: this,
+  // )..repeat(reverse: true);
 
-  late final Animation<Offset> _offsetAnimation = Tween<Offset>(
-    begin: Offset.zero,
-    end: const Offset(1.5, 0.0),
-  ).animate(CurvedAnimation(
-    parent: _controller,
-    curve: Curves.elasticIn,
-  ));
+  // late final Animation<Offset> _offsetAnimation = Tween<Offset>(
+  //   begin: Offset.zero,
+  //   end: const Offset(1.5, 0.0),
+  // ).animate(CurvedAnimation(
+  //   parent: _controller,
+  //   curve: Curves.elasticIn,
+  // ));
 
   @override
   void dispose() {
-    _controller.dispose();
+    // _controller.dispose();
     super.dispose();
   }
 
@@ -39,12 +39,19 @@ class _NoteTabsSwitcherState extends State<NoteTabsSwitcher>
     const NoteRemindersPage()
   ];
 
+  static final offset =
+      Tween(begin: const Offset(0, 1), end: const Offset(0, 0));
+
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
         duration: const Duration(milliseconds: 200),
-        // transitionBuilder: (child, animation) => null,
-
+        switchInCurve: Curves.easeInOut,
+        switchOutCurve: Curves.easeInOut,
+        transitionBuilder: (child, animation) => SlideTransition(
+              position: offset.animate(animation),
+              child: child,
+            ),
         child: tabs[widget.currentTabIndex]);
   }
 }

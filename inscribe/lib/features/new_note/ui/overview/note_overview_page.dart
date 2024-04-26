@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:inscribe/core/data/model/note.dart';
+import 'package:inscribe/core/extensions/field_validation_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
+import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/widgets/form_fields/app_date_form_field.dart';
 import 'package:inscribe/core/presentation/widgets/form_fields/app_dropdown_form_field.dart';
 import 'package:inscribe/core/presentation/widgets/form_fields/app_form_field.dart';
+import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
 
 class NoteOverviewPage extends StatefulWidget {
   const NoteOverviewPage({super.key});
@@ -12,6 +16,16 @@ class NoteOverviewPage extends StatefulWidget {
 }
 
 class _NoteOverviewPageState extends State<NoteOverviewPage> {
+  final _bloc = IC.getIt<NewNoteBloc>();
+
+  String? description;
+  NoteType? noteType;
+  DateTime? dateOfBirth;
+
+  List<String> getCategoryNames() {
+    return NoteType.values.map((e) => e.getString(context)).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,11 +34,16 @@ class _NoteOverviewPageState extends State<NoteOverviewPage> {
         children: [
           AppDropdownFormField(
             label: Translations.of(context).newNoteScreen.category,
-            items: Translations.of(context).newNoteScreen.categories,
+            items: getCategoryNames(),
             validator: (value) {
-              return null;
+              return value.isRequired(context);
             },
-            onSaved: (value) {},
+            onSaved: (value) {
+              if (value != null) {
+                noteType = NoteType.values
+                    .firstWhere((e) => e.getString(context) == value);
+              }
+            },
             icon: Icons.favorite_border_rounded,
           ),
           AppDateFormField(

@@ -21,7 +21,7 @@
       "add_note": "Add note",
       "pinned": "Pinned",
       "others": "Others",
-      "search": "Seaarch"
+      "search": "Search"
     },
 
     "newNoteScreen": {
@@ -41,6 +41,14 @@
       ],
       "date_of_birth": "Date of birth",
       "description": "Description",
-      "description_hint": "Add any notes you'd like here..."
+      "description_hint": "Add any notes you'd like here...",
+      "coming_soon": "Coming soon"
+    },
+
+    "errorMessages": {
+      "mandatory_field": "This field is mandatory."
+
     }
+
+
   }
