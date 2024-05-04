@@ -2,11 +2,11 @@ part of 'new_note_bloc.dart';
 
 class NewNoteState {
   final bool isLoading;
-  final Note? note;
+  final Note note;
 
   NewNoteState({
     this.isLoading = false,
-    this.note,
+    this.note = const Note(),
   });
 
   NewNoteState copyWith({

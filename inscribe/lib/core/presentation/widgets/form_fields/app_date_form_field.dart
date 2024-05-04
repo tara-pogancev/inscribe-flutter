@@ -4,6 +4,8 @@ import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/form_fields/app_form_field.dart';
 import 'package:intl/intl.dart';
 
+const dateFormat = "dd MMM yyyy";
+
 class AppDateFormField extends StatefulWidget {
   const AppDateFormField({
     Key? key,
@@ -45,7 +47,7 @@ class _AppDateFormFieldState extends State<AppDateFormField> {
   }
 
   String _formatDate(DateTime date) {
-    return DateFormat('dd MMM yyyy').format(date);
+    return DateFormat(dateFormat).format(date);
   }
 
   @override

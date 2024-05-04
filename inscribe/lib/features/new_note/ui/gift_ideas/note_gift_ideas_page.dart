@@ -14,6 +14,8 @@ class NoteGiftIdeasPage extends StatefulWidget {
 class _NoteGiftIdeasPageState extends State<NoteGiftIdeasPage> {
   final _bloc = IC.getIt<NewNoteBloc>();
 
+  String? giftIdeas;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,11 +28,13 @@ class _NoteGiftIdeasPageState extends State<NoteGiftIdeasPage> {
             // icon: Icons.card_giftcard_outlined,
             minLines: 10,
             maxLines: 16,
-            validator: (value) {
-              return null;
+            onSaved: (value) {
+              if (value != null) {
+                giftIdeas = value;
+                _bloc.add(UpdateGiftIdeasEvent(giftIdeas: giftIdeas!));
+              }
             },
-            onSaved: (value) {},
-          )
+          ),
         ],
       ),
     );

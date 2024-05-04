@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/data/model/note.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
@@ -34,14 +36,19 @@ class _NewNoteScreenState extends State<NewNoteScreen>
 
   late String initialProfilePicture;
 
+  // TODO remove this
   int _currentTabIndex = 0;
 
-  void validateForm() async {
+  void _goBack() {
+    context.pop();
+  }
+
+  void _validateForm() async {
     final isFormValid = _formKey.currentState!.validate();
     if (isFormValid) {
       _formKey.currentState!.save();
-      Future.delayed(Durations.short1);
-      _bloc.add(UpdateNoteEvent(note: note));
+      // Future.delayed(Durations.short1);
+      _bloc.add(SaveNoteEvent());
     }
   }
 
@@ -54,6 +61,7 @@ class _NewNoteScreenState extends State<NewNoteScreen>
       name: "",
       assetImage: initialProfilePicture,
     );
+    _bloc.add(UpdateNoteEvent(note: note));
   }
 
   @override
@@ -71,26 +79,31 @@ class _NewNoteScreenState extends State<NewNoteScreen>
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      fab: AppFloatingActionButton(
-        onPressed: () {},
-        icon: const Icon(Icons.save_outlined),
+      fab: BlocBuilder<NewNoteBloc, NewNoteState>(
+        bloc: _bloc,
+        builder: (context, state) {
+          return AppFloatingActionButton(
+            onPressed: () {
+              _validateForm();
+            },
+            icon: const Icon(Icons.save_outlined),
+          );
+        },
       ),
-      child: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              _buildHeader(),
-              Column(
-                children: [
-                  NoteTabBar(
-                    tabController: _tabController,
-                    onTabClick: (index) => _setCurrentTabIndex(index),
-                  ),
-                  NoteTabsSwitcher(currentTabIndex: _currentTabIndex)
-                ],
+      child: Form(
+        key: _formKey,
+        child: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            SliverToBoxAdapter(child: _buildHeader()),
+            SliverToBoxAdapter(
+              child: NoteTabBar(
+                tabController: _tabController,
+                onTabClick: (index) => _setCurrentTabIndex(index),
               ),
-            ],
+            ),
+          ],
+          body: NoteTabsSwitcher(
+            controller: _tabController,
           ),
         ),
       ),
@@ -116,7 +129,9 @@ class _NewNoteScreenState extends State<NewNoteScreen>
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _goBack();
+                      },
                       icon: Icon(
                         Icons.arrow_back,
                         color: AppColorScheme.of(context).beige,

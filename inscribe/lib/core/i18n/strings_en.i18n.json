@@ -42,7 +42,8 @@
       "date_of_birth": "Date of birth",
       "description": "Description",
       "description_hint": "Add any notes you'd like here...",
-      "coming_soon": "Coming soon"
+      "coming_soon": "Coming soon",
+      "some_fields_are_missing": "Some fields are missing!"
     },
 
     "errorMessages": {

@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 
 class Note {
-  String? id;
-  String name;
-  String assetImage;
-  Uri? galleryImage;
-  DateTime? dateOfBirth;
-  NoteType? category;
-  String? description;
-  String? giftIdeas;
+  final String? id;
+  final String name;
+  final String assetImage;
+  final Uri? galleryImage;
+  final DateTime? dateOfBirth;
+  final NoteType? type;
+  final String? description;
+  final String? giftIdeas;
 
-  Note({
+  const Note({
     this.id,
-    required this.name,
-    required this.assetImage,
+    this.name = "",
+    this.assetImage = "",
     this.galleryImage,
     this.dateOfBirth,
-    this.category,
+    this.type,
     this.description,
     this.giftIdeas,
   });
@@ -28,6 +28,7 @@ class Note {
     String? assetImage,
     Uri? galleryImage,
     DateTime? dateOfBirth,
+    NoteType? type,
     String? description,
     String? giftIdeas,
   }) {
@@ -37,6 +38,7 @@ class Note {
       assetImage: assetImage ?? this.assetImage,
       galleryImage: galleryImage ?? this.galleryImage,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      type: type ?? this.type,
       description: description ?? this.description,
       giftIdeas: giftIdeas ?? this.giftIdeas,
     );

@@ -6,6 +6,36 @@ part 'new_note_state.dart';
 
 class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
   NewNoteBloc() : super(NewNoteState()) {
-    on<SaveNoteEvent>((event, emit) {});
+    on<SaveNoteEvent>((event, emit) async {
+      print("HIIII");
+      print(state.note.toString());
+    });
+
+    on<UpdateNoteEvent>((event, emit) {
+      emit(state.copyWith(note: event.note));
+    });
+
+    on<UpdateNoteNameEvent>((event, emit) {
+      emit(state.copyWith(note: state.note.copyWith(name: event.noteName)));
+    });
+
+    on<UpdateNoteDescriptionEvent>((event, emit) {
+      emit(state.copyWith(
+          note: state.note.copyWith(description: event.noteDescription)));
+    });
+
+    on<UpdateNoteTypeEvent>((event, emit) {
+      emit(state.copyWith(note: state.note.copyWith(type: event.noteType)));
+    });
+
+    on<UpdateDateOfBirthEvent>((event, emit) {
+      emit(state.copyWith(
+          note: state.note.copyWith(dateOfBirth: event.dateOfBirth)));
+    });
+
+    on<UpdateGiftIdeasEvent>((event, emit) {
+      emit(state.copyWith(
+          note: state.note.copyWith(giftIdeas: event.giftIdeas)));
+    });
   }
 }

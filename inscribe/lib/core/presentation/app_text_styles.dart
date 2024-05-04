@@ -62,4 +62,10 @@ class AppTextStyles {
       fontStyle: FontStyle.italic,
     );
   }
+
+  TextStyle get red {
+    return GoogleFonts.montserrat(
+      color: AppColorScheme.of(context).red,
+    );
+  }
 }

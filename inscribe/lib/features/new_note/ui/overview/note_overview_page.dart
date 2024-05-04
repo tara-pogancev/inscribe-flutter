@@ -7,6 +7,7 @@ import 'package:inscribe/core/presentation/widgets/form_fields/app_date_form_fie
 import 'package:inscribe/core/presentation/widgets/form_fields/app_dropdown_form_field.dart';
 import 'package:inscribe/core/presentation/widgets/form_fields/app_form_field.dart';
 import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
+import 'package:intl/intl.dart';
 
 class NoteOverviewPage extends StatefulWidget {
   const NoteOverviewPage({super.key});
@@ -26,6 +27,10 @@ class _NoteOverviewPageState extends State<NoteOverviewPage> {
     return NoteType.values.map((e) => e.getString(context)).toList();
   }
 
+  DateTime _parseDateString(String dateString) {
+    return DateFormat(dateFormat).parse(dateString);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,16 +47,19 @@ class _NoteOverviewPageState extends State<NoteOverviewPage> {
               if (value != null) {
                 noteType = NoteType.values
                     .firstWhere((e) => e.getString(context) == value);
+                _bloc.add(UpdateNoteTypeEvent(noteType: noteType!));
               }
             },
             icon: Icons.favorite_border_rounded,
           ),
           AppDateFormField(
             label: Translations.of(context).newNoteScreen.date_of_birth,
-            validator: (value) {
-              return null;
+            onSaved: (value) {
+              if (value != null) {
+                dateOfBirth = _parseDateString(value);
+                _bloc.add(UpdateDateOfBirthEvent(dateOfBirth: dateOfBirth!));
+              }
             },
-            onSaved: (value) {},
           ),
           AppFormField(
             label: Translations.of(context).newNoteScreen.description,
@@ -59,10 +67,13 @@ class _NoteOverviewPageState extends State<NoteOverviewPage> {
             // icon: Icons.featured_play_list_outlined,
             minLines: 4,
             maxLines: 16,
-            validator: (value) {
-              return null;
+            onSaved: (value) {
+              if (value != null) {
+                description = value;
+                _bloc.add(
+                    UpdateNoteDescriptionEvent(noteDescription: description!));
+              }
             },
-            onSaved: (value) {},
           )
         ],
       ),
