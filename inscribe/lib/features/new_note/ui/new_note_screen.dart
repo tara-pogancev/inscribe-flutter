@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/data/model/note.dart';
+import 'package:inscribe/core/extensions/context_extensions.dart';
+import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/widgets/app_button.dart';
@@ -36,9 +38,6 @@ class _NewNoteScreenState extends State<NewNoteScreen>
 
   late String initialProfilePicture;
 
-  // TODO remove this
-  int _currentTabIndex = 0;
-
   void _goBack() {
     context.pop();
   }
@@ -47,8 +46,12 @@ class _NewNoteScreenState extends State<NewNoteScreen>
     final isFormValid = _formKey.currentState!.validate();
     if (isFormValid) {
       _formKey.currentState!.save();
-      // Future.delayed(Durations.short1);
+      Future.delayed(Durations.short1);
       _bloc.add(SaveNoteEvent());
+    } else {
+      context.showSnackbar(
+          snackbarText:
+              Translations.of(context).newNoteScreen.some_fields_are_missing);
     }
   }
 
@@ -68,12 +71,6 @@ class _NewNoteScreenState extends State<NewNoteScreen>
   void dispose() {
     _tabController.dispose();
     super.dispose();
-  }
-
-  void _setCurrentTabIndex(int value) {
-    setState(() {
-      _currentTabIndex = value;
-    });
   }
 
   @override
@@ -98,7 +95,6 @@ class _NewNoteScreenState extends State<NewNoteScreen>
             SliverToBoxAdapter(
               child: NoteTabBar(
                 tabController: _tabController,
-                onTabClick: (index) => _setCurrentTabIndex(index),
               ),
             ),
           ],

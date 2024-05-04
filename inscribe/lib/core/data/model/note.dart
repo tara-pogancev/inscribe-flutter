@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 
+
 class Note {
   final String? id;
   final String name;

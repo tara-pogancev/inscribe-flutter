@@ -11,7 +11,8 @@ class NoteGiftIdeasPage extends StatefulWidget {
   State<NoteGiftIdeasPage> createState() => _NoteGiftIdeasPageState();
 }
 
-class _NoteGiftIdeasPageState extends State<NoteGiftIdeasPage> {
+class _NoteGiftIdeasPageState extends State<NoteGiftIdeasPage>
+    with AutomaticKeepAliveClientMixin<NoteGiftIdeasPage> {
   final _bloc = IC.getIt<NewNoteBloc>();
 
   String? giftIdeas;
@@ -39,4 +40,7 @@ class _NoteGiftIdeasPageState extends State<NoteGiftIdeasPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

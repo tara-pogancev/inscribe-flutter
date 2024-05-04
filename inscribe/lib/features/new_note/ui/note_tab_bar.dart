@@ -3,12 +3,9 @@ import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 
 class NoteTabBar extends StatelessWidget {
-  const NoteTabBar(
-      {super.key, required this.tabController, required this.onTabClick});
+  const NoteTabBar({super.key, required this.tabController});
 
   final TabController tabController;
-
-  final Function(int index) onTabClick;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +19,6 @@ class NoteTabBar extends StatelessWidget {
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorPadding: const EdgeInsets.symmetric(vertical: 10),
         indicatorWeight: 0.2,
-        onTap: (value) => onTabClick(value),
         tabs: [
           Tab(text: Translations.of(context).newNoteScreen.overview),
           Tab(text: Translations.of(context).newNoteScreen.gift_ideas),

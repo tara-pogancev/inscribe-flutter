@@ -16,7 +16,8 @@ class NoteOverviewPage extends StatefulWidget {
   State<NoteOverviewPage> createState() => _NoteOverviewPageState();
 }
 
-class _NoteOverviewPageState extends State<NoteOverviewPage> {
+class _NoteOverviewPageState extends State<NoteOverviewPage>
+    with AutomaticKeepAliveClientMixin<NoteOverviewPage> {
   final _bloc = IC.getIt<NewNoteBloc>();
 
   String? description;
@@ -55,7 +56,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage> {
           AppDateFormField(
             label: Translations.of(context).newNoteScreen.date_of_birth,
             onSaved: (value) {
-              if (value != null) {
+              if (value != null && value != "") {
                 dateOfBirth = _parseDateString(value);
                 _bloc.add(UpdateDateOfBirthEvent(dateOfBirth: dateOfBirth!));
               }
@@ -79,4 +80,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
