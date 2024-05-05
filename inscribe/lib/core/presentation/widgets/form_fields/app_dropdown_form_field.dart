@@ -6,13 +6,13 @@ import 'package:inscribe/core/presentation/widgets/form_fields/app_form_field.da
 
 class AppDropdownFormField extends StatefulWidget {
   const AppDropdownFormField({
-    Key? key,
+    super.key,
     required this.label,
     required this.items,
     this.icon,
     this.onSaved,
     this.validator,
-  }) : super(key: key);
+  });
 
   final String label;
   final List<String> items;

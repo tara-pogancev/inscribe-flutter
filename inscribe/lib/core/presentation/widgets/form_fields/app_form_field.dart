@@ -7,7 +7,7 @@ const defaultBorderRadius = 7.0;
 
 class AppFormField extends StatelessWidget {
   const AppFormField({
-    Key? key,
+    super.key,
     this.label,
     this.hint,
     this.icon,
@@ -16,7 +16,7 @@ class AppFormField extends StatelessWidget {
     this.maxLines = 1,
     this.onSaved,
     this.validator,
-  }) : super(key: key);
+  });
 
   final String? label;
   final String? hint;

@@ -8,11 +8,11 @@ const dateFormat = "dd MMM yyyy";
 
 class AppDateFormField extends StatefulWidget {
   const AppDateFormField({
-    Key? key,
+    super.key,
     required this.label,
     this.onSaved,
     this.validator,
-  }) : super(key: key);
+  });
 
   final String label;
   final Function(String? value)? onSaved;

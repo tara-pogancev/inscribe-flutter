@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:inscribe/core/domain/repositories/shared_preference_repository.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
@@ -12,6 +13,7 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   IC.setUp();
+  await Hive.initFlutter();
   GoogleFonts.config.allowRuntimeFetching = true;
   LocaleSettings.useDeviceLocale();
   await Firebase.initializeApp(
@@ -31,7 +33,7 @@ class InscribeApp extends StatelessWidget {
 
     return MaterialApp.router(
       routerConfig:
-          AppRouter.router((isFirstRun) ? Routes.welcome : Routes.newNote),
+          AppRouter.router((isFirstRun) ? Routes.welcome : Routes.home),
       debugShowCheckedModeBanner: false,
       title: 'Inscribe - Companion Journal',
       locale: TranslationProvider.of(context).flutterLocale,

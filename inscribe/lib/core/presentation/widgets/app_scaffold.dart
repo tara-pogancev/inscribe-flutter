@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 
 class AppScaffold extends StatelessWidget {
@@ -20,12 +21,18 @@ class AppScaffold extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColorScheme.of(context).beige,
       floatingActionButton: fab,
-      resizeToAvoidBottomInset: true,
-      body: Padding(
-        padding: EdgeInsets.all((includeDefaultPadding) ? 20 : 0),
-        child: Padding(
-          padding: EdgeInsets.only(top: (includeDefaultPadding) ? 30 : 0),
-          child: child,
+      body: SingleChildScrollView(
+        physics:
+            const ClampingScrollPhysics(parent: NeverScrollableScrollPhysics()),
+        child: SizedBox(
+          height: context.getScreenHeight(),
+          child: Padding(
+            padding: EdgeInsets.all((includeDefaultPadding) ? 20 : 0),
+            child: Padding(
+              padding: EdgeInsets.only(top: (includeDefaultPadding) ? 30 : 0),
+              child: child,
+            ),
+          ),
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inscribe/core/data/model/note.dart';
+import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/extensions/field_validation_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
@@ -34,6 +34,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
