@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:inscribe/core/data/repositories/notes_repository_impl.dart';
 import 'package:inscribe/core/domain/repositories/shared_preference_repository.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
@@ -14,6 +15,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   IC.setUp();
   await Hive.initFlutter();
+  await Hive.openBox<Map<String, dynamic>>(hiveNotesBox);
   GoogleFonts.config.allowRuntimeFetching = true;
   LocaleSettings.useDeviceLocale();
   await Firebase.initializeApp(

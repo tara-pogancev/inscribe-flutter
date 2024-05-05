@@ -28,6 +28,7 @@ mixin _$Note {
   NoteType? get type => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get giftIdeas => throw _privateConstructorUsedError;
+  bool get isDeleted => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +48,8 @@ abstract class $NoteCopyWith<$Res> {
       DateTime? dateOfBirth,
       NoteType? type,
       String? description,
-      String? giftIdeas});
+      String? giftIdeas,
+      bool isDeleted});
 }
 
 /// @nodoc
@@ -71,6 +73,7 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
     Object? type = freezed,
     Object? description = freezed,
     Object? giftIdeas = freezed,
+    Object? isDeleted = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -105,6 +108,10 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
           ? _value.giftIdeas
           : giftIdeas // ignore: cast_nullable_to_non_nullable
               as String?,
+      isDeleted: null == isDeleted
+          ? _value.isDeleted
+          : isDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -124,7 +131,8 @@ abstract class _$$NoteImplCopyWith<$Res> implements $NoteCopyWith<$Res> {
       DateTime? dateOfBirth,
       NoteType? type,
       String? description,
-      String? giftIdeas});
+      String? giftIdeas,
+      bool isDeleted});
 }
 
 /// @nodoc
@@ -145,6 +153,7 @@ class __$$NoteImplCopyWithImpl<$Res>
     Object? type = freezed,
     Object? description = freezed,
     Object? giftIdeas = freezed,
+    Object? isDeleted = null,
   }) {
     return _then(_$NoteImpl(
       id: freezed == id
@@ -179,6 +188,10 @@ class __$$NoteImplCopyWithImpl<$Res>
           ? _value.giftIdeas
           : giftIdeas // ignore: cast_nullable_to_non_nullable
               as String?,
+      isDeleted: null == isDeleted
+          ? _value.isDeleted
+          : isDeleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -194,7 +207,8 @@ class _$NoteImpl implements _Note {
       this.dateOfBirth = null,
       this.type = null,
       this.description = null,
-      this.giftIdeas = null});
+      this.giftIdeas = null,
+      this.isDeleted = false});
 
   factory _$NoteImpl.fromJson(Map<String, dynamic> json) =>
       _$$NoteImplFromJson(json);
@@ -223,10 +237,13 @@ class _$NoteImpl implements _Note {
   @override
   @JsonKey()
   final String? giftIdeas;
+  @override
+  @JsonKey()
+  final bool isDeleted;
 
   @override
   String toString() {
-    return 'Note(id: $id, name: $name, assetImage: $assetImage, galleryImage: $galleryImage, dateOfBirth: $dateOfBirth, type: $type, description: $description, giftIdeas: $giftIdeas)';
+    return 'Note(id: $id, name: $name, assetImage: $assetImage, galleryImage: $galleryImage, dateOfBirth: $dateOfBirth, type: $type, description: $description, giftIdeas: $giftIdeas, isDeleted: $isDeleted)';
   }
 
   @override
@@ -246,13 +263,15 @@ class _$NoteImpl implements _Note {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.giftIdeas, giftIdeas) ||
-                other.giftIdeas == giftIdeas));
+                other.giftIdeas == giftIdeas) &&
+            (identical(other.isDeleted, isDeleted) ||
+                other.isDeleted == isDeleted));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, assetImage,
-      galleryImage, dateOfBirth, type, description, giftIdeas);
+      galleryImage, dateOfBirth, type, description, giftIdeas, isDeleted);
 
   @JsonKey(ignore: true)
   @override
@@ -277,7 +296,8 @@ abstract class _Note implements Note {
       final DateTime? dateOfBirth,
       final NoteType? type,
       final String? description,
-      final String? giftIdeas}) = _$NoteImpl;
+      final String? giftIdeas,
+      final bool isDeleted}) = _$NoteImpl;
 
   factory _Note.fromJson(Map<String, dynamic> json) = _$NoteImpl.fromJson;
 
@@ -297,6 +317,8 @@ abstract class _Note implements Note {
   String? get description;
   @override
   String? get giftIdeas;
+  @override
+  bool get isDeleted;
   @override
   @JsonKey(ignore: true)
   _$$NoteImplCopyWith<_$NoteImpl> get copyWith =>

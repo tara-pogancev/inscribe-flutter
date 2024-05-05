@@ -1,9 +1,13 @@
 import 'package:get_it/get_it.dart';
+import 'package:hive/hive.dart';
+import 'package:inscribe/core/data/repositories/notes_repository_impl.dart';
 import 'package:inscribe/core/data/repositories/shared_preferences_repository_impl.dart';
+import 'package:inscribe/core/domain/repositories/notes_repository.dart';
 import 'package:inscribe/core/domain/repositories/shared_preference_repository.dart';
 import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
 import 'package:inscribe/features/welcome/bloc/welcome_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uuid/uuid.dart';
 
 class IC {
   static final getIt = GetIt.instance;
@@ -17,6 +21,13 @@ class IC {
     // Setup repositories
     getIt.registerLazySingleton<SharedPreferencesRepository>(
         () => SharedPreferencesRepositoryImpl(sharedPreferences: getIt()));
+
+    getIt.registerLazySingleton<NotesRepository>(() {
+      final box = Hive.box<Map<String, dynamic>>(hiveNotesBox);
+      return NotesRepositoryImpl(notesBox: box);
+    });
+
+    getIt.registerLazySingleton(() => const Uuid());
 
     // Setup bloc
     getIt.registerLazySingleton(() => WelcomeBloc());

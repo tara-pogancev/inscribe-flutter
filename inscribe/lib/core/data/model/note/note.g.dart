@@ -19,6 +19,7 @@ _$NoteImpl _$$NoteImplFromJson(Map<String, dynamic> json) => _$NoteImpl(
       type: $enumDecodeNullable(_$NoteTypeEnumMap, json['type']) ?? null,
       description: json['description'] as String? ?? null,
       giftIdeas: json['giftIdeas'] as String? ?? null,
+      isDeleted: json['isDeleted'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$NoteImplToJson(_$NoteImpl instance) =>
@@ -31,6 +32,7 @@ Map<String, dynamic> _$$NoteImplToJson(_$NoteImpl instance) =>
       'type': _$NoteTypeEnumMap[instance.type],
       'description': instance.description,
       'giftIdeas': instance.giftIdeas,
+      'isDeleted': instance.isDeleted,
     };
 
 const _$NoteTypeEnumMap = {

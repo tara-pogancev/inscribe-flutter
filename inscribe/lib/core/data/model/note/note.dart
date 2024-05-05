@@ -7,15 +7,17 @@ part 'note.g.dart';
 
 @freezed
 class Note with _$Note {
-  const factory Note(
-      {@Default(null) String? id,
-      @Default("") String name,
-      @Default("") String assetImage,
-      @Default(null) Uri? galleryImage,
-      @Default(null) DateTime? dateOfBirth,
-      @Default(null) NoteType? type,
-      @Default(null) String? description,
-      @Default(null) String? giftIdeas}) = _Note;
+  const factory Note({
+    @Default(null) String? id,
+    @Default("") String name,
+    @Default("") String assetImage,
+    @Default(null) Uri? galleryImage,
+    @Default(null) DateTime? dateOfBirth,
+    @Default(null) NoteType? type,
+    @Default(null) String? description,
+    @Default(null) String? giftIdeas,
+    @Default(false) bool isDeleted,
+  }) = _Note;
 
   factory Note.fromJson(Map<String, dynamic> json) => _$NoteFromJson(json);
 }

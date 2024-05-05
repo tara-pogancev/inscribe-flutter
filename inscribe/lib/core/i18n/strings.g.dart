@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 34
+/// Strings: 35
 ///
-/// Built on 2024-05-04 at 15:28 UTC
+/// Built on 2024-05-05 at 13:56 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -215,6 +215,7 @@ class _StringsNewNoteScreenEn {
 	String get description_hint => 'Add any notes you\'d like here...';
 	String get coming_soon => 'Coming soon';
 	String get some_fields_are_missing => 'Some fields are missing!';
+	String get note_saved => 'Note succesfully saved!';
 }
 
 // Path: errorMessages
@@ -266,6 +267,7 @@ extension on Translations {
 			case 'newNoteScreen.description_hint': return 'Add any notes you\'d like here...';
 			case 'newNoteScreen.coming_soon': return 'Coming soon';
 			case 'newNoteScreen.some_fields_are_missing': return 'Some fields are missing!';
+			case 'newNoteScreen.note_saved': return 'Note succesfully saved!';
 			case 'errorMessages.mandatory_field': return 'This field is mandatory.';
 			default: return null;
 		}

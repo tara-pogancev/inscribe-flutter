@@ -55,6 +55,12 @@ class _NewNoteScreenState extends State<NewNoteScreen>
     }
   }
 
+  void _onSuccess() {
+    context.showSnackbar(
+        snackbarText: Translations.of(context).newNoteScreen.note_saved);
+    _goBack();
+  }
+
   @override
   void initState() {
     super.initState();
@@ -76,8 +82,13 @@ class _NewNoteScreenState extends State<NewNoteScreen>
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      fab: BlocBuilder<NewNoteBloc, NewNoteState>(
+      fab: BlocConsumer<NewNoteBloc, NewNoteState>(
         bloc: _bloc,
+        listener: (context, state) {
+          if (state.isSuccess) {
+            _goBack();
+          }
+        },
         builder: (context, state) {
           return AppFloatingActionButton(
             onPressed: () {
@@ -126,7 +137,7 @@ class _NewNoteScreenState extends State<NewNoteScreen>
                   children: [
                     IconButton(
                       onPressed: () {
-                        _goBack();
+                        _onSuccess();
                       },
                       icon: Icon(
                         Icons.arrow_back,

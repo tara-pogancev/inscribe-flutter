@@ -43,7 +43,8 @@
       "description": "Description",
       "description_hint": "Add any notes you'd like here...",
       "coming_soon": "Coming soon",
-      "some_fields_are_missing": "Some fields are missing!"
+      "some_fields_are_missing": "Some fields are missing!",
+      "note_saved": "Note succesfully saved!"
     },
 
     "errorMessages": {

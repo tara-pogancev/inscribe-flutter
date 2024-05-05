@@ -1,13 +1,17 @@
-import 'package:inscribe/core/data/model/app_bloc.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
+import 'package:inscribe/core/domain/model/app_bloc.dart';
+import 'package:inscribe/features/new_note/usecases/save_note_usecase.dart';
 
 part 'new_note_event.dart';
 part 'new_note_state.dart';
 
 class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
+  final saveNoteUseCase = SaveNoteUseCase();
+
   NewNoteBloc() : super(NewNoteState()) {
     on<SaveNoteEvent>((event, emit) async {
-      
+      await saveNoteUseCase(state.note);
+      emit(state.copyWith(isSuccess: true));
     });
 
     on<UpdateNoteEvent>((event, emit) {
