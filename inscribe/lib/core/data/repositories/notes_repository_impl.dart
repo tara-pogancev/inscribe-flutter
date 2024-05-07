@@ -19,8 +19,13 @@ class NotesRepositoryImpl implements NotesRepository {
   @override
   Future<List<Note>> getNotes() async {
     List<Note> notes = [];
-    for (var note in notesBox.values) {
-      notes.add(Note.fromJson(note));
+    final notesFromBox = notesBox.toMap();
+    for (var note in notesFromBox.values) {
+      print("hi");
+      print(note);
+      print("hi");
+      final newNote = Note.fromJson(note);
+      notes.add(newNote);
     }
     return notes;
   }

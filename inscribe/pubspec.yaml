@@ -49,7 +49,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/profile_images/
-    # - google_fonts/
+    - assets/fonts/montserrat/
 
   fonts:
     - family: Brogi

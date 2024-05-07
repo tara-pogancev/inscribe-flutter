@@ -10,6 +10,7 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
 
   NewNoteBloc() : super(NewNoteState()) {
     on<SaveNoteEvent>((event, emit) async {
+      print("Saving note: ${state.note}");
       await saveNoteUseCase(state.note);
       emit(state.copyWith(isSuccess: true));
     });

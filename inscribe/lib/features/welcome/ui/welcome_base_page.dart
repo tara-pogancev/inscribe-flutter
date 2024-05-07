@@ -30,6 +30,7 @@ class WelcomeBasePage extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       fit: StackFit.expand,
       children: [
+        _buildOverlapBox(context),
         _buildIllustration(context),
         _buildBackground(context),
         _buildTextDescription(context),
@@ -108,20 +109,21 @@ class WelcomeBasePage extends StatelessWidget {
 
   Widget _buildIllustration(BuildContext context) {
     double containerHeight = context.getScreenHeight() -
-        ((context.getScreenHeight() * welcomeBottomContainerHeightPercentage) +
-            (context.getScreenWidth() * waveDividerHeight / waveDividerWidth)) +
-        waveDividerTopPadding;
+        ((context.getScreenHeight() *
+                welcomeBottomContainerHeightPercentage) + // Bottom container height
+            (context.getScreenWidth() * waveDividerHeight / waveDividerWidth) *
+                0.5); // Wave divider height
 
     return Align(
       alignment: Alignment.topCenter,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 40),
-        child: SizedBox(
-          height: containerHeight,
-          width: double.infinity,
-          child: FractionallySizedBox(
-            widthFactor: 0.8,
-            heightFactor: 0.8,
+      child: SizedBox(
+        height: containerHeight,
+        width: double.infinity,
+        child: FractionallySizedBox(
+          widthFactor: 0.8,
+          heightFactor: 0.8,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 70),
             child: Image.asset(
               "assets/images/welcome_illustration_${index + 1}.png",
               fit: BoxFit.contain,
@@ -130,5 +132,23 @@ class WelcomeBasePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  //**
+  // This box helps with the thin white line that appears sometimes between
+  // the bottom container and the wave image
+  // */
+  Widget _buildOverlapBox(BuildContext context) {
+    final bottomContainerHeight =
+        (context.getScreenHeight() * welcomeBottomContainerHeightPercentage);
+
+    return Positioned(
+        bottom: bottomContainerHeight - 15,
+        height: 30,
+        left: 0,
+        right: 0,
+        child: Container(
+          color: AppColorScheme.of(context).black,
+        ));
   }
 }
