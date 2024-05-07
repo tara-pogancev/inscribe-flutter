@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
 import 'package:inscribe/features/home/bloc/home_bloc.dart';
-import 'package:inscribe/features/home/ui/home_notes_grid.dart';
 import 'package:inscribe/features/home/ui/home_search_bar.dart';
 import 'package:inscribe/features/home/ui/no_notes_section.dart';
 
@@ -36,7 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
               return Expanded(
                 child: AnimatedCrossFade(
                     firstChild: const NoNotesSection(),
-                    secondChild: const HomeNotesGrid(),
+                    // secondChild: const HomeNotesGrid(),
+                    secondChild: Text("${state.notes.length}"),
                     crossFadeState: (state.notes.isEmpty)
                         ? CrossFadeState.showFirst
                         : CrossFadeState.showSecond,

@@ -34,6 +34,7 @@ class _AppDateFormFieldState extends State<AppDateFormField> {
 
   void _showDatePickerDialog() async {
     final DateTime? pickedDate = await showDatePicker(
+      initialEntryMode: DatePickerEntryMode.calendarOnly,
       context: context,
       initialDate: _dateValue,
       firstDate: DateTime(1900),

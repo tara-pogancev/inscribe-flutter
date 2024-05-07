@@ -24,7 +24,7 @@ class IC {
         () => SharedPreferencesRepositoryImpl(sharedPreferences: getIt()));
 
     getIt.registerLazySingleton<NotesRepository>(() {
-      final box = Hive.box<Map<String, dynamic>>(hiveNotesBox);
+      final box = Hive.box(hiveNotesBox);
       return NotesRepositoryImpl(notesBox: box);
     });
 

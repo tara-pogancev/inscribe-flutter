@@ -5,7 +5,7 @@ import 'package:inscribe/core/domain/repositories/notes_repository.dart';
 const hiveNotesBox = "notes";
 
 class NotesRepositoryImpl implements NotesRepository {
-  final Box<Map<String, dynamic>> notesBox;
+  final Box notesBox;
 
   NotesRepositoryImpl({
     required this.notesBox,
@@ -19,13 +19,10 @@ class NotesRepositoryImpl implements NotesRepository {
   @override
   Future<List<Note>> getNotes() async {
     List<Note> notes = [];
-    final notesFromBox = notesBox.toMap();
-    for (var note in notesFromBox.values) {
-      print("hi");
-      print(note);
-      print("hi");
-      final newNote = Note.fromJson(note);
-      notes.add(newNote);
+    final notesFromBox =
+        notesBox.values.map((e) => e.cast<String, dynamic>()).toList();
+    for (var note in notesFromBox) {
+      notes.add(Note.fromJson(note));
     }
     return notes;
   }
