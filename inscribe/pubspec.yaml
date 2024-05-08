@@ -34,6 +34,7 @@ dependencies:
   freezed_annotation: ^2.4.1
   json_annotation: ^4.9.0
   uuid: ^4.4.0
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -56,3 +57,11 @@ flutter:
       fonts:
         - asset: assets/fonts/brogi_regular.otf
 
+
+flutter_launcher_icons:
+  image_path: "assets/icon/app-icon.png"
+  android: true 
+  ios: true
+  min_sdk_android: 21
+  remove_alpha_ios: true
+  background_color_ios: "#e4e2de"
