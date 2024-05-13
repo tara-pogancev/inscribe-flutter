@@ -12,7 +12,6 @@ import 'package:inscribe/core/router/app_router.dart';
 import 'firebase_options.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox(hiveNotesBox);
   IC.setUp();
@@ -21,6 +20,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(TranslationProvider(child: InscribeApp()));
 }
 

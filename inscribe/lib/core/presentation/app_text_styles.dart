@@ -68,4 +68,19 @@ class AppTextStyles {
       color: AppColorScheme.of(context).red,
     );
   }
+
+  TextStyle get cardTitle {
+    return GoogleFonts.montserrat(
+      color: AppColorScheme.of(context).black,
+      fontSize: 18,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  TextStyle get cardSubtitle {
+    return GoogleFonts.montserrat(
+      color: AppColorScheme.of(context).black,
+      fontSize: 14,
+    );
+  }
 }

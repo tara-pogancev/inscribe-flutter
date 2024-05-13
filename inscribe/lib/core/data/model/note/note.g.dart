@@ -20,6 +20,7 @@ _$NoteImpl _$$NoteImplFromJson(Map<String, dynamic> json) => _$NoteImpl(
       description: json['description'] as String? ?? null,
       giftIdeas: json['giftIdeas'] as String? ?? null,
       isDeleted: json['isDeleted'] as bool? ?? false,
+      isPinned: json['isPinned'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$NoteImplToJson(_$NoteImpl instance) =>
@@ -33,6 +34,7 @@ Map<String, dynamic> _$$NoteImplToJson(_$NoteImpl instance) =>
       'description': instance.description,
       'giftIdeas': instance.giftIdeas,
       'isDeleted': instance.isDeleted,
+      'isPinned': instance.isPinned,
     };
 
 const _$NoteTypeEnumMap = {
