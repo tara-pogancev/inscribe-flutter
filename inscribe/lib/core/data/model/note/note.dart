@@ -18,6 +18,7 @@ class Note with _$Note {
     @Default(null) String? giftIdeas,
     @Default(false) bool isDeleted,
     @Default(false) bool isPinned,
+    @Default(null) DateTime? updatedAt,
   }) = _Note;
 
   factory Note.fromJson(Map<String, dynamic> json) => _$NoteFromJson(json);

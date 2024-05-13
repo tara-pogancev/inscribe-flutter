@@ -16,8 +16,11 @@ class HomeNotesGrid extends StatefulWidget {
 class _HomeNotesGridState extends State<HomeNotesGrid> {
   final _bloc = IC.getIt<HomeBloc>();
 
-  void _navigateNote(note) {
-    context.push(Routes.newNote);
+  void _navigateNote(note) async {
+    final shouldRefresh = await context.push(Routes.newNote) as bool?;
+    if (shouldRefresh ?? false) {
+      _bloc.add(HomeFetchEvent());
+    }
   }
 
   @override

@@ -13,6 +13,7 @@ class NoteRemindersPage extends StatefulWidget {
 
 class _NoteRemindersPageState extends State<NoteRemindersPage>
     with AutomaticKeepAliveClientMixin<NoteRemindersPage> {
+  // ignore: unused_field
   final _bloc = IC.getIt<NewNoteBloc>();
 
   @override

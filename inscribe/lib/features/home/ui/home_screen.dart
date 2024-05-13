@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/injection_container.dart';
+import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
+import 'package:inscribe/core/router/app_router.dart';
 import 'package:inscribe/features/home/bloc/home_bloc.dart';
 import 'package:inscribe/features/home/ui/home_notes_grid.dart';
 import 'package:inscribe/features/home/ui/home_search_bar.dart';
@@ -23,11 +26,27 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+  void _navigateNewNote(BuildContext context) async {
+    final shouldRefresh = await context.push(Routes.newNote) as bool?;
+    if (shouldRefresh ?? false) {
+      final bloc = IC.getIt<HomeBloc>();
+      bloc.add(HomeFetchEvent());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
       includeDefaultPadding: true,
       enableDrawer: true,
+      fab: FloatingActionButton(
+        backgroundColor: AppColorScheme.of(context).black,
+        foregroundColor: AppColorScheme.of(context).white,
+        onPressed: () {
+          _navigateNewNote(context);
+        },
+        child: const Icon(Icons.add),
+      ),
       child: Column(
         children: [
           const HomeSearchBar(),

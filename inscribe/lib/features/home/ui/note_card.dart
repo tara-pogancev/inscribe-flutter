@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/presentation/app_button_styles.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
@@ -39,31 +38,36 @@ class NoteCard extends StatelessWidget {
           alignment: Alignment.topLeft,
           child: Padding(
             padding: const EdgeInsets.only(top: cardProfileImageSize / 2),
-            child: Container(
-              width: double.infinity,
-              decoration: boxDecoration,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    left: 15,
-                    bottom: 15,
-                    top: ((cardProfileImageSize / 2) + 10)),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      note.name,
-                      style: AppTextStyles.of(context)
-                          .cardTitle
-                          .copyWith(color: textColor),
-                    ),
-                    Text(
-                      note.type.toString(),
-                      style: AppTextStyles.of(context)
-                          .cardSubtitle
-                          .copyWith(color: textColor),
-                    ),
-                  ],
+            child: InkWell(
+              onTap: () {
+                onClick();
+              },
+              child: Container(
+                width: double.infinity,
+                decoration: boxDecoration,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 15,
+                      bottom: 15,
+                      top: ((cardProfileImageSize / 2) + 10)),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        note.name,
+                        style: AppTextStyles.of(context)
+                            .cardTitle
+                            .copyWith(color: textColor),
+                      ),
+                      Text(
+                        note.type.toString(),
+                        style: AppTextStyles.of(context)
+                            .cardSubtitle
+                            .copyWith(color: textColor),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

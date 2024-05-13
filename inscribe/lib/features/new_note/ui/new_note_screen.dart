@@ -38,8 +38,8 @@ class _NewNoteScreenState extends State<NewNoteScreen>
 
   late String initialProfilePicture;
 
-  void _goBack() {
-    context.pop();
+  void _goBack({bool shouldRefresh = false}) {
+    context.pop(shouldRefresh);
   }
 
   void _validateForm() async {
@@ -58,7 +58,7 @@ class _NewNoteScreenState extends State<NewNoteScreen>
   void _onSuccess() {
     context.showSnackbar(
         snackbarText: Translations.of(context).newNoteScreen.note_saved);
-    _goBack();
+    _goBack(shouldRefresh: true);
   }
 
   @override
@@ -86,7 +86,7 @@ class _NewNoteScreenState extends State<NewNoteScreen>
         bloc: _bloc,
         listener: (context, state) {
           if (state.isSuccess) {
-            _goBack();
+            _onSuccess();
           }
         },
         builder: (context, state) {
@@ -137,7 +137,7 @@ class _NewNoteScreenState extends State<NewNoteScreen>
                   children: [
                     IconButton(
                       onPressed: () {
-                        _onSuccess();
+                        _goBack();
                       },
                       icon: Icon(
                         Icons.arrow_back,
