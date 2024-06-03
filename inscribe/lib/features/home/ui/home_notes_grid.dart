@@ -30,8 +30,10 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
       builder: (context, state) {
         return GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
-          padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 2.0),
+              crossAxisCount: 2,
+              crossAxisSpacing: 15,
+              mainAxisSpacing: 10,
+              childAspectRatio: 1.1),
           itemCount: state.filteredNotes.length,
           itemBuilder: (context, index) {
             final note = state.filteredNotes[index];

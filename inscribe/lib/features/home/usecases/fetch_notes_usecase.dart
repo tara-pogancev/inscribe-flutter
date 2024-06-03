@@ -3,6 +3,9 @@ import 'package:inscribe/core/domain/model/usecase.dart';
 
 class FetchNotesUseCase extends UseCase {
   Future<List<Note>> call() async {
-    return await notesRepository.getNotes();
+    final notes = await notesRepository.getNotes();
+    notes.sort((a, b) => (a.updatedAt ?? DateTime.fromMicrosecondsSinceEpoch(0))
+        .compareTo((b.updatedAt ?? DateTime.fromMicrosecondsSinceEpoch(0))));
+    return notes;
   }
 }

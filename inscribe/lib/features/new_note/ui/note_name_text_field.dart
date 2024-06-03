@@ -24,7 +24,7 @@ class _NoteNameTextFieldState extends State<NoteNameTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       minLines: 1,
-      maxLines: 2,
+      // maxLines: 2,
       maxLength: 30,
       initialValue: widget.name,
       style: AppTextStyles.of(context).whiteNameFormField,

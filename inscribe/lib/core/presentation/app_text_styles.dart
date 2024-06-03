@@ -38,7 +38,7 @@ class AppTextStyles {
 
   TextStyle get whiteNameFormField {
     return GoogleFonts.montserrat(
-        color: AppColorScheme.of(context).white, fontSize: 20);
+        color: AppColorScheme.of(context).white, fontSize: 18);
   }
 
   TextStyle get whiteNameFormFieldHint {
@@ -46,7 +46,7 @@ class AppTextStyles {
         color: AppColorScheme.of(context).white.withOpacity(0.6),
         fontStyle: FontStyle.italic,
         fontWeight: FontWeight.w200,
-        fontSize: 20);
+        fontSize: 18);
   }
 
   TextStyle get grayFormLabel {
