@@ -61,6 +61,10 @@ class _NewNoteScreenState extends State<NewNoteScreen>
     _goBack(shouldRefresh: true);
   }
 
+  void _toggleNotePin() {
+    _bloc.add(ToggleNotePinEvent());
+  }
+
   @override
   void initState() {
     _tabController = TabController(vsync: this, length: noteTabsNumber);
@@ -139,19 +143,46 @@ class _NewNoteScreenState extends State<NewNoteScreen>
                 const EdgeInsets.only(top: 40, bottom: 20, left: 20, right: 20),
             child: Column(
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        _goBack();
-                      },
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: AppColorScheme.of(context).beige,
-                      ),
-                    )
-                  ],
+                BlocBuilder<NewNoteBloc, NewNoteState>(
+                  bloc: _bloc,
+                  builder: (context, state) {
+                    return Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            _goBack();
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: AppColorScheme.of(context).beige,
+                          ),
+                        ),
+                        Spacer(),
+                        IconButton(
+                          onPressed: () {
+                            _toggleNotePin();
+                          },
+                          icon: Icon(
+                            (state.note.isPinned)
+                                ? Icons.star
+                                : Icons.star_outline,
+                            color: AppColorScheme.of(context).beige,
+                          ),
+                        ),
+                        if (state.note.id != null)
+                          IconButton(
+                            onPressed: () {
+                              // TODO
+                            },
+                            icon: Icon(
+                              Icons.arrow_back,
+                              color: AppColorScheme.of(context).beige,
+                            ),
+                          )
+                      ],
+                    );
+                  },
                 ),
                 BlocBuilder<NewNoteBloc, NewNoteState>(
                   bloc: _bloc,

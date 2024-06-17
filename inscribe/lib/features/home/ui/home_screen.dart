@@ -20,18 +20,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _bloc = IC.getIt<HomeBloc>();
 
-  @override
-  void initState() {
-    _bloc.add(HomeFetchEvent());
-    super.initState();
-  }
-
   void _navigateNewNote(BuildContext context) async {
-    final shouldRefresh = await context.push(Routes.newNote) as bool?;
-    if (shouldRefresh ?? false) {
-      final bloc = IC.getIt<HomeBloc>();
-      bloc.add(HomeFetchEvent());
-    }
+    await context.push(Routes.newNote);
+    _bloc.add(HomeFetchEvent());
   }
 
   @override

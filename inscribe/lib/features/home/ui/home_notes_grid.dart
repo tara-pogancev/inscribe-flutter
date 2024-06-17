@@ -19,11 +19,8 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
   final _bloc = IC.getIt<HomeBloc>();
 
   void _navigateNote(note) async {
-    final shouldRefresh =
-        await context.push(Routes.noteDetails, extra: note) as bool?;
-    if (shouldRefresh ?? false) {
-      _bloc.add(HomeFetchEvent());
-    }
+    await context.push(Routes.noteDetails, extra: note);
+    _bloc.add(HomeFetchEvent());
   }
 
   @override
@@ -33,9 +30,12 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
       builder: (context, state) {
         return ListView(children: [
           if (state.filteredPinnedNotes.isNotEmpty)
-            Text(
-              Translations.of(context).homeScreen.pinned,
-              style: AppTextStyles.of(context).homeTitle,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Text(
+                Translations.of(context).homeScreen.pinned,
+                style: AppTextStyles.of(context).homeTitle,
+              ),
             ),
           if (state.filteredPinnedNotes.isNotEmpty)
             GridView.builder(
@@ -45,6 +45,7 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
                   mainAxisSpacing: 10,
                   childAspectRatio: 1.4),
               itemCount: state.filteredPinnedNotes.length,
+              physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 final note = state.filteredPinnedNotes[index];
@@ -57,9 +58,12 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
               },
             ),
           if (state.filteredPinnedNotes.isNotEmpty)
-            Text(
-              Translations.of(context).homeScreen.other,
-              style: AppTextStyles.of(context).homeTitle,
+            Padding(
+              padding: const EdgeInsets.only(top: 30, bottom: 10),
+              child: Text(
+                Translations.of(context).homeScreen.other,
+                style: AppTextStyles.of(context).homeTitle,
+              ),
             ),
           GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -69,6 +73,7 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
                 childAspectRatio: 1.1),
             itemCount: state.filteredOtherdNotes.length,
             shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
               final note = state.filteredOtherdNotes[index];
               return NoteCard(

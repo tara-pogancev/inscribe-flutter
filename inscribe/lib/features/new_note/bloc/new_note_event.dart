@@ -11,6 +11,8 @@ class UpdateNoteEvent extends NewNoteEvent {
 
 class SaveNoteEvent extends NewNoteEvent {}
 
+class ToggleNotePinEvent extends NewNoteEvent {}
+
 class UpdateNoteNameEvent extends NewNoteEvent {
   final String noteName;
   UpdateNoteNameEvent({

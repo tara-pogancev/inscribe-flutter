@@ -1,56 +1,53 @@
 {
-    "appName": "Inscribe",
-    "cancel": "Cancel",
-    
-    "welcomeScreen": {
-      "title": "Welcome to Inscribe!",
-      "slides" : [
-        "Celebrate friendships with personalized notes on likes, birthdays, and gift ideas.",
-        "Curate thoughtful gift lists for each friend, making every occasion memorable.",
-        "Take your friendships anywhere - easily download and transfer your data.",
-        "Your privacy matters - enjoy full offline functionality, keeping your data secure.",
-        "Never miss a beat - set reminders for special occasions and events."
-      ],
-      "startButton": "Start noting!"
-    },
+  "appName": "Inscribe",
+  "cancel": "Cancel",
 
-    "homeScreen": {
-      "welcome": "Welcome!", 
-      "no_notes_title": "No notes found!",
-      "no_notes_subtitle": "Start by adding a friend memoir.",
-      "add_note": "Add note",
-      "pinned": "Pinned",
-      "other": "Other",
-      "search": "Search"
-    },
+  "welcomeScreen": {
+    "title": "Welcome to Inscribe!",
+    "slides": [
+      "Celebrate friendships with personalized notes on likes, birthdays, and gift ideas.",
+      "Curate thoughtful gift lists for each friend, making every occasion memorable.",
+      "Take your friendships anywhere - easily download and transfer your data.",
+      "Your privacy matters - enjoy full offline functionality, keeping your data secure.",
+      "Never miss a beat - set reminders for special occasions and events."
+    ],
+    "startButton": "Start noting!"
+  },
 
-    "newNoteScreen": {
-      "friend_name_hint": "What's their name?", 
-      "fields_missing_error": "Sorry! Some fields are missing!",
-      "overview": "Overview", 
-      "gift_ideas": "Gift ideas", 
-      "gift_ideas_hint": "What would this person love as a gift?", 
-      "reminders": "Reminders" ,
-      "category": "Category",
-      "categories": [
-        "Friend 😄",
-        "Work 💼",
-        "Family 🏠",
-        "School 🎒",
-        "Romantic ❤️‍🔥"
-      ],
-      "date_of_birth": "Date of birth",
-      "description": "Description",
-      "description_hint": "Add any notes you'd like here...",
-      "coming_soon": "Coming soon",
-      "some_fields_are_missing": "Some fields are missing!",
-      "note_saved": "Note succesfully saved!"
-    },
+  "homeScreen": {
+    "welcome": "Welcome!",
+    "no_notes_title": "No notes found!",
+    "no_notes_subtitle": "Start by adding a friend memoir.",
+    "add_note": "Add note",
+    "pinned": "Pinned",
+    "other": "Other",
+    "search": "Search"
+  },
 
-    "errorMessages": {
-      "mandatory_field": "This field is mandatory."
+  "newNoteScreen": {
+    "friend_name_hint": "What's their name?",
+    "fields_missing_error": "Sorry! Some fields are missing!",
+    "overview": "Overview",
+    "gift_ideas": "Gift ideas",
+    "gift_ideas_hint": "What would this person love as a gift?",
+    "reminders": "Reminders",
+    "category": "Category",
+    "categories": [
+      "Friend 😄",
+      "Work 💼",
+      "Family 🏠",
+      "School 🎒",
+      "Romantic ❤️‍🔥"
+    ],
+    "date_of_birth": "Date of birth",
+    "description": "Description",
+    "description_hint": "Add any notes you'd like here...",
+    "coming_soon": "Coming soon",
+    "some_fields_are_missing": "Some fields are missing!",
+    "note_saved": "Note succesfully saved!"
+  },
 
-    }
-
-
+  "errorMessages": {
+    "mandatory_field": "This field is mandatory."
   }
+}

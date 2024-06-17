@@ -48,5 +48,15 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
       emit(state.copyWith(
           note: state.note.copyWith(giftIdeas: event.giftIdeas)));
     });
+
+    on<ToggleNotePinEvent>((event, emit) async {
+      emit(state.copyWith(
+          note: state.note.copyWith(isPinned: !state.note.isPinned)));
+      if (state.note.id == null) {
+        await saveNoteUseCase(state.note);
+      } else {
+        updateNoteUseCase(state.note);
+      }
+    });
   }
 }

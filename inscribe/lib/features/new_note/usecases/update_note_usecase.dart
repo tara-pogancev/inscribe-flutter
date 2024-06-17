@@ -3,7 +3,8 @@ import 'package:inscribe/core/domain/model/usecase.dart';
 
 class UpdateNoteUseCase extends UseCase {
   Future<void> call(Note note) async {
-    final noteToSave = note.copyWith(updatedAt: DateTime.now());
+    final noteToSave =
+        note.copyWith(updatedAt: DateTime.now(), createdAt: DateTime.now());
     return notesRepository.updateNote(noteToSave);
   }
 }

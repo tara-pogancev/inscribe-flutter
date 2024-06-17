@@ -20,5 +20,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           filteredOtherdNotes: otherNotes,
           filteredPinnedNotes: pinnedNotes));
     });
+
+    add(HomeFetchEvent());
   }
 }
