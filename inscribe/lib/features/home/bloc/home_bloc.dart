@@ -21,6 +21,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           filteredPinnedNotes: pinnedNotes));
     });
 
+    on<HomeToggleView>((event, emit) {
+      emit(state.copyWith(isGridView: !state.isGridView));
+    });
+
     add(HomeFetchEvent());
   }
 }

@@ -176,7 +176,7 @@ class _NewNoteScreenState extends State<NewNoteScreen>
                               // TODO
                             },
                             icon: Icon(
-                              Icons.arrow_back,
+                              Icons.menu,
                               color: AppColorScheme.of(context).beige,
                             ),
                           )
