@@ -31,6 +31,24 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(state.copyWith(isGridView: !state.isGridView));
     });
 
+    on<HomeFilterBySearch>((event, emit) {
+      final allNotes = List<Note>.from(state.notes);
+
+      final otherNotes = allNotes
+          .where((note) =>
+              note.isPinned == false &&
+              note.isFilteredBySearchText(event.searchText))
+          .toList();
+      final pinnedNotes = allNotes
+          .where((note) =>
+              note.isPinned == true &&
+              note.isFilteredBySearchText(event.searchText))
+          .toList();
+
+      emit(state.copyWith(
+          filteredOtherdNotes: otherNotes, filteredPinnedNotes: pinnedNotes));
+    });
+
     add(HomeFetchEvent());
   }
 }

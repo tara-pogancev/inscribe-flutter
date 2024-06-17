@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:inscribe/core/data/model/note_type.dart';
+import 'package:inscribe/core/extensions/string_extensions.dart';
 
 part 'note.freezed.dart';
 part 'note.g.dart';
@@ -22,4 +23,12 @@ class Note with _$Note {
   }) = _Note;
 
   factory Note.fromJson(Map<String, dynamic> json) => _$NoteFromJson(json);
+
+  const Note._();
+
+  bool isFilteredBySearchText(String? searchText) {
+    if (searchText == null) return true;
+
+    return name.simplifyForSearch().contains(searchText.simplifyForSearch());
+  }
 }

@@ -21,11 +21,18 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
     _bloc.add(HomeToggleView());
   }
 
+  void _updateSearch(String? searchText) {
+    _bloc.add(HomeFilterBySearch(searchText: searchText));
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextField(
       enabled: true,
       style: AppTextStyles.of(context).defaultText,
+      onChanged: (value) {
+        _updateSearch(value);
+      },
       decoration: InputDecoration(
           fillColor: AppColorScheme.of(context).white,
           filled: true,
@@ -38,7 +45,9 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
             icon: const Icon(
               Icons.menu_rounded,
             ),
-            onPressed: () {},
+            onPressed: () {
+              //TODO
+            },
           ),
           suffixIcon: BlocBuilder<HomeBloc, HomeState>(
             bloc: _bloc,
