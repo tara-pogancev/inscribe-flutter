@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
+import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/router/app_router.dart';
 import 'package:inscribe/features/home/bloc/home_bloc.dart';
 import 'package:inscribe/features/home/ui/note_card.dart';
@@ -17,7 +19,8 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
   final _bloc = IC.getIt<HomeBloc>();
 
   void _navigateNote(note) async {
-    final shouldRefresh = await context.push(Routes.newNote) as bool?;
+    final shouldRefresh =
+        await context.push(Routes.noteDetails, extra: note) as bool?;
     if (shouldRefresh ?? false) {
       _bloc.add(HomeFetchEvent());
     }
@@ -28,23 +31,55 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
     return BlocBuilder<HomeBloc, HomeState>(
       bloc: _bloc,
       builder: (context, state) {
-        return GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 15,
-              mainAxisSpacing: 10,
-              childAspectRatio: 1.1),
-          itemCount: state.filteredNotes.length,
-          itemBuilder: (context, index) {
-            final note = state.filteredNotes[index];
-            return NoteCard(
-              note: note,
-              onClick: () {
-                _navigateNote(note);
+        return ListView(children: [
+          if (state.filteredPinnedNotes.isNotEmpty)
+            Text(
+              Translations.of(context).homeScreen.pinned,
+              style: AppTextStyles.of(context).homeTitle,
+            ),
+          if (state.filteredPinnedNotes.isNotEmpty)
+            GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 1.4),
+              itemCount: state.filteredPinnedNotes.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                final note = state.filteredPinnedNotes[index];
+                return NoteCard(
+                  note: note,
+                  onClick: () {
+                    _navigateNote(note);
+                  },
+                );
               },
-            );
-          },
-        );
+            ),
+          if (state.filteredPinnedNotes.isNotEmpty)
+            Text(
+              Translations.of(context).homeScreen.other,
+              style: AppTextStyles.of(context).homeTitle,
+            ),
+          GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 15,
+                mainAxisSpacing: 10,
+                childAspectRatio: 1.1),
+            itemCount: state.filteredOtherdNotes.length,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              final note = state.filteredOtherdNotes[index];
+              return NoteCard(
+                note: note,
+                onClick: () {
+                  _navigateNote(note);
+                },
+              );
+            },
+          ),
+        ]);
       },
     );
   }

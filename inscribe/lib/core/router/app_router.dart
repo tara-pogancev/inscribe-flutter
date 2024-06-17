@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
+import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/router/navigation_transitions.dart';
 import 'package:inscribe/features/home/ui/home_screen.dart';
 import 'package:inscribe/features/new_note/ui/new_note_screen.dart';
-import 'package:inscribe/features/note_details/ui/note_details_screen.dart';
 import 'package:inscribe/features/welcome/ui/welcome_screen.dart';
 
 class AppRouter {
@@ -22,8 +22,8 @@ class AppRouter {
           ),
           GoRoute(
             path: Routes.noteDetails,
-            pageBuilder: defaultPageBuilder(
-              const NoteDetailsScreen(),
+            pageBuilder: defaultPageBuilderWithState((state) =>
+              NewNoteScreen(note: state.extra as Note),
             ),
           ),
           GoRoute(

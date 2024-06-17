@@ -6,7 +6,7 @@
 /// Locales: 1
 /// Strings: 35
 ///
-/// Built on 2024-05-05 at 13:56 UTC
+/// Built on 2024-06-03 at 11:48 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -185,7 +185,7 @@ class _StringsHomeScreenEn {
 	String get no_notes_subtitle => 'Start by adding a friend memoir.';
 	String get add_note => 'Add note';
 	String get pinned => 'Pinned';
-	String get others => 'Others';
+	String get other => 'Other';
 	String get search => 'Search';
 }
 
@@ -248,7 +248,7 @@ extension on Translations {
 			case 'homeScreen.no_notes_subtitle': return 'Start by adding a friend memoir.';
 			case 'homeScreen.add_note': return 'Add note';
 			case 'homeScreen.pinned': return 'Pinned';
-			case 'homeScreen.others': return 'Others';
+			case 'homeScreen.other': return 'Other';
 			case 'homeScreen.search': return 'Search';
 			case 'newNoteScreen.friend_name_hint': return 'What\'s their name?';
 			case 'newNoteScreen.fields_missing_error': return 'Sorry! Some fields are missing!';

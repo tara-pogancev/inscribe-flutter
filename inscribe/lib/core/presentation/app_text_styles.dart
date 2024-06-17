@@ -21,6 +21,14 @@ class AppTextStyles {
     );
   }
 
+  TextStyle get homeTitle {
+    return GoogleFonts.montserrat(
+      color: AppColorScheme.of(context).black,
+      fontSize: 16,
+      fontWeight: FontWeight.w700,
+    );
+  }
+
   TextStyle get defaultText {
     return GoogleFonts.montserrat(
       color: AppColorScheme.of(context).black,

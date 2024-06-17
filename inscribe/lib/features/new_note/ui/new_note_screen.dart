@@ -18,7 +18,9 @@ import 'package:inscribe/features/new_note/usecases/get_random_profile_image_use
 const noteTabsNumber = 3;
 
 class NewNoteScreen extends StatefulWidget {
-  const NewNoteScreen({super.key});
+  const NewNoteScreen({super.key, this.note = const Note()});
+
+  final Note note;
 
   @override
   State<NewNoteScreen> createState() => _NewNoteScreenState();
@@ -32,11 +34,9 @@ class _NewNoteScreenState extends State<NewNoteScreen>
 
   final _bloc = IC.getIt<NewNoteBloc>();
 
-  late final Note note;
-
   late TabController _tabController;
 
-  late String initialProfilePicture;
+  late final Note note;
 
   void _goBack({bool shouldRefresh = false}) {
     context.pop(shouldRefresh);
@@ -65,12 +65,17 @@ class _NewNoteScreenState extends State<NewNoteScreen>
   void initState() {
     super.initState();
     _tabController = TabController(vsync: this, length: noteTabsNumber);
-    initialProfilePicture = getRandomProfileImageUseCase();
-    note = Note(
-      name: "",
-      assetImage: initialProfilePicture,
-    );
-    _bloc.add(UpdateNoteEvent(note: note));
+
+    if (widget.note.id == null) {
+      note = Note(
+        name: "",
+        assetImage: getRandomProfileImageUseCase(),
+      );
+      _bloc.add(UpdateNoteEvent(note: note));
+    } else {
+      note = widget.note;
+      _bloc.add(UpdateNoteEvent(note: note));
+    }
   }
 
   @override
@@ -147,7 +152,7 @@ class _NewNoteScreenState extends State<NewNoteScreen>
                   ],
                 ),
                 CircleImage(
-                  imageName: initialProfilePicture,
+                  imageName: note.assetImage,
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),

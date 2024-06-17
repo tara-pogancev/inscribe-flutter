@@ -2,20 +2,24 @@ part of 'home_bloc.dart';
 
 class HomeState {
   final List<Note> notes;
-  final List<Note> filteredNotes;
+  final List<Note> filteredOtherdNotes;
+  final List<Note> filteredPinnedNotes;
 
   HomeState({
     this.notes = const [],
-    this.filteredNotes = const [],
+    this.filteredOtherdNotes = const [],
+    this.filteredPinnedNotes = const [],
   });
 
   HomeState copyWith({
     List<Note>? notes,
-    List<Note>? filteredNotes,
+    List<Note>? filteredOtherdNotes,
+    List<Note>? filteredPinnedNotes,
   }) {
     return HomeState(
       notes: notes ?? this.notes,
-      filteredNotes: filteredNotes ?? this.filteredNotes,
+      filteredOtherdNotes: filteredOtherdNotes ?? this.filteredOtherdNotes,
+      filteredPinnedNotes: filteredPinnedNotes ?? this.filteredPinnedNotes,
     );
   }
 }
