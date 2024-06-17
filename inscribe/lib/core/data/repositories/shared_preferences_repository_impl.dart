@@ -2,6 +2,7 @@ import 'package:inscribe/core/domain/repositories/shared_preference_repository.d
 import 'package:shared_preferences/shared_preferences.dart';
 
 const isFirstRunSharedPreferences = "isFirstRun";
+const isGridPreferedViewSharedPreferences = "isGridPreferedView";
 
 class SharedPreferencesRepositoryImpl implements SharedPreferencesRepository {
   final SharedPreferences sharedPreferences;
@@ -18,5 +19,16 @@ class SharedPreferencesRepositoryImpl implements SharedPreferencesRepository {
   @override
   void setIsFirstRun(bool value) {
     sharedPreferences.setBool(isFirstRunSharedPreferences, value);
+  }
+
+  @override
+  bool getIsGridPreferedView() {
+    return sharedPreferences.getBool(isGridPreferedViewSharedPreferences) ??
+        true;
+  }
+
+  @override
+  void setIsGridPreferedView(bool value) {
+    sharedPreferences.setBool(isGridPreferedViewSharedPreferences, value);
   }
 }
