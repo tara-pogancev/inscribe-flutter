@@ -63,7 +63,6 @@ class _NewNoteScreenState extends State<NewNoteScreen>
 
   @override
   void initState() {
-    super.initState();
     _tabController = TabController(vsync: this, length: noteTabsNumber);
 
     if (widget.note.id == null) {
@@ -76,6 +75,8 @@ class _NewNoteScreenState extends State<NewNoteScreen>
       note = widget.note;
       _bloc.add(UpdateNoteEvent(note: note));
     }
+
+    super.initState();
   }
 
   @override
@@ -116,6 +117,7 @@ class _NewNoteScreenState extends State<NewNoteScreen>
           ],
           body: NoteTabsSwitcher(
             controller: _tabController,
+            initialNote: note,
           ),
         ),
       ),
@@ -151,8 +153,13 @@ class _NewNoteScreenState extends State<NewNoteScreen>
                     )
                   ],
                 ),
-                CircleImage(
-                  imageName: note.assetImage,
+                BlocBuilder<NewNoteBloc, NewNoteState>(
+                  bloc: _bloc,
+                  builder: (context, state) {
+                    return CircleImage(
+                      imageName: state.note.assetImage,
+                    );
+                  },
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),

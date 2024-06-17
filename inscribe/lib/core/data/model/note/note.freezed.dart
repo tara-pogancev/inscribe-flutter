@@ -31,6 +31,7 @@ mixin _$Note {
   bool get isDeleted => throw _privateConstructorUsedError;
   bool get isPinned => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +54,8 @@ abstract class $NoteCopyWith<$Res> {
       String? giftIdeas,
       bool isDeleted,
       bool isPinned,
-      DateTime? updatedAt});
+      DateTime? updatedAt,
+      DateTime? createdAt});
 }
 
 /// @nodoc
@@ -80,6 +82,7 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
     Object? isDeleted = null,
     Object? isPinned = null,
     Object? updatedAt = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -126,6 +129,10 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -148,7 +155,8 @@ abstract class _$$NoteImplCopyWith<$Res> implements $NoteCopyWith<$Res> {
       String? giftIdeas,
       bool isDeleted,
       bool isPinned,
-      DateTime? updatedAt});
+      DateTime? updatedAt,
+      DateTime? createdAt});
 }
 
 /// @nodoc
@@ -172,6 +180,7 @@ class __$$NoteImplCopyWithImpl<$Res>
     Object? isDeleted = null,
     Object? isPinned = null,
     Object? updatedAt = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(_$NoteImpl(
       id: freezed == id
@@ -218,6 +227,10 @@ class __$$NoteImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -236,7 +249,8 @@ class _$NoteImpl implements _Note {
       this.giftIdeas = null,
       this.isDeleted = false,
       this.isPinned = false,
-      this.updatedAt = null});
+      this.updatedAt = null,
+      this.createdAt = null});
 
   factory _$NoteImpl.fromJson(Map<String, dynamic> json) =>
       _$$NoteImplFromJson(json);
@@ -274,10 +288,13 @@ class _$NoteImpl implements _Note {
   @override
   @JsonKey()
   final DateTime? updatedAt;
+  @override
+  @JsonKey()
+  final DateTime? createdAt;
 
   @override
   String toString() {
-    return 'Note(id: $id, name: $name, assetImage: $assetImage, galleryImage: $galleryImage, dateOfBirth: $dateOfBirth, type: $type, description: $description, giftIdeas: $giftIdeas, isDeleted: $isDeleted, isPinned: $isPinned, updatedAt: $updatedAt)';
+    return 'Note(id: $id, name: $name, assetImage: $assetImage, galleryImage: $galleryImage, dateOfBirth: $dateOfBirth, type: $type, description: $description, giftIdeas: $giftIdeas, isDeleted: $isDeleted, isPinned: $isPinned, updatedAt: $updatedAt, createdAt: $createdAt)';
   }
 
   @override
@@ -303,7 +320,9 @@ class _$NoteImpl implements _Note {
             (identical(other.isPinned, isPinned) ||
                 other.isPinned == isPinned) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
@@ -320,7 +339,8 @@ class _$NoteImpl implements _Note {
       giftIdeas,
       isDeleted,
       isPinned,
-      updatedAt);
+      updatedAt,
+      createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -348,7 +368,8 @@ abstract class _Note implements Note {
       final String? giftIdeas,
       final bool isDeleted,
       final bool isPinned,
-      final DateTime? updatedAt}) = _$NoteImpl;
+      final DateTime? updatedAt,
+      final DateTime? createdAt}) = _$NoteImpl;
 
   factory _Note.fromJson(Map<String, dynamic> json) = _$NoteImpl.fromJson;
 
@@ -374,6 +395,8 @@ abstract class _Note implements Note {
   bool get isPinned;
   @override
   DateTime? get updatedAt;
+  @override
+  DateTime? get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$NoteImplCopyWith<_$NoteImpl> get copyWith =>

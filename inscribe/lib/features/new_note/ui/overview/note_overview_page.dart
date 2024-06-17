@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
+import 'package:inscribe/core/data/model/note_type.dart';
 import 'package:inscribe/core/extensions/date_extensions.dart';
 import 'package:inscribe/core/extensions/field_validation_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
@@ -10,7 +11,9 @@ import 'package:inscribe/core/presentation/widgets/form_fields/app_form_field.da
 import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
 
 class NoteOverviewPage extends StatefulWidget {
-  const NoteOverviewPage({super.key});
+  const NoteOverviewPage({super.key, this.initialNote = const Note()});
+
+  final Note initialNote;
 
   @override
   State<NoteOverviewPage> createState() => _NoteOverviewPageState();
@@ -49,7 +52,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
               }
             },
             icon: Icons.favorite_border_rounded,
-            initialValue: _bloc.state.note.type?.getString(context),
+            initialValue: widget.initialNote.type?.getString(context),
           ),
           AppDateFormField(
             label: Translations.of(context).newNoteScreen.date_of_birth,
@@ -59,7 +62,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
                 _bloc.add(UpdateDateOfBirthEvent(dateOfBirth: dateOfBirth!));
               }
             },
-            initialValue: _bloc.state.note.dateOfBirth?.formatString(),
+            initialValue: widget.initialNote.dateOfBirth?.formatString(),
           ),
           AppFormField(
             label: Translations.of(context).newNoteScreen.description,
@@ -74,7 +77,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
                     UpdateNoteDescriptionEvent(noteDescription: description!));
               }
             },
-            initialValue: _bloc.state.note.description,
+            initialValue: widget.initialNote.description,
           )
         ],
       ),

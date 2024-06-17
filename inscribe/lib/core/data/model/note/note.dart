@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:inscribe/core/i18n/strings.g.dart';
+import 'package:inscribe/core/data/model/note_type.dart';
 
 part 'note.freezed.dart';
 part 'note.g.dart';
@@ -19,30 +18,8 @@ class Note with _$Note {
     @Default(false) bool isDeleted,
     @Default(false) bool isPinned,
     @Default(null) DateTime? updatedAt,
+    @Default(null) DateTime? createdAt,
   }) = _Note;
 
   factory Note.fromJson(Map<String, dynamic> json) => _$NoteFromJson(json);
-}
-
-enum NoteType { friend, school, work, romantic, family }
-
-extension NoteTypeExtension on NoteType {
-  String getString(BuildContext context) {
-    switch (this) {
-      case NoteType.friend:
-        return Translations.of(context).newNoteScreen.categories[0];
-
-      case NoteType.work:
-        return Translations.of(context).newNoteScreen.categories[1];
-
-      case NoteType.family:
-        return Translations.of(context).newNoteScreen.categories[2];
-
-      case NoteType.school:
-        return Translations.of(context).newNoteScreen.categories[3];
-
-      case NoteType.romantic:
-        return Translations.of(context).newNoteScreen.categories[4];
-    }
-  }
 }

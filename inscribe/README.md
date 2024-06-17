@@ -1,4 +1,4 @@
-# inscribe
+# Inscribe
 
 A new Flutter project.
 

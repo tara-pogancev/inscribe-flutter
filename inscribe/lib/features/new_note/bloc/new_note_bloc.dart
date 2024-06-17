@@ -1,4 +1,5 @@
 import 'package:inscribe/core/data/model/note/note.dart';
+import 'package:inscribe/core/data/model/note_type.dart';
 import 'package:inscribe/core/domain/model/app_bloc.dart';
 import 'package:inscribe/features/new_note/usecases/save_note_usecase.dart';
 import 'package:inscribe/features/new_note/usecases/update_note_usecase.dart';
