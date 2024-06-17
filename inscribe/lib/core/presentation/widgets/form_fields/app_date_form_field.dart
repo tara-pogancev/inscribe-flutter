@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:inscribe/core/extensions/date_extensions.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/form_fields/app_form_field.dart';
-import 'package:intl/intl.dart';
-
-const dateFormat = "dd MMM yyyy";
 
 class AppDateFormField extends StatefulWidget {
-  const AppDateFormField({
-    super.key,
-    required this.label,
-    this.onSaved,
-    this.validator,
-  });
+  const AppDateFormField(
+      {super.key,
+      required this.label,
+      this.onSaved,
+      this.validator,
+      this.initialValue});
 
   final String label;
   final Function(String? value)? onSaved;
   final String? Function(String? value)? validator;
+  final String? initialValue;
 
   @override
   State<AppDateFormField> createState() => _AppDateFormFieldState();
@@ -27,9 +26,12 @@ class _AppDateFormFieldState extends State<AppDateFormField> {
   DateTime? _dateValue;
 
   @override
-  void dispose() {
-    _dateController.dispose();
-    super.dispose();
+  void initState() {
+    if (widget.initialValue != null) {
+      _dateController.text = widget.initialValue!;
+      _dateValue = (widget.initialValue!).parseDateString();
+    }
+    super.initState();
   }
 
   void _showDatePickerDialog() async {
@@ -42,13 +44,15 @@ class _AppDateFormFieldState extends State<AppDateFormField> {
     );
 
     if (pickedDate != null) {
-      _dateController.text = _formatDate(pickedDate);
+      _dateController.text = pickedDate.formatString();
       _dateValue = pickedDate;
     }
   }
 
-  String _formatDate(DateTime date) {
-    return DateFormat(dateFormat).format(date);
+  @override
+  void dispose() {
+    _dateController.dispose();
+    super.dispose();
   }
 
   @override

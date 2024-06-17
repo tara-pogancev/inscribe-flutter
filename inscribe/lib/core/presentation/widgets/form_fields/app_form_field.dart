@@ -16,6 +16,7 @@ class AppFormField extends StatelessWidget {
     this.maxLines = 1,
     this.onSaved,
     this.validator,
+    this.initialValue
   });
 
   final String? label;
@@ -26,12 +27,14 @@ class AppFormField extends StatelessWidget {
   final int maxLines;
   final Function(String? value)? onSaved;
   final String? Function(String? value)? validator;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: formFieldBottomPadding),
       child: TextFormField(
+        initialValue: initialValue,
         minLines: minLines,
         maxLines: maxLines,
         onSaved: (newValue) => onSaved?.call(newValue),

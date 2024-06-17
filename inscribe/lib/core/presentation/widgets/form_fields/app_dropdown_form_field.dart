@@ -5,20 +5,21 @@ import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/form_fields/app_form_field.dart';
 
 class AppDropdownFormField extends StatefulWidget {
-  const AppDropdownFormField({
-    super.key,
-    required this.label,
-    required this.items,
-    this.icon,
-    this.onSaved,
-    this.validator,
-  });
+  const AppDropdownFormField(
+      {super.key,
+      required this.label,
+      required this.items,
+      this.icon,
+      this.onSaved,
+      this.validator,
+      this.initialValue});
 
   final String label;
   final List<String> items;
   final IconData? icon;
   final Function(String? value)? onSaved;
   final String? Function(String? value)? validator;
+  final String? initialValue;
 
   @override
   State<AppDropdownFormField> createState() => _AppDropdownFormFieldState();
@@ -26,6 +27,15 @@ class AppDropdownFormField extends StatefulWidget {
 
 class _AppDropdownFormFieldState extends State<AppDropdownFormField> {
   dynamic _selectedItem;
+
+  @override
+  void initState() {
+    setState(() {
+      _selectedItem = widget.initialValue;
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

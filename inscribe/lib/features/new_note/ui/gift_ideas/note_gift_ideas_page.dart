@@ -25,6 +25,7 @@ class _NoteGiftIdeasPageState extends State<NoteGiftIdeasPage>
       child: Column(
         children: [
           AppFormField(
+            initialValue: _bloc.state.note.giftIdeas,
             label: Translations.of(context).newNoteScreen.gift_ideas,
             hint: Translations.of(context).newNoteScreen.gift_ideas_hint,
             // icon: Icons.card_giftcard_outlined,

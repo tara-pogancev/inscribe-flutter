@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
+import 'package:inscribe/core/extensions/date_extensions.dart';
 import 'package:inscribe/core/extensions/field_validation_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
@@ -7,7 +8,6 @@ import 'package:inscribe/core/presentation/widgets/form_fields/app_date_form_fie
 import 'package:inscribe/core/presentation/widgets/form_fields/app_dropdown_form_field.dart';
 import 'package:inscribe/core/presentation/widgets/form_fields/app_form_field.dart';
 import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
-import 'package:intl/intl.dart';
 
 class NoteOverviewPage extends StatefulWidget {
   const NoteOverviewPage({super.key});
@@ -26,10 +26,6 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
 
   List<String> getCategoryNames() {
     return NoteType.values.map((e) => e.getString(context)).toList();
-  }
-
-  DateTime _parseDateString(String dateString) {
-    return DateFormat(dateFormat).parse(dateString);
   }
 
   @override
@@ -53,15 +49,17 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
               }
             },
             icon: Icons.favorite_border_rounded,
+            initialValue: _bloc.state.note.type?.getString(context),
           ),
           AppDateFormField(
             label: Translations.of(context).newNoteScreen.date_of_birth,
             onSaved: (value) {
               if (value != null && value != "") {
-                dateOfBirth = _parseDateString(value);
+                dateOfBirth = value.parseDateString();
                 _bloc.add(UpdateDateOfBirthEvent(dateOfBirth: dateOfBirth!));
               }
             },
+            initialValue: _bloc.state.note.dateOfBirth?.formatString(),
           ),
           AppFormField(
             label: Translations.of(context).newNoteScreen.description,
@@ -76,6 +74,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
                     UpdateNoteDescriptionEvent(noteDescription: description!));
               }
             },
+            initialValue: _bloc.state.note.description,
           )
         ],
       ),
