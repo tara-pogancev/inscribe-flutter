@@ -23,7 +23,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           notes: notes,
           isGridView: isGridView,
           filteredOtherdNotes: otherNotes,
-          filteredPinnedNotes: pinnedNotes));
+          filteredPinnedNotes: pinnedNotes,
+          isLoading: false));
     });
 
     on<HomeToggleView>((event, emit) {

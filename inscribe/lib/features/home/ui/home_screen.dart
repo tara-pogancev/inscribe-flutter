@@ -48,13 +48,15 @@ class _HomeScreenState extends State<HomeScreen> {
             bloc: _bloc,
             builder: (context, state) {
               return Flexible(
-                child: AnimatedCrossFade(
-                    firstChild: const NoNotesSection(),
-                    secondChild: HomeNotesGrid(),
-                    crossFadeState: (state.notes.isEmpty)
-                        ? CrossFadeState.showFirst
-                        : CrossFadeState.showSecond,
-                    duration: Durations.long1),
+                child: (state.isLoading)
+                    ? Container()
+                    : AnimatedCrossFade(
+                        firstChild: const NoNotesSection(),
+                        secondChild: HomeNotesGrid(),
+                        crossFadeState: (state.notes.isEmpty)
+                            ? CrossFadeState.showFirst
+                            : CrossFadeState.showSecond,
+                        duration: Durations.long1),
               );
             },
           ),

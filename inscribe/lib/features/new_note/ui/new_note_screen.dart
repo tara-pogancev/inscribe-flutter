@@ -9,8 +9,6 @@ import 'package:inscribe/core/presentation/widgets/app_button.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
 import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
 import 'package:inscribe/features/new_note/ui/new_note_header.dart';
-import 'package:inscribe/features/new_note/ui/note_tab_bar.dart';
-import 'package:inscribe/features/new_note/ui/note_tabs_switcher.dart';
 import 'package:inscribe/features/new_note/usecases/get_random_profile_image_usecase.dart';
 
 const noteTabsNumber = 3;
@@ -32,7 +30,7 @@ class _NewNoteScreenState extends State<NewNoteScreen>
 
   final _bloc = IC.getIt<NewNoteBloc>();
 
-  late TabController _tabController;
+  // late TabController _tabController;
 
   late final Note note;
 
@@ -61,25 +59,25 @@ class _NewNoteScreenState extends State<NewNoteScreen>
 
   @override
   void initState() {
-    _tabController = TabController(vsync: this, length: noteTabsNumber);
+    // _tabController = TabController(vsync: this, length: noteTabsNumber);
 
-    if (widget.note.id == null) {
-      note = Note(
-        name: "",
-        assetImage: getRandomProfileImageUseCase(),
-      );
-      _bloc.add(UpdateNoteEvent(note: note));
-    } else {
-      note = widget.note;
-      _bloc.add(UpdateNoteEvent(note: note));
-    }
+    // if (widget.note.id == null) {
+    //   note = Note(
+    //     name: "",
+    //     assetImage: getRandomProfileImageUseCase(),
+    //   );
+    //   _bloc.add(UpdateNoteEvent(note: note));
+    // } else {
+    //   note = widget.note;
+    //   _bloc.add(UpdateNoteEvent(note: note));
+    // }
 
     super.initState();
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
+    // _tabController.dispose();
     super.dispose();
   }
 
@@ -105,19 +103,20 @@ class _NewNoteScreenState extends State<NewNoteScreen>
       child: Form(
         key: _formKey,
         child: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            SliverToBoxAdapter(child: NewNoteHeader()),
-            SliverToBoxAdapter(
-              child: NoteTabBar(
-                tabController: _tabController,
-              ),
+            headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                  SliverToBoxAdapter(child: NewNoteHeader()),
+                  // SliverToBoxAdapter(
+                  //   child: NoteTabBar(
+                  //     tabController: _tabController,
+                  //   ),
+                  // ),
+                ],
+            body: Container()
+            // body: NoteTabsSwitcher(
+            //   controller: _tabController,
+            //   initialNote: note,
+            // ),
             ),
-          ],
-          body: NoteTabsSwitcher(
-            controller: _tabController,
-            initialNote: note,
-          ),
-        ),
       ),
     );
   }
