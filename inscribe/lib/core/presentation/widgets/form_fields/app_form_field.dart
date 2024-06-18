@@ -6,18 +6,17 @@ const formFieldBottomPadding = 20.0;
 const defaultBorderRadius = 7.0;
 
 class AppFormField extends StatelessWidget {
-  const AppFormField({
-    super.key,
-    this.label,
-    this.hint,
-    this.icon,
-    this.keyboardType = TextInputType.text,
-    this.minLines = 1,
-    this.maxLines = 1,
-    this.onSaved,
-    this.validator,
-    this.initialValue
-  });
+  const AppFormField(
+      {super.key,
+      this.label,
+      this.hint,
+      this.icon,
+      this.keyboardType = TextInputType.text,
+      this.minLines = 1,
+      this.maxLines = 1,
+      this.onSaved,
+      this.validator,
+      this.initialValue});
 
   final String? label;
   final String? hint;
@@ -39,6 +38,8 @@ class AppFormField extends StatelessWidget {
         maxLines: maxLines,
         onSaved: (newValue) => onSaved?.call(newValue),
         validator: (value) => validator?.call(value),
+        textCapitalization: TextCapitalization.sentences,
+        keyboardType: TextInputType.text,
         decoration: InputDecoration(
             alignLabelWithHint: true,
             border: OutlineInputBorder(

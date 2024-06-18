@@ -39,10 +39,11 @@ class _NoteNameTextFieldState extends State<NoteNameTextField> {
       child: TextFormField(
         controller: _controller,
         minLines: 1,
-        // maxLines: 2,
         maxLength: 30,
         style: AppTextStyles.of(context).whiteNameFormField,
         textAlign: TextAlign.center,
+        textCapitalization: TextCapitalization.sentences,
+        keyboardType: TextInputType.text,
         validator: (value) {
           return value.isRequired(context);
         },

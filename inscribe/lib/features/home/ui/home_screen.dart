@@ -47,10 +47,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BlocBuilder<HomeBloc, HomeState>(
             bloc: _bloc,
             builder: (context, state) {
-              return Expanded(
+              return Flexible(
                 child: AnimatedCrossFade(
                     firstChild: const NoNotesSection(),
-                    secondChild: const HomeNotesGrid(),
+                    secondChild: HomeNotesGrid(),
                     crossFadeState: (state.notes.isEmpty)
                         ? CrossFadeState.showFirst
                         : CrossFadeState.showSecond,

@@ -21,10 +21,14 @@ class CircleImage extends StatelessWidget {
         ),
       ),
       child: ClipOval(
-        child: Image.asset(
-          imageName ?? _getRandomProfileImageUseCase(),
-          fit: BoxFit.cover,
-        ),
+        child: (imageName != null && imageName != "")
+            ? Image.asset(
+                imageName ?? _getRandomProfileImageUseCase(),
+                fit: BoxFit.cover,
+              )
+            : Container(
+                color: AppColorScheme.of(context).white,
+              ),
       ),
     );
   }
