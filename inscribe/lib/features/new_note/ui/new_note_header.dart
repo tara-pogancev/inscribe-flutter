@@ -5,6 +5,7 @@ import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
+import 'package:inscribe/core/presentation/bloc/delete_note_bloc/delete_note_bloc.dart';
 import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
 import 'package:inscribe/features/new_note/ui/circle_image.dart';
 import 'package:inscribe/features/new_note/ui/dialog/archive_note_dialog.dart';
@@ -14,6 +15,7 @@ class NewNoteHeader extends StatelessWidget {
   NewNoteHeader({super.key});
 
   final _bloc = IC.getIt<NewNoteBloc>();
+  final _deleteNoteBloc = IC.getIt<DeleteNoteBloc>();
 
   void _goBack(BuildContext context) {
     context.pop();
@@ -30,12 +32,12 @@ class NewNoteHeader extends StatelessWidget {
         as bool?;
 
     if (shouldDelete ?? false) {
-      _bloc.add(ArchiveNoteEvent());
+      _deleteNoteBloc.add(ArchiveNote(note: _bloc.state.note));
       context.showSnackbar(
         snackbarText: Translations.of(context).newNoteScreen.note_achived,
         actionText: Translations.of(context).undo,
         action: () {
-          // TODO add undo,
+          _deleteNoteBloc.add(UndoArchive());
         },
       );
       context.pop();

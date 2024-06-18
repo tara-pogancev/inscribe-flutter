@@ -47,5 +47,3 @@ class UpdateGiftIdeasEvent extends NewNoteEvent {
     required this.giftIdeas,
   });
 }
-
-class ArchiveNoteEvent extends NewNoteEvent {}

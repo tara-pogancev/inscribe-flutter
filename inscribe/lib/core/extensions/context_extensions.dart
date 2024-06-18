@@ -13,7 +13,7 @@ extension ContextExtensions on BuildContext {
     ScaffoldMessenger.of(this).showSnackBar(SnackBar(
       content: Text(snackbarText),
       action: (actionText != null && action != null)
-          ? SnackBarAction(label: actionText, onPressed: () => action)
+          ? SnackBarAction(label: actionText, onPressed: () => action())
           : null,
     ));
   }
