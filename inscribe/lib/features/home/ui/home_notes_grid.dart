@@ -61,11 +61,10 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
   Widget getGridForNotes(List<Note> notes, bool isGridView) {
     return SliverGrid.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: (isGridView) ? 2 : 1,
-        crossAxisSpacing: 15,
-        mainAxisSpacing: 10,
-        mainAxisExtent: 135,
-      ),
+          crossAxisCount: (isGridView) ? 2 : 1,
+          crossAxisSpacing: 15,
+          mainAxisSpacing: 10,
+          mainAxisExtent: 150),
       itemCount: notes.length,
       itemBuilder: (context, index) {
         final note = notes[index];

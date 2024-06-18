@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
+import 'package:inscribe/core/data/model/note_type.dart';
 import 'package:inscribe/core/presentation/app_button_styles.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
@@ -48,20 +49,26 @@ class NoteCard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(
                       left: 15,
+                      right: 15,
                       bottom: 15,
                       top: ((cardProfileImageSize / 2) + 10)),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        note.name,
-                        style: AppTextStyles.of(context)
-                            .cardTitle
-                            .copyWith(color: textColor),
+                      Flexible(
+                        child: Text(
+                          note.name,
+                          style: AppTextStyles.of(context)
+                              .cardTitle
+                              .copyWith(color: textColor),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
                       ),
                       Text(
-                        note.type.toString(),
+                        note.type?.getString(context) ?? "-",
                         style: AppTextStyles.of(context)
                             .cardSubtitle
                             .copyWith(color: textColor),
