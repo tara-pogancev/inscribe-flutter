@@ -27,3 +27,17 @@ doc/api/
 .flutter-plugins-dependencies
 firebase-options.dart
 inscribe/lib/firebase_options.dart
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+firebase.json
+
+### Firebase ###
+.idea
+**/node_modules/*
+**/.firebaserc
+
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/
+inscribe/android/app/google-services.json
+inscribe/ios/Runner/GoogleService-Info.plist
