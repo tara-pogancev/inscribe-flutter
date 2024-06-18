@@ -5,12 +5,10 @@ import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
-import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/widgets/app_button.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
 import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
-import 'package:inscribe/features/new_note/ui/circle_image.dart';
-import 'package:inscribe/features/new_note/ui/note_name_text_field.dart';
+import 'package:inscribe/features/new_note/ui/new_note_header.dart';
 import 'package:inscribe/features/new_note/ui/note_tab_bar.dart';
 import 'package:inscribe/features/new_note/ui/note_tabs_switcher.dart';
 import 'package:inscribe/features/new_note/usecases/get_random_profile_image_usecase.dart';
@@ -61,10 +59,6 @@ class _NewNoteScreenState extends State<NewNoteScreen>
     _goBack(shouldRefresh: true);
   }
 
-  void _toggleNotePin() {
-    _bloc.add(ToggleNotePinEvent());
-  }
-
   @override
   void initState() {
     _tabController = TabController(vsync: this, length: noteTabsNumber);
@@ -112,7 +106,7 @@ class _NewNoteScreenState extends State<NewNoteScreen>
         key: _formKey,
         child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            SliverToBoxAdapter(child: _buildHeader()),
+            SliverToBoxAdapter(child: NewNoteHeader()),
             SliverToBoxAdapter(
               child: NoteTabBar(
                 tabController: _tabController,
@@ -124,82 +118,6 @@ class _NewNoteScreenState extends State<NewNoteScreen>
             initialNote: note,
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildHeader() {
-    return Container(
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage("assets/images/wave_profile_cover.png"),
-            fit: BoxFit.cover),
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding:
-                const EdgeInsets.only(top: 40, bottom: 20, left: 20, right: 20),
-            child: Column(
-              children: [
-                BlocBuilder<NewNoteBloc, NewNoteState>(
-                  bloc: _bloc,
-                  builder: (context, state) {
-                    return Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            _goBack();
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: AppColorScheme.of(context).beige,
-                          ),
-                        ),
-                        Spacer(),
-                        IconButton(
-                          onPressed: () {
-                            _toggleNotePin();
-                          },
-                          icon: Icon(
-                            (state.note.isPinned)
-                                ? Icons.star
-                                : Icons.star_outline,
-                            color: AppColorScheme.of(context).beige,
-                          ),
-                        ),
-                        if (state.note.id != null)
-                          IconButton(
-                            onPressed: () {
-                              // TODO
-                            },
-                            icon: Icon(
-                              Icons.menu,
-                              color: AppColorScheme.of(context).beige,
-                            ),
-                          )
-                      ],
-                    );
-                  },
-                ),
-                BlocBuilder<NewNoteBloc, NewNoteState>(
-                  bloc: _bloc,
-                  builder: (context, state) {
-                    return CircleImage(
-                      imageName: state.note.assetImage,
-                    );
-                  },
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-                  child: NoteNameTextField(),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

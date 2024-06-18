@@ -1,6 +1,8 @@
 {
   "appName": "Inscribe",
   "cancel": "Cancel",
+  "confirm": "Confirm",
+  "undo": "Undo",
 
   "welcomeScreen": {
     "title": "Welcome to Inscribe!",
@@ -44,7 +46,10 @@
     "description_hint": "Add any notes you'd like here...",
     "coming_soon": "Coming soon",
     "some_fields_are_missing": "Some fields are missing!",
-    "note_saved": "Note succesfully saved!"
+    "note_saved": "Note succesfully saved!",
+    "archive_note": "Archive note",
+    "archive_note_are_you_sure": "Are you sure you want to archive note for '$name?'",
+    "note_achived": "Note archived!"
   },
 
   "errorMessages": {

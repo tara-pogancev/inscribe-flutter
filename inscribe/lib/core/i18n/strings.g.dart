@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 35
+/// Strings: 40
 ///
-/// Built on 2024-06-03 at 11:48 UTC
+/// Built on 2024-06-18 at 09:14 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -149,6 +149,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	// Translations
 	String get appName => 'Inscribe';
 	String get cancel => 'Cancel';
+	String get confirm => 'Confirm';
+	String get undo => 'Undo';
 	late final _StringsWelcomeScreenEn welcomeScreen = _StringsWelcomeScreenEn._(_root);
 	late final _StringsHomeScreenEn homeScreen = _StringsHomeScreenEn._(_root);
 	late final _StringsNewNoteScreenEn newNoteScreen = _StringsNewNoteScreenEn._(_root);
@@ -216,6 +218,9 @@ class _StringsNewNoteScreenEn {
 	String get coming_soon => 'Coming soon';
 	String get some_fields_are_missing => 'Some fields are missing!';
 	String get note_saved => 'Note succesfully saved!';
+	String get archive_note => 'Archive note';
+	String archive_note_are_you_sure({required Object name}) => 'Are you sure you want to archive note for \'${name}?\'';
+	String get note_achived => 'Note archived!';
 }
 
 // Path: errorMessages
@@ -236,6 +241,8 @@ extension on Translations {
 		switch (path) {
 			case 'appName': return 'Inscribe';
 			case 'cancel': return 'Cancel';
+			case 'confirm': return 'Confirm';
+			case 'undo': return 'Undo';
 			case 'welcomeScreen.title': return 'Welcome to Inscribe!';
 			case 'welcomeScreen.slides.0': return 'Celebrate friendships with personalized notes on likes, birthdays, and gift ideas.';
 			case 'welcomeScreen.slides.1': return 'Curate thoughtful gift lists for each friend, making every occasion memorable.';
@@ -268,6 +275,9 @@ extension on Translations {
 			case 'newNoteScreen.coming_soon': return 'Coming soon';
 			case 'newNoteScreen.some_fields_are_missing': return 'Some fields are missing!';
 			case 'newNoteScreen.note_saved': return 'Note succesfully saved!';
+			case 'newNoteScreen.archive_note': return 'Archive note';
+			case 'newNoteScreen.archive_note_are_you_sure': return ({required Object name}) => 'Are you sure you want to archive note for \'${name}?\'';
+			case 'newNoteScreen.note_achived': return 'Note archived!';
 			case 'errorMessages.mandatory_field': return 'This field is mandatory.';
 			default: return null;
 		}

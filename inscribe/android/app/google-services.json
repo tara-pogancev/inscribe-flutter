@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:914898549093:android:8770978d2f1d80101b898c",
+        "mobilesdk_app_id": "1:914898549093:android:71d6347ab04b06b91b898c",
         "android_client_info": {
-          "package_name": "com.example.inscribe"
+          "package_name": "com.tarapogancev.inscribe"
         }
       },
       "oauth_client": [],
