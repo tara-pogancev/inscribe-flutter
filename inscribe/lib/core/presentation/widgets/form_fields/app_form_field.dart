@@ -40,6 +40,9 @@ class AppFormField extends StatelessWidget {
         validator: (value) => validator?.call(value),
         textCapitalization: TextCapitalization.sentences,
         keyboardType: TextInputType.text,
+        onTapOutside: (event) {
+          FocusScope.of(context).unfocus();
+        },
         decoration: InputDecoration(
             alignLabelWithHint: true,
             border: OutlineInputBorder(

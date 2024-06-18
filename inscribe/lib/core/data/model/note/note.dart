@@ -29,6 +29,10 @@ class Note with _$Note {
   bool isFilteredBySearchText(String? searchText) {
     if (searchText == null) return true;
 
-    return name.simplifyForSearch().contains(searchText.simplifyForSearch());
+    return name.simplifyForSearch().contains(searchText.simplifyForSearch()) ||
+        type
+            .toString()
+            .simplifyForSearch()
+            .contains(searchText.simplifyForSearch());
   }
 }

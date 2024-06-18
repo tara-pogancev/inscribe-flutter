@@ -43,6 +43,9 @@ class _NoteNameTextFieldState extends State<NoteNameTextField> {
         style: AppTextStyles.of(context).whiteNameFormField,
         textAlign: TextAlign.center,
         textCapitalization: TextCapitalization.sentences,
+        onTapOutside: (event) {
+          FocusScope.of(context).unfocus();
+        },
         keyboardType: TextInputType.text,
         validator: (value) {
           return value.isRequired(context);

@@ -33,6 +33,9 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
       onChanged: (value) {
         _updateSearch(value);
       },
+      onTapOutside: (event) {
+        FocusScope.of(context).unfocus();
+      },
       decoration: InputDecoration(
           fillColor: AppColorScheme.of(context).white,
           filled: true,
