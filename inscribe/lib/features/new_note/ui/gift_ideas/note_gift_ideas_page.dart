@@ -26,6 +26,7 @@ class _NoteGiftIdeasPageState extends State<NoteGiftIdeasPage>
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           AppFormField(
             initialValue: widget.initialNote.giftIdeas,

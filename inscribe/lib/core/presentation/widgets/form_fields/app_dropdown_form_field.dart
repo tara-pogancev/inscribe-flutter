@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
-import 'package:inscribe/core/presentation/widgets/form_fields/app_form_field.dart';
 
 class AppDropdownFormField extends StatefulWidget {
   const AppDropdownFormField(

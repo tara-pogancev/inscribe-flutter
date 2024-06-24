@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/data/model/note_type.dart';
 import 'package:inscribe/core/extensions/date_extensions.dart';
@@ -35,8 +36,9 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
   Widget build(BuildContext context) {
     super.build(context);
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(defaultScreenPadding),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           AppDropdownFormField(
             label: Translations.of(context).newNoteScreen.category,

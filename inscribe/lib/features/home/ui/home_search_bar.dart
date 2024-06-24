@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
-import 'package:inscribe/core/presentation/app_button_styles.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/features/home/bloc/home_bloc.dart';
@@ -34,7 +34,7 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
         _updateSearch(value);
       },
       onTapOutside: (event) {
-        FocusScope.of(context).unfocus();
+        FocusScope.of(context).requestFocus(FocusNode());
       },
       decoration: InputDecoration(
           fillColor: AppColorScheme.of(context).white,

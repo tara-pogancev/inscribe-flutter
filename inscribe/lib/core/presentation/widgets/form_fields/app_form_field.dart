@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
-
-const formFieldBottomPadding = 20.0;
-const defaultBorderRadius = 7.0;
 
 class AppFormField extends StatelessWidget {
   const AppFormField(
@@ -41,7 +39,7 @@ class AppFormField extends StatelessWidget {
         textCapitalization: TextCapitalization.sentences,
         keyboardType: TextInputType.text,
         onTapOutside: (event) {
-          FocusScope.of(context).unfocus();
+          FocusScope.of(context).requestFocus(FocusNode());
         },
         decoration: InputDecoration(
             alignLabelWithHint: true,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
-
-const defaultBorderRadius = 10.0;
 
 class AppButtonStyles {
   BuildContext? context;

@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 
-class NoteTabBar extends StatelessWidget {
-  const NoteTabBar({super.key, required this.tabController});
-
-  final TabController tabController;
+class NoteTabBar extends StatelessWidget implements PreferredSizeWidget {
+  const NoteTabBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: AppColorScheme.of(context).gray,
       child: TabBar(
-        controller: tabController,
         labelColor: AppColorScheme.of(context).beige,
         unselectedLabelColor: AppColorScheme.of(context).beige.withOpacity(0.4),
         indicatorColor: AppColorScheme.of(context).beige,
@@ -27,4 +25,7 @@ class NoteTabBar extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(tabBarPreferedSize);
 }

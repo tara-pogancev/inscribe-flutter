@@ -25,6 +25,7 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(Translations.of(context).newNoteScreen.coming_soon,
               style: AppTextStyles.of(context).boldTitle),

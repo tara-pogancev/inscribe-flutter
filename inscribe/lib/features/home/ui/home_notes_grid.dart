@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
@@ -27,7 +28,7 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
   }
 
   double _getScrollViewHeight(BuildContext context) {
-    return (MediaQuery.of(context).size.height) - 70;
+    return (MediaQuery.of(context).size.height) - appBarPreferedSize;
   }
 
   @override

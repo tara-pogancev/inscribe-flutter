@@ -53,70 +53,72 @@ class NewNoteHeader extends StatelessWidget {
             image: AssetImage("assets/images/wave_profile_cover.png"),
             fit: BoxFit.cover),
       ),
-      child: Column(
-        children: [
-          Padding(
-            padding:
-                const EdgeInsets.only(top: 40, bottom: 20, left: 20, right: 20),
-            child: Column(
-              children: [
-                BlocBuilder<NewNoteBloc, NewNoteState>(
-                  bloc: _bloc,
-                  builder: (context, state) {
-                    return Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            _goBack(context);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: AppColorScheme.of(context).beige,
-                          ),
-                        ),
-                        Spacer(),
-                        IconButton(
-                          onPressed: () {
-                            _toggleNotePin();
-                          },
-                          icon: Icon(
-                            (state.note.isPinned)
-                                ? Icons.star
-                                : Icons.star_outline,
-                            color: AppColorScheme.of(context).beige,
-                          ),
-                        ),
-                        if (state.note.id != null)
+      child: ClipRect(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 40, bottom: 20, left: 20, right: 20),
+              child: Column(
+                children: [
+                  BlocBuilder<NewNoteBloc, NewNoteState>(
+                    bloc: _bloc,
+                    builder: (context, state) {
+                      return Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
                           IconButton(
                             onPressed: () {
-                              _archiveNote(context);
+                              _goBack(context);
                             },
                             icon: Icon(
-                              Icons.delete_outline_rounded,
+                              Icons.arrow_back,
                               color: AppColorScheme.of(context).beige,
                             ),
-                          )
-                      ],
-                    );
-                  },
-                ),
-                BlocBuilder<NewNoteBloc, NewNoteState>(
-                  bloc: _bloc,
-                  builder: (context, state) {
-                    return CircleImage(
-                      imageName: state.note.assetImage,
-                    );
-                  },
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-                  child: NoteNameTextField(),
-                ),
-              ],
+                          ),
+                          Spacer(),
+                          IconButton(
+                            onPressed: () {
+                              _toggleNotePin();
+                            },
+                            icon: Icon(
+                              (state.note.isPinned)
+                                  ? Icons.star
+                                  : Icons.star_outline,
+                              color: AppColorScheme.of(context).beige,
+                            ),
+                          ),
+                          if (state.note.id != null)
+                            IconButton(
+                              onPressed: () {
+                                _archiveNote(context);
+                              },
+                              icon: Icon(
+                                Icons.delete_outline_rounded,
+                                color: AppColorScheme.of(context).beige,
+                              ),
+                            )
+                        ],
+                      );
+                    },
+                  ),
+                  BlocBuilder<NewNoteBloc, NewNoteState>(
+                    bloc: _bloc,
+                    builder: (context, state) {
+                      return CircleImage(
+                        imageName: state.note.assetImage,
+                      );
+                    },
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                    child: NoteNameTextField(),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

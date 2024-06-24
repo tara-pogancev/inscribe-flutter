@@ -7,12 +7,14 @@ class AppScaffold extends StatelessWidget {
       {super.key,
       required this.child,
       this.includeDefaultPadding = false,
+      this.includeTopPadding = false,
       this.enableDrawer = false,
       this.fab});
 
   final Widget child;
   final bool includeDefaultPadding;
-  // TODO
+  final bool includeTopPadding;
+  // TODO drawer
   final bool enableDrawer;
   final Widget? fab;
 
@@ -29,7 +31,8 @@ class AppScaffold extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all((includeDefaultPadding) ? 20 : 0),
             child: Padding(
-              padding: EdgeInsets.only(top: (includeDefaultPadding) ? 30 : 0),
+              padding: EdgeInsets.only(
+                  top: (includeDefaultPadding || includeTopPadding) ? 30 : 0),
               child: child,
             ),
           ),
