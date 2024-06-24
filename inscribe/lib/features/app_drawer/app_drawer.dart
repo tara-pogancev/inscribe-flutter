@@ -5,19 +5,45 @@ import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/router/app_router.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
 
-  void _navigateRoute(BuildContext context, String route) {
-    context.push(route);
+  @override
+  State<AppDrawer> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  late String currentRoute;
+
+  void _navigateRoute(String route) {
+    if (_getCurrentRoute() != route) {
+      Scaffold.of(context).closeDrawer();
+      setState(() {
+        currentRoute = _getCurrentRoute();
+      });
+      context.push(route);
+    }
   }
 
-  String _getCurrentRoute(BuildContext context) {
-    return GoRouter.of(context).routeInformationProvider.value.uri.toString();
+  String _getCurrentRoute() {
+    final RouteMatch lastMatch =
+        GoRouter.of(context).routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : GoRouter.of(context).routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    currentRoute = _getCurrentRoute();
   }
 
   @override
   Widget build(BuildContext context) {
+    currentRoute = _getCurrentRoute();
     return Drawer(
       backgroundColor: AppColorScheme.of(context).beige,
       child: ListView(
@@ -38,27 +64,30 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            enabled: _getCurrentRoute(context) != Routes.home,
+            title: Text(currentRoute),
+          ),
+          ListTile(
+            enabled: currentRoute != Routes.home,
             leading: Icon(Icons.home_outlined),
             title: Text(Translations.of(context).drawer.memoirs),
             onTap: () {
-              _navigateRoute(context, Routes.home);
+              _navigateRoute(Routes.home);
             },
           ),
           ListTile(
-            enabled: _getCurrentRoute(context) != Routes.archive,
+            enabled: currentRoute != Routes.archive,
             leading: Icon(Icons.delete_outline),
             title: Text(Translations.of(context).drawer.archive),
             onTap: () {
-              _navigateRoute(context, Routes.archive);
+              _navigateRoute(Routes.archive);
             },
           ),
           ListTile(
-            enabled: _getCurrentRoute(context) != Routes.settings,
+            enabled: currentRoute != Routes.settings,
             leading: Icon(Icons.settings_outlined),
             title: Text(Translations.of(context).drawer.settings),
             onTap: () {
-              _navigateRoute(context, Routes.settings);
+              _navigateRoute(Routes.settings);
             },
           ),
           ListTile(

@@ -5,6 +5,7 @@ import 'package:inscribe/core/data/repositories/shared_preferences_repository_im
 import 'package:inscribe/core/domain/repositories/notes_repository.dart';
 import 'package:inscribe/core/domain/repositories/shared_preference_repository.dart';
 import 'package:inscribe/core/presentation/bloc/delete_note_bloc/delete_note_bloc.dart';
+import 'package:inscribe/features/archive/cubit/archive_cubit.dart';
 import 'package:inscribe/features/home/bloc/home_bloc.dart';
 import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
 import 'package:inscribe/features/welcome/bloc/welcome_bloc.dart';
@@ -36,5 +37,6 @@ class IC {
     getIt.registerLazySingleton(() => NewNoteBloc());
     getIt.registerLazySingleton(() => HomeBloc());
     getIt.registerLazySingleton(() => DeleteNoteBloc());
+    getIt.registerLazySingleton(() => ArchiveCubit());
   }
 }

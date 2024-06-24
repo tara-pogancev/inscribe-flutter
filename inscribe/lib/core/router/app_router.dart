@@ -1,8 +1,10 @@
 import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/router/navigation_transitions.dart';
-import 'package:inscribe/features/new_note/ui/new_note_screen.dart';
+import 'package:inscribe/features/archive/ui/archive_screen.dart';
 import 'package:inscribe/features/home/ui/home_screen.dart';
+import 'package:inscribe/features/new_note/ui/new_note_screen.dart';
+import 'package:inscribe/features/settings/ui/settings_screen.dart';
 import 'package:inscribe/features/welcome/ui/welcome_screen.dart';
 
 class AppRouter {
@@ -30,6 +32,18 @@ class AppRouter {
             path: Routes.newNote,
             pageBuilder: defaultPageBuilder(
               const NewNoteScreen(),
+            ),
+          ),
+          GoRoute(
+            path: Routes.archive,
+            pageBuilder: defaultPageBuilder(
+              const ArchiveScreen(),
+            ),
+          ),
+          GoRoute(
+            path: Routes.settings,
+            pageBuilder: defaultPageBuilder(
+              const SettingsScreen(),
             ),
           )
         ],
