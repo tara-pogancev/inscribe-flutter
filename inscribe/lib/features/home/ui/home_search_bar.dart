@@ -25,6 +25,10 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
     _bloc.add(HomeFilterBySearch(searchText: searchText));
   }
 
+  void _openDrawer() {
+    Scaffold.of(context).openDrawer();
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -49,7 +53,7 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
               Icons.menu_rounded,
             ),
             onPressed: () {
-              //TODO
+              _openDrawer();
             },
           ),
           suffixIcon: BlocBuilder<HomeBloc, HomeState>(

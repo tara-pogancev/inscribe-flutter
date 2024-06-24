@@ -14,6 +14,13 @@ class AppTextStyles {
         fontFamily: "Brogi");
   }
 
+  TextStyle get drawerTitle {
+    return TextStyle(
+        color: AppColorScheme.of(context).white,
+        fontSize: 50,
+        fontFamily: "Brogi");
+  }
+
   TextStyle get welcomeDescription {
     return GoogleFonts.montserrat(
       color: AppColorScheme.of(context).white,

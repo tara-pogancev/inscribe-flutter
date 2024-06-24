@@ -26,7 +26,6 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
 
   final double minHeight =
       newNoteAppBarExpandedHeight * 0.5; // Minimum height for fade effect
-  bool _isClippedVisible = true;
 
   void _goBack(BuildContext context) {
     context.pop();

@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 40
+/// Strings: 46
 ///
-/// Built on 2024-06-18 at 09:14 UTC
+/// Built on 2024-06-24 at 12:23 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -151,10 +151,26 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get cancel => 'Cancel';
 	String get confirm => 'Confirm';
 	String get undo => 'Undo';
+	late final _StringsDrawerEn drawer = _StringsDrawerEn._(_root);
 	late final _StringsWelcomeScreenEn welcomeScreen = _StringsWelcomeScreenEn._(_root);
 	late final _StringsHomeScreenEn homeScreen = _StringsHomeScreenEn._(_root);
 	late final _StringsNewNoteScreenEn newNoteScreen = _StringsNewNoteScreenEn._(_root);
 	late final _StringsErrorMessagesEn errorMessages = _StringsErrorMessagesEn._(_root);
+}
+
+// Path: drawer
+class _StringsDrawerEn {
+	_StringsDrawerEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get memoirs => 'Memoirs';
+	String get archive => 'Archive';
+	String get settings => 'Settings';
+	String get calendar => 'Calendar [COMING SOON]';
+	String get export => 'Export [COMING SOON]';
+	String get import => 'Import [COMING SOON]';
 }
 
 // Path: welcomeScreen
@@ -243,6 +259,12 @@ extension on Translations {
 			case 'cancel': return 'Cancel';
 			case 'confirm': return 'Confirm';
 			case 'undo': return 'Undo';
+			case 'drawer.memoirs': return 'Memoirs';
+			case 'drawer.archive': return 'Archive';
+			case 'drawer.settings': return 'Settings';
+			case 'drawer.calendar': return 'Calendar [COMING SOON]';
+			case 'drawer.export': return 'Export [COMING SOON]';
+			case 'drawer.import': return 'Import [COMING SOON]';
 			case 'welcomeScreen.title': return 'Welcome to Inscribe!';
 			case 'welcomeScreen.slides.0': return 'Celebrate friendships with personalized notes on likes, birthdays, and gift ideas.';
 			case 'welcomeScreen.slides.1': return 'Curate thoughtful gift lists for each friend, making every occasion memorable.';

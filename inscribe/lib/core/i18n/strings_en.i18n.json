@@ -4,6 +4,15 @@
   "confirm": "Confirm",
   "undo": "Undo",
 
+  "drawer": {
+    "memoirs": "Memoirs",
+    "archive": "Archive",
+    "settings": "Settings",
+    "calendar": "Calendar [COMING SOON]",
+    "export": "Export [COMING SOON]",
+    "import": "Import [COMING SOON]"
+  },
+
   "welcomeScreen": {
     "title": "Welcome to Inscribe!",
     "slides": [

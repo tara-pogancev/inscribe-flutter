@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
+import 'package:inscribe/features/app_drawer/app_drawer.dart';
 
 class AppScaffold extends StatelessWidget {
   const AppScaffold(
@@ -14,7 +15,7 @@ class AppScaffold extends StatelessWidget {
   final Widget child;
   final bool includeDefaultPadding;
   final bool includeTopPadding;
-  // TODO drawer
+
   final bool enableDrawer;
   final Widget? fab;
 
@@ -23,6 +24,7 @@ class AppScaffold extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColorScheme.of(context).beige,
       floatingActionButton: fab,
+      drawer: (enableDrawer) ? AppDrawer() : null,
       body: SingleChildScrollView(
         physics:
             const ClampingScrollPhysics(parent: NeverScrollableScrollPhysics()),
