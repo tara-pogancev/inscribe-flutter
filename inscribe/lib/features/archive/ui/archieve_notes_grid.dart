@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
@@ -20,6 +21,8 @@ class ArchieveNotesGrid extends StatefulWidget {
 
 class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
   final _cubit = IC.getIt<ArchiveCubit>();
+
+  var _tapPosition;
 
   double _getScrollViewHeight(BuildContext context) {
     return (MediaQuery.of(context).size.height) - appBarPreferedSize;
@@ -42,8 +45,6 @@ class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
           snackbarText: Translations.of(context).archivedNotes.note_deleted);
     }
   }
-
-  var _tapPosition;
 
   void _getTapPosition(TapDownDetails tapPosition) {
     final RenderBox referenceBox = context.findRenderObject() as RenderBox;
@@ -116,6 +117,7 @@ class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
             _getTapPosition(position);
           },
           onLongPress: () {
+            Vibrate.feedback(FeedbackType.medium);
             _showContextMenu(note);
           },
           child: NoteCard(

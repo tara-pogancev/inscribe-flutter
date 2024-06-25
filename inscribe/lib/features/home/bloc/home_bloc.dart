@@ -3,6 +3,7 @@ import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/domain/repositories/shared_preference_repository.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/features/home/usecases/fetch_notes_usecase.dart';
+import 'package:inscribe/features/new_note/usecases/update_note_usecase.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -10,6 +11,7 @@ part 'home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final fetchNotesUseCase = FetchNotesUseCase();
   final SharedPreferencesRepository sharedPreferencesRepository = IC.getIt();
+  final updateNoteUseCase = UpdateNoteUseCase();
 
   HomeBloc() : super(HomeState()) {
     on<HomeFetchEvent>((event, emit) async {
@@ -48,6 +50,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       emit(state.copyWith(
           filteredOtherdNotes: otherNotes, filteredPinnedNotes: pinnedNotes));
+    });
+
+    on<SwitchNotePinEvent>((event, emit) async {
+      await updateNoteUseCase(
+          event.note.copyWith(isPinned: !event.note.isPinned));
+      add(HomeFetchEvent());
     });
 
     add(HomeFetchEvent());

@@ -12,3 +12,10 @@ class HomeFilterBySearch extends HomeEvent {
     required this.searchText,
   });
 }
+
+class SwitchNotePinEvent extends HomeEvent {
+  final Note note;
+  SwitchNotePinEvent({
+    required this.note,
+  });
+}

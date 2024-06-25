@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 56
+/// Strings: 58
 ///
-/// Built on 2024-06-25 at 09:48 UTC
+/// Built on 2024-06-25 at 11:48 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -206,6 +206,8 @@ class _StringsHomeScreenEn {
 	String get pinned => 'Pinned';
 	String get other => 'Other';
 	String get search => 'Search';
+	String get pin_note => 'Pin note';
+	String get unpin_note => 'Unpin note';
 }
 
 // Path: newNoteScreen
@@ -299,6 +301,8 @@ extension on Translations {
 			case 'homeScreen.pinned': return 'Pinned';
 			case 'homeScreen.other': return 'Other';
 			case 'homeScreen.search': return 'Search';
+			case 'homeScreen.pin_note': return 'Pin note';
+			case 'homeScreen.unpin_note': return 'Unpin note';
 			case 'newNoteScreen.friend_name_hint': return 'What\'s their name?';
 			case 'newNoteScreen.fields_missing_error': return 'Sorry! Some fields are missing!';
 			case 'newNoteScreen.overview': return 'Overview';

@@ -32,7 +32,9 @@
     "add_note": "Add note",
     "pinned": "Pinned",
     "other": "Other",
-    "search": "Search"
+    "search": "Search",
+    "pin_note": "Pin note",
+    "unpin_note": "Unpin note"
   },
 
   "newNoteScreen": {

@@ -17,6 +17,7 @@ class LongTapContextMenu extends StatefulWidget {
   State<LongTapContextMenu> createState() => _LongTapContextMenuState();
 }
 
+@Deprecated("Not functional yet.")
 class _LongTapContextMenuState extends State<LongTapContextMenu> {
   var _tapPosition;
 
