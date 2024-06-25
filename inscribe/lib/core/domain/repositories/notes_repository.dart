@@ -5,7 +5,9 @@ abstract class NotesRepository {
 
   void updateNote(Note note);
 
-  void deleteNote(Note note);
+  Future<void> deleteNote(Note note);
 
   void addNote(Note note);
+
+  Future<void> deleteNoteList(List<Note> notesToDelete);
 }

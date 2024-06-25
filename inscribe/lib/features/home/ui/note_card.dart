@@ -7,10 +7,14 @@ import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/features/home/ui/card_profile_image.dart';
 
 class NoteCard extends StatelessWidget {
-  const NoteCard({super.key, required this.note, required this.onClick});
+  const NoteCard({
+    Key? key,
+    required this.note,
+    this.onClick,
+  }) : super(key: key);
 
   final Note note;
-  final Function() onClick;
+  final Function()? onClick;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class NoteCard extends StatelessWidget {
         ? AppColorScheme.of(context).white
         : AppColorScheme.of(context).black;
 
-    final boxDecoration = (note.isPinned)
+    final boxDecoration = (note.isPinned && !note.isDeleted)
         ? BoxDecoration(
             borderRadius: BorderRadius.circular(defaultBorderRadius),
             image: const DecorationImage(
@@ -40,9 +44,11 @@ class NoteCard extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(top: cardProfileImageSize / 2),
             child: InkWell(
-              onTap: () {
-                onClick();
-              },
+              onTap: (onClick != null)
+                  ? () {
+                      onClick!();
+                    }
+                  : null,
               child: Container(
                 width: double.infinity,
                 decoration: boxDecoration,

@@ -5,7 +5,7 @@ import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
 import 'package:inscribe/features/archive/cubit/archive_cubit.dart';
 import 'package:inscribe/features/archive/ui/archieve_notes_grid.dart';
 import 'package:inscribe/features/archive/ui/archive_header.dart';
-import 'package:inscribe/features/home/ui/no_notes_section.dart';
+import 'package:inscribe/features/archive/ui/no_archived_notes_section.dart';
 
 class ArchiveScreen extends StatefulWidget {
   const ArchiveScreen({super.key});
@@ -35,7 +35,7 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
                 child: (state.isLoading)
                     ? Container()
                     : AnimatedCrossFade(
-                        firstChild: const NoNotesSection(),
+                        firstChild: const NoArchivedNotesSection(),
                         secondChild: ArchieveNotesGrid(),
                         crossFadeState: (state.notes.isEmpty)
                             ? CrossFadeState.showFirst

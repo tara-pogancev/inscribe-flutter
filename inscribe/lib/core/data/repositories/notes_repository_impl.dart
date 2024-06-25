@@ -12,7 +12,7 @@ class NotesRepositoryImpl implements NotesRepository {
   });
 
   @override
-  void deleteNote(Note note) async {
+  Future<void> deleteNote(Note note) async {
     await notesBox.delete(note.id);
   }
 
@@ -35,5 +35,12 @@ class NotesRepositoryImpl implements NotesRepository {
   @override
   void updateNote(Note note) async {
     await notesBox.put(note.id, note.toJson());
+  }
+
+  @override
+  Future<void> deleteNoteList(List<Note> notesToDelete) async {
+    for (final note in notesToDelete) {
+      deleteNote(note);
+    }
   }
 }

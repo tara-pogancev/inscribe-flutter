@@ -64,9 +64,6 @@ class _AppDrawerState extends State<AppDrawer> {
             ),
           ),
           ListTile(
-            title: Text(currentRoute),
-          ),
-          ListTile(
             enabled: currentRoute != Routes.home,
             leading: Icon(Icons.home_outlined),
             title: Text(Translations.of(context).drawer.memoirs),

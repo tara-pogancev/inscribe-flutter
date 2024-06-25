@@ -61,6 +61,19 @@
     "note_achived": "Note archived!"
   },
 
+  "archivedNotes": {
+    "no_archived_notes": "No archived notes!",
+    "no_archived_notes_subtitle": "Your deleted notes will appear here.",
+    "delete_all_notes_forever_dialog_title": "Delete all notes forever",
+    "delete_all_notes_forever_dialog_subtitle": "This action cannot be undone. You archive will be emptied.",
+    "delete_note_forever_dialog_title": "Delete note forever",
+    "delete_note_forever_dialog_subtitle": "This action cannot be undone. You note will be deleted forever.",
+    "restore": "Restore",
+    "delete_forever": "Delete forever",
+    "note_deleted": "Note deleted!",
+    "note_restored": "Note restored!"
+  },
+
   "errorMessages": {
     "mandatory_field": "This field is mandatory."
   }

@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 46
+/// Strings: 56
 ///
-/// Built on 2024-06-24 at 12:23 UTC
+/// Built on 2024-06-25 at 09:48 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -155,6 +155,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsWelcomeScreenEn welcomeScreen = _StringsWelcomeScreenEn._(_root);
 	late final _StringsHomeScreenEn homeScreen = _StringsHomeScreenEn._(_root);
 	late final _StringsNewNoteScreenEn newNoteScreen = _StringsNewNoteScreenEn._(_root);
+	late final _StringsArchivedNotesEn archivedNotes = _StringsArchivedNotesEn._(_root);
 	late final _StringsErrorMessagesEn errorMessages = _StringsErrorMessagesEn._(_root);
 }
 
@@ -239,6 +240,25 @@ class _StringsNewNoteScreenEn {
 	String get note_achived => 'Note archived!';
 }
 
+// Path: archivedNotes
+class _StringsArchivedNotesEn {
+	_StringsArchivedNotesEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get no_archived_notes => 'No archived notes!';
+	String get no_archived_notes_subtitle => 'Your deleted notes will appear here.';
+	String get delete_all_notes_forever_dialog_title => 'Delete all notes forever';
+	String get delete_all_notes_forever_dialog_subtitle => 'This action cannot be undone. You archive will be emptied.';
+	String get delete_note_forever_dialog_title => 'Delete note forever';
+	String get delete_note_forever_dialog_subtitle => 'This action cannot be undone. You note will be deleted forever.';
+	String get restore => 'Restore';
+	String get delete_forever => 'Delete forever';
+	String get note_deleted => 'Note deleted!';
+	String get note_restored => 'Note restored!';
+}
+
 // Path: errorMessages
 class _StringsErrorMessagesEn {
 	_StringsErrorMessagesEn._(this._root);
@@ -300,6 +320,16 @@ extension on Translations {
 			case 'newNoteScreen.archive_note': return 'Archive note';
 			case 'newNoteScreen.archive_note_are_you_sure': return ({required Object name}) => 'Are you sure you want to archive note for \'${name}?\'';
 			case 'newNoteScreen.note_achived': return 'Note archived!';
+			case 'archivedNotes.no_archived_notes': return 'No archived notes!';
+			case 'archivedNotes.no_archived_notes_subtitle': return 'Your deleted notes will appear here.';
+			case 'archivedNotes.delete_all_notes_forever_dialog_title': return 'Delete all notes forever';
+			case 'archivedNotes.delete_all_notes_forever_dialog_subtitle': return 'This action cannot be undone. You archive will be emptied.';
+			case 'archivedNotes.delete_note_forever_dialog_title': return 'Delete note forever';
+			case 'archivedNotes.delete_note_forever_dialog_subtitle': return 'This action cannot be undone. You note will be deleted forever.';
+			case 'archivedNotes.restore': return 'Restore';
+			case 'archivedNotes.delete_forever': return 'Delete forever';
+			case 'archivedNotes.note_deleted': return 'Note deleted!';
+			case 'archivedNotes.note_restored': return 'Note restored!';
 			case 'errorMessages.mandatory_field': return 'This field is mandatory.';
 			default: return null;
 		}
