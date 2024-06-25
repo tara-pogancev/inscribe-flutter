@@ -13,15 +13,22 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
-  late String currentRoute;
+  void _navigateHomeRoute(String route) {
+    if (_getCurrentRoute() != route) {
+      Scaffold.of(context).closeDrawer();
+      context.pushReplacement(route);
+    }
+  }
 
   void _navigateRoute(String route) {
     if (_getCurrentRoute() != route) {
       Scaffold.of(context).closeDrawer();
-      setState(() {
-        currentRoute = _getCurrentRoute();
-      });
-      context.push(route);
+
+      if (_getCurrentRoute() != Routes.home) {
+        context.pushReplacement(route);
+      } else {
+        context.push(route);
+      }
     }
   }
 
@@ -35,15 +42,7 @@ class _AppDrawerState extends State<AppDrawer> {
   }
 
   @override
-  void initState() {
-    super.initState();
-
-    currentRoute = _getCurrentRoute();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    currentRoute = _getCurrentRoute();
     return Drawer(
       backgroundColor: AppColorScheme.of(context).beige,
       child: ListView(
@@ -64,15 +63,15 @@ class _AppDrawerState extends State<AppDrawer> {
             ),
           ),
           ListTile(
-            enabled: currentRoute != Routes.home,
+            enabled: _getCurrentRoute() != Routes.home,
             leading: Icon(Icons.home_outlined),
             title: Text(Translations.of(context).drawer.memoirs),
             onTap: () {
-              _navigateRoute(Routes.home);
+              _navigateHomeRoute(Routes.home);
             },
           ),
           ListTile(
-            enabled: currentRoute != Routes.archive,
+            enabled: _getCurrentRoute() != Routes.archive,
             leading: Icon(Icons.delete_outline),
             title: Text(Translations.of(context).drawer.archive),
             onTap: () {
@@ -80,7 +79,7 @@ class _AppDrawerState extends State<AppDrawer> {
             },
           ),
           ListTile(
-            enabled: currentRoute != Routes.settings,
+            enabled: _getCurrentRoute() != Routes.settings,
             leading: Icon(Icons.settings_outlined),
             title: Text(Translations.of(context).drawer.settings),
             onTap: () {
