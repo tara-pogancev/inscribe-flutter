@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_button_styles.dart';
@@ -21,6 +22,9 @@ class NoNotesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final assetImagePath =
+        "assets/images/empty_illustration_${context.getIsDarkTheme() ? 'dark' : 'light'}.png";
+
     return FractionallySizedBox(
       widthFactor: 0.7,
       child: Center(
@@ -28,7 +32,7 @@ class NoNotesSection extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
-              "assets/images/empty_illustration.png",
+              assetImagePath,
               width: double.infinity,
             ),
             const SizedBox(

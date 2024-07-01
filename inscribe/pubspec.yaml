@@ -54,6 +54,10 @@ flutter:
   assets:
     - assets/images/
     - assets/images/profile_images/
+    - assets/images/wave_dividers/light/
+    - assets/images/wave_dividers/dark/
+    - assets/images/welcome_illustrations/light/
+    - assets/images/welcome_illustrations/dark/
     - assets/fonts/montserrat/
 
   fonts:

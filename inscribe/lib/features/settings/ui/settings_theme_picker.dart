@@ -1,6 +1,7 @@
 import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/consts.dart';
+import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
@@ -39,9 +40,7 @@ class _SettingsThemePickerState extends State<SettingsThemePicker> {
   }
 
   bool getIsDarkTheme() {
-    final Brightness brightness =
-        DynamicTheme.of(context)?.theme.brightness ?? Brightness.light;
-    return brightness == Brightness.light ? false : true;
+    return context.getIsDarkTheme();
   }
 
   @override

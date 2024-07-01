@@ -1,6 +1,7 @@
 import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:inscribe/core/extensions/context_extensions.dart';
 
 class AppThemes {
   static const int Light = 0;
@@ -56,11 +57,7 @@ class AppColorScheme {
 }
 
 AppColorScheme _getActiveScheme(BuildContext context) {
-  final Brightness brightness =
-      DynamicTheme.of(context)?.theme.brightness ?? Brightness.light;
-  return brightness == Brightness.light
-      ? lightAppColorScheme
-      : darkAppColorScheme;
+  return context.getIsLightTheme() ? lightAppColorScheme : darkAppColorScheme;
 }
 
 final lightAppColorScheme = AppColorScheme(

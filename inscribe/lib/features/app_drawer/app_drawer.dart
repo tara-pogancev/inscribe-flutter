@@ -94,23 +94,23 @@ class _AppDrawerState extends State<AppDrawer> {
               // _navigateRoute(context, Routes.home);
             },
           ),
-          Divider(),
-          ListTile(
-            enabled: false,
-            leading: Icon(Icons.file_upload),
-            title: Text(Translations.of(context).drawer.export),
-            onTap: () {
-              // _navigateRoute(context, Routes.home);
-            },
-          ),
-          ListTile(
-            enabled: false,
-            leading: Icon(Icons.file_download),
-            title: Text(Translations.of(context).drawer.import),
-            onTap: () {
-              // _navigateRoute(context, Routes.home);
-            },
-          ),
+          // Divider(),
+          // ListTile(
+          //   enabled: false,
+          //   leading: Icon(Icons.file_upload),
+          //   title: Text(Translations.of(context).drawer.export),
+          //   onTap: () {
+          //     // _navigateRoute(context, Routes.home);
+          //   },
+          // ),
+          // ListTile(
+          //   enabled: false,
+          //   leading: Icon(Icons.file_download),
+          //   title: Text(Translations.of(context).drawer.import),
+          //   onTap: () {
+          //     // _navigateRoute(context, Routes.home);
+          //   },
+          // ),
         ],
       ),
     );

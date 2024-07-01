@@ -45,7 +45,7 @@ class InscribeApp extends StatelessWidget {
     String startRoute = (isFirstRun) ? Routes.welcome : Routes.home;
 
     if (kDebugMode) {
-      // startRoute = Routes.settings;
+      // startRoute = Routes.welcome;
     }
 
     return DynamicTheme(

@@ -86,6 +86,9 @@ class WelcomeBasePage extends StatelessWidget {
     double containerHeight =
         (context.getScreenHeight() * welcomeBottomContainerHeightPercentage);
 
+    String imageAssetPath =
+        "assets/images/wave_dividers/${context.getIsDarkTheme() ? 'dark' : 'light'}/wave_divider_${index + 1}.png";
+
     return Align(
       alignment: Alignment.bottomCenter,
       child: Column(
@@ -94,12 +97,12 @@ class WelcomeBasePage extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: Image.asset(
-              "assets/images/wave_divider_${index + 1}.png",
+              imageAssetPath,
               fit: BoxFit.fitWidth,
             ),
           ),
           Container(
-            color: AppColorScheme.of(context).black,
+            color: AppColorScheme.of(context).gray,
             height: containerHeight,
           ),
         ],
@@ -114,6 +117,9 @@ class WelcomeBasePage extends StatelessWidget {
             (context.getScreenWidth() * waveDividerHeight / waveDividerWidth) *
                 0.5); // Wave divider height
 
+    String imageAssetPath =
+        "assets/images/welcome_illustrations/${context.getIsDarkTheme() ? 'dark' : 'light'}/welcome_illustration_${index + 1}.png";
+
     return Align(
       alignment: Alignment.topCenter,
       child: SizedBox(
@@ -125,7 +131,7 @@ class WelcomeBasePage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(top: 70),
             child: Image.asset(
-              "assets/images/welcome_illustration_${index + 1}.png",
+              imageAssetPath,
               fit: BoxFit.contain,
             ),
           ),

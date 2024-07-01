@@ -1,3 +1,4 @@
+import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:flutter/material.dart';
 
 extension ContextExtensions on BuildContext {
@@ -24,5 +25,17 @@ extension ContextExtensions on BuildContext {
 
   double getScreenWidth() {
     return MediaQuery.of(this).size.width;
+  }
+
+  bool getIsDarkTheme() {
+    final Brightness brightness =
+        DynamicTheme.of(this)?.theme.brightness ?? Brightness.light;
+    return brightness == Brightness.dark;
+  }
+
+  bool getIsLightTheme() {
+    final Brightness brightness =
+        DynamicTheme.of(this)?.theme.brightness ?? Brightness.light;
+    return brightness == Brightness.light;
   }
 }
