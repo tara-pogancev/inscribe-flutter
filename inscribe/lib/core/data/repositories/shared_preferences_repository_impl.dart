@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 const isFirstRunSharedPreferences = "isFirstRun";
 const isGridPreferedViewSharedPreferences = "isGridPreferedView";
+const isDarkThemeSharedPreferences = "isDarkTheme";
 
 class SharedPreferencesRepositoryImpl implements SharedPreferencesRepository {
   final SharedPreferences sharedPreferences;
@@ -30,5 +31,15 @@ class SharedPreferencesRepositoryImpl implements SharedPreferencesRepository {
   @override
   void setIsGridPreferedView(bool value) {
     sharedPreferences.setBool(isGridPreferedViewSharedPreferences, value);
+  }
+
+  @override
+  bool getIsDarkTheme() {
+    return sharedPreferences.getBool(isDarkThemeSharedPreferences) ?? false;
+  }
+
+  @override
+  void setIsDarkTheme(bool value) {
+    sharedPreferences.setBool(isDarkThemeSharedPreferences, value);
   }
 }

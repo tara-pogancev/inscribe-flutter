@@ -1,3 +1,4 @@
+import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -9,6 +10,7 @@ import 'package:inscribe/core/data/repositories/notes_repository_impl.dart';
 import 'package:inscribe/core/domain/repositories/shared_preference_repository.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
+import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/router/app_router.dart';
 
 import 'firebase_options.dart';
@@ -46,16 +48,16 @@ class InscribeApp extends StatelessWidget {
       // startRoute = Routes.settings;
     }
 
-    return MaterialApp.router(
-      routerConfig: AppRouter.router(startRoute),
-      debugShowCheckedModeBanner: false,
-      title: 'Inscribe - Companion Journal',
-      locale: TranslationProvider.of(context).flutterLocale,
-      localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
-        textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
-        useMaterial3: true,
+    return DynamicTheme(
+      themeCollection: getThemeCollection(context),
+      defaultThemeId: AppThemes.Light,
+      builder: (context, theme) => MaterialApp.router(
+        routerConfig: AppRouter.router(startRoute),
+        debugShowCheckedModeBanner: false,
+        title: Translations.of(context).appName,
+        locale: TranslationProvider.of(context).flutterLocale,
+        localizationsDelegates: GlobalMaterialLocalizations.delegates,
+        theme: theme,
       ),
     );
   }

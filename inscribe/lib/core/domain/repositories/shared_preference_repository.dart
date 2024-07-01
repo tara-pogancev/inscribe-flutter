@@ -6,4 +6,8 @@ abstract class SharedPreferencesRepository {
   bool getIsGridPreferedView();
 
   void setIsGridPreferedView(bool value);
+
+  bool getIsDarkTheme();
+
+  void setIsDarkTheme(bool value);
 }

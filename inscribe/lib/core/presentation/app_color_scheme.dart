@@ -1,4 +1,35 @@
+import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class AppThemes {
+  static const int Light = 0;
+  static const int Dark = 1;
+}
+
+ThemeCollection getThemeCollection(BuildContext context) => ThemeCollection(
+      themes: {
+        AppThemes.Light: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
+            textTheme:
+                GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+            useMaterial3: true,
+            brightness: Brightness.light),
+        AppThemes.Dark: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.grey, brightness: Brightness.dark),
+            textTheme:
+                GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+            useMaterial3: true,
+            brightness: Brightness.dark),
+      },
+      fallbackTheme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
+          textTheme:
+              GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+          useMaterial3: true,
+          brightness: Brightness.light),
+    );
 
 class AppColorScheme {
   final Color black;
@@ -25,7 +56,8 @@ class AppColorScheme {
 }
 
 AppColorScheme _getActiveScheme(BuildContext context) {
-  final Brightness brightness = Theme.of(context).brightness;
+  final Brightness brightness =
+      DynamicTheme.of(context)?.theme.brightness ?? Brightness.light;
   return brightness == Brightness.light
       ? _lightAppColorScheme
       : _darkAppColorScheme;

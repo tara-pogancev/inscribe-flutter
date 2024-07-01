@@ -1,20 +1,41 @@
+import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
+import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 
-class SettingsThemePicker extends StatelessWidget {
+class SettingsThemePicker extends StatefulWidget {
   const SettingsThemePicker({super.key});
 
-  Map<bool, String> _getThemeValues(BuildContext context) {
-    return Map<bool, String>.from({
-      true: Translations.of(context).settingsScreen.light,
-      false: Translations.of(context).settingsScreen.dark
+  @override
+  State<SettingsThemePicker> createState() => _SettingsThemePickerState();
+}
+
+class _SettingsThemePickerState extends State<SettingsThemePicker> {
+  bool isDarkTheme = false;
+
+  void _setIsDarkTheme(BuildContext context, bool isDarkTheme) {
+    DynamicTheme.of(context)
+        ?.setTheme(isDarkTheme ? AppThemes.Dark : AppThemes.Light);
+
+    setState(() {
+      isDarkTheme = isDarkTheme;
     });
   }
 
-  void _setIsLightTheme(bool isLightTheme) {
-    // isLightTheme
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      isDarkTheme = getIsDarkTheme();
+    });
+  }
+
+  bool getIsDarkTheme() {
+    final Brightness brightness =
+        DynamicTheme.of(context)?.theme.brightness ?? Brightness.light;
+    return brightness == Brightness.light ? false : true;
   }
 
   @override
@@ -40,9 +61,9 @@ class SettingsThemePicker extends StatelessWidget {
           ),
           Flexible(
             child: Switch(
-              value: true,
+              value: isDarkTheme,
               onChanged: (value) {
-                _setIsLightTheme(value);
+                _setIsDarkTheme(context, value);
               },
             ),
           ),
