@@ -32,14 +32,4 @@ class SharedPreferencesRepositoryImpl implements SharedPreferencesRepository {
   void setIsGridPreferedView(bool value) {
     sharedPreferences.setBool(isGridPreferedViewSharedPreferences, value);
   }
-
-  @override
-  bool getIsDarkTheme() {
-    return sharedPreferences.getBool(isDarkThemeSharedPreferences) ?? false;
-  }
-
-  @override
-  void setIsDarkTheme(bool value) {
-    sharedPreferences.setBool(isDarkThemeSharedPreferences, value);
-  }
 }
