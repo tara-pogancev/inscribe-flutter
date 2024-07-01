@@ -58,6 +58,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       add(HomeFetchEvent());
     });
 
+    on<RefreshIsGridView>((event, emit) async {
+      final isGridView = sharedPreferencesRepository.getIsGridPreferedView();
+      emit(state.copyWith(isGridView: isGridView));
+    });
+
     add(HomeFetchEvent());
   }
 }

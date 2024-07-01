@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/consts.dart';
-import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 
@@ -12,12 +11,14 @@ class AppDropdownFormField extends StatefulWidget {
       this.icon,
       this.onSaved,
       this.validator,
-      this.initialValue});
+      this.initialValue,
+      this.onChanged});
 
   final String label;
   final List<String> items;
   final IconData? icon;
   final Function(String? value)? onSaved;
+  final Function(String? value)? onChanged;
   final String? Function(String? value)? validator;
   final String? initialValue;
 
@@ -42,9 +43,7 @@ class _AppDropdownFormFieldState extends State<AppDropdownFormField> {
     return Padding(
       padding: const EdgeInsets.only(bottom: formFieldBottomPadding),
       child: DropdownButtonFormField<String>(
-        items: Translations.of(context)
-            .newNoteScreen
-            .categories
+        items: widget.items
             .map(
               (String e) => DropdownMenuItem(
                 value: e,
@@ -56,6 +55,7 @@ class _AppDropdownFormFieldState extends State<AppDropdownFormField> {
           setState(() {
             _selectedItem = value;
           });
+          widget.onChanged?.call(value);
         },
         value: _selectedItem,
         onSaved: (newValue) => widget.onSaved?.call(newValue),

@@ -98,4 +98,26 @@ class AppTextStyles {
       fontSize: 14,
     );
   }
+
+  TextStyle get settingsTitle {
+    return GoogleFonts.montserrat(
+      color: AppColorScheme.of(context).black,
+      fontWeight: FontWeight.w700,
+      fontSize: 14,
+    );
+  }
+
+  TextStyle get settingsSubtitle {
+    return GoogleFonts.montserrat(
+      color: AppColorScheme.of(context).gray,
+      fontSize: 12,
+    );
+  }
+
+  TextStyle get subtitle {
+    return GoogleFonts.montserrat(
+      color: AppColorScheme.of(context).gray,
+      fontSize: 14,
+    );
+  }
 }

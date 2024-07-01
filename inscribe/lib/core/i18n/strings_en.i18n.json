@@ -4,6 +4,10 @@
   "confirm": "Confirm",
   "undo": "Undo",
 
+  "errorMessages": {
+    "mandatory_field": "This field is mandatory."
+  },
+
   "drawer": {
     "memoirs": "Memoirs",
     "archive": "Archive",
@@ -76,7 +80,22 @@
     "note_restored": "Note restored!"
   },
 
-  "errorMessages": {
-    "mandatory_field": "This field is mandatory."
+  "settingsScreen": {
+    "app_name_and_version": "Inscribe, v$version",
+    "theme": "Theme",
+    "dark": "Dark theme",
+    "light": "Light theme",
+    "language": "Language",
+    "english": "English",
+    "serbian": "Serbian",
+    "notes_view": "Notes view",
+    "grid_view": "Grid view",
+    "list_view": "List view",
+    "use_dark_theme": "Use dark theme",
+    "dark_theme_description": "Reduce eye strain and save battery",
+    "use_grid_view": "Use grid view",
+    "grid_view_description": "Cards take up less space in a grid view",
+    "visual": "Visual",
+    "system": "System"
   }
 }

@@ -3,10 +3,10 @@
 /// Original: lib/core/i18n
 /// To regenerate, run: `dart run slang`
 ///
-/// Locales: 1
-/// Strings: 58
+/// Locales: 2
+/// Strings: 148 (74 per locale)
 ///
-/// Built on 2024-06-25 at 11:48 UTC
+/// Built on 2024-07-01 at 08:15 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -25,7 +25,8 @@ const AppLocale _baseLocale = AppLocale.en;
 /// - Locale locale = AppLocale.en.flutterLocale // get flutter locale from enum
 /// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
-	en(languageCode: 'en', build: Translations.build);
+	en(languageCode: 'en', build: Translations.build),
+	sr(languageCode: 'sr', build: _StringsSr.build);
 
 	const AppLocale({required this.languageCode, this.scriptCode, this.countryCode, required this.build}); // ignore: unused_element
 
@@ -151,12 +152,23 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get cancel => 'Cancel';
 	String get confirm => 'Confirm';
 	String get undo => 'Undo';
+	late final _StringsErrorMessagesEn errorMessages = _StringsErrorMessagesEn._(_root);
 	late final _StringsDrawerEn drawer = _StringsDrawerEn._(_root);
 	late final _StringsWelcomeScreenEn welcomeScreen = _StringsWelcomeScreenEn._(_root);
 	late final _StringsHomeScreenEn homeScreen = _StringsHomeScreenEn._(_root);
 	late final _StringsNewNoteScreenEn newNoteScreen = _StringsNewNoteScreenEn._(_root);
 	late final _StringsArchivedNotesEn archivedNotes = _StringsArchivedNotesEn._(_root);
-	late final _StringsErrorMessagesEn errorMessages = _StringsErrorMessagesEn._(_root);
+	late final _StringsSettingsScreenEn settingsScreen = _StringsSettingsScreenEn._(_root);
+}
+
+// Path: errorMessages
+class _StringsErrorMessagesEn {
+	_StringsErrorMessagesEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get mandatory_field => 'This field is mandatory.';
 }
 
 // Path: drawer
@@ -261,14 +273,203 @@ class _StringsArchivedNotesEn {
 	String get note_restored => 'Note restored!';
 }
 
-// Path: errorMessages
-class _StringsErrorMessagesEn {
-	_StringsErrorMessagesEn._(this._root);
+// Path: settingsScreen
+class _StringsSettingsScreenEn {
+	_StringsSettingsScreenEn._(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get mandatory_field => 'This field is mandatory.';
+	String app_name_and_version({required Object version}) => 'Inscribe, v${version}';
+	String get theme => 'Theme';
+	String get dark => 'Dark theme';
+	String get light => 'Light theme';
+	String get language => 'Language';
+	String get english => 'English';
+	String get serbian => 'Serbian';
+	String get notes_view => 'Notes view';
+	String get grid_view => 'Grid view';
+	String get list_view => 'List view';
+	String get use_dark_theme => 'Use dark theme';
+	String get dark_theme_description => 'Reduce eye strain and save battery';
+	String get use_grid_view => 'Use grid view';
+	String get grid_view_description => 'Cards take up less space in a grid view';
+	String get visual => 'Visual';
+	String get system => 'System';
+}
+
+// Path: <root>
+class _StringsSr implements Translations {
+	/// You can call this constructor and build your own translation instance of this locale.
+	/// Constructing via the enum [AppLocale.build] is preferred.
+	_StringsSr.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = TranslationMetadata(
+		    locale: AppLocale.sr,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ) {
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <sr>.
+	@override final TranslationMetadata<AppLocale, Translations> $meta;
+
+	/// Access flat map
+	@override dynamic operator[](String key) => $meta.getTranslation(key);
+
+	@override late final _StringsSr _root = this; // ignore: unused_field
+
+	// Translations
+	@override String get appName => 'Inscribe';
+	@override String get cancel => 'Otkaži';
+	@override String get confirm => 'Potvrdi';
+	@override String get undo => 'Poništi';
+	@override late final _StringsErrorMessagesSr errorMessages = _StringsErrorMessagesSr._(_root);
+	@override late final _StringsDrawerSr drawer = _StringsDrawerSr._(_root);
+	@override late final _StringsWelcomeScreenSr welcomeScreen = _StringsWelcomeScreenSr._(_root);
+	@override late final _StringsHomeScreenSr homeScreen = _StringsHomeScreenSr._(_root);
+	@override late final _StringsNewNoteScreenSr newNoteScreen = _StringsNewNoteScreenSr._(_root);
+	@override late final _StringsArchivedNotesSr archivedNotes = _StringsArchivedNotesSr._(_root);
+	@override late final _StringsSettingsScreenSr settingsScreen = _StringsSettingsScreenSr._(_root);
+}
+
+// Path: errorMessages
+class _StringsErrorMessagesSr implements _StringsErrorMessagesEn {
+	_StringsErrorMessagesSr._(this._root);
+
+	@override final _StringsSr _root; // ignore: unused_field
+
+	// Translations
+	@override String get mandatory_field => 'Ovo polje je obavezno.';
+}
+
+// Path: drawer
+class _StringsDrawerSr implements _StringsDrawerEn {
+	_StringsDrawerSr._(this._root);
+
+	@override final _StringsSr _root; // ignore: unused_field
+
+	// Translations
+	@override String get memoirs => 'Memoari';
+	@override String get archive => 'Arhiva';
+	@override String get settings => 'Podešavanja';
+	@override String get calendar => 'Kalendar [USKORO]';
+	@override String get export => 'Izvoz podataka [USKORO]';
+	@override String get import => 'Uvoz podataka [USKORO]';
+}
+
+// Path: welcomeScreen
+class _StringsWelcomeScreenSr implements _StringsWelcomeScreenEn {
+	_StringsWelcomeScreenSr._(this._root);
+
+	@override final _StringsSr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Dobrodošli u Inscribe!';
+	@override List<String> get slides => [
+		'Proslavite prijateljstva sa personalizovanim beleškama o omiljenim stvarima, rođendanima i idejama za poklone.',
+		'Kreirajte pažljivo odabrane liste poklona za svakog prijatelja, čineći svaki događaj nezaboravnim.',
+		'Nosite svoja prijateljstva svuda - lako preuzmite i prebacite svoje podatke.',
+		'Vaša privatnost je važna - uživajte u potpunoj offline funkcionalnosti, čuvajući svoje podatke sigurnim.',
+		'Nikada ne propustite važan trenutak - postavite podsetnike za posebne događaje i prilike.',
+	];
+	@override String get startButton => 'Započni beleženje!';
+}
+
+// Path: homeScreen
+class _StringsHomeScreenSr implements _StringsHomeScreenEn {
+	_StringsHomeScreenSr._(this._root);
+
+	@override final _StringsSr _root; // ignore: unused_field
+
+	// Translations
+	@override String get welcome => 'Dobrodošli!';
+	@override String get no_notes_title => 'Nema beležaka!';
+	@override String get no_notes_subtitle => 'Počnite dodavanjem memoara o prijatelju.';
+	@override String get add_note => 'Dodaj belešku';
+	@override String get pinned => 'Prikačene';
+	@override String get other => 'Ostalo';
+	@override String get search => 'Pretraga';
+	@override String get pin_note => 'Prikvači belešku';
+	@override String get unpin_note => 'Otkvači belešku';
+}
+
+// Path: newNoteScreen
+class _StringsNewNoteScreenSr implements _StringsNewNoteScreenEn {
+	_StringsNewNoteScreenSr._(this._root);
+
+	@override final _StringsSr _root; // ignore: unused_field
+
+	// Translations
+	@override String get friend_name_hint => 'Kako se zove?';
+	@override String get fields_missing_error => 'Izvinjavamo se! Neka polja nedostaju!';
+	@override String get overview => 'Pregled';
+	@override String get gift_ideas => 'Ideje za poklone';
+	@override String get gift_ideas_hint => 'Šta bi ova osoba volela kao poklon?';
+	@override String get reminders => 'Podsetnici';
+	@override String get category => 'Kategorija';
+	@override List<String> get categories => [
+		'Prijatelj 😄',
+		'Posao 💼',
+		'Porodica 🏠',
+		'Škola 🎒',
+		'Partner ❤️‍🔥',
+	];
+	@override String get date_of_birth => 'Datum rođenja';
+	@override String get description => 'Opis';
+	@override String get description_hint => 'Dodajte bilo koje beleške ovde...';
+	@override String get coming_soon => 'Uskoro';
+	@override String get some_fields_are_missing => 'Neka polja nedostaju!';
+	@override String get note_saved => 'Beleška uspešno sačuvana!';
+	@override String get archive_note => 'Arhiviraj belešku';
+	@override String archive_note_are_you_sure({required Object name}) => 'Da li ste sigurni da želite da arhivirate belešku za \'${name}?\'';
+	@override String get note_achived => 'Beleška arhivirana!';
+}
+
+// Path: archivedNotes
+class _StringsArchivedNotesSr implements _StringsArchivedNotesEn {
+	_StringsArchivedNotesSr._(this._root);
+
+	@override final _StringsSr _root; // ignore: unused_field
+
+	// Translations
+	@override String get no_archived_notes => 'Nema arhiviranih beležaka!';
+	@override String get no_archived_notes_subtitle => 'Vaše obrisane beleške će se pojaviti ovde.';
+	@override String get delete_all_notes_forever_dialog_title => 'Obriši sve beleške zauvek';
+	@override String get delete_all_notes_forever_dialog_subtitle => 'Ova radnja se ne može poništiti. Vaša arhiva će biti ispražnjena.';
+	@override String get delete_note_forever_dialog_title => 'Obriši belešku zauvek';
+	@override String get delete_note_forever_dialog_subtitle => 'Ova radnja se ne može poništiti. Vaša beleška će biti obrisana zauvek.';
+	@override String get restore => 'Vrati';
+	@override String get delete_forever => 'Obriši zauvek';
+	@override String get note_deleted => 'Beleška obrisana!';
+	@override String get note_restored => 'Beleška vraćena!';
+}
+
+// Path: settingsScreen
+class _StringsSettingsScreenSr implements _StringsSettingsScreenEn {
+	_StringsSettingsScreenSr._(this._root);
+
+	@override final _StringsSr _root; // ignore: unused_field
+
+	// Translations
+	@override String app_name_and_version({required Object version}) => 'Inscribe, v${version}';
+	@override String get theme => 'Tema';
+	@override String get dark => 'Tamna tema';
+	@override String get light => 'Svetla tema';
+	@override String get language => 'Jezik';
+	@override String get english => 'Engleski';
+	@override String get serbian => 'Srpski';
+	@override String get notes_view => 'Pregled beleški';
+	@override String get grid_view => 'Mrežni prikaz';
+	@override String get list_view => 'Lista prikaz';
+	@override String get use_dark_theme => 'Koristi tamnu temu';
+	@override String get dark_theme_description => 'Smanjenje naprezanja očiju i ušteda baterije';
+	@override String get use_grid_view => 'Koristi tabelarni prikaz';
+	@override String get grid_view_description => 'kartice zauzimaju manje prostora';
+	@override String get visual => 'Vizuali';
+	@override String get system => 'Sistem';
 }
 
 /// Flat map(s) containing all translations.
@@ -281,6 +482,7 @@ extension on Translations {
 			case 'cancel': return 'Cancel';
 			case 'confirm': return 'Confirm';
 			case 'undo': return 'Undo';
+			case 'errorMessages.mandatory_field': return 'This field is mandatory.';
 			case 'drawer.memoirs': return 'Memoirs';
 			case 'drawer.archive': return 'Archive';
 			case 'drawer.settings': return 'Settings';
@@ -334,7 +536,104 @@ extension on Translations {
 			case 'archivedNotes.delete_forever': return 'Delete forever';
 			case 'archivedNotes.note_deleted': return 'Note deleted!';
 			case 'archivedNotes.note_restored': return 'Note restored!';
-			case 'errorMessages.mandatory_field': return 'This field is mandatory.';
+			case 'settingsScreen.app_name_and_version': return ({required Object version}) => 'Inscribe, v${version}';
+			case 'settingsScreen.theme': return 'Theme';
+			case 'settingsScreen.dark': return 'Dark theme';
+			case 'settingsScreen.light': return 'Light theme';
+			case 'settingsScreen.language': return 'Language';
+			case 'settingsScreen.english': return 'English';
+			case 'settingsScreen.serbian': return 'Serbian';
+			case 'settingsScreen.notes_view': return 'Notes view';
+			case 'settingsScreen.grid_view': return 'Grid view';
+			case 'settingsScreen.list_view': return 'List view';
+			case 'settingsScreen.use_dark_theme': return 'Use dark theme';
+			case 'settingsScreen.dark_theme_description': return 'Reduce eye strain and save battery';
+			case 'settingsScreen.use_grid_view': return 'Use grid view';
+			case 'settingsScreen.grid_view_description': return 'Cards take up less space in a grid view';
+			case 'settingsScreen.visual': return 'Visual';
+			case 'settingsScreen.system': return 'System';
+			default: return null;
+		}
+	}
+}
+
+extension on _StringsSr {
+	dynamic _flatMapFunction(String path) {
+		switch (path) {
+			case 'appName': return 'Inscribe';
+			case 'cancel': return 'Otkaži';
+			case 'confirm': return 'Potvrdi';
+			case 'undo': return 'Poništi';
+			case 'errorMessages.mandatory_field': return 'Ovo polje je obavezno.';
+			case 'drawer.memoirs': return 'Memoari';
+			case 'drawer.archive': return 'Arhiva';
+			case 'drawer.settings': return 'Podešavanja';
+			case 'drawer.calendar': return 'Kalendar [USKORO]';
+			case 'drawer.export': return 'Izvoz podataka [USKORO]';
+			case 'drawer.import': return 'Uvoz podataka [USKORO]';
+			case 'welcomeScreen.title': return 'Dobrodošli u Inscribe!';
+			case 'welcomeScreen.slides.0': return 'Proslavite prijateljstva sa personalizovanim beleškama o omiljenim stvarima, rođendanima i idejama za poklone.';
+			case 'welcomeScreen.slides.1': return 'Kreirajte pažljivo odabrane liste poklona za svakog prijatelja, čineći svaki događaj nezaboravnim.';
+			case 'welcomeScreen.slides.2': return 'Nosite svoja prijateljstva svuda - lako preuzmite i prebacite svoje podatke.';
+			case 'welcomeScreen.slides.3': return 'Vaša privatnost je važna - uživajte u potpunoj offline funkcionalnosti, čuvajući svoje podatke sigurnim.';
+			case 'welcomeScreen.slides.4': return 'Nikada ne propustite važan trenutak - postavite podsetnike za posebne događaje i prilike.';
+			case 'welcomeScreen.startButton': return 'Započni beleženje!';
+			case 'homeScreen.welcome': return 'Dobrodošli!';
+			case 'homeScreen.no_notes_title': return 'Nema beležaka!';
+			case 'homeScreen.no_notes_subtitle': return 'Počnite dodavanjem memoara o prijatelju.';
+			case 'homeScreen.add_note': return 'Dodaj belešku';
+			case 'homeScreen.pinned': return 'Prikačene';
+			case 'homeScreen.other': return 'Ostalo';
+			case 'homeScreen.search': return 'Pretraga';
+			case 'homeScreen.pin_note': return 'Prikvači belešku';
+			case 'homeScreen.unpin_note': return 'Otkvači belešku';
+			case 'newNoteScreen.friend_name_hint': return 'Kako se zove?';
+			case 'newNoteScreen.fields_missing_error': return 'Izvinjavamo se! Neka polja nedostaju!';
+			case 'newNoteScreen.overview': return 'Pregled';
+			case 'newNoteScreen.gift_ideas': return 'Ideje za poklone';
+			case 'newNoteScreen.gift_ideas_hint': return 'Šta bi ova osoba volela kao poklon?';
+			case 'newNoteScreen.reminders': return 'Podsetnici';
+			case 'newNoteScreen.category': return 'Kategorija';
+			case 'newNoteScreen.categories.0': return 'Prijatelj 😄';
+			case 'newNoteScreen.categories.1': return 'Posao 💼';
+			case 'newNoteScreen.categories.2': return 'Porodica 🏠';
+			case 'newNoteScreen.categories.3': return 'Škola 🎒';
+			case 'newNoteScreen.categories.4': return 'Partner ❤️‍🔥';
+			case 'newNoteScreen.date_of_birth': return 'Datum rođenja';
+			case 'newNoteScreen.description': return 'Opis';
+			case 'newNoteScreen.description_hint': return 'Dodajte bilo koje beleške ovde...';
+			case 'newNoteScreen.coming_soon': return 'Uskoro';
+			case 'newNoteScreen.some_fields_are_missing': return 'Neka polja nedostaju!';
+			case 'newNoteScreen.note_saved': return 'Beleška uspešno sačuvana!';
+			case 'newNoteScreen.archive_note': return 'Arhiviraj belešku';
+			case 'newNoteScreen.archive_note_are_you_sure': return ({required Object name}) => 'Da li ste sigurni da želite da arhivirate belešku za \'${name}?\'';
+			case 'newNoteScreen.note_achived': return 'Beleška arhivirana!';
+			case 'archivedNotes.no_archived_notes': return 'Nema arhiviranih beležaka!';
+			case 'archivedNotes.no_archived_notes_subtitle': return 'Vaše obrisane beleške će se pojaviti ovde.';
+			case 'archivedNotes.delete_all_notes_forever_dialog_title': return 'Obriši sve beleške zauvek';
+			case 'archivedNotes.delete_all_notes_forever_dialog_subtitle': return 'Ova radnja se ne može poništiti. Vaša arhiva će biti ispražnjena.';
+			case 'archivedNotes.delete_note_forever_dialog_title': return 'Obriši belešku zauvek';
+			case 'archivedNotes.delete_note_forever_dialog_subtitle': return 'Ova radnja se ne može poništiti. Vaša beleška će biti obrisana zauvek.';
+			case 'archivedNotes.restore': return 'Vrati';
+			case 'archivedNotes.delete_forever': return 'Obriši zauvek';
+			case 'archivedNotes.note_deleted': return 'Beleška obrisana!';
+			case 'archivedNotes.note_restored': return 'Beleška vraćena!';
+			case 'settingsScreen.app_name_and_version': return ({required Object version}) => 'Inscribe, v${version}';
+			case 'settingsScreen.theme': return 'Tema';
+			case 'settingsScreen.dark': return 'Tamna tema';
+			case 'settingsScreen.light': return 'Svetla tema';
+			case 'settingsScreen.language': return 'Jezik';
+			case 'settingsScreen.english': return 'Engleski';
+			case 'settingsScreen.serbian': return 'Srpski';
+			case 'settingsScreen.notes_view': return 'Pregled beleški';
+			case 'settingsScreen.grid_view': return 'Mrežni prikaz';
+			case 'settingsScreen.list_view': return 'Lista prikaz';
+			case 'settingsScreen.use_dark_theme': return 'Koristi tamnu temu';
+			case 'settingsScreen.dark_theme_description': return 'Smanjenje naprezanja očiju i ušteda baterije';
+			case 'settingsScreen.use_grid_view': return 'Koristi tabelarni prikaz';
+			case 'settingsScreen.grid_view_description': return 'kartice zauzimaju manje prostora';
+			case 'settingsScreen.visual': return 'Vizuali';
+			case 'settingsScreen.system': return 'Sistem';
 			default: return null;
 		}
 	}

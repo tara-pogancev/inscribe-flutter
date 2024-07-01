@@ -10,36 +10,41 @@ import 'package:inscribe/features/archive/usecases/restore_note_usecase.dart';
 part 'archive_state.dart';
 
 class ArchiveCubit extends AppCubit<ArchiveState> {
-  final fetchArchivedNotesUsecase = FetchArchivedNotesUsecase();
-  final deleteAllNotesForeverUseCase = DeleteAllNotesForeverUsecase();
-  final deleteNoteForeverUseCase = DeleteNoteForeverUsecase();
-  final restoreNoteUsecase = RestoreNoteUsecase();
-  final SharedPreferencesRepository sharedPreferencesRepository = IC.getIt();
+  final _fetchArchivedNotesUsecase = FetchArchivedNotesUsecase();
+  final _deleteAllNotesForeverUseCase = DeleteAllNotesForeverUsecase();
+  final _deleteNoteForeverUseCase = DeleteNoteForeverUsecase();
+  final _restoreNoteUsecase = RestoreNoteUsecase();
+  final SharedPreferencesRepository _sharedPreferencesRepository = IC.getIt();
 
   ArchiveCubit() : super(ArchiveState()) {
-    final isGridView = sharedPreferencesRepository.getIsGridPreferedView();
+    final isGridView = _sharedPreferencesRepository.getIsGridPreferedView();
     emit(state.copyWith(isGridView: isGridView));
     fetchArchivedNotes();
   }
 
   void fetchArchivedNotes() async {
     emit(state.copyWith(isLoading: true));
-    final notes = await fetchArchivedNotesUsecase();
+    final notes = await _fetchArchivedNotesUsecase();
     emit(state.copyWith(isLoading: false, notes: notes));
   }
 
   void deleteAllNotesForever() async {
-    await deleteAllNotesForeverUseCase();
+    await _deleteAllNotesForeverUseCase();
     fetchArchivedNotes();
   }
 
   void deleteNote(Note note) async {
-    await deleteNoteForeverUseCase(note);
+    await _deleteNoteForeverUseCase(note);
     fetchArchivedNotes();
   }
 
   void restoreNote(Note note) async {
-    await restoreNoteUsecase(note);
+    await _restoreNoteUsecase(note);
     fetchArchivedNotes();
+  }
+
+  void refreshIsGridView() {
+    final isGridView = _sharedPreferencesRepository.getIsGridPreferedView();
+    emit(state.copyWith(isGridView: isGridView));
   }
 }

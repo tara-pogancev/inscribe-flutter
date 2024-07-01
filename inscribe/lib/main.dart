@@ -40,9 +40,14 @@ class InscribeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final isFirstRun = _sharedPreferencesRepository.getIsFirstRun();
 
+    String startRoute = (isFirstRun) ? Routes.welcome : Routes.home;
+
+    if (kDebugMode) {
+      // startRoute = Routes.settings;
+    }
+
     return MaterialApp.router(
-      routerConfig:
-          AppRouter.router((isFirstRun) ? Routes.welcome : Routes.home),
+      routerConfig: AppRouter.router(startRoute),
       debugShowCheckedModeBanner: false,
       title: 'Inscribe - Companion Journal',
       locale: TranslationProvider.of(context).flutterLocale,

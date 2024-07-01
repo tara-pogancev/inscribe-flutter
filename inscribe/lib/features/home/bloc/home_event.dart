@@ -19,3 +19,5 @@ class SwitchNotePinEvent extends HomeEvent {
     required this.note,
   });
 }
+
+class RefreshIsGridView extends HomeEvent {}
