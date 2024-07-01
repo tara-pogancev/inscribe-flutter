@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 148 (74 per locale)
+/// Strings: 152 (76 per locale)
 ///
-/// Built on 2024-07-01 at 08:15 UTC
+/// Built on 2024-07-01 at 09:05 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -296,6 +296,8 @@ class _StringsSettingsScreenEn {
 	String get grid_view_description => 'Cards take up less space in a grid view';
 	String get visual => 'Visual';
 	String get system => 'System';
+	String get change_theme => 'Change theme';
+	String get this_action_will_restart_the_app => 'This action will restart the app';
 }
 
 // Path: <root>
@@ -467,9 +469,11 @@ class _StringsSettingsScreenSr implements _StringsSettingsScreenEn {
 	@override String get use_dark_theme => 'Koristi tamnu temu';
 	@override String get dark_theme_description => 'Smanjenje naprezanja očiju i ušteda baterije';
 	@override String get use_grid_view => 'Koristi tabelarni prikaz';
-	@override String get grid_view_description => 'kartice zauzimaju manje prostora';
+	@override String get grid_view_description => 'Kartice zauzimaju manje prostora';
 	@override String get visual => 'Vizuali';
 	@override String get system => 'Sistem';
+	@override String get change_theme => 'Promeni temu';
+	@override String get this_action_will_restart_the_app => 'Ova akcija će restartovati aplikaciju';
 }
 
 /// Flat map(s) containing all translations.
@@ -552,6 +556,8 @@ extension on Translations {
 			case 'settingsScreen.grid_view_description': return 'Cards take up less space in a grid view';
 			case 'settingsScreen.visual': return 'Visual';
 			case 'settingsScreen.system': return 'System';
+			case 'settingsScreen.change_theme': return 'Change theme';
+			case 'settingsScreen.this_action_will_restart_the_app': return 'This action will restart the app';
 			default: return null;
 		}
 	}
@@ -631,9 +637,11 @@ extension on _StringsSr {
 			case 'settingsScreen.use_dark_theme': return 'Koristi tamnu temu';
 			case 'settingsScreen.dark_theme_description': return 'Smanjenje naprezanja očiju i ušteda baterije';
 			case 'settingsScreen.use_grid_view': return 'Koristi tabelarni prikaz';
-			case 'settingsScreen.grid_view_description': return 'kartice zauzimaju manje prostora';
+			case 'settingsScreen.grid_view_description': return 'Kartice zauzimaju manje prostora';
 			case 'settingsScreen.visual': return 'Vizuali';
 			case 'settingsScreen.system': return 'Sistem';
+			case 'settingsScreen.change_theme': return 'Promeni temu';
+			case 'settingsScreen.this_action_will_restart_the_app': return 'Ova akcija će restartovati aplikaciju';
 			default: return null;
 		}
 	}

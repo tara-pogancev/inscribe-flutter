@@ -96,6 +96,8 @@
     "use_grid_view": "Koristi tabelarni prikaz",
     "grid_view_description": "Kartice zauzimaju manje prostora",
     "visual": "Vizuali",
-    "system": "Sistem"
+    "system": "Sistem",
+    "change_theme": "Promeni temu",
+    "this_action_will_restart_the_app": "Ova akcija će restartovati aplikaciju"
   }
 }

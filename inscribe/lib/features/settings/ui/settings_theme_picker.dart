@@ -4,6 +4,7 @@ import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
+import 'package:inscribe/features/settings/ui/theme_change_dialog.dart';
 
 class SettingsThemePicker extends StatefulWidget {
   const SettingsThemePicker({super.key});
@@ -15,13 +16,18 @@ class SettingsThemePicker extends StatefulWidget {
 class _SettingsThemePickerState extends State<SettingsThemePicker> {
   bool isDarkTheme = false;
 
-  void _setIsDarkTheme(BuildContext context, bool isDarkTheme) {
-    DynamicTheme.of(context)
-        ?.setTheme(isDarkTheme ? AppThemes.Dark : AppThemes.Light);
+  void _setIsDarkTheme(BuildContext context, bool isDarkTheme) async {
+    final shouldChangeTheme = await showDialog(
+        context: context, builder: (context) => ThemeChangeDialog()) as bool?;
 
-    setState(() {
-      isDarkTheme = isDarkTheme;
-    });
+    if (shouldChangeTheme ?? false) {
+      DynamicTheme.of(context)
+          ?.setTheme(isDarkTheme ? AppThemes.Dark : AppThemes.Light);
+
+      setState(() {
+        isDarkTheme = isDarkTheme;
+      });
+    }
   }
 
   @override

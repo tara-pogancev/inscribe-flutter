@@ -3,20 +3,16 @@ import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/widgets/dialog_text.dart';
 
-class DeleteNoteForeversDialog extends StatelessWidget {
-  const DeleteNoteForeversDialog({super.key});
+class ThemeChangeDialog extends StatelessWidget {
+  const ThemeChangeDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: DialogText(
-        Translations.of(context).archivedNotes.delete_note_forever_dialog_title,
-      ),
-      content: DialogText(
-        Translations.of(context)
-            .archivedNotes
-            .delete_note_forever_dialog_subtitle,
-      ),
+      title: DialogText(Translations.of(context).settingsScreen.change_theme),
+      content: DialogText(Translations.of(context)
+          .settingsScreen
+          .this_action_will_restart_the_app),
       actions: [
         TextButton(
           onPressed: () => context.pop(),

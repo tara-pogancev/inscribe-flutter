@@ -129,7 +129,18 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
                       ),
                     ),
                   ),
-                getGridForNotes(state.filteredOtherdNotes, state.isGridView)
+                getGridForNotes(state.filteredOtherdNotes, state.isGridView),
+                if (state.filteredPinnedNotes.isEmpty &&
+                    state.filteredOtherdNotes.isEmpty)
+                  SliverToBoxAdapter(
+                      child: SizedBox(
+                    width: double.infinity,
+                    child: Text(
+                      Translations.of(context).homeScreen.no_notes_title,
+                      style: AppTextStyles.of(context).defaultText,
+                      textAlign: TextAlign.center,
+                    ),
+                  ))
               ],
             ),
           ),

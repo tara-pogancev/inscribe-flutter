@@ -47,7 +47,10 @@ class _AppDropdownFormFieldState extends State<AppDropdownFormField> {
             .map(
               (String e) => DropdownMenuItem(
                 value: e,
-                child: Text(e),
+                child: Text(
+                  e,
+                  style: AppTextStyles.of(context).defaultText,
+                ),
               ),
             )
             .toList(),

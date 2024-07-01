@@ -90,7 +90,7 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
                           },
                           icon: Icon(
                             Icons.arrow_back,
-                            color: AppColorScheme.of(context).beige,
+                            color: lightAppColorScheme.beige,
                           ),
                         ),
                         Spacer(),
@@ -102,7 +102,7 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
                             (state.note.isPinned)
                                 ? Icons.star
                                 : Icons.star_outline,
-                            color: AppColorScheme.of(context).beige,
+                            color: lightAppColorScheme.beige,
                           ),
                         ),
                         if (state.note.id != null)
@@ -112,7 +112,7 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
                             },
                             icon: Icon(
                               Icons.delete_outline_rounded,
-                              color: AppColorScheme.of(context).beige,
+                              color: lightAppColorScheme.beige,
                             ),
                           )
                       ],

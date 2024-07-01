@@ -16,9 +16,7 @@ class AppTextStyles {
 
   TextStyle get drawerTitle {
     return TextStyle(
-        color: AppColorScheme.of(context).white,
-        fontSize: 50,
-        fontFamily: "Brogi");
+        color: lightAppColorScheme.white, fontSize: 50, fontFamily: "Brogi");
   }
 
   TextStyle get welcomeDescription {
@@ -53,12 +51,12 @@ class AppTextStyles {
 
   TextStyle get whiteNameFormField {
     return GoogleFonts.montserrat(
-        color: AppColorScheme.of(context).white, fontSize: 18);
+        color: lightAppColorScheme.white, fontSize: 18);
   }
 
   TextStyle get whiteNameFormFieldHint {
     return GoogleFonts.montserrat(
-        color: AppColorScheme.of(context).white.withOpacity(0.6),
+        color: lightAppColorScheme.white.withOpacity(0.6),
         fontStyle: FontStyle.italic,
         fontWeight: FontWeight.w200,
         fontSize: 18);

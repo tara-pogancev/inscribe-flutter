@@ -16,6 +16,7 @@ class HomeSearchBar extends StatefulWidget {
 
 class _HomeSearchBarState extends State<HomeSearchBar> {
   final HomeBloc _bloc = IC.getIt();
+  final _textEditingController = new TextEditingController();
 
   void _toggleViewMode() {
     _bloc.add(HomeToggleView());
@@ -27,6 +28,12 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
 
   void _openDrawer() {
     Scaffold.of(context).openDrawer();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _updateSearch(_textEditingController.text);
   }
 
   @override

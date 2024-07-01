@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
+import 'package:inscribe/core/presentation/widgets/dialog_text.dart';
 
 class DeleteAllNotesForeversDialog extends StatelessWidget {
   const DeleteAllNotesForeversDialog({super.key});
@@ -8,10 +9,10 @@ class DeleteAllNotesForeversDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(Translations.of(context)
+      title: DialogText(Translations.of(context)
           .archivedNotes
           .delete_all_notes_forever_dialog_title),
-      content: Text(Translations.of(context)
+      content: DialogText(Translations.of(context)
           .archivedNotes
           .delete_all_notes_forever_dialog_subtitle),
       actions: [

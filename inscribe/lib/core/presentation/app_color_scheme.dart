@@ -59,18 +59,18 @@ AppColorScheme _getActiveScheme(BuildContext context) {
   final Brightness brightness =
       DynamicTheme.of(context)?.theme.brightness ?? Brightness.light;
   return brightness == Brightness.light
-      ? _lightAppColorScheme
-      : _darkAppColorScheme;
+      ? lightAppColorScheme
+      : darkAppColorScheme;
 }
 
-final _lightAppColorScheme = AppColorScheme(
+final lightAppColorScheme = AppColorScheme(
     black: const Color(0xff1A1D22),
     gray: const Color(0xff282D33),
     beige: const Color(0xffE5E2DD),
     white: const Color(0xffFFFFFF),
     red: const Color(0xffde7878));
 
-final _darkAppColorScheme = AppColorScheme(
+final darkAppColorScheme = AppColorScheme(
     black: const Color(0xffFFFFFF),
     gray: const Color(0xffE5E2DD),
     beige: const Color(0xff282D33),

@@ -19,7 +19,7 @@ class NoteCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textColor = (note.isPinned)
-        ? AppColorScheme.of(context).white
+        ? lightAppColorScheme.white
         : AppColorScheme.of(context).black;
 
     final boxDecoration = (note.isPinned && !note.isDeleted)

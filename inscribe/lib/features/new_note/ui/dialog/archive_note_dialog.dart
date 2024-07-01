@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
+import 'package:inscribe/core/presentation/widgets/dialog_text.dart';
 
 class ArchiveNoteDialog extends StatelessWidget {
   const ArchiveNoteDialog({super.key, required this.note});
@@ -11,8 +12,8 @@ class ArchiveNoteDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(Translations.of(context).newNoteScreen.archive_note),
-      content: Text(
+      title: DialogText(Translations.of(context).newNoteScreen.archive_note),
+      content: DialogText(
         Translations.of(context)
             .newNoteScreen
             .archive_note_are_you_sure(name: note.name),

@@ -6,6 +6,7 @@ import 'package:inscribe/features/archive/usecases/delete_all_notes_forever_usec
 import 'package:inscribe/features/archive/usecases/delete_note_forever_usecase.dart';
 import 'package:inscribe/features/archive/usecases/fetch_archived_notes_usecase.dart';
 import 'package:inscribe/features/archive/usecases/restore_note_usecase.dart';
+import 'package:inscribe/features/home/bloc/home_bloc.dart';
 
 part 'archive_state.dart';
 
@@ -15,6 +16,7 @@ class ArchiveCubit extends AppCubit<ArchiveState> {
   final _deleteNoteForeverUseCase = DeleteNoteForeverUsecase();
   final _restoreNoteUsecase = RestoreNoteUsecase();
   final SharedPreferencesRepository _sharedPreferencesRepository = IC.getIt();
+  final HomeBloc _homeBloc = IC.getIt();
 
   ArchiveCubit() : super(ArchiveState()) {
     final isGridView = _sharedPreferencesRepository.getIsGridPreferedView();
@@ -41,10 +43,12 @@ class ArchiveCubit extends AppCubit<ArchiveState> {
   void restoreNote(Note note) async {
     await _restoreNoteUsecase(note);
     fetchArchivedNotes();
+    _homeBloc.add(HomeFetchEvent());
   }
 
   void refreshIsGridView() {
     final isGridView = _sharedPreferencesRepository.getIsGridPreferedView();
     emit(state.copyWith(isGridView: isGridView));
+    _homeBloc.add(HomeFetchEvent());
   }
 }

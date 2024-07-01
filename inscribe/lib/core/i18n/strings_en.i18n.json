@@ -96,6 +96,8 @@
     "use_grid_view": "Use grid view",
     "grid_view_description": "Cards take up less space in a grid view",
     "visual": "Visual",
-    "system": "System"
+    "system": "System",
+    "change_theme": "Change theme",
+    "this_action_will_restart_the_app": "This action will restart the app"
   }
 }

@@ -62,24 +62,22 @@ class _NoteNameTextFieldState extends State<NoteNameTextField> {
             hintStyle: AppTextStyles.of(context).whiteNameFormFieldHint,
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColorScheme.of(context)
-                      .beige
+                  color: lightAppColorScheme.beige
                       .withOpacity(0.2)), // Line color when not focused
             ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColorScheme.of(context)
-                      .beige), // Line color when focused
+                  color: lightAppColorScheme.beige), // Line color when focused
             ),
             focusedErrorBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColorScheme.of(context)
-                      .red), // Line color when not focused
+                  color:
+                      lightAppColorScheme.red), // Line color when not focused
             ),
             errorBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                  color: AppColorScheme.of(context)
-                      .red), // Line color when not focused
+                  color:
+                      lightAppColorScheme.red), // Line color when not focused
             ),
             errorStyle: AppTextStyles.of(context).red,
             prefix: const SizedBox(
@@ -87,7 +85,7 @@ class _NoteNameTextFieldState extends State<NoteNameTextField> {
                   48, // This gap matches the width of the suffix icon for better visual symetry
             ),
             suffixIcon: const Icon(Icons.edit_outlined),
-            suffixIconColor: AppColorScheme.of(context).beige),
+            suffixIconColor: lightAppColorScheme.beige),
       ),
     );
   }
