@@ -27,6 +27,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           filteredOtherdNotes: otherNotes,
           filteredPinnedNotes: pinnedNotes,
           isLoading: false));
+
+      add(HomeFilterBySearch(searchText: state.searchText));
     });
 
     on<HomeToggleView>((event, emit) {
@@ -35,17 +37,19 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
 
     on<HomeFilterBySearch>((event, emit) {
+      emit(state.copyWith(searchText: event.searchText));
+
       final allNotes = List<Note>.from(state.notes);
 
       final otherNotes = allNotes
           .where((note) =>
               note.isPinned == false &&
-              note.isFilteredBySearchText(event.searchText))
+              note.isFilteredBySearchText(state.searchText))
           .toList();
       final pinnedNotes = allNotes
           .where((note) =>
               note.isPinned == true &&
-              note.isFilteredBySearchText(event.searchText))
+              note.isFilteredBySearchText(state.searchText))
           .toList();
 
       emit(state.copyWith(

@@ -6,6 +6,7 @@ class HomeState {
   final List<Note> filteredPinnedNotes;
   final bool isGridView;
   final bool isLoading;
+  final String? searchText;
 
   HomeState({
     this.notes = const [],
@@ -13,6 +14,7 @@ class HomeState {
     this.filteredPinnedNotes = const [],
     this.isGridView = true,
     this.isLoading = true,
+    this.searchText,
   });
 
   HomeState copyWith({
@@ -21,6 +23,7 @@ class HomeState {
     List<Note>? filteredPinnedNotes,
     bool? isGridView,
     bool? isLoading,
+    String? searchText,
   }) {
     return HomeState(
       notes: notes ?? this.notes,
@@ -28,6 +31,7 @@ class HomeState {
       filteredPinnedNotes: filteredPinnedNotes ?? this.filteredPinnedNotes,
       isGridView: isGridView ?? this.isGridView,
       isLoading: isLoading ?? this.isLoading,
+      searchText: searchText ?? this.searchText,
     );
   }
 }
