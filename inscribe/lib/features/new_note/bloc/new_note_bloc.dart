@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/data/model/note_type.dart';
 import 'package:inscribe/core/domain/model/app_bloc.dart';
@@ -54,6 +56,16 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
     on<ToggleNotePinEvent>((event, emit) async {
       emit(state.copyWith(
           note: state.note.copyWith(isPinned: !state.note.isPinned)));
+    });
+
+    on<UpdateGalleryImage>((event, emit) async {
+      emit(state.copyWith(
+          note: state.note.copyWith(galleryImage: event.image?.uri ?? null)));
+    });
+
+    on<UpdateAssetImage>((event, emit) async {
+      emit(state.copyWith(
+          note: state.note.copyWith(assetImage: event.assetImage)));
     });
   }
 }

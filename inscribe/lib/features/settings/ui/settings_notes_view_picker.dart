@@ -17,13 +17,6 @@ class _SettingsNotesViewPickerState extends State<SettingsNotesViewPicker> {
   final SharedPreferencesRepository _sharedPreferencesRepository = IC.getIt();
   bool isGridView = true;
 
-  Map<bool, String> _getNoteViewValues(BuildContext context) {
-    return Map<bool, String>.from({
-      true: Translations.of(context).settingsScreen.grid_view,
-      false: Translations.of(context).settingsScreen.list_view
-    });
-  }
-
   void _setIsGridView(bool isGridPreferedView) {
     _sharedPreferencesRepository.setIsGridPreferedView(isGridPreferedView);
     setState(() {

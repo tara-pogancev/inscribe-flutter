@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 152 (76 per locale)
+/// Strings: 158 (79 per locale)
 ///
-/// Built on 2024-07-01 at 09:05 UTC
+/// Built on 2024-07-01 at 13:19 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -252,6 +252,9 @@ class _StringsNewNoteScreenEn {
 	String get archive_note => 'Archive note';
 	String archive_note_are_you_sure({required Object name}) => 'Are you sure you want to archive note for \'${name}?\'';
 	String get note_achived => 'Note archived!';
+	String get select_image => 'Select image';
+	String get remove_image => 'Remove image';
+	String get randomize_illusrtation => 'Randomize illustration';
 }
 
 // Path: archivedNotes
@@ -428,6 +431,9 @@ class _StringsNewNoteScreenSr implements _StringsNewNoteScreenEn {
 	@override String get archive_note => 'Arhiviraj belešku';
 	@override String archive_note_are_you_sure({required Object name}) => 'Da li ste sigurni da želite da arhivirate belešku za \'${name}?\'';
 	@override String get note_achived => 'Beleška arhivirana!';
+	@override String get select_image => 'Izaberi sliku';
+	@override String get remove_image => 'Ukloni sliku';
+	@override String get randomize_illusrtation => 'Nasuična ilustracija';
 }
 
 // Path: archivedNotes
@@ -530,6 +536,9 @@ extension on Translations {
 			case 'newNoteScreen.archive_note': return 'Archive note';
 			case 'newNoteScreen.archive_note_are_you_sure': return ({required Object name}) => 'Are you sure you want to archive note for \'${name}?\'';
 			case 'newNoteScreen.note_achived': return 'Note archived!';
+			case 'newNoteScreen.select_image': return 'Select image';
+			case 'newNoteScreen.remove_image': return 'Remove image';
+			case 'newNoteScreen.randomize_illusrtation': return 'Randomize illustration';
 			case 'archivedNotes.no_archived_notes': return 'No archived notes!';
 			case 'archivedNotes.no_archived_notes_subtitle': return 'Your deleted notes will appear here.';
 			case 'archivedNotes.delete_all_notes_forever_dialog_title': return 'Delete all notes forever';
@@ -614,6 +623,9 @@ extension on _StringsSr {
 			case 'newNoteScreen.archive_note': return 'Arhiviraj belešku';
 			case 'newNoteScreen.archive_note_are_you_sure': return ({required Object name}) => 'Da li ste sigurni da želite da arhivirate belešku za \'${name}?\'';
 			case 'newNoteScreen.note_achived': return 'Beleška arhivirana!';
+			case 'newNoteScreen.select_image': return 'Izaberi sliku';
+			case 'newNoteScreen.remove_image': return 'Ukloni sliku';
+			case 'newNoteScreen.randomize_illusrtation': return 'Nasuična ilustracija';
 			case 'archivedNotes.no_archived_notes': return 'Nema arhiviranih beležaka!';
 			case 'archivedNotes.no_archived_notes_subtitle': return 'Vaše obrisane beleške će se pojaviti ovde.';
 			case 'archivedNotes.delete_all_notes_forever_dialog_title': return 'Obriši sve beleške zauvek';

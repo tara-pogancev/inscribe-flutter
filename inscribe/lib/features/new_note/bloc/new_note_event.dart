@@ -47,3 +47,17 @@ class UpdateGiftIdeasEvent extends NewNoteEvent {
     required this.giftIdeas,
   });
 }
+
+class UpdateGalleryImage extends NewNoteEvent {
+  final File? image;
+  UpdateGalleryImage({
+    required this.image,
+  });
+}
+
+class UpdateAssetImage extends NewNoteEvent {
+  final String assetImage;
+  UpdateAssetImage({
+    required this.assetImage,
+  });
+}

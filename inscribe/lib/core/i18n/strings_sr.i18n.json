@@ -64,7 +64,10 @@
     "note_saved": "Beleška uspešno sačuvana!",
     "archive_note": "Arhiviraj belešku",
     "archive_note_are_you_sure": "Da li ste sigurni da želite da arhivirate belešku za '$name?'",
-    "note_achived": "Beleška arhivirana!"
+    "note_achived": "Beleška arhivirana!",
+    "select_image": "Izaberi sliku",
+    "remove_image": "Ukloni sliku",
+    "randomize_illusrtation": "Nasuična ilustracija"
   },
 
   "archivedNotes": {

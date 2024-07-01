@@ -90,7 +90,7 @@ class NoteCard extends StatelessWidget {
           alignment: Alignment.topLeft,
           child: Padding(
             padding: const EdgeInsets.only(left: 15),
-            child: CardProfileImage(imageName: note.assetImage),
+            child: CardProfileImage(note: note),
           ),
         ),
       ],

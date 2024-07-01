@@ -129,7 +129,7 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
                         bloc: _bloc,
                         builder: (context, state) {
                           return CircleImage(
-                            imageName: state.note.assetImage,
+                            note: state.note
                           );
                         },
                       ),

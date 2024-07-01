@@ -64,7 +64,10 @@
     "note_saved": "Note succesfully saved!",
     "archive_note": "Archive note",
     "archive_note_are_you_sure": "Are you sure you want to archive note for '$name?'",
-    "note_achived": "Note archived!"
+    "note_achived": "Note archived!",
+    "select_image": "Select image",
+    "remove_image": "Remove image",
+    "randomize_illusrtation": "Randomize illustration"
   },
 
   "archivedNotes": {

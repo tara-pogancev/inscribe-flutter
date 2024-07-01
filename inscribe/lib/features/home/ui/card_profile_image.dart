@@ -1,12 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 
 const cardProfileImageSize = 50.0;
 
 class CardProfileImage extends StatelessWidget {
-  const CardProfileImage({super.key, required this.imageName});
+  const CardProfileImage({super.key, required this.note});
 
-  final String imageName;
+  final Note note;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +24,15 @@ class CardProfileImage extends StatelessWidget {
         ),
       ),
       child: ClipOval(
-        child: Image.asset(
-          imageName,
-          fit: BoxFit.cover,
-        ),
+        child: (note.galleryImage != null)
+            ? Image.file(
+                File.fromUri(note.galleryImage!),
+                fit: BoxFit.cover,
+              )
+            : Image.asset(
+                note.assetImage,
+                fit: BoxFit.cover,
+              ),
       ),
     );
   }
