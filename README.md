@@ -10,6 +10,9 @@ Run freezed: `dart run build_runner build`
 Generate icons: `flutter pub run flutter_launcher_icons`
 Rename app: `rename setAppName --targets ios,android,web --value "Inscribe"`
 
+# Upcoming features
+[] - Add reminders
+
 
 # Resources
 [https://www.freepik.com/](https://www.freepik.com/) - Illustrations
