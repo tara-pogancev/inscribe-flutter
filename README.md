@@ -12,7 +12,7 @@ Rename app: `rename setAppName --targets ios,android,web --value "Inscribe"`
 
 # Upcoming features
 [] - Add reminders
-[] - Add calendar feature
+[] - Add calendar feature.
 
 
 # Resources
