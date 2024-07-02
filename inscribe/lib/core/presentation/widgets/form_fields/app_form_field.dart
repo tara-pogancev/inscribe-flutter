@@ -13,6 +13,7 @@ class AppFormField extends StatelessWidget {
       this.minLines = 1,
       this.maxLines = 1,
       this.onSaved,
+      this.onChanged,
       this.validator,
       this.initialValue});
 
@@ -23,6 +24,7 @@ class AppFormField extends StatelessWidget {
   final int minLines;
   final int maxLines;
   final Function(String? value)? onSaved;
+  final Function(String? value)? onChanged;
   final String? Function(String? value)? validator;
   final String? initialValue;
 
@@ -34,6 +36,7 @@ class AppFormField extends StatelessWidget {
         initialValue: initialValue,
         minLines: minLines,
         maxLines: maxLines,
+        onChanged: (newValue) => onChanged?.call(newValue),
         onSaved: (newValue) => onSaved?.call(newValue),
         validator: (value) => validator?.call(value),
         textCapitalization: TextCapitalization.sentences,

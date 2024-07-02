@@ -67,5 +67,6 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
       emit(state.copyWith(
           note: state.note.copyWith(assetImage: event.assetImage)));
     });
+
   }
 }

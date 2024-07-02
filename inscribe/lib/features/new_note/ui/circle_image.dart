@@ -67,8 +67,10 @@ class _CircleImageState extends State<CircleImage> {
                     : (widget.note?.assetImage != null &&
                             widget.note?.assetImage != "")
                         ? Image.asset(
-                            widget.note?.assetImage ??
-                                _getRandomProfileImageUseCase(),
+                            (widget.note?.assetImage == null ||
+                                    widget.note?.assetImage == "")
+                                ? _getRandomProfileImageUseCase()
+                                : widget.note!.assetImage,
                             fit: BoxFit.cover,
                           )
                         : Container(

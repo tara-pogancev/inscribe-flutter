@@ -67,7 +67,9 @@
     "note_achived": "Beleška arhivirana!",
     "select_image": "Izaberi sliku",
     "remove_image": "Ukloni sliku",
-    "randomize_illusrtation": "Nasuična ilustracija"
+    "randomize_illusrtation": "Nasuična ilustracija",
+    "unsaved_changes": "Nesačuvane izmene",
+    "save_changes_description": "Da li želite da sačuvate vaše izmene?"
   },
 
   "archivedNotes": {

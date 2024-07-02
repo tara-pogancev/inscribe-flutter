@@ -9,6 +9,7 @@ import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/widgets/app_button.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
 import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
+import 'package:inscribe/features/new_note/ui/dialog/unsaved_changes_dialog.dart';
 import 'package:inscribe/features/new_note/ui/gift_ideas/note_gift_ideas_page.dart';
 import 'package:inscribe/features/new_note/ui/new_note_header.dart';
 import 'package:inscribe/features/new_note/ui/note_tab_bar.dart';
@@ -34,8 +35,8 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
 
   late final Note note;
 
-  void _goBack({bool shouldRefresh = false}) {
-    context.pop(shouldRefresh);
+  void _goBackSuccess() {
+    context.pop(true);
   }
 
   void _validateForm() async {
@@ -54,7 +55,24 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
   void _onSuccess() {
     context.showSnackbar(
         snackbarText: Translations.of(context).newNoteScreen.note_saved);
-    _goBack(shouldRefresh: true);
+    _goBackSuccess();
+  }
+
+  Future<bool?> _goBack() async {
+    if (true) {
+      final shouldSave = await showDialog(
+          context: context,
+          builder: (context) => UnsavedChangesDialog()) as bool?;
+
+      if (shouldSave ?? false) {
+        _validateForm();
+      } else {
+        Navigator.pop(context, true);
+      }
+    } else {
+      Navigator.pop(context, true);
+    }
+    return null;
   }
 
   @override
@@ -75,52 +93,66 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
-      fab: BlocConsumer<NewNoteBloc, NewNoteState>(
-        bloc: _bloc,
-        listener: (context, state) {
-          if (state.isSuccess) {
-            _onSuccess();
-          }
-        },
-        builder: (context, state) {
-          return AppFloatingActionButton(
-            onPressed: () {
-              _validateForm();
-            },
-            icon: const Icon(Icons.save_outlined),
-          );
-        },
-      ),
-      child: Form(
-        key: _formKey,
-        child: DefaultTabController(
-          length: noteTabsNumber,
-          child: NestedScrollView(
-            headerSliverBuilder:
-                (BuildContext context, bool innerBoxIsScrolled) {
-              return [
-                SliverAppBar(
-                  expandedHeight: newNoteAppBarExpandedHeight,
-                  automaticallyImplyLeading: false,
-                  flexibleSpace: NewNoteHeader(),
-                  pinned: true,
-                  bottom: NoteTabBar(),
-                ),
-              ];
-            },
-            body: TabBarView(
-              children: [
-                NoteOverviewPage(
-                  initialNote: note,
-                ),
-                NoteGiftIdeasPage(
-                  initialNote: note,
-                ),
-                NoteRemindersPage(
-                  initialNote: note,
-                )
-              ],
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (bool didPop) async {
+        if (didPop) {
+          return;
+        }
+        final bool shouldPop = await _goBack() ?? false;
+        if (context.mounted && shouldPop) {
+          Navigator.pop(context);
+        }
+      },
+      child: AppScaffold(
+        fab: BlocConsumer<NewNoteBloc, NewNoteState>(
+          bloc: _bloc,
+          listener: (context, state) {
+            if (state.isSuccess) {
+              _onSuccess();
+            }
+          },
+          builder: (context, state) {
+            return AppFloatingActionButton(
+              onPressed: () {
+                _validateForm();
+              },
+              icon: const Icon(Icons.save_outlined),
+            );
+          },
+        ),
+        child: Form(
+          key: _formKey,
+          child: DefaultTabController(
+            length: noteTabsNumber,
+            child: NestedScrollView(
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) {
+                return [
+                  SliverAppBar(
+                    expandedHeight: newNoteAppBarExpandedHeight,
+                    automaticallyImplyLeading: false,
+                    flexibleSpace: NewNoteHeader(
+                      onBack: () => _goBack(),
+                    ),
+                    pinned: true,
+                    bottom: NoteTabBar(),
+                  ),
+                ];
+              },
+              body: TabBarView(
+                children: [
+                  NoteOverviewPage(
+                    initialNote: note,
+                  ),
+                  NoteGiftIdeasPage(
+                    initialNote: note,
+                  ),
+                  NoteRemindersPage(
+                    initialNote: note,
+                  )
+                ],
+              ),
             ),
           ),
         ),

@@ -3,11 +3,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
+import 'package:inscribe/features/new_note/usecases/get_random_profile_image_usecase.dart';
 
 const cardProfileImageSize = 50.0;
 
 class CardProfileImage extends StatelessWidget {
-  const CardProfileImage({super.key, required this.note});
+  CardProfileImage({super.key, required this.note});
+  final _getRandomProfileImageUseCase = GetRandomProfileImageUseCase();
 
   final Note note;
 
@@ -30,7 +32,9 @@ class CardProfileImage extends StatelessWidget {
                 fit: BoxFit.cover,
               )
             : Image.asset(
-                note.assetImage,
+                (note.assetImage == "")
+                    ? _getRandomProfileImageUseCase()
+                    : note.assetImage,
                 fit: BoxFit.cover,
               ),
       ),

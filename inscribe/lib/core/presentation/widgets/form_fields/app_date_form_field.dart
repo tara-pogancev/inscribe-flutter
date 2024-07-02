@@ -9,11 +9,13 @@ class AppDateFormField extends StatefulWidget {
       {super.key,
       required this.label,
       this.onSaved,
+      this.onChanged,
       this.validator,
       this.initialValue});
 
   final String label;
   final Function(String? value)? onSaved;
+  final Function(String? value)? onChanged;
   final String? Function(String? value)? validator;
   final String? initialValue;
 
@@ -64,6 +66,7 @@ class _AppDateFormFieldState extends State<AppDateFormField> {
         readOnly: true,
         keyboardType: TextInputType.none,
         onSaved: (newValue) => widget.onSaved?.call(newValue),
+        onChanged: (newValue) => widget.onChanged?.call(newValue),
         validator: (value) => widget.validator?.call(value),
         decoration: InputDecoration(
           border: OutlineInputBorder(

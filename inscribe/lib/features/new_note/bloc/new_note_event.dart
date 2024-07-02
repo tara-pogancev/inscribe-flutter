@@ -61,3 +61,5 @@ class UpdateAssetImage extends NewNoteEvent {
     required this.assetImage,
   });
 }
+
+class ValidateFormEvent extends NewNoteEvent {}

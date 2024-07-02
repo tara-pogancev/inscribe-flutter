@@ -28,7 +28,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
   NoteType? noteType;
   DateTime? dateOfBirth;
 
-  List<String> getCategoryNames() {
+  List<String> _getCategoryNames() {
     return NoteType.values.map((e) => e.getString(context)).toList();
   }
 
@@ -42,7 +42,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
         children: [
           AppDropdownFormField(
             label: Translations.of(context).newNoteScreen.category,
-            items: getCategoryNames(),
+            items: _getCategoryNames(),
             validator: (value) {
               return value.isRequired(context);
             },
@@ -69,7 +69,6 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
           AppFormField(
             label: Translations.of(context).newNoteScreen.description,
             hint: Translations.of(context).newNoteScreen.description_hint,
-            // icon: Icons.featured_play_list_outlined,
             minLines: 4,
             maxLines: 16,
             onSaved: (value) {

@@ -13,7 +13,9 @@ import 'package:inscribe/features/new_note/ui/dialog/archive_note_dialog.dart';
 import 'package:inscribe/features/new_note/ui/note_name_text_field.dart';
 
 class NewNoteHeader extends StatefulWidget {
-  NewNoteHeader({super.key});
+  NewNoteHeader({super.key, required this.onBack});
+
+  final Function() onBack;
 
   @override
   State<NewNoteHeader> createState() => _NewNoteHeaderState();
@@ -26,10 +28,6 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
 
   final double minHeight =
       newNoteAppBarExpandedHeight * 0.5; // Minimum height for fade effect
-
-  void _goBack(BuildContext context) {
-    context.pop();
-  }
 
   void _toggleNotePin() {
     _bloc.add(ToggleNotePinEvent());
@@ -85,9 +83,7 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         IconButton(
-                          onPressed: () {
-                            _goBack(context);
-                          },
+                          onPressed: () => widget.onBack(),
                           icon: Icon(
                             Icons.arrow_back,
                             color: lightAppColorScheme.beige,
@@ -128,9 +124,7 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
                       BlocBuilder<NewNoteBloc, NewNoteState>(
                         bloc: _bloc,
                         builder: (context, state) {
-                          return CircleImage(
-                            note: state.note
-                          );
+                          return CircleImage(note: state.note);
                         },
                       ),
                       const Padding(
