@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 162 (81 per locale)
+/// Strings: 166 (83 per locale)
 ///
-/// Built on 2024-07-02 at 08:53 UTC
+/// Built on 2024-07-02 at 11:49 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -257,6 +257,8 @@ class _StringsNewNoteScreenEn {
 	String get randomize_illusrtation => 'Randomize illustration';
 	String get unsaved_changes => 'Unsaved changes';
 	String get save_changes_description => 'Do you wish to save your changes?';
+	String get save => 'Save';
+	String get discard => 'Discard';
 }
 
 // Path: archivedNotes
@@ -438,6 +440,8 @@ class _StringsNewNoteScreenSr implements _StringsNewNoteScreenEn {
 	@override String get randomize_illusrtation => 'Nasuična ilustracija';
 	@override String get unsaved_changes => 'Nesačuvane izmene';
 	@override String get save_changes_description => 'Da li želite da sačuvate vaše izmene?';
+	@override String get save => 'Sačuvaj';
+	@override String get discard => 'Odbaci';
 }
 
 // Path: archivedNotes
@@ -545,6 +549,8 @@ extension on Translations {
 			case 'newNoteScreen.randomize_illusrtation': return 'Randomize illustration';
 			case 'newNoteScreen.unsaved_changes': return 'Unsaved changes';
 			case 'newNoteScreen.save_changes_description': return 'Do you wish to save your changes?';
+			case 'newNoteScreen.save': return 'Save';
+			case 'newNoteScreen.discard': return 'Discard';
 			case 'archivedNotes.no_archived_notes': return 'No archived notes!';
 			case 'archivedNotes.no_archived_notes_subtitle': return 'Your deleted notes will appear here.';
 			case 'archivedNotes.delete_all_notes_forever_dialog_title': return 'Delete all notes forever';
@@ -634,6 +640,8 @@ extension on _StringsSr {
 			case 'newNoteScreen.randomize_illusrtation': return 'Nasuična ilustracija';
 			case 'newNoteScreen.unsaved_changes': return 'Nesačuvane izmene';
 			case 'newNoteScreen.save_changes_description': return 'Da li želite da sačuvate vaše izmene?';
+			case 'newNoteScreen.save': return 'Sačuvaj';
+			case 'newNoteScreen.discard': return 'Odbaci';
 			case 'archivedNotes.no_archived_notes': return 'Nema arhiviranih beležaka!';
 			case 'archivedNotes.no_archived_notes_subtitle': return 'Vaše obrisane beleške će se pojaviti ovde.';
 			case 'archivedNotes.delete_all_notes_forever_dialog_title': return 'Obriši sve beleške zauvek';

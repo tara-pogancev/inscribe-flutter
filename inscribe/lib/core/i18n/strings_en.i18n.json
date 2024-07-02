@@ -69,7 +69,9 @@
     "remove_image": "Remove image",
     "randomize_illusrtation": "Randomize illustration",
     "unsaved_changes": "Unsaved changes",
-    "save_changes_description": "Do you wish to save your changes?"
+    "save_changes_description": "Do you wish to save your changes?",
+    "save": "Save",
+    "discard": "Discard"
   },
 
   "archivedNotes": {

@@ -69,7 +69,9 @@
     "remove_image": "Ukloni sliku",
     "randomize_illusrtation": "Nasuična ilustracija",
     "unsaved_changes": "Nesačuvane izmene",
-    "save_changes_description": "Da li želite da sačuvate vaše izmene?"
+    "save_changes_description": "Da li želite da sačuvate vaše izmene?",
+    "save": "Sačuvaj",
+    "discard": "Odbaci"
   },
 
   "archivedNotes": {

@@ -15,11 +15,11 @@ class UnsavedChangesDialog extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () => context.pop(),
-          child: Text(Translations.of(context).cancel),
+          child: Text(Translations.of(context).newNoteScreen.discard),
         ),
         FilledButton(
           onPressed: () => context.pop(true),
-          child: Text(Translations.of(context).confirm),
+          child: Text(Translations.of(context).newNoteScreen.save),
         )
       ],
     );
