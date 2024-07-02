@@ -52,10 +52,6 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

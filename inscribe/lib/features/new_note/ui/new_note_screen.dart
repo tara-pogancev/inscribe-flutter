@@ -59,7 +59,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
   }
 
   Future<bool?> _goBack() async {
-    if (true) {
+    if (_bloc.state.hasChanges) {
       final shouldSave = await showDialog(
           context: context,
           builder: (context) => UnsavedChangesDialog()) as bool?;

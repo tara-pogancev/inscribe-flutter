@@ -20,6 +20,10 @@ class _NoteGiftIdeasPageState extends State<NoteGiftIdeasPage>
 
   String? giftIdeas;
 
+  void _registerChanges() {
+    _bloc.add(RegisterChanges());
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -33,6 +37,7 @@ class _NoteGiftIdeasPageState extends State<NoteGiftIdeasPage>
             label: Translations.of(context).newNoteScreen.gift_ideas,
             hint: Translations.of(context).newNoteScreen.gift_ideas_hint,
             // icon: Icons.card_giftcard_outlined,
+            onChanged: (value) => _registerChanges(),
             minLines: 10,
             maxLines: 16,
             onSaved: (value) {

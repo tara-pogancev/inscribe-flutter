@@ -68,5 +68,10 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
           note: state.note.copyWith(assetImage: event.assetImage)));
     });
 
+    on<RegisterChanges>((event, emit) async {
+      if (!state.hasChanges) {
+        emit(state.copyWith(hasChanges: true));
+      }
+    });
   }
 }

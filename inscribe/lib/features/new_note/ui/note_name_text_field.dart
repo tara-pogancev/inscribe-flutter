@@ -21,10 +21,19 @@ class _NoteNameTextFieldState extends State<NoteNameTextField> {
 
   final TextEditingController _controller = TextEditingController();
 
+  void _registerChanges() {
+    _bloc.add(RegisterChanges());
+  }
+
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
@@ -34,6 +43,7 @@ class _NoteNameTextFieldState extends State<NoteNameTextField> {
       listener: (context, state) {
         if (name == null && state.note.name != "") {
           _controller.value = _controller.value.copyWith(text: state.note.name);
+          name = state.note.name;
         }
       },
       child: TextFormField(
@@ -49,6 +59,9 @@ class _NoteNameTextFieldState extends State<NoteNameTextField> {
         keyboardType: TextInputType.text,
         validator: (value) {
           return value.isRequired(context);
+        },
+        onChanged: (value) {
+          _registerChanges();
         },
         onSaved: (newValue) {
           if (newValue != null) {

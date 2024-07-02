@@ -32,6 +32,10 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
     return NoteType.values.map((e) => e.getString(context)).toList();
   }
 
+  void _registerChanges() {
+    _bloc.add(RegisterChanges());
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -46,6 +50,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
             validator: (value) {
               return value.isRequired(context);
             },
+            onChanged: (value) => _registerChanges(),
             onSaved: (value) {
               if (value != null) {
                 noteType = NoteType.values
@@ -58,6 +63,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
           ),
           AppDateFormField(
             label: Translations.of(context).newNoteScreen.date_of_birth,
+            onChanged: (value) => _registerChanges(),
             onSaved: (value) {
               if (value != null && value != "") {
                 dateOfBirth = value.parseDateString();
@@ -71,6 +77,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
             hint: Translations.of(context).newNoteScreen.description_hint,
             minLines: 4,
             maxLines: 16,
+            onChanged: (value) => _registerChanges(),
             onSaved: (value) {
               if (value != null) {
                 description = value;

@@ -28,16 +28,23 @@ class _CircleImageState extends State<CircleImage> {
   void _openImagePicker() async {
     XFile? image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
+      _registerChanges();
       _bloc.add(UpdateGalleryImage(image: File(image.path)));
     }
   }
 
   void _removeOrRandomizeImage() async {
     if (widget.note?.galleryImage != null) {
+      _registerChanges();
       _bloc.add(UpdateGalleryImage(image: null));
     } else {
+      _registerChanges();
       _bloc.add(UpdateAssetImage(assetImage: _getRandomProfileImageUseCase()));
     }
+  }
+
+  void _registerChanges() {
+    _bloc.add(RegisterChanges());
   }
 
   @override

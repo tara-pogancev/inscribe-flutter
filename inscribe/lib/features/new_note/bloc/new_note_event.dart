@@ -62,4 +62,5 @@ class UpdateAssetImage extends NewNoteEvent {
   });
 }
 
-class ValidateFormEvent extends NewNoteEvent {}
+class RegisterChanges extends NewNoteEvent {}
+
