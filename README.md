@@ -1,5 +1,8 @@
 # Inscribe - Companion Journal
-![Build Status](https://app.bitrise.io/app/053180ea-3d4f-4655-b64c-b9fb9ab1d797/status.svg?token=lJlpdiRH-CJE_4oD8q0Fjw&branch=master)
+![Build Status](https://app.bitrise.io/app/053180ea-3d4f-4655-b64c-b9fb9ab1d797/status.svg?token=lJlpdiRH-CJE_4oD8q0Fjw)
+
+
+
 
 Inscribe - Companion Journal, Mobile note-taking app
 
@@ -11,8 +14,12 @@ Generate icons: `flutter pub run flutter_launcher_icons`
 Rename app: `rename setAppName --targets ios,android,web --value "Inscribe"`
 
 # Upcoming features
-[] - Add reminders
-[] - Add calendar feature.
+- [ ] Reminders
+- [ ] Notifications
+- [ ] Calendar screen
+- [ ] Export data
+- [ ] Import data
+- [ ] More languages
 
 
 # Resources
