@@ -33,6 +33,11 @@ Rename app: `rename setAppName --targets ios,android,web --value "Inscribe"`
 - [ ] More languages
 - [ ] Better animations
 
+# Screenshots
+
+![Inscribe](assets/git_feature_image.jpg)
+![Inscribe](assets/feature_graphic.jpg)
+
 
 # Resources
 [https://www.freepik.com/](https://www.freepik.com/) - Illustrations
