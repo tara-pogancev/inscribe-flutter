@@ -44,6 +44,7 @@ class AppFormField extends StatelessWidget {
         onTapOutside: (event) {
           FocusScope.of(context).requestFocus(FocusNode());
         },
+        style: TextStyle(color: AppColorScheme.of(context).black),
         decoration: InputDecoration(
             alignLabelWithHint: true,
             border: OutlineInputBorder(

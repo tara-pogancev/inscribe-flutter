@@ -68,6 +68,7 @@ class _AppDateFormFieldState extends State<AppDateFormField> {
         onSaved: (newValue) => widget.onSaved?.call(newValue),
         onChanged: (newValue) => widget.onChanged?.call(newValue),
         validator: (value) => widget.validator?.call(value),
+        style: TextStyle(color: AppColorScheme.of(context).black),
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(defaultBorderRadius),
