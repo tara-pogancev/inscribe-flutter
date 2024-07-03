@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
@@ -117,7 +117,7 @@ class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
             _getTapPosition(position);
           },
           onLongPress: () {
-            Vibrate.feedback(FeedbackType.medium);
+            HapticFeedback.mediumImpact();
             _showContextMenu(note);
           },
           child: NoteCard(
