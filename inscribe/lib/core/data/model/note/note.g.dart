@@ -27,6 +27,10 @@ _$NoteImpl _$$NoteImplFromJson(Map<String, dynamic> json) => _$NoteImpl(
       createdAt: json['createdAt'] == null
           ? null
           : DateTime.parse(json['createdAt'] as String),
+      reminders: (json['reminders'] as List<dynamic>?)
+              ?.map((e) => NoteReminder.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$NoteImplToJson(_$NoteImpl instance) =>
@@ -43,6 +47,7 @@ Map<String, dynamic> _$$NoteImplToJson(_$NoteImpl instance) =>
       'isPinned': instance.isPinned,
       'updatedAt': instance.updatedAt?.toIso8601String(),
       'createdAt': instance.createdAt?.toIso8601String(),
+      'reminders': instance.reminders,
     };
 
 const _$NoteTypeEnumMap = {

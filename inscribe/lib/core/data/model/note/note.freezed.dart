@@ -32,6 +32,7 @@ mixin _$Note {
   bool get isPinned => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  List<NoteReminder>? get reminders => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,7 +56,8 @@ abstract class $NoteCopyWith<$Res> {
       bool isDeleted,
       bool isPinned,
       DateTime? updatedAt,
-      DateTime? createdAt});
+      DateTime? createdAt,
+      List<NoteReminder>? reminders});
 }
 
 /// @nodoc
@@ -83,6 +85,7 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
     Object? isPinned = null,
     Object? updatedAt = freezed,
     Object? createdAt = freezed,
+    Object? reminders = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -133,6 +136,10 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      reminders: freezed == reminders
+          ? _value.reminders
+          : reminders // ignore: cast_nullable_to_non_nullable
+              as List<NoteReminder>?,
     ) as $Val);
   }
 }
@@ -156,7 +163,8 @@ abstract class _$$NoteImplCopyWith<$Res> implements $NoteCopyWith<$Res> {
       bool isDeleted,
       bool isPinned,
       DateTime? updatedAt,
-      DateTime? createdAt});
+      DateTime? createdAt,
+      List<NoteReminder>? reminders});
 }
 
 /// @nodoc
@@ -181,6 +189,7 @@ class __$$NoteImplCopyWithImpl<$Res>
     Object? isPinned = null,
     Object? updatedAt = freezed,
     Object? createdAt = freezed,
+    Object? reminders = freezed,
   }) {
     return _then(_$NoteImpl(
       id: freezed == id
@@ -231,6 +240,10 @@ class __$$NoteImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      reminders: freezed == reminders
+          ? _value._reminders
+          : reminders // ignore: cast_nullable_to_non_nullable
+              as List<NoteReminder>?,
     ));
   }
 }
@@ -250,8 +263,10 @@ class _$NoteImpl extends _Note {
       this.isDeleted = false,
       this.isPinned = false,
       this.updatedAt = null,
-      this.createdAt = null})
-      : super._();
+      this.createdAt = null,
+      final List<NoteReminder>? reminders = const []})
+      : _reminders = reminders,
+        super._();
 
   factory _$NoteImpl.fromJson(Map<String, dynamic> json) =>
       _$$NoteImplFromJson(json);
@@ -292,10 +307,20 @@ class _$NoteImpl extends _Note {
   @override
   @JsonKey()
   final DateTime? createdAt;
+  final List<NoteReminder>? _reminders;
+  @override
+  @JsonKey()
+  List<NoteReminder>? get reminders {
+    final value = _reminders;
+    if (value == null) return null;
+    if (_reminders is EqualUnmodifiableListView) return _reminders;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Note(id: $id, name: $name, assetImage: $assetImage, galleryImage: $galleryImage, dateOfBirth: $dateOfBirth, type: $type, description: $description, giftIdeas: $giftIdeas, isDeleted: $isDeleted, isPinned: $isPinned, updatedAt: $updatedAt, createdAt: $createdAt)';
+    return 'Note(id: $id, name: $name, assetImage: $assetImage, galleryImage: $galleryImage, dateOfBirth: $dateOfBirth, type: $type, description: $description, giftIdeas: $giftIdeas, isDeleted: $isDeleted, isPinned: $isPinned, updatedAt: $updatedAt, createdAt: $createdAt, reminders: $reminders)';
   }
 
   @override
@@ -323,7 +348,9 @@ class _$NoteImpl extends _Note {
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
             (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+                other.createdAt == createdAt) &&
+            const DeepCollectionEquality()
+                .equals(other._reminders, _reminders));
   }
 
   @JsonKey(ignore: true)
@@ -341,7 +368,8 @@ class _$NoteImpl extends _Note {
       isDeleted,
       isPinned,
       updatedAt,
-      createdAt);
+      createdAt,
+      const DeepCollectionEquality().hash(_reminders));
 
   @JsonKey(ignore: true)
   @override
@@ -370,7 +398,8 @@ abstract class _Note extends Note {
       final bool isDeleted,
       final bool isPinned,
       final DateTime? updatedAt,
-      final DateTime? createdAt}) = _$NoteImpl;
+      final DateTime? createdAt,
+      final List<NoteReminder>? reminders}) = _$NoteImpl;
   const _Note._() : super._();
 
   factory _Note.fromJson(Map<String, dynamic> json) = _$NoteImpl.fromJson;
@@ -399,6 +428,8 @@ abstract class _Note extends Note {
   DateTime? get updatedAt;
   @override
   DateTime? get createdAt;
+  @override
+  List<NoteReminder>? get reminders;
   @override
   @JsonKey(ignore: true)
   _$$NoteImplCopyWith<_$NoteImpl> get copyWith =>

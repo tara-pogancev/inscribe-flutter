@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:inscribe/core/data/model/note_type.dart';
+import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
 import 'package:inscribe/core/extensions/string_extensions.dart';
 
 part 'note.freezed.dart';
@@ -20,6 +21,7 @@ class Note with _$Note {
     @Default(false) bool isPinned,
     @Default(null) DateTime? updatedAt,
     @Default(null) DateTime? createdAt,
+    @Default([]) List<NoteReminder>? reminders,
   }) = _Note;
 
   factory Note.fromJson(Map<String, dynamic> json) => _$NoteFromJson(json);
