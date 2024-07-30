@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 166 (83 per locale)
+/// Strings: 180 (90 per locale)
 ///
-/// Built on 2024-07-02 at 11:49 UTC
+/// Built on 2024-07-30 at 07:33 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -259,6 +259,13 @@ class _StringsNewNoteScreenEn {
 	String get save_changes_description => 'Do you wish to save your changes?';
 	String get save => 'Save';
 	String get discard => 'Discard';
+	String get add_reminder => 'Add reminder';
+	String get annual => 'Annual';
+	String get this_reminder_will_be_repeated_every_year => 'This reminder will be repeated every year';
+	String get name => 'Name';
+	String get date => 'Date';
+	String get time => 'Time';
+	String get reminder_deleted => 'Reminder deleted';
 }
 
 // Path: archivedNotes
@@ -442,6 +449,13 @@ class _StringsNewNoteScreenSr implements _StringsNewNoteScreenEn {
 	@override String get save_changes_description => 'Da li želite da sačuvate vaše izmene?';
 	@override String get save => 'Sačuvaj';
 	@override String get discard => 'Odbaci';
+	@override String get add_reminder => 'Dodaj podsetnik';
+	@override String get annual => 'Godišnji';
+	@override String get this_reminder_will_be_repeated_every_year => 'Podsetnik će biti ponovljen svake godine';
+	@override String get name => 'Naziv';
+	@override String get date => 'Datum';
+	@override String get time => 'Vreme';
+	@override String get reminder_deleted => 'Podsetnik obrisan';
 }
 
 // Path: archivedNotes
@@ -551,6 +565,13 @@ extension on Translations {
 			case 'newNoteScreen.save_changes_description': return 'Do you wish to save your changes?';
 			case 'newNoteScreen.save': return 'Save';
 			case 'newNoteScreen.discard': return 'Discard';
+			case 'newNoteScreen.add_reminder': return 'Add reminder';
+			case 'newNoteScreen.annual': return 'Annual';
+			case 'newNoteScreen.this_reminder_will_be_repeated_every_year': return 'This reminder will be repeated every year';
+			case 'newNoteScreen.name': return 'Name';
+			case 'newNoteScreen.date': return 'Date';
+			case 'newNoteScreen.time': return 'Time';
+			case 'newNoteScreen.reminder_deleted': return 'Reminder deleted';
 			case 'archivedNotes.no_archived_notes': return 'No archived notes!';
 			case 'archivedNotes.no_archived_notes_subtitle': return 'Your deleted notes will appear here.';
 			case 'archivedNotes.delete_all_notes_forever_dialog_title': return 'Delete all notes forever';
@@ -642,6 +663,13 @@ extension on _StringsSr {
 			case 'newNoteScreen.save_changes_description': return 'Da li želite da sačuvate vaše izmene?';
 			case 'newNoteScreen.save': return 'Sačuvaj';
 			case 'newNoteScreen.discard': return 'Odbaci';
+			case 'newNoteScreen.add_reminder': return 'Dodaj podsetnik';
+			case 'newNoteScreen.annual': return 'Godišnji';
+			case 'newNoteScreen.this_reminder_will_be_repeated_every_year': return 'Podsetnik će biti ponovljen svake godine';
+			case 'newNoteScreen.name': return 'Naziv';
+			case 'newNoteScreen.date': return 'Datum';
+			case 'newNoteScreen.time': return 'Vreme';
+			case 'newNoteScreen.reminder_deleted': return 'Podsetnik obrisan';
 			case 'archivedNotes.no_archived_notes': return 'Nema arhiviranih beležaka!';
 			case 'archivedNotes.no_archived_notes_subtitle': return 'Vaše obrisane beleške će se pojaviti ovde.';
 			case 'archivedNotes.delete_all_notes_forever_dialog_title': return 'Obriši sve beleške zauvek';

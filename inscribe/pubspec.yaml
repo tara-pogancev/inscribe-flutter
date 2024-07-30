@@ -39,6 +39,8 @@ dependencies:
   package_info_plus: ^8.0.0
   dynamic_themes: ^1.1.0
   image_picker: ^1.1.2
+  awesome_notifications_core: ^0.9.0 
+  awesome_notifications: any
 
 dev_dependencies:
   flutter_test:

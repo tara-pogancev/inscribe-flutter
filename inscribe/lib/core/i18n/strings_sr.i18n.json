@@ -71,7 +71,14 @@
     "unsaved_changes": "Nesačuvane izmene",
     "save_changes_description": "Da li želite da sačuvate vaše izmene?",
     "save": "Sačuvaj",
-    "discard": "Odbaci"
+    "discard": "Odbaci",
+    "add_reminder": "Dodaj podsetnik",
+    "annual": "Godišnji",
+    "this_reminder_will_be_repeated_every_year": "Podsetnik će biti ponovljen svake godine",
+    "name": "Naziv",
+    "date": "Datum",
+    "time": "Vreme",
+    "reminder_deleted": "Podsetnik obrisan"
   },
 
   "archivedNotes": {

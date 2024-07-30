@@ -5,3 +5,8 @@ const defaultScreenPadding = 30.0;
 const appBarPreferedSize = 70.0;
 const tabBarPreferedSize = 55.0;
 const newNoteAppBarExpandedHeight = 320.0;
+
+const channelGroupKey = 'inscribe_channel_group';
+const channelKey = 'inscribe_channel';
+const channelName = 'Inscribe notifications';
+const channelDescription = 'Notification channel for note notifications';
