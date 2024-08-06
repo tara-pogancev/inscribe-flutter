@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'note_reminder.freezed.dart';
 part 'note_reminder.g.dart';
 
-@freezed
+@unfreezed
 class NoteReminder with _$NoteReminder {
   factory NoteReminder({
     @Default(null) String? id,

@@ -21,7 +21,7 @@ class Note with _$Note {
     @Default(false) bool isPinned,
     @Default(null) DateTime? updatedAt,
     @Default(null) DateTime? createdAt,
-    @Default([]) List<NoteReminder>? reminders,
+    @Default([]) List<NoteReminder> reminders,
   }) = _Note;
 
   factory Note.fromJson(Map<String, dynamic> json) => _$NoteFromJson(json);

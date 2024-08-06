@@ -21,10 +21,15 @@ NoteReminder _$NoteReminderFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$NoteReminder {
   String? get id => throw _privateConstructorUsedError;
+  set id(String? value) => throw _privateConstructorUsedError;
   String? get noteId => throw _privateConstructorUsedError;
+  set noteId(String? value) => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  set name(String value) => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
+  set date(DateTime value) => throw _privateConstructorUsedError;
   bool get isAnual => throw _privateConstructorUsedError;
+  set isAnual(bool value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -156,38 +161,22 @@ class _$NoteReminderImpl extends _NoteReminder {
 
   @override
   @JsonKey()
-  final String? id;
+  String? id;
   @override
   @JsonKey()
-  final String? noteId;
+  String? noteId;
   @override
-  final String name;
+  String name;
   @override
-  final DateTime date;
+  DateTime date;
   @override
   @JsonKey()
-  final bool isAnual;
+  bool isAnual;
 
   @override
   String toString() {
     return 'NoteReminder(id: $id, noteId: $noteId, name: $name, date: $date, isAnual: $isAnual)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$NoteReminderImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.noteId, noteId) || other.noteId == noteId) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.date, date) || other.date == date) &&
-            (identical(other.isAnual, isAnual) || other.isAnual == isAnual));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, noteId, name, date, isAnual);
 
   @JsonKey(ignore: true)
   @override
@@ -205,11 +194,11 @@ class _$NoteReminderImpl extends _NoteReminder {
 
 abstract class _NoteReminder extends NoteReminder {
   factory _NoteReminder(
-      {final String? id,
-      final String? noteId,
-      required final String name,
-      required final DateTime date,
-      final bool isAnual}) = _$NoteReminderImpl;
+      {String? id,
+      String? noteId,
+      required String name,
+      required DateTime date,
+      bool isAnual}) = _$NoteReminderImpl;
   _NoteReminder._() : super._();
 
   factory _NoteReminder.fromJson(Map<String, dynamic> json) =
@@ -217,14 +206,19 @@ abstract class _NoteReminder extends NoteReminder {
 
   @override
   String? get id;
+  set id(String? value);
   @override
   String? get noteId;
+  set noteId(String? value);
   @override
   String get name;
+  set name(String value);
   @override
   DateTime get date;
+  set date(DateTime value);
   @override
   bool get isAnual;
+  set isAnual(bool value);
   @override
   @JsonKey(ignore: true)
   _$$NoteReminderImplCopyWith<_$NoteReminderImpl> get copyWith =>

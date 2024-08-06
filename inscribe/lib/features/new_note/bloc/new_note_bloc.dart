@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/data/model/note_type.dart';
+import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
 import 'package:inscribe/core/domain/model/app_bloc.dart';
+import 'package:inscribe/features/new_note/usecases/add_or_update_note_reminder_usecase.dart';
 import 'package:inscribe/features/new_note/usecases/archive_note_usecase.dart';
 import 'package:inscribe/features/new_note/usecases/save_note_usecase.dart';
 import 'package:inscribe/features/new_note/usecases/update_note_usecase.dart';
@@ -14,6 +16,7 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
   final saveNoteUseCase = SaveNoteUseCase();
   final updateNoteUseCase = UpdateNoteUseCase();
   final archiveNoteUseCase = ArchiveNoteUseCase();
+  final addOrUpdateNoteReminderUsecase = AddOrUpdateNoteReminderUsecase();
 
   NewNoteBloc() : super(NewNoteState()) {
     on<SaveNoteEvent>((event, emit) async {
@@ -66,6 +69,15 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
     on<UpdateAssetImage>((event, emit) async {
       emit(state.copyWith(
           note: state.note.copyWith(assetImage: event.assetImage)));
+    });
+
+    on<CreateOrUpdateReminderEvent>((event, emit) async {
+      add(RegisterChanges());
+
+      final reminder = event.reminder;
+      final updatedNote = addOrUpdateNoteReminderUsecase(state.note, reminder);
+
+      emit(state.copyWith(note: updatedNote));
     });
 
     on<RegisterChanges>((event, emit) async {

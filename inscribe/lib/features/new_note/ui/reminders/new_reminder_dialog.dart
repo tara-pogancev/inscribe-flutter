@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
+import 'package:inscribe/core/extensions/date_extensions.dart';
 import 'package:inscribe/core/extensions/field_validation_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
@@ -7,75 +9,145 @@ import 'package:inscribe/core/presentation/widgets/form_fields/app_date_form_fie
 import 'package:inscribe/core/presentation/widgets/form_fields/app_form_field.dart';
 
 class NewReminderDialog extends StatefulWidget {
-  const NewReminderDialog({super.key});
+  const NewReminderDialog({super.key, this.noteReminder});
+
+  final NoteReminder? noteReminder;
 
   @override
   State<NewReminderDialog> createState() => _NewReminderDialogState();
 }
 
 class _NewReminderDialogState extends State<NewReminderDialog> {
+  final _key = GlobalKey<FormState>();
+
+  DateTime selectedDateTime = DateTime.now()
+      .copyWith(hour: 10, minute: 0, second: 0, millisecond: 0, microsecond: 0);
+  String name = '';
+  bool isAnual = false;
+
+  void validateForm() {
+    final isValid = _key.currentState!.validate();
+    if (isValid) {
+      _key.currentState!.save();
+
+      final reminder =
+          NoteReminder(name: name, date: selectedDateTime, isAnual: isAnual);
+
+      if (widget.noteReminder != null) {
+        reminder.id = widget.noteReminder!.id;
+        reminder.noteId = widget.noteReminder!.noteId;
+      }
+
+      context.pop(reminder);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.noteReminder != null) {
+      setState(() {
+        name = widget.noteReminder!.name;
+        selectedDateTime = widget.noteReminder!.date;
+        isAnual = widget.noteReminder!.isAnual;
+      });
+    }
+  }
+
+  void showTimePickerDialog() async {
+    final timeOfDay = await showTimePicker(
+        initialTime: TimeOfDay(
+          hour: selectedDateTime.hour,
+          minute: selectedDateTime.minute,
+        ),
+        context: context);
+
+    if (timeOfDay != null) {
+      setState(() {
+        selectedDateTime = selectedDateTime.copyWith(
+            hour: timeOfDay.hour, minute: timeOfDay.minute);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            Translations.of(context).newNoteScreen.add_reminder,
-            style: AppTextStyles.of(context).cardTitle,
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          AppFormField(
-            label: Translations.of(context).newNoteScreen.name,
-            validator: (value) {
-              return value.isRequired(context);
-            },
-            onSaved: (value) {},
-          ),
-          AppDateFormField(
-            label: Translations.of(context).newNoteScreen.date,
-            validator: (value) {
-              return value.isRequired(context);
-            },
-            onSaved: (value) {},
-          ),
-          InkWell(
-            onTap: () => showTimePicker(
-                initialTime: TimeOfDay(
-                  hour: 10,
-                  minute: 0,
+      content: Form(
+        key: _key,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              Translations.of(context).newNoteScreen.add_reminder,
+              style: AppTextStyles.of(context).cardTitle,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            AppFormField(
+              label: Translations.of(context).newNoteScreen.name,
+              validator: (value) {
+                return value.isRequired(context);
+              },
+              onSaved: (value) {
+                setState(() {
+                  name = value!;
+                });
+              },
+            ),
+            AppDateFormField(
+              label: Translations.of(context).newNoteScreen.date,
+              initialValue: selectedDateTime.formatString(),
+              validator: (value) {
+                return value.isRequired(context);
+              },
+              onSaved: (value) {
+                final dateTime = value!.parseDateString();
+                setState(() {
+                  selectedDateTime = selectedDateTime.copyWith(
+                      day: dateTime.day,
+                      month: dateTime.month,
+                      year: dateTime.year);
+                });
+              },
+            ),
+            InkWell(
+              onTap: () => showTimePickerDialog(),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text(Translations.of(context).newNoteScreen.time),
+                    Spacer(),
+                    Text(
+                      selectedDateTime.formatTimeOfDayString(),
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
-                context: context),
-            child: Padding(
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Text(Translations.of(context).newNoteScreen.time),
+                  Text(Translations.of(context).newNoteScreen.annual),
                   Spacer(),
-                  Text(
-                    "10:00",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  Checkbox(
+                    value: isAnual,
+                    onChanged: (value) {
+                      setState(() {
+                        isAnual = value ?? false;
+                      });
+                    },
                   ),
                 ],
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Text(Translations.of(context).newNoteScreen.annual),
-                Spacer(),
-                Checkbox(
-                  value: true,
-                  onChanged: (value) {},
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
       actions: [
         TextButton(
@@ -83,7 +155,7 @@ class _NewReminderDialogState extends State<NewReminderDialog> {
           child: Text(Translations.of(context).cancel),
         ),
         FilledButton(
-          onPressed: () => context.pop(true),
+          onPressed: () => validateForm(),
           child: Text(Translations.of(context).confirm),
         ),
       ],

@@ -64,3 +64,9 @@ class UpdateAssetImage extends NewNoteEvent {
 
 class RegisterChanges extends NewNoteEvent {}
 
+class CreateOrUpdateReminderEvent extends NewNoteEvent {
+  final NoteReminder reminder;
+  CreateOrUpdateReminderEvent({
+    required this.reminder,
+  });
+}
