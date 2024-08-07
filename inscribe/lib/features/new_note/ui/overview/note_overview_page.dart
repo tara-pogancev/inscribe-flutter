@@ -64,6 +64,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
           AppDateFormField(
             label: Translations.of(context).newNoteScreen.date_of_birth,
             onChanged: (value) => _registerChanges(),
+            includePastDates: true,
             onSaved: (value) {
               if (value != null && value != "") {
                 dateOfBirth = value.parseDateString();

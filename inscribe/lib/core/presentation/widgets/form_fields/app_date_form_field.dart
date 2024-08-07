@@ -11,13 +11,17 @@ class AppDateFormField extends StatefulWidget {
       this.onSaved,
       this.onChanged,
       this.validator,
-      this.initialValue});
+      this.initialValue,
+      this.includeFutureDates = false,
+      this.includePastDates = false});
 
   final String label;
   final Function(String? value)? onSaved;
   final Function(String? value)? onChanged;
   final String? Function(String? value)? validator;
   final String? initialValue;
+  final bool includeFutureDates;
+  final bool includePastDates;
 
   @override
   State<AppDateFormField> createState() => _AppDateFormFieldState();
@@ -41,8 +45,8 @@ class _AppDateFormFieldState extends State<AppDateFormField> {
       initialEntryMode: DatePickerEntryMode.calendarOnly,
       context: context,
       initialDate: _dateValue,
-      firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
+      firstDate: (widget.includeFutureDates) ? DateTime.now() : DateTime(1900),
+      lastDate: (widget.includePastDates) ? DateTime.now() : DateTime(2200),
     );
 
     if (pickedDate != null) {

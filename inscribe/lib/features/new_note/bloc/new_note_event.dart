@@ -70,3 +70,10 @@ class CreateOrUpdateReminderEvent extends NewNoteEvent {
     required this.reminder,
   });
 }
+
+class DeleteReminderEvent extends NewNoteEvent {
+  final NoteReminder reminder;
+  DeleteReminderEvent({
+    required this.reminder,
+  });
+}

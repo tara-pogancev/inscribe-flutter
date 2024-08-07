@@ -47,7 +47,6 @@ Map<String, dynamic> _$$NoteImplToJson(_$NoteImpl instance) =>
       'isPinned': instance.isPinned,
       'updatedAt': instance.updatedAt?.toIso8601String(),
       'createdAt': instance.createdAt?.toIso8601String(),
-      'reminders': instance.reminders,
     };
 
 const _$NoteTypeEnumMap = {

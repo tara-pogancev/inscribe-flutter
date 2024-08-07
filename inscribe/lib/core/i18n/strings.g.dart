@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 180 (90 per locale)
+/// Strings: 188 (94 per locale)
 ///
-/// Built on 2024-07-30 at 07:33 UTC
+/// Built on 2024-08-07 at 11:02 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -152,6 +152,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get cancel => 'Cancel';
 	String get confirm => 'Confirm';
 	String get undo => 'Undo';
+	String get edit => 'Edit';
+	String get delete => 'Delete';
 	late final _StringsErrorMessagesEn errorMessages = _StringsErrorMessagesEn._(_root);
 	late final _StringsDrawerEn drawer = _StringsDrawerEn._(_root);
 	late final _StringsWelcomeScreenEn welcomeScreen = _StringsWelcomeScreenEn._(_root);
@@ -265,7 +267,9 @@ class _StringsNewNoteScreenEn {
 	String get name => 'Name';
 	String get date => 'Date';
 	String get time => 'Time';
-	String get reminder_deleted => 'Reminder deleted';
+	String get reminder_deleted => 'Reminder deleted!';
+	String get no_reminders => 'No reminders';
+	String get reminder_created => 'Reminder created!';
 }
 
 // Path: archivedNotes
@@ -342,6 +346,8 @@ class _StringsSr implements Translations {
 	@override String get cancel => 'Otkaži';
 	@override String get confirm => 'Potvrdi';
 	@override String get undo => 'Poništi';
+	@override String get edit => 'Izmeni';
+	@override String get delete => 'Obriši';
 	@override late final _StringsErrorMessagesSr errorMessages = _StringsErrorMessagesSr._(_root);
 	@override late final _StringsDrawerSr drawer = _StringsDrawerSr._(_root);
 	@override late final _StringsWelcomeScreenSr welcomeScreen = _StringsWelcomeScreenSr._(_root);
@@ -455,7 +461,9 @@ class _StringsNewNoteScreenSr implements _StringsNewNoteScreenEn {
 	@override String get name => 'Naziv';
 	@override String get date => 'Datum';
 	@override String get time => 'Vreme';
-	@override String get reminder_deleted => 'Podsetnik obrisan';
+	@override String get reminder_deleted => 'Podsetnik obrisan!';
+	@override String get no_reminders => 'Nema podsetnika';
+	@override String get reminder_created => 'Podsetnik kreiran!';
 }
 
 // Path: archivedNotes
@@ -514,6 +522,8 @@ extension on Translations {
 			case 'cancel': return 'Cancel';
 			case 'confirm': return 'Confirm';
 			case 'undo': return 'Undo';
+			case 'edit': return 'Edit';
+			case 'delete': return 'Delete';
 			case 'errorMessages.mandatory_field': return 'This field is mandatory.';
 			case 'drawer.memoirs': return 'Memoirs';
 			case 'drawer.archive': return 'Archive';
@@ -571,7 +581,9 @@ extension on Translations {
 			case 'newNoteScreen.name': return 'Name';
 			case 'newNoteScreen.date': return 'Date';
 			case 'newNoteScreen.time': return 'Time';
-			case 'newNoteScreen.reminder_deleted': return 'Reminder deleted';
+			case 'newNoteScreen.reminder_deleted': return 'Reminder deleted!';
+			case 'newNoteScreen.no_reminders': return 'No reminders';
+			case 'newNoteScreen.reminder_created': return 'Reminder created!';
 			case 'archivedNotes.no_archived_notes': return 'No archived notes!';
 			case 'archivedNotes.no_archived_notes_subtitle': return 'Your deleted notes will appear here.';
 			case 'archivedNotes.delete_all_notes_forever_dialog_title': return 'Delete all notes forever';
@@ -612,6 +624,8 @@ extension on _StringsSr {
 			case 'cancel': return 'Otkaži';
 			case 'confirm': return 'Potvrdi';
 			case 'undo': return 'Poništi';
+			case 'edit': return 'Izmeni';
+			case 'delete': return 'Obriši';
 			case 'errorMessages.mandatory_field': return 'Ovo polje je obavezno.';
 			case 'drawer.memoirs': return 'Memoari';
 			case 'drawer.archive': return 'Arhiva';
@@ -669,7 +683,9 @@ extension on _StringsSr {
 			case 'newNoteScreen.name': return 'Naziv';
 			case 'newNoteScreen.date': return 'Datum';
 			case 'newNoteScreen.time': return 'Vreme';
-			case 'newNoteScreen.reminder_deleted': return 'Podsetnik obrisan';
+			case 'newNoteScreen.reminder_deleted': return 'Podsetnik obrisan!';
+			case 'newNoteScreen.no_reminders': return 'Nema podsetnika';
+			case 'newNoteScreen.reminder_created': return 'Podsetnik kreiran!';
 			case 'archivedNotes.no_archived_notes': return 'Nema arhiviranih beležaka!';
 			case 'archivedNotes.no_archived_notes_subtitle': return 'Vaše obrisane beleške će se pojaviti ovde.';
 			case 'archivedNotes.delete_all_notes_forever_dialog_title': return 'Obriši sve beleške zauvek';

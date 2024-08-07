@@ -23,7 +23,7 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
       if (state.note.id == null) {
         await saveNoteUseCase(state.note);
       } else {
-        updateNoteUseCase(state.note);
+       await updateNoteUseCase(state.note);
       }
       emit(state.copyWith(isSuccess: true));
       emit(NewNoteState());
@@ -76,6 +76,19 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
 
       final reminder = event.reminder;
       final updatedNote = addOrUpdateNoteReminderUsecase(state.note, reminder);
+
+      emit(state.copyWith(note: updatedNote));
+    });
+
+    on<DeleteReminderEvent>((event, emit) async {
+      add(RegisterChanges());
+
+      final reminder = event.reminder;
+
+      final reminders = List<NoteReminder>.from(state.note.reminders);
+      reminders.removeWhere((r) => r.id == reminder.id);
+
+      final updatedNote = state.note.copyWith(reminders: reminders);
 
       emit(state.copyWith(note: updatedNote));
     });

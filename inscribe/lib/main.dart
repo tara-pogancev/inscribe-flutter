@@ -21,6 +21,7 @@ import 'firebase_options.dart';
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox(hiveNotesBox);
+    await Hive.openBox(hiveRemindersBox);
   IC.setUp();
   GoogleFonts.config.allowRuntimeFetching = true;
   LocaleSettings.useDeviceLocale();

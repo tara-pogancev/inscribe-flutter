@@ -3,6 +3,8 @@
   "cancel": "Otkaži",
   "confirm": "Potvrdi",
   "undo": "Poništi",
+  "edit": "Izmeni",
+  "delete": "Obriši",
 
   "errorMessages": {
     "mandatory_field": "Ovo polje je obavezno."
@@ -78,7 +80,9 @@
     "name": "Naziv",
     "date": "Datum",
     "time": "Vreme",
-    "reminder_deleted": "Podsetnik obrisan"
+    "reminder_deleted": "Podsetnik obrisan!",
+    "no_reminders": "Nema podsetnika",
+    "reminder_created": "Podsetnik kreiran!"
   },
 
   "archivedNotes": {

@@ -32,6 +32,7 @@ mixin _$Note {
   bool get isPinned => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(includeToJson: false)
   List<NoteReminder> get reminders => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -57,7 +58,7 @@ abstract class $NoteCopyWith<$Res> {
       bool isPinned,
       DateTime? updatedAt,
       DateTime? createdAt,
-      List<NoteReminder> reminders});
+      @JsonKey(includeToJson: false) List<NoteReminder> reminders});
 }
 
 /// @nodoc
@@ -164,7 +165,7 @@ abstract class _$$NoteImplCopyWith<$Res> implements $NoteCopyWith<$Res> {
       bool isPinned,
       DateTime? updatedAt,
       DateTime? createdAt,
-      List<NoteReminder> reminders});
+      @JsonKey(includeToJson: false) List<NoteReminder> reminders});
 }
 
 /// @nodoc
@@ -264,6 +265,7 @@ class _$NoteImpl extends _Note {
       this.isPinned = false,
       this.updatedAt = null,
       this.createdAt = null,
+      @JsonKey(includeToJson: false)
       final List<NoteReminder> reminders = const []})
       : _reminders = reminders,
         super._();
@@ -309,7 +311,7 @@ class _$NoteImpl extends _Note {
   final DateTime? createdAt;
   final List<NoteReminder> _reminders;
   @override
-  @JsonKey()
+  @JsonKey(includeToJson: false)
   List<NoteReminder> get reminders {
     if (_reminders is EqualUnmodifiableListView) return _reminders;
     // ignore: implicit_dynamic_type
@@ -385,19 +387,20 @@ class _$NoteImpl extends _Note {
 
 abstract class _Note extends Note {
   const factory _Note(
-      {final String? id,
-      final String name,
-      final String assetImage,
-      final Uri? galleryImage,
-      final DateTime? dateOfBirth,
-      final NoteType? type,
-      final String? description,
-      final String? giftIdeas,
-      final bool isDeleted,
-      final bool isPinned,
-      final DateTime? updatedAt,
-      final DateTime? createdAt,
-      final List<NoteReminder> reminders}) = _$NoteImpl;
+          {final String? id,
+          final String name,
+          final String assetImage,
+          final Uri? galleryImage,
+          final DateTime? dateOfBirth,
+          final NoteType? type,
+          final String? description,
+          final String? giftIdeas,
+          final bool isDeleted,
+          final bool isPinned,
+          final DateTime? updatedAt,
+          final DateTime? createdAt,
+          @JsonKey(includeToJson: false) final List<NoteReminder> reminders}) =
+      _$NoteImpl;
   const _Note._() : super._();
 
   factory _Note.fromJson(Map<String, dynamic> json) = _$NoteImpl.fromJson;
@@ -427,6 +430,7 @@ abstract class _Note extends Note {
   @override
   DateTime? get createdAt;
   @override
+  @JsonKey(includeToJson: false)
   List<NoteReminder> get reminders;
   @override
   @JsonKey(ignore: true)

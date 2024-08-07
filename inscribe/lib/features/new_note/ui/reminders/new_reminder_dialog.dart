@@ -87,6 +87,7 @@ class _NewReminderDialogState extends State<NewReminderDialog> {
               height: 20,
             ),
             AppFormField(
+              initialValue: widget.noteReminder?.name,
               label: Translations.of(context).newNoteScreen.name,
               validator: (value) {
                 return value.isRequired(context);
@@ -100,17 +101,20 @@ class _NewReminderDialogState extends State<NewReminderDialog> {
             AppDateFormField(
               label: Translations.of(context).newNoteScreen.date,
               initialValue: selectedDateTime.formatString(),
+              includeFutureDates: true,
               validator: (value) {
                 return value.isRequired(context);
               },
               onSaved: (value) {
                 final dateTime = value!.parseDateString();
-                setState(() {
-                  selectedDateTime = selectedDateTime.copyWith(
-                      day: dateTime.day,
-                      month: dateTime.month,
-                      year: dateTime.year);
-                });
+                setState(
+                  () {
+                    selectedDateTime = selectedDateTime.copyWith(
+                        day: dateTime.day,
+                        month: dateTime.month,
+                        year: dateTime.year);
+                  },
+                );
               },
             ),
             InkWell(
