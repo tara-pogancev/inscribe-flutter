@@ -29,7 +29,7 @@ class _ReminderCardState extends State<ReminderCard> {
   void _getTapPosition(TapDownDetails tapPosition, BuildContext context) {
     final RenderBox referenceBox = context.findRenderObject() as RenderBox;
     setState(() {
-      _tapPosition = referenceBox.globalToLocal(tapPosition.globalPosition);
+      _tapPosition = tapPosition.globalPosition;
     });
   }
 
@@ -96,7 +96,10 @@ class _ReminderCardState extends State<ReminderCard> {
                   ),
                   Flexible(
                     child: Text(
-                      widget.reminder.date.formatFullDateTimeString(),
+                      (widget.reminder.isAnual)
+                          ? widget.reminder.date
+                              .formatFullDateTimeNoYearString()
+                          : widget.reminder.date.formatFullDateTimeString(),
                       style: AppTextStyles.of(context).cardSecondaryText,
                       textAlign: TextAlign.end,
                     ),

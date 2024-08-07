@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 const dateFormat = "dd MMM yyyy";
 const timeOfDayFormat = "HH:mm";
 const fullDateTimeFormat = "dd MMM yy, HH:mm";
+const fullDateTimeFormatNoYear = "dd MMM, HH:mm";
 
 extension DateExtensions on DateTime {
   String formatString() {
@@ -15,6 +16,10 @@ extension DateExtensions on DateTime {
 
   String formatFullDateTimeString() {
     return DateFormat(fullDateTimeFormat).format(this);
+  }
+
+  String formatFullDateTimeNoYearString() {
+    return DateFormat(fullDateTimeFormatNoYear).format(this);
   }
 }
 

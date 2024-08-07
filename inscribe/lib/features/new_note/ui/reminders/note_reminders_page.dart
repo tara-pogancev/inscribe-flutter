@@ -46,11 +46,15 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
     );
 
     if (updatedReminder != null) {
-      _bloc.add(DeleteReminderEvent(reminder: updatedReminder));
+      _bloc.add(CreateOrUpdateReminderEvent(reminder: updatedReminder));
     }
   }
 
-  _deleteReminder(NoteReminder reminder) {}
+  _deleteReminder(NoteReminder reminder) {
+    _bloc.add(DeleteReminderEvent(reminder: reminder));
+    context.showSnackbar(
+        snackbarText: Translations.of(context).newNoteScreen.reminder_deleted);
+  }
 
   @override
   Widget build(BuildContext context) {

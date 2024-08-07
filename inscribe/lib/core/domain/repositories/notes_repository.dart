@@ -12,7 +12,7 @@ abstract class NotesRepository {
 
   Future<void> deleteNoteList(List<Note> notesToDelete);
 
-  Future<List<NoteReminder>> getRemindersForNote(note);
+  Future<List<NoteReminder>> getRemindersForNote(Note note);
 
   Future<void> updateNoteReminders(List<NoteReminder> newReminders, Note note);
 

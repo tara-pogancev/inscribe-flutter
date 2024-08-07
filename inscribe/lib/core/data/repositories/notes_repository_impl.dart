@@ -25,12 +25,14 @@ class NotesRepositoryImpl implements NotesRepository {
 
   @override
   Future<List<Note>> getNotes() async {
+    // await remindersBox.clear();
+
     List<Note> notes = [];
     final notesFromBox =
         notesBox.values.map((e) => e.cast<String, dynamic>()).toList();
     for (var note in notesFromBox) {
       final newNote = Note.fromJson(note);
-      final reminders = await getRemindersForNote(note);
+      final reminders = await getRemindersForNote(newNote);
       notes.add(newNote.copyWith(reminders: reminders));
     }
     return notes;
@@ -56,15 +58,16 @@ class NotesRepositoryImpl implements NotesRepository {
   }
 
   @override
-  Future<List<NoteReminder>> getRemindersForNote(note) async {
+  Future<List<NoteReminder>> getRemindersForNote(Note note) async {
     List<NoteReminder> reminders = [];
 
     final remindersFromBox =
         remindersBox.values.map((e) => e.cast<String, dynamic>()).toList();
 
-    for (var reminder in remindersFromBox) {
+    for (var reminderData in remindersFromBox) {
+      final reminder = NoteReminder.fromJson(reminderData);
       if (reminder.noteId == note.id) {
-        reminders.add(NoteReminder.fromJson(reminder));
+        reminders.add(reminder);
       }
     }
 
@@ -77,12 +80,13 @@ class NotesRepositoryImpl implements NotesRepository {
   @override
   Future<void> updateNoteReminders(
       List<NoteReminder> newReminders, Note note) async {
-    for (final oldReminder in note.reminders) {
+    for (final oldReminder in await getRemindersForNote(note)) {
       deleteReminder(oldReminder);
     }
 
     for (final reminder in newReminders) {
-      addReminder(reminder);
+      reminder.noteId = note.id;
+      addReminder(reminder, ignoreSchedulingNotification: note.isDeleted);
     }
   }
 
@@ -93,8 +97,11 @@ class NotesRepositoryImpl implements NotesRepository {
   }
 
   @override
-  Future<void> addReminder(NoteReminder reminder) async {
+  Future<void> addReminder(NoteReminder reminder,
+      {bool ignoreSchedulingNotification = false}) async {
     await remindersBox.put(reminder.id, reminder.toJson());
-    notificationsRepository.scheduleNotification(reminder);
+    if (!ignoreSchedulingNotification) {
+      notificationsRepository.scheduleNotification(reminder);
+    }
   }
 }
