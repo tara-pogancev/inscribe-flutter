@@ -16,7 +16,7 @@ abstract class NotesRepository {
 
   Future<void> updateNoteReminders(List<NoteReminder> newReminders, Note note);
 
-  Future<void> deleteReminder(NoteReminder reminder);
+  Future<void> deleteAndCancelReminder(NoteReminder reminder);
 
-  Future<void> addReminder(NoteReminder reminder);
+  Future<void> addAndScheduleReminder(NoteReminder reminder);
 }

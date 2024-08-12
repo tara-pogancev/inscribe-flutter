@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/consts.dart';
-import 'package:inscribe/core/domain/repositories/shared_preference_repository.dart';
+import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';

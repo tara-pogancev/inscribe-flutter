@@ -1,8 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
-import 'package:inscribe/core/domain/repositories/notes_repository.dart';
-import 'package:inscribe/core/domain/repositories/notifications_repository.dart';
+import 'package:inscribe/core/data/repositories/notes/notes_repository.dart';
+import 'package:inscribe/core/data/repositories/notifications/notifications_repository.dart';
 
 const hiveNotesBox = "notes";
 const hiveRemindersBox = "reminders";
@@ -21,12 +21,15 @@ class NotesRepositoryImpl implements NotesRepository {
   @override
   Future<void> deleteNote(Note note) async {
     await notesBox.delete(note.id);
+    for (final oldReminder in await getRemindersForNote(note)) {
+      deleteAndCancelReminder(oldReminder);
+    }
+
+    notificationsRepository.deleteBirthdayReminder(note);
   }
 
   @override
   Future<List<Note>> getNotes() async {
-    // await remindersBox.clear();
-
     List<Note> notes = [];
     final notesFromBox =
         notesBox.values.map((e) => e.cast<String, dynamic>()).toList();
@@ -80,24 +83,32 @@ class NotesRepositoryImpl implements NotesRepository {
   @override
   Future<void> updateNoteReminders(
       List<NoteReminder> newReminders, Note note) async {
+    // Delete all previous reminders from reminder box, and cancel them
     for (final oldReminder in await getRemindersForNote(note)) {
-      deleteReminder(oldReminder);
+      deleteAndCancelReminder(oldReminder);
     }
 
     for (final reminder in newReminders) {
       reminder.noteId = note.id;
-      addReminder(reminder, ignoreSchedulingNotification: note.isDeleted);
+      addAndScheduleReminder(reminder,
+          ignoreSchedulingNotification: note.isDeleted);
+    }
+
+    if (note.dateOfBirth != null) {
+      notificationsRepository.createOrUpdateBirthdayReminder(note);
+    } else {
+      notificationsRepository.deleteBirthdayReminder(note);
     }
   }
 
   @override
-  Future<void> deleteReminder(NoteReminder reminder) async {
+  Future<void> deleteAndCancelReminder(NoteReminder reminder) async {
     await remindersBox.delete(reminder.id);
     notificationsRepository.deleteScheduledNotification(reminder);
   }
 
   @override
-  Future<void> addReminder(NoteReminder reminder,
+  Future<void> addAndScheduleReminder(NoteReminder reminder,
       {bool ignoreSchedulingNotification = false}) async {
     await remindersBox.put(reminder.id, reminder.toJson());
     if (!ignoreSchedulingNotification) {

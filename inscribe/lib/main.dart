@@ -8,8 +8,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:inscribe/core/consts.dart';
-import 'package:inscribe/core/data/repositories/notes_repository_impl.dart';
-import 'package:inscribe/core/domain/repositories/shared_preference_repository.dart';
+import 'package:inscribe/core/data/repositories/notes/notes_repository_impl.dart';
+import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
@@ -21,7 +21,7 @@ import 'firebase_options.dart';
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox(hiveNotesBox);
-    await Hive.openBox(hiveRemindersBox);
+  await Hive.openBox(hiveRemindersBox);
   IC.setUp();
   GoogleFonts.config.allowRuntimeFetching = true;
   LocaleSettings.useDeviceLocale();
@@ -37,10 +37,17 @@ void main() async {
       "resource://drawable/res_app_icon",
       [
         NotificationChannel(
-            channelGroupKey: channelGroupKey,
-            channelKey: channelKey,
-            channelName: channelName,
-            channelDescription: channelDescription,
+            channelGroupKey: remindersChannelGroupKey,
+            channelKey: remindersChannelKey,
+            channelName: remindersChannelName,
+            channelDescription: remindersChannelDescription,
+            defaultColor: lightAppColorScheme.beige,
+            ledColor: Colors.white),
+        NotificationChannel(
+            channelGroupKey: birthdayChannelGroupKey,
+            channelKey: birthdayChannelKey,
+            channelName: birthdayChannelName,
+            channelDescription: birthdayChannelDescription,
             defaultColor: lightAppColorScheme.beige,
             ledColor: Colors.white)
       ],
@@ -81,7 +88,7 @@ class _InscribeAppState extends State<InscribeApp> {
     String startRoute = (isFirstRun) ? Routes.welcome : Routes.home;
 
     if (kDebugMode) {
-      // startRoute = Routes.welcome;
+      startRoute = Routes.notifications;
     }
 
     return DynamicTheme(

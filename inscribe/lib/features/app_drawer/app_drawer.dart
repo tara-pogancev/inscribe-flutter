@@ -94,6 +94,14 @@ class _AppDrawerState extends State<AppDrawer> {
               // _navigateRoute(context, Routes.home);
             },
           ),
+          ListTile(
+            enabled: _getCurrentRoute() != Routes.notifications,
+            leading: Icon(Icons.notifications_outlined),
+            title: Text("asd"),
+            onTap: () {
+              _navigateRoute(Routes.notifications);
+            },
+          ),
           // Divider(),
           // ListTile(
           //   enabled: false,

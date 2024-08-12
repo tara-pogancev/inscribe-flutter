@@ -1,4 +1,4 @@
-import 'package:inscribe/core/domain/repositories/shared_preference_repository.dart';
+import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const isFirstRunSharedPreferences = "isFirstRun";

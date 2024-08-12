@@ -95,6 +95,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
+      // ign,ore: deprecated_member_use
       onPopInvoked: (bool didPop) async {
         if (didPop) {
           return;

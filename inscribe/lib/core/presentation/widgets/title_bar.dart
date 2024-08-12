@@ -19,11 +19,13 @@ class TitleBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         startWidget ?? Container(),
-        Text(
-          title,
-          style: AppTextStyles.of(context).boldTitle,
+        Flexible(
+          child: Text(
+            title,
+            style: AppTextStyles.of(context).boldTitle,
+            textAlign: TextAlign.center,
+          ),
         ),
-        Spacer(),
         endWidget ?? Container(),
       ],
     );

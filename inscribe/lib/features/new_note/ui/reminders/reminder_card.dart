@@ -27,7 +27,6 @@ class _ReminderCardState extends State<ReminderCard> {
   var _tapPosition;
 
   void _getTapPosition(TapDownDetails tapPosition, BuildContext context) {
-    final RenderBox referenceBox = context.findRenderObject() as RenderBox;
     setState(() {
       _tapPosition = tapPosition.globalPosition;
     });
@@ -78,7 +77,7 @@ class _ReminderCardState extends State<ReminderCard> {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(defaultDividerDimension),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

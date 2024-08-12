@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
-import 'package:inscribe/core/domain/repositories/shared_preference_repository.dart';
+import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/features/home/usecases/fetch_notes_usecase.dart';
 import 'package:inscribe/features/new_note/usecases/update_note_usecase.dart';

@@ -4,6 +4,7 @@ import 'package:inscribe/core/router/navigation_transitions.dart';
 import 'package:inscribe/features/archive/ui/archive_screen.dart';
 import 'package:inscribe/features/home/ui/home_screen.dart';
 import 'package:inscribe/features/new_note/ui/new_note_screen.dart';
+import 'package:inscribe/features/scheduled_notifications_debug_view/scheduled_notifications_screen.dart';
 import 'package:inscribe/features/settings/ui/settings_screen.dart';
 import 'package:inscribe/features/welcome/ui/welcome_screen.dart';
 
@@ -45,7 +46,13 @@ class AppRouter {
             pageBuilder: defaultPageBuilder(
               const SettingsScreen(),
             ),
-          )
+          ),
+          GoRoute(
+            path: Routes.notifications,
+            pageBuilder: defaultPageBuilder(
+              const ScheduledNotificationsScreen(),
+            ),
+          ),
         ],
         initialLocation: initialLocation ?? Routes.welcome,
       );
@@ -58,4 +65,5 @@ class Routes {
   static const newNote = '/new-note';
   static const archive = '/archive';
   static const settings = '/settings';
+  static const notifications = '/notifications';
 }

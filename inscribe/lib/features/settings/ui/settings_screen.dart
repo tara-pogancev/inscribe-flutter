@@ -3,7 +3,7 @@ import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
-import 'package:inscribe/features/settings/ui/settings_header.dart';
+import 'package:inscribe/core/presentation/widgets/default_app_header.dart';
 import 'package:inscribe/features/settings/ui/settings_language_picker.dart';
 import 'package:inscribe/features/settings/ui/settings_notes_view_picker.dart';
 import 'package:inscribe/features/settings/ui/settings_theme_picker.dart';
@@ -40,7 +40,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SettingsHeader(),
+          DefaultAppHeader(
+            title: Translations.of(context).drawer.settings,
+          ),
           SizedBox(
             height: defaultScreenPadding,
           ),
