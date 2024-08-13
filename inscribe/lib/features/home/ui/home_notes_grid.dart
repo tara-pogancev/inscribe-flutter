@@ -119,7 +119,8 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
                   ),
                 if (state.filteredPinnedNotes.isNotEmpty)
                   getGridForNotes(state.filteredPinnedNotes, state.isGridView),
-                if (state.filteredOtherdNotes.isNotEmpty)
+                if (state.filteredOtherdNotes.isNotEmpty &&
+                    state.filteredPinnedNotes.isNotEmpty)
                   SliverToBoxAdapter(
                     child: Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 10),

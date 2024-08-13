@@ -51,9 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: [
           const HomeSearchBar(),
-          SizedBox(
-            height: 10,
-          ),
           BlocBuilder<HomeBloc, HomeState>(
             bloc: _bloc,
             builder: (context, state) {

@@ -17,20 +17,42 @@ class ScheduledNotificationDebugCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(defaultDividerDimension),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "ID: " + (notification.content?.id.toString() ?? "-"),
-              style: AppTextStyles.of(context).cardSecondaryText,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "ID: " + (notification.content?.id.toString() ?? "-"),
+                        style: AppTextStyles.of(context).cardSecondaryText,
+                      ),
+                      Text(
+                        (notification.content?.title ?? "-"),
+                        style: AppTextStyles.of(context).cardPrimaryText,
+                      ),
+                      Text(
+                        "Channel: " + (notification.content?.channelKey ?? "-"),
+                        style: AppTextStyles.of(context).cardTernaryText,
+                      ),
+                    ],
+                  ),
+                ),
+                if (notification.schedule?.repeats ?? false)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Icon(Icons.repeat),
+                  )
+              ],
             ),
-            Text(
-              (notification.content?.title ?? "-"),
-              style: AppTextStyles.of(context).cardPrimaryText,
-            ),
-            Text(
-              "Channel: " + (notification.content?.channelKey ?? "-"),
-              style: AppTextStyles.of(context).cardTernaryText,
-            ),
+
             Divider(
               color: AppColorScheme.of(context).gray,
             ),
