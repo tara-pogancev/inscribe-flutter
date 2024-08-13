@@ -54,11 +54,11 @@ void main() async {
       debug: kDebugMode);
 
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(TranslationProvider(child: InscribeApp()));
+  runApp(TranslationProvider(child: const InscribeApp()));
 }
 
 class InscribeApp extends StatefulWidget {
-  InscribeApp({super.key});
+  const InscribeApp({super.key});
 
   @override
   State<InscribeApp> createState() => _InscribeAppState();
@@ -93,7 +93,7 @@ class _InscribeAppState extends State<InscribeApp> {
 
     return DynamicTheme(
       themeCollection: getThemeCollection(context),
-      defaultThemeId: AppThemes.Light,
+      defaultThemeId: AppThemes.light,
       builder: (context, theme) => MaterialApp.router(
         routerConfig: AppRouter.router(startRoute),
         debugShowCheckedModeBanner: false,

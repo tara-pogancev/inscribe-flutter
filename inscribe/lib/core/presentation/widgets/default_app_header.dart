@@ -15,7 +15,7 @@ class DefaultAppHeader extends StatelessWidget {
     return TitleBar(
       title: title,
       startWidget: IconButton(
-        icon: Icon(Icons.menu),
+        icon: const Icon(Icons.menu),
         onPressed: () {
           _openDrawer(context);
         },

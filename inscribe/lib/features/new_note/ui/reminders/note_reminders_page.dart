@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
@@ -11,7 +13,7 @@ import 'package:inscribe/features/new_note/ui/reminders/new_reminder_dialog.dart
 import 'package:inscribe/features/new_note/ui/reminders/reminder_card.dart';
 
 class NoteRemindersPage extends StatefulWidget {
-  NoteRemindersPage({super.key, this.initialNote = const Note()});
+  const NoteRemindersPage({super.key, this.initialNote = const Note()});
 
   final Note initialNote;
 
@@ -26,7 +28,7 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
   void _showNewReminderDialog() async {
     final NoteReminder? reminder = await showDialog(
       context: context,
-      builder: (context) => NewReminderDialog(),
+      builder: (context) => const NewReminderDialog(),
     );
 
     if (reminder != null) {
@@ -77,7 +79,7 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
                       itemCount: state.note.reminders.length,
                       shrinkWrap: true,
                       separatorBuilder: (BuildContext context, int index) {
-                        return SizedBox(
+                        return const SizedBox(
                           height: 10,
                         );
                       },

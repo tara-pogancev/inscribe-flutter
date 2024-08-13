@@ -27,10 +27,10 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
   final _bloc = IC.getIt<HomeBloc>();
   final _deleteNoteBloc = IC.getIt<DeleteNoteBloc>();
 
-  var _tapPosition;
+  Offset _tapPosition = const Offset(0, 0);
 
   void _navigateNote(note) async {
-    await context.push(Routes.noteDetails, extra: note);
+    await context.push(Routes.noteDetails, extra: note.id);
     _bloc.add(HomeFetchEvent());
   }
 
@@ -60,7 +60,6 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
     final RenderBox referenceBox = context.findRenderObject() as RenderBox;
     setState(() {
       _tapPosition = referenceBox.globalToLocal(tapPosition.globalPosition);
-      print(_tapPosition);
     });
   }
 
@@ -97,12 +96,12 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
     return BlocBuilder<HomeBloc, HomeState>(
       bloc: _bloc,
       builder: (context, state) {
-        return Container(
+        return SizedBox(
           height: _getScrollViewHeight(context),
           child: FadedEdgesContainer(
             child: CustomScrollView(
               slivers: [
-                SliverToBoxAdapter(
+                const SliverToBoxAdapter(
                   child: SizedBox(
                     height: gradientHeight,
                   ),

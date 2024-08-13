@@ -24,7 +24,7 @@ class AppScaffold extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColorScheme.of(context).beige,
       floatingActionButton: fab,
-      drawer: (enableDrawer) ? AppDrawer() : null,
+      drawer: (enableDrawer) ? const AppDrawer() : null,
       body: SingleChildScrollView(
         physics:
             const ClampingScrollPhysics(parent: NeverScrollableScrollPhysics()),

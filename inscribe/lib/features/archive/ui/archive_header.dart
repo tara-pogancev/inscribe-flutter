@@ -23,7 +23,7 @@ class _ArchiveHeaderState extends State<ArchiveHeader> {
   void _deleteAll() async {
     final shouldDelete = await showDialog(
         context: context,
-        builder: (context) => DeleteAllNotesForeversDialog()) as bool?;
+        builder: (context) => const DeleteAllNotesForeversDialog()) as bool?;
 
     if (shouldDelete ?? false) {
       _cubit.deleteAllNotesForever();
@@ -35,7 +35,7 @@ class _ArchiveHeaderState extends State<ArchiveHeader> {
     return TitleBar(
       title: Translations.of(context).drawer.archive,
       startWidget: IconButton(
-        icon: Icon(Icons.menu),
+        icon: const Icon(Icons.menu),
         onPressed: () {
           _openDrawer(context);
         },
@@ -44,7 +44,7 @@ class _ArchiveHeaderState extends State<ArchiveHeader> {
         bloc: _cubit,
         builder: (context, state) {
           return IconButton(
-            icon: Icon(Icons.delete_forever),
+            icon: const Icon(Icons.delete_forever),
             onPressed: (state.notes.isNotEmpty)
                 ? () {
                     _deleteAll();

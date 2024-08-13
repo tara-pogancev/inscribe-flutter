@@ -14,8 +14,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final updateNoteUseCase = UpdateNoteUseCase();
 
   HomeBloc() : super(HomeState()) {
-    on<HomeFetchEvent>((event, emit) async {
-      final notes = await fetchNotesUseCase();
+    on<HomeFetchEvent>((event, emit) {
+      final notes = fetchNotesUseCase();
       final isGridView = sharedPreferencesRepository.getIsGridPreferedView();
 
       final otherNotes = notes.where((note) => note.isPinned == false).toList();
@@ -56,9 +56,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           filteredOtherdNotes: otherNotes, filteredPinnedNotes: pinnedNotes));
     });
 
-    on<SwitchNotePinEvent>((event, emit) async {
-      await updateNoteUseCase(
-          event.note.copyWith(isPinned: !event.note.isPinned));
+    on<SwitchNotePinEvent>((event, emit) {
+      updateNoteUseCase(event.note.copyWith(isPinned: !event.note.isPinned));
       add(HomeFetchEvent());
     });
 

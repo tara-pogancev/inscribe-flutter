@@ -5,6 +5,6 @@ enum NoteType { friend, school, work, family, romantic }
 
 extension NoteTypeExtension on NoteType {
   String getString(BuildContext context) {
-    return Translations.of(context).newNoteScreen.categories[this.index];
+    return Translations.of(context).newNoteScreen.categories[index];
   }
 }

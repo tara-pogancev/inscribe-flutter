@@ -24,7 +24,7 @@ class NotificationsRepositoryImpl implements NotificationsRepository {
           body: "Inscribe reminder",
         ),
         localizations: {
-          serbian_locale: NotificationLocalization(body: "Inscribe podsetnik")
+          serbianLocale: NotificationLocalization(body: "Inscribe podsetnik")
         },
         schedule: (reminder.isAnual)
             ? NotificationCalendar(
@@ -51,7 +51,7 @@ class NotificationsRepositoryImpl implements NotificationsRepository {
             body: "Incribe birthday reminder",
           ),
           localizations: {
-            serbian_locale: NotificationLocalization(
+            serbianLocale: NotificationLocalization(
               title: "Danas ${birthdayNote.name} slavi rođendan!",
               body: "Incribe podsetnik za rođendane",
             ),

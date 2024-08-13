@@ -27,5 +27,5 @@ class NoteTabBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(tabBarPreferedSize);
+  Size get preferredSize => const Size.fromHeight(tabBarPreferedSize);
 }

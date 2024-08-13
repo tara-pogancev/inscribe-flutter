@@ -24,8 +24,8 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
       enableDrawer: true,
       child: Column(
         children: [
-          ArchiveHeader(),
-          SizedBox(
+          const ArchiveHeader(),
+          const SizedBox(
             height: 10,
           ),
           BlocBuilder<ArchiveCubit, ArchiveState>(
@@ -36,7 +36,7 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
                     ? Container()
                     : AnimatedCrossFade(
                         firstChild: const NoArchivedNotesSection(),
-                        secondChild: ArchieveNotesGrid(),
+                        secondChild: const ArchieveNotesGrid(),
                         crossFadeState: (state.notes.isEmpty)
                             ? CrossFadeState.showFirst
                             : CrossFadeState.showSecond,

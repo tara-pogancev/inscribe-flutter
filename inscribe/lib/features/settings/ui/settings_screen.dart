@@ -43,24 +43,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
           DefaultAppHeader(
             title: Translations.of(context).drawer.settings,
           ),
-          SizedBox(
+          const SizedBox(
             height: defaultScreenPadding,
           ),
           Text(
             Translations.of(context).settingsScreen.visual.toUpperCase(),
             style: AppTextStyles.of(context).subtitle,
           ),
-          SettingsThemePicker(),
-          SettingsNotesViewPicker(),
-          Divider(
+          const SettingsThemePicker(),
+          const SettingsNotesViewPicker(),
+          const Divider(
             height: defaultScreenPadding,
           ),
           Text(
             Translations.of(context).settingsScreen.system.toUpperCase(),
             style: AppTextStyles.of(context).subtitle,
           ),
-          SettingsLanguagePicker(),
-          Spacer(),
+          const SettingsLanguagePicker(),
+          const Spacer(),
           SizedBox(
             width: double.infinity,
             child: Text(

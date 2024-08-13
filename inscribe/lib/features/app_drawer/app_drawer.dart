@@ -50,7 +50,7 @@ class _AppDrawerState extends State<AppDrawer> {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/wave_profile_cover.png"),
                   fit: BoxFit.cover),
@@ -65,7 +65,7 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           ListTile(
             enabled: _getCurrentRoute() != Routes.home,
-            leading: Icon(Icons.home_outlined),
+            leading: const Icon(Icons.home_outlined),
             title: Text(Translations.of(context).drawer.memoirs),
             onTap: () {
               _navigateHomeRoute(Routes.home);
@@ -73,7 +73,7 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           ListTile(
             enabled: _getCurrentRoute() != Routes.archive,
-            leading: Icon(Icons.delete_outline),
+            leading: const Icon(Icons.delete_outline),
             title: Text(Translations.of(context).drawer.archive),
             onTap: () {
               _navigateRoute(Routes.archive);
@@ -81,7 +81,7 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           ListTile(
             enabled: _getCurrentRoute() != Routes.settings,
-            leading: Icon(Icons.settings_outlined),
+            leading: const Icon(Icons.settings_outlined),
             title: Text(Translations.of(context).drawer.settings),
             onTap: () {
               _navigateRoute(Routes.settings);
@@ -89,7 +89,7 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           ListTile(
             enabled: false,
-            leading: Icon(Icons.calendar_month),
+            leading: const Icon(Icons.calendar_month),
             title: Text(Translations.of(context).drawer.calendar),
             onTap: () {
               // _navigateRoute(context, Routes.home);
@@ -98,8 +98,8 @@ class _AppDrawerState extends State<AppDrawer> {
           if (kDebugMode)
             ListTile(
               enabled: _getCurrentRoute() != Routes.notifications,
-              leading: Icon(Icons.notifications_outlined),
-              title: Text("[DEBUG] Notifications"),
+              leading: const Icon(Icons.notifications_outlined),
+              title: const Text("[DEBUG] Notifications"),
               onTap: () {
                 _navigateRoute(Routes.notifications);
               },

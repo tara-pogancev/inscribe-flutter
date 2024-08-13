@@ -24,24 +24,24 @@ class ArchiveCubit extends AppCubit<ArchiveState> {
     fetchArchivedNotes();
   }
 
-  void fetchArchivedNotes() async {
+  void fetchArchivedNotes()  {
     emit(state.copyWith(isLoading: true));
-    final notes = await _fetchArchivedNotesUsecase();
+    final notes =  _fetchArchivedNotesUsecase();
     emit(state.copyWith(isLoading: false, notes: notes));
   }
 
-  void deleteAllNotesForever() async {
-    await _deleteAllNotesForeverUseCase();
+  void deleteAllNotesForever()  {
+     _deleteAllNotesForeverUseCase();
     fetchArchivedNotes();
   }
 
-  void deleteNote(Note note) async {
-    await _deleteNoteForeverUseCase(note);
+  void deleteNote(Note note) {
+     _deleteNoteForeverUseCase(note);
     fetchArchivedNotes();
   }
 
-  void restoreNote(Note note) async {
-    await _restoreNoteUsecase(note);
+  void restoreNote(Note note)  {
+     _restoreNoteUsecase(note);
     fetchArchivedNotes();
     _homeBloc.add(HomeFetchEvent());
   }

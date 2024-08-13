@@ -44,7 +44,7 @@ class _ScheduledNotificationsScreenState
               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    DefaultAppHeader(
+                    const DefaultAppHeader(
                       title: "Scheduled notifications",
                     ),
                     Padding(
@@ -57,12 +57,12 @@ class _ScheduledNotificationsScreenState
                 ),
               ),
               (state.scheduledNotifications.isEmpty)
-                  ? SliverToBoxAdapter(
+                  ? const SliverToBoxAdapter(
                       child: Text("No scheduled notifications"))
                   : SliverList.separated(
                       itemCount: state.scheduledNotifications.length,
                       separatorBuilder: (BuildContext context, int index) {
-                        return SizedBox(
+                        return const SizedBox(
                           height: defaultDividerDimension,
                         );
                       },

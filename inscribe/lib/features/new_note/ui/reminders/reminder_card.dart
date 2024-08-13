@@ -25,7 +25,7 @@ class ReminderCard extends StatefulWidget {
 }
 
 class _ReminderCardState extends State<ReminderCard> {
-  var _tapPosition;
+  Offset _tapPosition = const Offset(0, 0);
 
   void _getTapPosition(TapDownDetails tapPosition, BuildContext context) {
     setState(() {
@@ -72,7 +72,7 @@ class _ReminderCardState extends State<ReminderCard> {
       child: Container(
         decoration: AppBoxDecorations.of(context).outlined,
         child: Padding(
-          padding: EdgeInsets.all(defaultDividerDimension),
+          padding: const EdgeInsets.all(defaultDividerDimension),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -85,7 +85,7 @@ class _ReminderCardState extends State<ReminderCard> {
                       style: AppTextStyles.of(context).cardPrimaryText,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Flexible(
@@ -110,7 +110,7 @@ class _ReminderCardState extends State<ReminderCard> {
                         color: AppColorScheme.of(context).gray,
                         size: 15,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Text(

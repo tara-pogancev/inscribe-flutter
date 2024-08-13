@@ -4,19 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 
 class AppThemes {
-  static const int Light = 0;
-  static const int Dark = 1;
+  static const int light = 0;
+  static const int dark = 1;
 }
 
 ThemeCollection getThemeCollection(BuildContext context) => ThemeCollection(
       themes: {
-        AppThemes.Light: ThemeData(
+        AppThemes.light: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
             textTheme:
                 GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
             useMaterial3: true,
             brightness: Brightness.light),
-        AppThemes.Dark: ThemeData(
+        AppThemes.dark: ThemeData(
             colorScheme: ColorScheme.fromSeed(
                 seedColor: Colors.grey, brightness: Brightness.dark),
             textTheme:

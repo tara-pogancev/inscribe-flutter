@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -18,9 +20,9 @@ import 'package:inscribe/features/new_note/ui/reminders/note_reminders_page.dart
 import 'package:inscribe/features/new_note/usecases/get_random_profile_image_usecase.dart';
 
 class NewNoteScreen extends StatefulWidget {
-  const NewNoteScreen({super.key, this.note = const Note()});
+  const NewNoteScreen({super.key, this.noteId});
 
-  final Note note;
+  final String? noteId;
 
   @override
   State<NewNoteScreen> createState() => _NewNoteScreenState();
@@ -62,7 +64,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
     if (_bloc.state.hasChanges) {
       final shouldSave = await showDialog(
           context: context,
-          builder: (context) => UnsavedChangesDialog()) as bool?;
+          builder: (context) => const UnsavedChangesDialog()) as bool?;
 
       if (shouldSave ?? false) {
         _validateForm();
@@ -76,15 +78,15 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
   }
 
   @override
-  void initState() {
-    if (widget.note.id == null) {
+  void initState()  {
+    if (widget.noteId == null) {
       note = Note(
         name: "",
         assetImage: getRandomProfileImageUseCase(),
       );
       _bloc.add(UpdateNoteEvent(note: note));
     } else {
-      note = widget.note;
+      note =  _bloc.getNoteById(widget.noteId!);
       _bloc.add(UpdateNoteEvent(note: note));
     }
 
@@ -95,7 +97,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      // ign,ore: deprecated_member_use
+      // ignore: deprecated_member_use
       onPopInvoked: (bool didPop) async {
         if (didPop) {
           return;
@@ -137,7 +139,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
                       onBack: () => _goBack(),
                     ),
                     pinned: true,
-                    bottom: NoteTabBar(),
+                    bottom: const NoteTabBar(),
                   ),
                 ];
               },

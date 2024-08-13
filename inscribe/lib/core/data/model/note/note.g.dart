@@ -53,6 +53,6 @@ const _$NoteTypeEnumMap = {
   NoteType.friend: 'friend',
   NoteType.school: 'school',
   NoteType.work: 'work',
-  NoteType.romantic: 'romantic',
   NoteType.family: 'family',
+  NoteType.romantic: 'romantic',
 };

@@ -17,5 +17,5 @@ const birthdayChannelKey = 'birthdays_channel';
 const birthdayChannelName = 'Birthday notifications';
 const birthdayChannelDescription = 'Notification channel for birthdays';
 
-const english_locale = "en";
-const serbian_locale = "sr";
+const englishLocale = "en";
+const serbianLocale = "sr";

@@ -13,7 +13,8 @@ class DialogText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle().copyWith(color: AppColorScheme.of(context).black),
+      style:
+          const TextStyle().copyWith(color: AppColorScheme.of(context).black),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
 import 'package:inscribe/core/domain/model/app_bloc.dart';
 import 'package:inscribe/features/new_note/usecases/add_or_update_note_reminder_usecase.dart';
 import 'package:inscribe/features/new_note/usecases/archive_note_usecase.dart';
+import 'package:inscribe/features/new_note/usecases/get_note_by_id_usecase.dart';
 import 'package:inscribe/features/new_note/usecases/save_note_usecase.dart';
 import 'package:inscribe/features/new_note/usecases/update_note_usecase.dart';
 
@@ -16,14 +17,15 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
   final saveNoteUseCase = SaveNoteUseCase();
   final updateNoteUseCase = UpdateNoteUseCase();
   final archiveNoteUseCase = ArchiveNoteUseCase();
-  final addOrUpdateNoteReminderUsecase = AddOrUpdateNoteReminderUsecase();
+  final addOrUpdateNoteReminderUseCase = AddOrUpdateNoteReminderUseCase();
+  final getNoteByIdUseCase = GetNoteByIdUsecase();
 
   NewNoteBloc() : super(NewNoteState()) {
-    on<SaveNoteEvent>((event, emit) async {
+    on<SaveNoteEvent>((event, emit) {
       if (state.note.id == null) {
-        await saveNoteUseCase(state.note);
+        saveNoteUseCase(state.note);
       } else {
-       await updateNoteUseCase(state.note);
+        updateNoteUseCase(state.note);
       }
       emit(state.copyWith(isSuccess: true));
       emit(NewNoteState());
@@ -63,7 +65,7 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
 
     on<UpdateGalleryImage>((event, emit) async {
       emit(state.copyWith(
-          note: state.note.copyWith(galleryImage: event.image?.uri ?? null)));
+          note: state.note.copyWith(galleryImage: event.image?.uri)));
     });
 
     on<UpdateAssetImage>((event, emit) async {
@@ -75,7 +77,7 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
       add(RegisterChanges());
 
       final reminder = event.reminder;
-      final updatedNote = addOrUpdateNoteReminderUsecase(state.note, reminder);
+      final updatedNote = addOrUpdateNoteReminderUseCase(state.note, reminder);
 
       emit(state.copyWith(note: updatedNote));
     });
@@ -98,5 +100,9 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
         emit(state.copyWith(hasChanges: true));
       }
     });
+  }
+
+  Note getNoteById(String noteId) {
+    return getNoteByIdUseCase(noteId);
   }
 }

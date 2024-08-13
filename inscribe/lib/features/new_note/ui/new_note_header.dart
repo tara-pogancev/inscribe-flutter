@@ -13,7 +13,7 @@ import 'package:inscribe/features/new_note/ui/dialog/archive_note_dialog.dart';
 import 'package:inscribe/features/new_note/ui/note_name_text_field.dart';
 
 class NewNoteHeader extends StatefulWidget {
-  NewNoteHeader({super.key, required this.onBack});
+  const NewNoteHeader({super.key, required this.onBack});
 
   final Function() onBack;
 
@@ -52,7 +52,6 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -66,7 +65,7 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
               fit: BoxFit.cover),
         ),
         child: SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           child: Padding(
             padding:
                 const EdgeInsets.only(top: 40, bottom: 20, left: 20, right: 20),
@@ -85,7 +84,7 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
                             color: lightAppColorScheme.beige,
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         IconButton(
                           onPressed: () {
                             _toggleNotePin();

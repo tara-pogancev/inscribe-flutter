@@ -57,11 +57,18 @@ class _NewReminderDialogState extends State<NewReminderDialog> {
 
   void showTimePickerDialog() async {
     final timeOfDay = await showTimePicker(
-        initialTime: TimeOfDay(
-          hour: selectedDateTime.hour,
-          minute: selectedDateTime.minute,
-        ),
-        context: context);
+      initialTime: TimeOfDay(
+        hour: selectedDateTime.hour,
+        minute: selectedDateTime.minute,
+      ),
+      context: context,
+      builder: (BuildContext context, Widget? child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+          child: child!,
+        );
+      },
+    );
 
     if (timeOfDay != null) {
       setState(() {
@@ -83,7 +90,7 @@ class _NewReminderDialogState extends State<NewReminderDialog> {
               Translations.of(context).newNoteScreen.add_reminder,
               style: AppTextStyles.of(context).cardTitle,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             AppFormField(
@@ -124,10 +131,10 @@ class _NewReminderDialogState extends State<NewReminderDialog> {
                 child: Row(
                   children: [
                     Text(Translations.of(context).newNoteScreen.time),
-                    Spacer(),
+                    const Spacer(),
                     Text(
                       selectedDateTime.formatTimeOfDayString(),
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -138,7 +145,7 @@ class _NewReminderDialogState extends State<NewReminderDialog> {
               child: Row(
                 children: [
                   Text(Translations.of(context).newNoteScreen.annual),
-                  Spacer(),
+                  const Spacer(),
                   Checkbox(
                     value: isAnual,
                     onChanged: (value) {

@@ -19,9 +19,9 @@ class NotesRepositoryImpl implements NotesRepository {
   });
 
   @override
-  Future<void> deleteNote(Note note) async {
-    await notesBox.delete(note.id);
-    for (final oldReminder in await getRemindersForNote(note)) {
+  void deleteNote(Note note) {
+    notesBox.delete(note.id);
+    for (final oldReminder in getRemindersForNote(note)) {
       deleteAndCancelReminder(oldReminder);
     }
 
@@ -29,39 +29,39 @@ class NotesRepositoryImpl implements NotesRepository {
   }
 
   @override
-  Future<List<Note>> getNotes() async {
+  List<Note> getNotes() {
     List<Note> notes = [];
     final notesFromBox =
         notesBox.values.map((e) => e.cast<String, dynamic>()).toList();
     for (var note in notesFromBox) {
       final newNote = Note.fromJson(note);
-      final reminders = await getRemindersForNote(newNote);
+      final reminders = getRemindersForNote(newNote);
       notes.add(newNote.copyWith(reminders: reminders));
     }
     return notes;
   }
 
   @override
-  Future<void> addNote(Note note) async {
-    await notesBox.put(note.id, note.toJson());
-    await updateNoteReminders(note.reminders, note);
+  void addNote(Note note) {
+    notesBox.put(note.id, note.toJson());
+    updateNoteReminders(note.reminders, note);
   }
 
   @override
-  Future<void> updateNote(Note note) async {
-    await notesBox.put(note.id, note.toJson());
-    await updateNoteReminders(note.reminders, note);
+  void updateNote(Note note) {
+    notesBox.put(note.id, note.toJson());
+    updateNoteReminders(note.reminders, note);
   }
 
   @override
-  Future<void> deleteNoteList(List<Note> notesToDelete) async {
+  void deleteNoteList(List<Note> notesToDelete) {
     for (final note in notesToDelete) {
       deleteNote(note);
     }
   }
 
   @override
-  Future<List<NoteReminder>> getRemindersForNote(Note note) async {
+  List<NoteReminder> getRemindersForNote(Note note) {
     List<NoteReminder> reminders = [];
 
     final remindersFromBox =
@@ -82,10 +82,9 @@ class NotesRepositoryImpl implements NotesRepository {
   }
 
   @override
-  Future<void> updateNoteReminders(
-      List<NoteReminder> newReminders, Note note) async {
+  void updateNoteReminders(List<NoteReminder> newReminders, Note note) {
     // Delete all previous reminders from reminder box, and cancel them
-    for (final oldReminder in await getRemindersForNote(note)) {
+    for (final oldReminder in getRemindersForNote(note)) {
       deleteAndCancelReminder(oldReminder);
     }
 
@@ -103,17 +102,26 @@ class NotesRepositoryImpl implements NotesRepository {
   }
 
   @override
-  Future<void> deleteAndCancelReminder(NoteReminder reminder) async {
-    await remindersBox.delete(reminder.id);
+  void deleteAndCancelReminder(NoteReminder reminder) {
+    remindersBox.delete(reminder.id);
     notificationsRepository.deleteScheduledNotification(reminder);
   }
 
   @override
-  Future<void> addAndScheduleReminder(NoteReminder reminder,
-      {bool ignoreSchedulingNotification = false}) async {
-    await remindersBox.put(reminder.id, reminder.toJson());
+  void addAndScheduleReminder(NoteReminder reminder,
+      {bool ignoreSchedulingNotification = false}) {
+    remindersBox.put(reminder.id, reminder.toJson());
     if (!ignoreSchedulingNotification) {
       notificationsRepository.scheduleNotification(reminder);
     }
+  }
+
+  @override
+  Note getNoteById(String noteId) {
+    final noteFromBox = notesBox.get(noteId).cast<String, dynamic>();
+    final note = Note.fromJson(noteFromBox);
+    final reminders = getRemindersForNote(note);
+
+    return note.copyWith(reminders: reminders);
   }
 }

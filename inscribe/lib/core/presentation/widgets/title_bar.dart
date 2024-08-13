@@ -3,11 +3,11 @@ import 'package:inscribe/core/presentation/app_text_styles.dart';
 
 class TitleBar extends StatelessWidget {
   const TitleBar({
-    Key? key,
+    super.key,
     required this.title,
     this.startWidget,
     this.endWidget,
-  }) : super(key: key);
+  });
 
   final String title;
   final Widget? startWidget;

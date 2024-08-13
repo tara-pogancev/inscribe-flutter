@@ -8,10 +8,10 @@ import 'package:inscribe/features/home/ui/card_profile_image.dart';
 
 class NoteCard extends StatelessWidget {
   const NoteCard({
-    Key? key,
+    super.key,
     required this.note,
     this.onClick,
-  }) : super(key: key);
+  });
 
   final Note note;
   final Function()? onClick;
@@ -59,7 +59,7 @@ class NoteCard extends StatelessWidget {
                               .copyWith(color: textColor),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Text(

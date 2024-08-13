@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 @Deprecated("Not functional yet.")
 class LongTapContextMenu extends StatefulWidget {
   const LongTapContextMenu({
-    Key? key,
+    super.key,
     required this.child,
     required this.menuItems,
     required this.childContext,
-  }) : super(key: key);
+  });
 
   final Widget child;
   final BuildContext childContext;
@@ -19,13 +19,12 @@ class LongTapContextMenu extends StatefulWidget {
 
 @Deprecated("Not functional yet.")
 class _LongTapContextMenuState extends State<LongTapContextMenu> {
-  var _tapPosition;
+  Offset _tapPosition = const Offset(0, 0);
 
   void _getTapPosition(TapDownDetails tapPosition) {
     final RenderBox referenceBox = context.findRenderObject() as RenderBox;
     setState(() {
       _tapPosition = referenceBox.globalToLocal(tapPosition.globalPosition);
-      print(_tapPosition);
     });
   }
 

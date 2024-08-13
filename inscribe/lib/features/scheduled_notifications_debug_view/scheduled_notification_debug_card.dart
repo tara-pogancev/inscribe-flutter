@@ -31,7 +31,7 @@ class ScheduledNotificationDebugCard extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        "ID: " + (notification.content?.id.toString() ?? "-"),
+                        "ID: ${notification.content?.id.toString() ?? "-"}",
                         style: AppTextStyles.of(context).cardSecondaryText,
                       ),
                       Text(
@@ -39,15 +39,15 @@ class ScheduledNotificationDebugCard extends StatelessWidget {
                         style: AppTextStyles.of(context).cardPrimaryText,
                       ),
                       Text(
-                        "Channel: " + (notification.content?.channelKey ?? "-"),
+                        "Channel: ${notification.content?.channelKey ?? "-"}",
                         style: AppTextStyles.of(context).cardTernaryText,
                       ),
                     ],
                   ),
                 ),
                 if (notification.schedule?.repeats ?? false)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Icon(Icons.repeat),
                   )
               ],

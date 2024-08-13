@@ -2,11 +2,9 @@ import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
 import 'package:inscribe/core/domain/model/usecase.dart';
 
-class AddOrUpdateNoteReminderUsecase extends UseCase {
+class AddOrUpdateNoteReminderUseCase extends UseCase {
   Note call(Note note, NoteReminder reminder) {
-    if (reminder.id == null) {
-      reminder.id = uuid.v1();
-    }
+    reminder.id ??= uuid.v1();
 
     reminder.noteId = note.id;
 

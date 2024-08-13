@@ -13,7 +13,7 @@ const selectImage = "SELECT";
 const removeOrRandoizeImage = "REMOVE OR RANDONIZE";
 
 class CircleImage extends StatefulWidget {
-  CircleImage({super.key, this.note});
+  const CircleImage({super.key, this.note});
 
   final Note? note;
 
@@ -95,7 +95,7 @@ class _CircleImageState extends State<CircleImage> {
                 child: ClipOval(
                   child: Container(
                     color: lightAppColorScheme.beige,
-                    padding: EdgeInsets.all(5),
+                    padding: const EdgeInsets.all(5),
                     child: Icon(
                       Icons.image_outlined,
                       color: lightAppColorScheme.gray,
