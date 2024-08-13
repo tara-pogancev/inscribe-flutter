@@ -15,18 +15,28 @@ class TitleBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const iconButtonWidth = 48.0;
+
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        startWidget ?? Container(),
+        startWidget ??
+            Container(
+              width: iconButtonWidth,
+            ),
         Flexible(
+          flex: 1,
           child: Text(
             title,
             style: AppTextStyles.of(context).boldTitle,
             textAlign: TextAlign.center,
           ),
         ),
-        endWidget ?? Container(),
+        endWidget ??
+            Container(
+              width: iconButtonWidth,
+            ),
       ],
     );
   }

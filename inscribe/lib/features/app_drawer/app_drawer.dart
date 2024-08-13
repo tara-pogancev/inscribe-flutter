@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
@@ -94,14 +95,15 @@ class _AppDrawerState extends State<AppDrawer> {
               // _navigateRoute(context, Routes.home);
             },
           ),
-          ListTile(
-            enabled: _getCurrentRoute() != Routes.notifications,
-            leading: Icon(Icons.notifications_outlined),
-            title: Text("asd"),
-            onTap: () {
-              _navigateRoute(Routes.notifications);
-            },
-          ),
+          if (kDebugMode)
+            ListTile(
+              enabled: _getCurrentRoute() != Routes.notifications,
+              leading: Icon(Icons.notifications_outlined),
+              title: Text("[DEBUG] Notifications"),
+              onTap: () {
+                _navigateRoute(Routes.notifications);
+              },
+            ),
           // Divider(),
           // ListTile(
           //   enabled: false,

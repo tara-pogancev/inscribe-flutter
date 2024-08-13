@@ -16,7 +16,8 @@
     "settings": "Podešavanja",
     "calendar": "Kalendar [USKORO]",
     "export": "Izvoz podataka [USKORO]",
-    "import": "Uvoz podataka [USKORO]"
+    "import": "Uvoz podataka [USKORO]",
+    "debug_notifications": "[DEBUG] Obaveštenja"
   },
 
   "welcomeScreen": {

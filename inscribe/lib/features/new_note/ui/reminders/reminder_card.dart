@@ -4,6 +4,7 @@ import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
 import 'package:inscribe/core/extensions/date_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
+import 'package:inscribe/core/presentation/app_box_decorations.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 
@@ -69,13 +70,7 @@ class _ReminderCardState extends State<ReminderCard> {
         _showContextMenu(context);
       },
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(defaultBorderRadius),
-          border: Border.all(
-            color: AppColorScheme.of(context).black,
-            width: 3,
-          ),
-        ),
+        decoration: AppBoxDecorations.of(context).outlined,
         child: Padding(
           padding: EdgeInsets.all(defaultDividerDimension),
           child: Column(

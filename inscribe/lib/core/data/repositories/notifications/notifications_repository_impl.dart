@@ -21,10 +21,10 @@ class NotificationsRepositoryImpl implements NotificationsRepository {
           id: reminder.id.hashCode,
           channelKey: remindersChannelKey,
           title: reminder.name,
+          body: "Inscribe reminder",
         ),
         localizations: {
-          "en": NotificationLocalization(body: "Inscribe reminder"),
-          "sr": NotificationLocalization(body: "Inscribe podsetnik")
+          serbian_locale: NotificationLocalization(body: "Inscribe podsetnik")
         },
         schedule: (reminder.isAnual)
             ? NotificationCalendar(
@@ -32,10 +32,12 @@ class NotificationsRepositoryImpl implements NotificationsRepository {
                 day: reminder.date.day,
                 hour: reminder.date.hour,
                 minute: reminder.date.minute,
+                second: 0,
                 repeats: true,
+                preciseAlarm: true,
                 allowWhileIdle: true)
             : NotificationCalendar.fromDate(
-                date: reminder.date, allowWhileIdle: true));
+                date: reminder.date, preciseAlarm: true, allowWhileIdle: true));
   }
 
   @override
@@ -45,23 +47,23 @@ class NotificationsRepositoryImpl implements NotificationsRepository {
           content: NotificationContent(
             id: birthdayNote.id.hashCode,
             channelKey: birthdayChannelKey,
+            title: "It's ${birthdayNote.name}'s birthday today!",
+            body: "Incribe birthday reminder",
           ),
           localizations: {
-            "en": NotificationLocalization(
-              title: "It's" + birthdayNote.name + "'s birthday today!",
-              body: "Incribe birthday reminder",
-            ),
-            "sr": NotificationLocalization(
-              title: "Danas " + birthdayNote.name + "slavi rođendan!",
+            serbian_locale: NotificationLocalization(
+              title: "Danas ${birthdayNote.name} slavi rođendan!",
               body: "Incribe podsetnik za rođendane",
             ),
           },
           schedule: NotificationCalendar(
               month: birthdayNote.dateOfBirth!.month,
               day: birthdayNote.dateOfBirth!.day,
-              hour: 10,
+              hour: 11,
               minute: 0,
+              second: 0,
               repeats: true,
+              preciseAlarm: true,
               allowWhileIdle: true));
     }
   }

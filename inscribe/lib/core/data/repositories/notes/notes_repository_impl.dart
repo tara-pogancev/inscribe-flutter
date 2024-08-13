@@ -69,7 +69,8 @@ class NotesRepositoryImpl implements NotesRepository {
 
     for (var reminderData in remindersFromBox) {
       final reminder = NoteReminder.fromJson(reminderData);
-      if (reminder.noteId == note.id) {
+      if (reminder.noteId == note.id &&
+          (reminder.isAnual || reminder.date.isAfter(DateTime.now()))) {
         reminders.add(reminder);
       }
     }

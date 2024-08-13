@@ -16,7 +16,8 @@
     "settings": "Settings",
     "calendar": "Calendar [COMING SOON]",
     "export": "Export [COMING SOON]",
-    "import": "Import [COMING SOON]"
+    "import": "Import [COMING SOON]",
+    "debug_notifications": "[DEBUG] Notifications"
   },
 
   "welcomeScreen": {

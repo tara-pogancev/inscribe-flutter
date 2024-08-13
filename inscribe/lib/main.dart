@@ -88,7 +88,7 @@ class _InscribeAppState extends State<InscribeApp> {
     String startRoute = (isFirstRun) ? Routes.welcome : Routes.home;
 
     if (kDebugMode) {
-      startRoute = Routes.notifications;
+      // startRoute = Routes.notifications;
     }
 
     return DynamicTheme(
