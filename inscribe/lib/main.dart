@@ -60,6 +60,8 @@ void main() async {
 class InscribeApp extends StatefulWidget {
   const InscribeApp({super.key});
 
+static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
   @override
   State<InscribeApp> createState() => _InscribeAppState();
 }

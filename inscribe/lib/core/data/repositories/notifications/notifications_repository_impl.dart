@@ -18,11 +18,11 @@ class NotificationsRepositoryImpl implements NotificationsRepository {
   void scheduleNotification(NoteReminder reminder) {
     AwesomeNotifications().createNotification(
         content: NotificationContent(
-          id: reminder.id.hashCode,
-          channelKey: remindersChannelKey,
-          title: reminder.name,
-          body: "Inscribe reminder",
-        ),
+            id: reminder.id.hashCode,
+            channelKey: remindersChannelKey,
+            title: reminder.name,
+            body: "Inscribe reminder",
+            payload: {"noteId": reminder.noteId}),
         localizations: {
           serbianLocale: NotificationLocalization(body: "Inscribe podsetnik")
         },
@@ -45,11 +45,11 @@ class NotificationsRepositoryImpl implements NotificationsRepository {
     if (birthdayNote.dateOfBirth != null) {
       AwesomeNotifications().createNotification(
           content: NotificationContent(
-            id: birthdayNote.id.hashCode,
-            channelKey: birthdayChannelKey,
-            title: "It's ${birthdayNote.name}'s birthday today!",
-            body: "Incribe birthday reminder",
-          ),
+              id: birthdayNote.id.hashCode,
+              channelKey: birthdayChannelKey,
+              title: "It's ${birthdayNote.name}'s birthday today!",
+              body: "Incribe birthday reminder",
+              payload: {"noteId": birthdayNote.id}),
           localizations: {
             serbianLocale: NotificationLocalization(
               title: "Danas ${birthdayNote.name} slavi rođendan!",

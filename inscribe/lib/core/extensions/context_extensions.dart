@@ -1,5 +1,6 @@
 import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 extension ContextExtensions on BuildContext {
   void showSnackbar(
@@ -37,5 +38,31 @@ extension ContextExtensions on BuildContext {
     final Brightness brightness =
         DynamicTheme.of(this)?.theme.brightness ?? Brightness.light;
     return brightness == Brightness.light;
+  }
+
+  void popUntil(String route) {
+    final router = GoRouter.of(this);
+    while (getCurrentRoute() != route) {
+      if (!router.canPop()) {
+        return;
+      }
+
+      router.pop();
+    }
+  }
+
+  String getCurrentRoute() {
+    final RouteMatch lastMatch =
+        GoRouter.of(this).routerDelegate.currentConfiguration.last;
+    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
+        ? lastMatch.matches
+        : GoRouter.of(this).routerDelegate.currentConfiguration;
+    return matchList.uri.toString();
+  }
+
+  void popUntilAndPush(
+      {required String popUntil, required String push, Object? extra}) {
+    this.popUntil(popUntil);
+    this.push(push, extra: extra);
   }
 }

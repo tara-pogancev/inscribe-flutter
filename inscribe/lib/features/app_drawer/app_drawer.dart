@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
@@ -14,32 +15,23 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
-  void _navigateHomeRoute(String route) {
-    if (_getCurrentRoute() != route) {
+  void _navigateHomeRoute() {
+    if (context.getCurrentRoute() != Routes.home) {
       Scaffold.of(context).closeDrawer();
-      context.pushReplacement(route);
+      context.popUntil(Routes.home);
     }
   }
 
   void _navigateRoute(String route) {
-    if (_getCurrentRoute() != route) {
+    if (context.getCurrentRoute() != route) {
       Scaffold.of(context).closeDrawer();
 
-      if (_getCurrentRoute() != Routes.home) {
-        context.pushReplacement(route);
+      if (context.getCurrentRoute() != Routes.home) {
+        context.go(route);
       } else {
         context.push(route);
       }
     }
-  }
-
-  String _getCurrentRoute() {
-    final RouteMatch lastMatch =
-        GoRouter.of(context).routerDelegate.currentConfiguration.last;
-    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
-        ? lastMatch.matches
-        : GoRouter.of(context).routerDelegate.currentConfiguration;
-    return matchList.uri.toString();
   }
 
   @override
@@ -64,15 +56,15 @@ class _AppDrawerState extends State<AppDrawer> {
             ),
           ),
           ListTile(
-            enabled: _getCurrentRoute() != Routes.home,
+            enabled: context.getCurrentRoute() != Routes.home,
             leading: const Icon(Icons.home_outlined),
             title: Text(Translations.of(context).drawer.memoirs),
             onTap: () {
-              _navigateHomeRoute(Routes.home);
+              _navigateHomeRoute();
             },
           ),
           ListTile(
-            enabled: _getCurrentRoute() != Routes.archive,
+            enabled: context.getCurrentRoute() != Routes.archive,
             leading: const Icon(Icons.delete_outline),
             title: Text(Translations.of(context).drawer.archive),
             onTap: () {
@@ -80,7 +72,7 @@ class _AppDrawerState extends State<AppDrawer> {
             },
           ),
           ListTile(
-            enabled: _getCurrentRoute() != Routes.settings,
+            enabled: context.getCurrentRoute() != Routes.settings,
             leading: const Icon(Icons.settings_outlined),
             title: Text(Translations.of(context).drawer.settings),
             onTap: () {
@@ -97,30 +89,30 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           if (kDebugMode)
             ListTile(
-              enabled: _getCurrentRoute() != Routes.notifications,
+              enabled: context.getCurrentRoute() != Routes.notifications,
               leading: const Icon(Icons.notifications_outlined),
               title: const Text("[DEBUG] Notifications"),
               onTap: () {
                 _navigateRoute(Routes.notifications);
               },
             ),
-          // Divider(),
-          // ListTile(
-          //   enabled: false,
-          //   leading: Icon(Icons.file_upload),
-          //   title: Text(Translations.of(context).drawer.export),
-          //   onTap: () {
-          //     // _navigateRoute(context, Routes.home);
-          //   },
-          // ),
-          // ListTile(
-          //   enabled: false,
-          //   leading: Icon(Icons.file_download),
-          //   title: Text(Translations.of(context).drawer.import),
-          //   onTap: () {
-          //     // _navigateRoute(context, Routes.home);
-          //   },
-          // ),
+          const Divider(),
+          ListTile(
+            enabled: false,
+            leading: const Icon(Icons.file_upload),
+            title: Text(Translations.of(context).drawer.export),
+            onTap: () {
+              // _navigateRoute(context, Routes.home);
+            },
+          ),
+          ListTile(
+            enabled: false,
+            leading: const Icon(Icons.file_download),
+            title: Text(Translations.of(context).drawer.import),
+            onTap: () {
+              // _navigateRoute(context, Routes.home);
+            },
+          ),
         ],
       ),
     );
