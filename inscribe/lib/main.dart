@@ -60,6 +60,8 @@ void main() async {
 class InscribeApp extends StatefulWidget {
   const InscribeApp({super.key});
 
+  static final router = AppRouter.router();
+
   @override
   State<InscribeApp> createState() => _InscribeAppState();
 }
@@ -84,6 +86,9 @@ class _InscribeAppState extends State<InscribeApp> {
   @override
   Widget build(BuildContext context) {
     final isFirstRun = _sharedPreferencesRepository.getIsFirstRun();
+    if (isFirstRun) {
+      InscribeApp.router.go(Routes.welcome);
+    }
 
     String startRoute = (isFirstRun) ? Routes.welcome : Routes.home;
 
@@ -95,7 +100,7 @@ class _InscribeAppState extends State<InscribeApp> {
       themeCollection: getThemeCollection(context),
       defaultThemeId: AppThemes.light,
       builder: (context, theme) => MaterialApp.router(
-        routerConfig: AppRouter.router(startRoute),
+        routerConfig: InscribeApp.router,
         debugShowCheckedModeBanner: false,
         title: Translations.of(context).appName,
         locale: TranslationProvider.of(context).flutterLocale,

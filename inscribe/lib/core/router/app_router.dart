@@ -53,7 +53,7 @@ class AppRouter {
             ),
           ),
         ],
-        initialLocation: initialLocation ?? Routes.welcome,
+        initialLocation: initialLocation ?? Routes.home,
       );
 }
 

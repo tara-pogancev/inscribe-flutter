@@ -1,6 +1,7 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:inscribe/core/extensions/router_extensions.dart';
 import 'package:inscribe/core/router/app_router.dart';
+import 'package:inscribe/main.dart';
 
 class NotificationController {
   /// Use this method to detect when a new notification or a schedule is created
@@ -30,7 +31,7 @@ class NotificationController {
       ReceivedAction receivedAction) async {
     String noteId = receivedAction.payload?["noteId"] ?? "";
 
-    AppRouter.router().popUntilAndPush(
+    InscribeApp.router.popUntilAndPush(
         popUntil: Routes.home, push: Routes.noteDetails, extra: noteId);
   }
 }

@@ -14,7 +14,7 @@ Developed as a Flutter learning project, Inscribe tackles complex concepts and a
 
 I plan to publish Inscribe on the PlayStore, hoping others will find it as beneficial as I do.
 
-# Development Commands
+# 💻 Development Commands
 
 Generate translations: `dart run slang`
 
@@ -24,22 +24,27 @@ Generate icons: `flutter pub run flutter_launcher_icons`
 
 Rename app: `rename setAppName --targets ios,android,web --value "Inscribe"`
 
-# Planned upcoming features
-- [ ] Reminders
-- [ ] Notifications
+# 🧠 Planned upcoming features
+- [x] Reminders
+- [x] Notifications
 - [ ] Calendar screen
 - [ ] Export data
 - [ ] Import data
 - [ ] More languages
 - [ ] Better animations
+- [ ] Replace AI illustrations with hand-drawn ones <3
 
-# Screenshots
+## 🐞 Known bugs
+- [ ] Visual bug with safe area
+- [x] Notifications not opening specific page
+
+# 🖼 Screenshots
 
 ![Inscribe](assets/git_feature_image.jpg)
 ![Inscribe](assets/feature_graphic.jpg)
 
 
-# Resources
+# 📚 Resources
 [https://www.freepik.com/](https://www.freepik.com/) - Illustrations
 
 [https://playground.com/](https://playground.com/) - AI Generating Illustrations
