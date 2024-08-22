@@ -86,14 +86,14 @@ class _InscribeAppState extends State<InscribeApp> {
   @override
   Widget build(BuildContext context) {
     final isFirstRun = _sharedPreferencesRepository.getIsFirstRun();
-    if (isFirstRun) {
-      InscribeApp.router.go(Routes.welcome);
-    }
-
     String startRoute = (isFirstRun) ? Routes.welcome : Routes.home;
 
     if (kDebugMode) {
       // startRoute = Routes.notifications;
+    }
+
+    if (isFirstRun) {
+      InscribeApp.router.go(startRoute);
     }
 
     return DynamicTheme(

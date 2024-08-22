@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 188 (94 per locale)
+/// Strings: 190 (95 per locale)
 ///
-/// Built on 2024-08-07 at 11:02 UTC
+/// Built on 2024-08-22 at 09:38 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -183,9 +183,10 @@ class _StringsDrawerEn {
 	String get memoirs => 'Memoirs';
 	String get archive => 'Archive';
 	String get settings => 'Settings';
-	String get calendar => 'Calendar [COMING SOON]';
+	String get calendar => 'Calendar';
 	String get export => 'Export [COMING SOON]';
 	String get import => 'Import [COMING SOON]';
+	String get debug_notifications => '[DEBUG] Notifications';
 }
 
 // Path: welcomeScreen
@@ -377,9 +378,10 @@ class _StringsDrawerSr implements _StringsDrawerEn {
 	@override String get memoirs => 'Memoari';
 	@override String get archive => 'Arhiva';
 	@override String get settings => 'Podešavanja';
-	@override String get calendar => 'Kalendar [USKORO]';
+	@override String get calendar => 'Kalendar';
 	@override String get export => 'Izvoz podataka [USKORO]';
 	@override String get import => 'Uvoz podataka [USKORO]';
+	@override String get debug_notifications => '[DEBUG] Obaveštenja';
 }
 
 // Path: welcomeScreen
@@ -528,9 +530,10 @@ extension on Translations {
 			case 'drawer.memoirs': return 'Memoirs';
 			case 'drawer.archive': return 'Archive';
 			case 'drawer.settings': return 'Settings';
-			case 'drawer.calendar': return 'Calendar [COMING SOON]';
+			case 'drawer.calendar': return 'Calendar';
 			case 'drawer.export': return 'Export [COMING SOON]';
 			case 'drawer.import': return 'Import [COMING SOON]';
+			case 'drawer.debug_notifications': return '[DEBUG] Notifications';
 			case 'welcomeScreen.title': return 'Welcome to Inscribe!';
 			case 'welcomeScreen.slides.0': return 'Celebrate friendships with personalized notes on likes, birthdays, and gift ideas.';
 			case 'welcomeScreen.slides.1': return 'Curate thoughtful gift lists for each friend, making every occasion memorable.';
@@ -630,9 +633,10 @@ extension on _StringsSr {
 			case 'drawer.memoirs': return 'Memoari';
 			case 'drawer.archive': return 'Arhiva';
 			case 'drawer.settings': return 'Podešavanja';
-			case 'drawer.calendar': return 'Kalendar [USKORO]';
+			case 'drawer.calendar': return 'Kalendar';
 			case 'drawer.export': return 'Izvoz podataka [USKORO]';
 			case 'drawer.import': return 'Uvoz podataka [USKORO]';
+			case 'drawer.debug_notifications': return '[DEBUG] Obaveštenja';
 			case 'welcomeScreen.title': return 'Dobrodošli u Inscribe!';
 			case 'welcomeScreen.slides.0': return 'Proslavite prijateljstva sa personalizovanim beleškama o omiljenim stvarima, rođendanima i idejama za poklone.';
 			case 'welcomeScreen.slides.1': return 'Kreirajte pažljivo odabrane liste poklona za svakog prijatelja, čineći svaki događaj nezaboravnim.';

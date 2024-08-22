@@ -81,11 +81,11 @@ class _AppDrawerState extends State<AppDrawer> {
             },
           ),
           ListTile(
-            enabled: false,
+            enabled: InscribeApp.router.getCurrentRoute() != Routes.calendar,
             leading: const Icon(Icons.calendar_month),
             title: Text(Translations.of(context).drawer.calendar),
             onTap: () {
-              // _navigateRoute(context, Routes.home);
+              _navigateRoute(Routes.calendar);
             },
           ),
           if (kDebugMode)

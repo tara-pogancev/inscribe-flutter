@@ -18,4 +18,6 @@ abstract class NotesRepository {
   void addAndScheduleReminder(NoteReminder reminder);
 
   Note getNoteById(String noteId);
+
+  List<NoteReminder> getAllReminders();
 }

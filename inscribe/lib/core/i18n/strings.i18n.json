@@ -1,3 +1,122 @@
 {
-  "appName": "Inscribe"
+  "appName": "Inscribe",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "undo": "Undo",
+  "edit": "Edit",
+  "delete": "Delete",
+
+  "errorMessages": {
+    "mandatory_field": "This field is mandatory."
+  },
+
+  "drawer": {
+    "memoirs": "Memoirs",
+    "archive": "Archive",
+    "settings": "Settings",
+    "calendar": "Calendar",
+    "export": "Export [COMING SOON]",
+    "import": "Import [COMING SOON]",
+    "debug_notifications": "[DEBUG] Notifications"
+  },
+
+  "welcomeScreen": {
+    "title": "Welcome to Inscribe!",
+    "slides": [
+      "Celebrate friendships with personalized notes on likes, birthdays, and gift ideas.",
+      "Curate thoughtful gift lists for each friend, making every occasion memorable.",
+      "Take your friendships anywhere - easily download and transfer your data.",
+      "Your privacy matters - enjoy full offline functionality, keeping your data secure.",
+      "Never miss a beat - set reminders for special occasions and events."
+    ],
+    "startButton": "Start noting!"
+  },
+
+  "homeScreen": {
+    "welcome": "Welcome!",
+    "no_notes_title": "No notes found!",
+    "no_notes_subtitle": "Start by adding a friend memoir.",
+    "add_note": "Add note",
+    "pinned": "Pinned",
+    "other": "Other",
+    "search": "Search",
+    "pin_note": "Pin note",
+    "unpin_note": "Unpin note"
+  },
+
+  "newNoteScreen": {
+    "friend_name_hint": "What's their name?",
+    "fields_missing_error": "Sorry! Some fields are missing!",
+    "overview": "Overview",
+    "gift_ideas": "Gift ideas",
+    "gift_ideas_hint": "What would this person love as a gift?",
+    "reminders": "Reminders",
+    "category": "Category",
+    "categories": [
+      "Friend 😄",
+      "Work 💼",
+      "Family 🏠",
+      "School 🎒",
+      "Romantic ❤️‍🔥"
+    ],
+    "date_of_birth": "Date of birth",
+    "description": "Description",
+    "description_hint": "Add any notes you'd like here...",
+    "coming_soon": "Coming soon",
+    "some_fields_are_missing": "Some fields are missing!",
+    "note_saved": "Note succesfully saved!",
+    "archive_note": "Archive note",
+    "archive_note_are_you_sure": "Are you sure you want to archive note for '$name?'",
+    "note_achived": "Note archived!",
+    "select_image": "Select image",
+    "remove_image": "Remove image",
+    "randomize_illusrtation": "Randomize illustration",
+    "unsaved_changes": "Unsaved changes",
+    "save_changes_description": "Do you wish to save your changes?",
+    "save": "Save",
+    "discard": "Discard",
+    "add_reminder": "Add reminder",
+    "annual": "Annual",
+    "this_reminder_will_be_repeated_every_year": "This reminder will be repeated every year",
+    "name": "Name",
+    "date": "Date",
+    "time": "Time",
+    "reminder_deleted": "Reminder deleted!",
+    "no_reminders": "No reminders",
+    "reminder_created": "Reminder created!"
+  },
+
+  "archivedNotes": {
+    "no_archived_notes": "No archived notes!",
+    "no_archived_notes_subtitle": "Your deleted notes will appear here.",
+    "delete_all_notes_forever_dialog_title": "Delete all notes forever",
+    "delete_all_notes_forever_dialog_subtitle": "This action cannot be undone. You archive will be emptied.",
+    "delete_note_forever_dialog_title": "Delete note forever",
+    "delete_note_forever_dialog_subtitle": "This action cannot be undone. You note will be deleted forever.",
+    "restore": "Restore",
+    "delete_forever": "Delete forever",
+    "note_deleted": "Note deleted!",
+    "note_restored": "Note restored!"
+  },
+
+  "settingsScreen": {
+    "app_name_and_version": "Inscribe, v$version",
+    "theme": "Theme",
+    "dark": "Dark theme",
+    "light": "Light theme",
+    "language": "Language",
+    "english": "English",
+    "serbian": "Serbian",
+    "notes_view": "Notes view",
+    "grid_view": "Grid view",
+    "list_view": "List view",
+    "use_dark_theme": "Use dark theme",
+    "dark_theme_description": "Reduce eye strain and save battery",
+    "use_grid_view": "Use grid view",
+    "grid_view_description": "Cards take up less space in a grid view",
+    "visual": "Visual",
+    "system": "System",
+    "change_theme": "Change theme",
+    "this_action_will_restart_the_app": "This action will restart the app"
+  }
 }

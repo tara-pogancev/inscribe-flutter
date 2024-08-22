@@ -124,4 +124,22 @@ class NotesRepositoryImpl implements NotesRepository {
 
     return note.copyWith(reminders: reminders);
   }
+
+  @override
+  List<NoteReminder> getAllReminders() {
+    List<NoteReminder> reminders = [];
+
+    final remindersFromBox =
+        remindersBox.values.map((e) => e.cast<String, dynamic>()).toList();
+
+    for (var reminderData in remindersFromBox) {
+      final reminder = NoteReminder.fromJson(reminderData);
+      reminders.add(reminder);
+    }
+
+    reminders.sort((a, b) =>
+        b.date.millisecondsSinceEpoch - a.date.millisecondsSinceEpoch);
+
+    return reminders;
+  }
 }

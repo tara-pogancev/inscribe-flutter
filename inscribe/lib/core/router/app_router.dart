@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/router/navigation_transitions.dart';
 import 'package:inscribe/features/archive/ui/archive_screen.dart';
+import 'package:inscribe/features/calendar/ui/calendar_screen.dart';
 import 'package:inscribe/features/home/ui/home_screen.dart';
 import 'package:inscribe/features/new_note/ui/new_note_screen.dart';
 import 'package:inscribe/features/scheduled_notifications_debug_view/scheduled_notifications_screen.dart';
@@ -52,6 +53,12 @@ class AppRouter {
               const ScheduledNotificationsScreen(),
             ),
           ),
+          GoRoute(
+            path: Routes.calendar,
+            pageBuilder: defaultPageBuilder(
+              const CalendarScreen(),
+            ),
+          ),
         ],
         initialLocation: initialLocation ?? Routes.home,
       );
@@ -64,5 +71,6 @@ class Routes {
   static const newNote = '/new-note';
   static const archive = '/archive';
   static const settings = '/settings';
+  static const calendar = '/calendar';
   static const notifications = '/notifications';
 }

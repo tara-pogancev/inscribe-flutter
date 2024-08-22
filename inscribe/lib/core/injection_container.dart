@@ -1,14 +1,15 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
-import 'package:inscribe/core/data/repositories/notes/notes_repository_impl.dart';
-import 'package:inscribe/core/data/repositories/notifications/notifications_repository_impl.dart';
-import 'package:inscribe/core/data/repositories/shared_preferences/shared_preferences_repository_impl.dart';
 import 'package:inscribe/core/data/repositories/notes/notes_repository.dart';
+import 'package:inscribe/core/data/repositories/notes/notes_repository_impl.dart';
 import 'package:inscribe/core/data/repositories/notifications/notifications_repository.dart';
+import 'package:inscribe/core/data/repositories/notifications/notifications_repository_impl.dart';
 import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
+import 'package:inscribe/core/data/repositories/shared_preferences/shared_preferences_repository_impl.dart';
 import 'package:inscribe/core/presentation/bloc/delete_note_bloc/delete_note_bloc.dart';
 import 'package:inscribe/features/archive/cubit/archive_cubit.dart';
+import 'package:inscribe/features/calendar/cubit/calendar_cubit.dart';
 import 'package:inscribe/features/home/bloc/home_bloc.dart';
 import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
 import 'package:inscribe/features/scheduled_notifications_debug_view/cubit/scheduled_notifications_cubit.dart';
@@ -52,5 +53,6 @@ class IC {
     getIt.registerLazySingleton(() => DeleteNoteBloc());
     getIt.registerLazySingleton(() => ArchiveCubit());
     getIt.registerLazySingleton(() => ScheduledNotificationsCubit());
+    getIt.registerLazySingleton(() => CalendarCubit());
   }
 }

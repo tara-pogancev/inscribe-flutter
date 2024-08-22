@@ -35,7 +35,7 @@ Rename app: `rename setAppName --targets ios,android,web --value "Inscribe"`
 - [ ] Replace AI illustrations with hand-drawn ones <3
 
 ## 🐞 Known bugs
-- [ ] Visual bug with safe area
+- [x] Visual bug with safe area
 - [x] Notifications not opening specific page
 
 # 🖼 Screenshots
