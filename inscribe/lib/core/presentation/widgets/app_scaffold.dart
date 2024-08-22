@@ -8,13 +8,11 @@ class AppScaffold extends StatelessWidget {
       {super.key,
       required this.child,
       this.includeDefaultPadding = false,
-      this.includeTopPadding = false,
       this.enableDrawer = false,
       this.fab});
 
   final Widget child;
   final bool includeDefaultPadding;
-  final bool includeTopPadding;
 
   final bool enableDrawer;
   final Widget? fab;
@@ -28,13 +26,14 @@ class AppScaffold extends StatelessWidget {
       body: SingleChildScrollView(
         physics:
             const ClampingScrollPhysics(parent: NeverScrollableScrollPhysics()),
-        child: SizedBox(
-          height: context.getScreenHeight(),
-          child: Padding(
-            padding: EdgeInsets.all((includeDefaultPadding) ? 20 : 0),
+        child: SafeArea(
+          top: includeDefaultPadding,
+          child: SizedBox(
+            height: context.getScreenHeight(),
             child: Padding(
-              padding: EdgeInsets.only(
-                  top: (includeDefaultPadding || includeTopPadding) ? 30 : 0),
+              padding: (includeDefaultPadding)
+                  ? const EdgeInsets.only(bottom: 20, left: 20, right: 20)
+                  : EdgeInsets.zero,
               child: child,
             ),
           ),
