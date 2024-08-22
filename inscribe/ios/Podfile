@@ -54,4 +54,3 @@ awesome_pod_file = File.expand_path(File.join('plugins', 'awesome_notifications'
 require awesome_pod_file
 update_awesome_main_target_settings('Runner', File.dirname(File.realpath(__FILE__)), flutter_root)
 ################  Awesome Notifications pod modification 2 ###################
-

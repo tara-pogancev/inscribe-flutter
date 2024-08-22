@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:inscribe/core/extensions/context_extensions.dart';
+import 'package:inscribe/core/extensions/router_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
@@ -16,20 +16,20 @@ class AppDrawer extends StatefulWidget {
 
 class _AppDrawerState extends State<AppDrawer> {
   void _navigateHomeRoute() {
-    if (context.getCurrentRoute() != Routes.home) {
+    if (GoRouter.of(context).getCurrentRoute() != Routes.home) {
       Scaffold.of(context).closeDrawer();
-      context.popUntil(Routes.home);
+      GoRouter.of(context).popUntil(Routes.home);
     }
   }
 
   void _navigateRoute(String route) {
-    if (context.getCurrentRoute() != route) {
+    if (GoRouter.of(context).getCurrentRoute() != route) {
       Scaffold.of(context).closeDrawer();
 
-      if (context.getCurrentRoute() != Routes.home) {
+      if (GoRouter.of(context).getCurrentRoute() != Routes.home) {
         context.go(route);
       } else {
-        context.push(route);
+        GoRouter.of(context).push(route);
       }
     }
   }
@@ -56,7 +56,7 @@ class _AppDrawerState extends State<AppDrawer> {
             ),
           ),
           ListTile(
-            enabled: context.getCurrentRoute() != Routes.home,
+            enabled: GoRouter.of(context).getCurrentRoute() != Routes.home,
             leading: const Icon(Icons.home_outlined),
             title: Text(Translations.of(context).drawer.memoirs),
             onTap: () {
@@ -64,7 +64,7 @@ class _AppDrawerState extends State<AppDrawer> {
             },
           ),
           ListTile(
-            enabled: context.getCurrentRoute() != Routes.archive,
+            enabled: GoRouter.of(context).getCurrentRoute() != Routes.archive,
             leading: const Icon(Icons.delete_outline),
             title: Text(Translations.of(context).drawer.archive),
             onTap: () {
@@ -72,7 +72,7 @@ class _AppDrawerState extends State<AppDrawer> {
             },
           ),
           ListTile(
-            enabled: context.getCurrentRoute() != Routes.settings,
+            enabled: GoRouter.of(context).getCurrentRoute() != Routes.settings,
             leading: const Icon(Icons.settings_outlined),
             title: Text(Translations.of(context).drawer.settings),
             onTap: () {
@@ -89,7 +89,8 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           if (kDebugMode)
             ListTile(
-              enabled: context.getCurrentRoute() != Routes.notifications,
+              enabled: GoRouter.of(context).getCurrentRoute() !=
+                  Routes.notifications,
               leading: const Icon(Icons.notifications_outlined),
               title: const Text("[DEBUG] Notifications"),
               onTap: () {

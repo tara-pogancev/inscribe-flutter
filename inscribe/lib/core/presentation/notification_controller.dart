@@ -1,7 +1,5 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:inscribe/core/injection_container.dart';
+import 'package:inscribe/core/extensions/router_extensions.dart';
 import 'package:inscribe/core/router/app_router.dart';
 
 class NotificationController {
@@ -32,10 +30,7 @@ class NotificationController {
       ReceivedAction receivedAction) async {
     String noteId = receivedAction.payload?["noteId"] ?? "";
 
-
-
-    // IC.getIt<BuildContext>().popUntilAndPush(
-    //     popUntil: Routes.home, push: Routes.settings, extra: noteId);
-
+    AppRouter.router().popUntilAndPush(
+        popUntil: Routes.home, push: Routes.noteDetails, extra: noteId);
   }
 }

@@ -40,29 +40,4 @@ extension ContextExtensions on BuildContext {
     return brightness == Brightness.light;
   }
 
-  void popUntil(String route) {
-    final router = GoRouter.of(this);
-    while (getCurrentRoute() != route) {
-      if (!router.canPop()) {
-        return;
-      }
-
-      router.pop();
-    }
-  }
-
-  String getCurrentRoute() {
-    final RouteMatch lastMatch =
-        GoRouter.of(this).routerDelegate.currentConfiguration.last;
-    final RouteMatchList matchList = lastMatch is ImperativeRouteMatch
-        ? lastMatch.matches
-        : GoRouter.of(this).routerDelegate.currentConfiguration;
-    return matchList.uri.toString();
-  }
-
-  void popUntilAndPush(
-      {required String popUntil, required String push, Object? extra}) {
-    this.popUntil(popUntil);
-    this.push(push, extra: extra);
-  }
 }
