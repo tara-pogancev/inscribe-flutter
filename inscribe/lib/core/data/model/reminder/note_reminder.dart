@@ -17,4 +17,26 @@ class NoteReminder with _$NoteReminder {
 
   factory NoteReminder.fromJson(Map<String, dynamic> json) =>
       _$NoteReminderFromJson(json);
+
+  //*
+  // Chceks if an event is in a defined month radius from the passed date.
+  // For example, if the date is current, and the radius is 1 month, all events
+  // from last, current and next month will pass the check.
+  // */
+  bool isInMonthsRadius(DateTime centerDate, int eventsVisibleInMonthsRadius) {
+    DateTime startDate = DateTime(
+      centerDate.year,
+      centerDate.month - eventsVisibleInMonthsRadius,
+      centerDate.day,
+    );
+
+    DateTime endDate = DateTime(
+      centerDate.year,
+      centerDate.month + eventsVisibleInMonthsRadius,
+      centerDate.day,
+    );
+
+    // Check if the event date is within the start and end date range
+    return date.isAfter(startDate) && date.isBefore(endDate);
+  }
 }
