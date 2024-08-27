@@ -1,6 +1,5 @@
 import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 extension ContextExtensions on BuildContext {
   void showSnackbar(
@@ -39,5 +38,4 @@ extension ContextExtensions on BuildContext {
         DynamicTheme.of(this)?.theme.brightness ?? Brightness.light;
     return brightness == Brightness.light;
   }
-
 }
