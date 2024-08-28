@@ -64,10 +64,12 @@ android {
 
    signingConfigs {
        release {
-           keyAlias keystoreProperties['RELEASE_KEY_ALIAS']
-           keyPassword keystoreProperties['RELEASE_KEY_PASSWORD']
-           storeFile keystoreProperties['RELEASE_STORE_FILE'] ? file(keystoreProperties['RELEASE_STORE_FILE']) : null
-           storePassword keystoreProperties['RELEASE_STORE_PASSWORD']
+        if (keystoreProperties['RELEASE_KEY_ALIAS'] != null) {
+                keyAlias keystoreProperties['RELEASE_KEY_ALIAS']
+                keyPassword keystoreProperties['RELEASE_KEY_PASSWORD']
+                storeFile keystoreProperties['RELEASE_STORE_FILE'] ? file(keystoreProperties['RELEASE_STORE_FILE']) : null
+                storePassword keystoreProperties['RELEASE_STORE_PASSWORD']
+            }
        }
    }
    buildTypes {
