@@ -64,20 +64,21 @@ android {
 
    signingConfigs {
        release {
-        if (keystoreProperties['RELEASE_KEY_ALIAS'] != null) {
-                keyAlias keystoreProperties['RELEASE_KEY_ALIAS']
-                keyPassword keystoreProperties['RELEASE_KEY_PASSWORD']
-                storeFile keystoreProperties['RELEASE_STORE_FILE'] ? file(keystoreProperties['RELEASE_STORE_FILE']) : null
-                storePassword keystoreProperties['RELEASE_STORE_PASSWORD']
-            }
+            keyAlias keystoreProperties['RELEASE_KEY_ALIAS']
+            keyPassword keystoreProperties['RELEASE_KEY_PASSWORD']
+            storeFile keystoreProperties['RELEASE_STORE_FILE'] ? file(keystoreProperties['RELEASE_STORE_FILE']) : null
+            storePassword keystoreProperties['RELEASE_STORE_PASSWORD']
        }
    }
    buildTypes {
        release {
-           signingConfig signingConfigs.release
+            if (keystoreProperties['RELEASE_KEY_ALIAS'] == null) {
+                 signingConfig signingConfigs.debug
+            } else {
+                 signingConfig signingConfigs.release
+            }
        }
    }
-
 }
 
 flutter {
