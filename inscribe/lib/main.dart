@@ -5,6 +5,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:inscribe/core/consts.dart';
@@ -59,7 +60,7 @@ void main() async {
 class InscribeApp extends StatefulWidget {
   const InscribeApp({super.key});
 
-  static final router = AppRouter.router();
+  static GoRouter router = AppRouter.router();
 
   @override
   State<InscribeApp> createState() => _InscribeAppState();
@@ -88,29 +89,28 @@ class _InscribeAppState extends State<InscribeApp> {
     String startRoute = (isFirstRun) ? Routes.welcome : Routes.home;
 
     if (kDebugMode) {
-      startRoute = Routes.calendar;
-    }
-
-    if (isFirstRun) {
-      InscribeApp.router.go(startRoute);
+      // startRoute = Routes.calendar;
     }
 
     return DynamicTheme(
       themeCollection: getThemeCollection(context),
       defaultThemeId: AppThemes.light,
-      builder: (context, theme) => MaterialApp.router(
-        routerConfig: InscribeApp.router,
-        debugShowCheckedModeBanner: false,
-        title: Translations.of(context).appName,
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        locale: TranslationProvider.of(context).flutterLocale,
-        supportedLocales: AppLocaleUtils.supportedLocales,
-        theme: theme,
-      ),
+      builder: (context, theme) {
+        InscribeApp.router = AppRouter.router(startRoute);
+        return MaterialApp.router(
+          routerConfig: InscribeApp.router,
+          debugShowCheckedModeBanner: false,
+          title: Translations.of(context).appName,
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          locale: TranslationProvider.of(context).flutterLocale,
+          supportedLocales: AppLocaleUtils.supportedLocales,
+          theme: theme,
+        );
+      },
     );
   }
 }
