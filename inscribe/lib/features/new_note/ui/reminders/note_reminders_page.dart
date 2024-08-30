@@ -7,6 +7,7 @@ import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
+import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/app_button.dart';
 import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
 import 'package:inscribe/features/new_note/ui/reminders/new_reminder_dialog.dart';
@@ -74,7 +75,10 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
             bloc: _bloc,
             builder: (context, state) {
               return (state.note.reminders.isEmpty)
-                  ? Text(Translations.of(context).newNoteScreen.no_reminders)
+                  ? Text(
+                      Translations.of(context).newNoteScreen.no_reminders,
+                      style: AppTextStyles.of(context).defaultText,
+                    )
                   : ListView.separated(
                       itemCount: state.note.reminders.length,
                       shrinkWrap: true,

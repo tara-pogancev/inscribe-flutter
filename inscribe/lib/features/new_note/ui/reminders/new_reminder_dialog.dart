@@ -4,6 +4,7 @@ import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
 import 'package:inscribe/core/extensions/date_extensions.dart';
 import 'package:inscribe/core/extensions/field_validation_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
+import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/form_fields/app_date_form_field.dart';
 import 'package:inscribe/core/presentation/widgets/form_fields/app_form_field.dart';
@@ -81,6 +82,7 @@ class _NewReminderDialogState extends State<NewReminderDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: AppColorScheme.of(context).beige,
       content: Form(
         key: _key,
         child: Column(
@@ -130,11 +132,16 @@ class _NewReminderDialogState extends State<NewReminderDialog> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Text(Translations.of(context).newNoteScreen.time),
+                    Text(
+                      Translations.of(context).newNoteScreen.time,
+                      style: AppTextStyles.of(context).defaultText,
+                    ),
                     const Spacer(),
                     Text(
                       selectedDateTime.formatTimeOfDayString(),
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: AppTextStyles.of(context)
+                          .defaultText
+                          .copyWith(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -144,7 +151,8 @@ class _NewReminderDialogState extends State<NewReminderDialog> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Text(Translations.of(context).newNoteScreen.annual),
+                  Text(Translations.of(context).newNoteScreen.annual,
+                      style: AppTextStyles.of(context).defaultText),
                   const Spacer(),
                   Checkbox(
                     value: isAnual,

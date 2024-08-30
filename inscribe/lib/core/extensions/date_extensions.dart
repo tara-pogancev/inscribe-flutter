@@ -4,7 +4,8 @@ const dateFormat = "dd MMM yyyy";
 const timeOfDayFormat = "HH:mm";
 const fullDateTimeFormat = "dd MMM yy, HH:mm";
 const fullDateTimeFormatNoYear = "dd MMM, HH:mm";
-const monthCalendarHeader = "MMM yyyy";
+const monthCalendarHeader = "MMMM, yyyy";
+const dayCalendarHeader = "E";
 
 extension DateExtensions on DateTime {
   String formatString() {
@@ -65,5 +66,12 @@ extension DateExtensions on DateTime {
 extension StringDateExtensions on String {
   DateTime parseDateString() {
     return DateFormat(dateFormat).parse(this);
+  }
+}
+
+extension IntDateExtensions on int {
+  String formatDayCalendar() {
+    DateTime dateTime = DateTime(1970, 1, 4 + this);
+    return (DateFormat(dayCalendarHeader).format(dateTime)).substring(0, 1);
   }
 }

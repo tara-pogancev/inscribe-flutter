@@ -5,6 +5,7 @@ import 'package:inscribe/core/extensions/date_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
+import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
 import 'package:inscribe/core/presentation/widgets/default_app_header.dart';
 import 'package:inscribe/features/calendar/cubit/calendar_cubit.dart';
@@ -84,12 +85,25 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 controller: eventController,
                 child: Expanded(
                   child: MonthView(
-                    headerStringBuilder: (date, {secondaryDate}) =>
-                        date.formatMonthCalendarHeaderString(),
-                    headerStyle: HeaderStyle(
-                      decoration: BoxDecoration(
-                        color: AppColorScheme.of(context).beige,
+                    headerBuilder: (date) => Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(date.formatMonthCalendarHeaderString(),
+                            style: AppTextStyles.of(context).cardPrimaryText),
                       ),
+                    ),
+                    weekDayBuilder: (dayNumber) => Container(
+                      color: AppColorScheme.of(context).white,
+                      child: Center(
+                          child: Padding(
+                        padding: const EdgeInsets.all(4),
+                        child: Text(
+                          dayNumber.formatDayCalendar(),
+                          style: AppTextStyles.of(context)
+                              .defaultText
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      )),
                     ),
                     onPageChange: (date, page) => onMonthChange(date),
                     borderColor: AppColorScheme.of(context).beige,

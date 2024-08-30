@@ -73,19 +73,19 @@ class _AppDrawerState extends State<AppDrawer> {
             },
           ),
           ListTile(
-            enabled: InscribeApp.router.getCurrentRoute() != Routes.settings,
-            leading: const Icon(Icons.settings_outlined),
-            title: Text(Translations.of(context).drawer.settings),
-            onTap: () {
-              _navigateRoute(Routes.settings);
-            },
-          ),
-          ListTile(
             enabled: InscribeApp.router.getCurrentRoute() != Routes.calendar,
             leading: const Icon(Icons.calendar_month),
             title: Text(Translations.of(context).drawer.calendar),
             onTap: () {
               _navigateRoute(Routes.calendar);
+            },
+          ),
+          ListTile(
+            enabled: InscribeApp.router.getCurrentRoute() != Routes.settings,
+            leading: const Icon(Icons.settings_outlined),
+            title: Text(Translations.of(context).drawer.settings),
+            onTap: () {
+              _navigateRoute(Routes.settings);
             },
           ),
           if (kDebugMode)

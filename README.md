@@ -31,16 +31,16 @@ Rename app: `rename setAppName --targets ios,android,web --value "Inscribe"`
 - [ ] Export data
 - [ ] Import data
 - [ ] More languages
-- [ ] Better animations
+- [ ] Better animations on friend screen
 - [ ] Replace AI illustrations with hand-drawn ones <3
 
 ## 🐞 Known bugs
 - [x] Visual bug with safe area
 - [x] Notifications not opening specific page
 - [x] iOS language change
-- [ ] Dates localization
+- [ ] Dates formatting localization
 - [ ] Localization persisting after app quitting
-- [ ] iOS theme change
+- [x] iOS theme change
 
 # 🖼 Screenshots
 
