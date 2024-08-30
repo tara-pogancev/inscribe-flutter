@@ -32,7 +32,7 @@ class AppScaffold extends StatelessWidget {
             height: context.getScreenHeight(),
             child: Padding(
               padding: (includeDefaultPadding)
-                  ? const EdgeInsets.only(bottom: 20, left: 20, right: 20)
+                  ? const EdgeInsets.all(20)
                   : EdgeInsets.zero,
               child: child,
             ),

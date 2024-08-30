@@ -24,7 +24,6 @@ void main() async {
   await Hive.openBox(hiveRemindersBox);
   IC.setUp();
   GoogleFonts.config.allowRuntimeFetching = true;
-  LocaleSettings.useDeviceLocale();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -89,7 +88,7 @@ class _InscribeAppState extends State<InscribeApp> {
     String startRoute = (isFirstRun) ? Routes.welcome : Routes.home;
 
     if (kDebugMode) {
-      // startRoute = Routes.notifications;
+      startRoute = Routes.calendar;
     }
 
     if (isFirstRun) {
@@ -103,8 +102,13 @@ class _InscribeAppState extends State<InscribeApp> {
         routerConfig: InscribeApp.router,
         debugShowCheckedModeBanner: false,
         title: Translations.of(context).appName,
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         locale: TranslationProvider.of(context).flutterLocale,
-        localizationsDelegates: GlobalMaterialLocalizations.delegates,
+        supportedLocales: AppLocaleUtils.supportedLocales,
         theme: theme,
       ),
     );

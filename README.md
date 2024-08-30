@@ -37,6 +37,10 @@ Rename app: `rename setAppName --targets ios,android,web --value "Inscribe"`
 ## 🐞 Known bugs
 - [x] Visual bug with safe area
 - [x] Notifications not opening specific page
+- [x] iOS language change
+- [ ] Dates localization
+- [ ] Localization persisting after app quitting
+- [ ] iOS theme change
 
 # 🖼 Screenshots
 

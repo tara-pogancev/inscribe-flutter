@@ -17,13 +17,12 @@ class SettingsThemePicker extends StatefulWidget {
 class _SettingsThemePickerState extends State<SettingsThemePicker> {
   bool isDarkTheme = false;
 
-  void _setIsDarkTheme(BuildContext context, bool isDarkTheme) async {
+  void _setIsDarkTheme(bool isDarkTheme) async {
     final shouldChangeTheme = await showDialog(
         context: context,
         builder: (context) => const ThemeChangeDialog()) as bool?;
 
     if (shouldChangeTheme ?? false) {
-      // ignore: use_build_context_synchronously
       DynamicTheme.of(context)
           ?.setTheme(isDarkTheme ? AppThemes.dark : AppThemes.light);
 
@@ -66,11 +65,14 @@ class _SettingsThemePickerState extends State<SettingsThemePicker> {
               ),
             ],
           ),
+          const SizedBox(
+            width: 10,
+          ),
           Flexible(
             child: Switch(
               value: isDarkTheme,
               onChanged: (value) {
-                _setIsDarkTheme(context, value);
+                _setIsDarkTheme(value);
               },
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:calendar_view/calendar_view.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inscribe/core/extensions/date_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
@@ -17,20 +18,48 @@ class CalendarScreen extends StatefulWidget {
 
 class _CalendarScreenState extends State<CalendarScreen> {
   final cubit = IC.getIt<CalendarCubit>();
+  EventController eventController = EventController();
 
   @override
   void initState() {
     super.initState();
     cubit.initState();
+    setVisibleEventsForCalendar();
   }
 
-  EventController getVisibleEventsForCalendar(
-      List<CalendarEventData> visibleReminders) {
-    final eventController = EventController();
+  void setVisibleEventsForCalendar() {
+    eventController = EventController();
 
-    eventController.addAll(visibleReminders);
+    final stateEvents = cubit.state.visibleEvents;
 
-    return eventController;
+    final caneldarEvents = stateEvents
+        .map(
+          (e) => CalendarEventData(
+            title: e.title,
+            date: e.date,
+            color: getEventColorForType(
+              e.event as CalendarEventType,
+            ),
+          ),
+        )
+        .toList();
+
+    eventController.addAll(caneldarEvents);
+  }
+
+  Color getEventColorForType(CalendarEventType type) {
+    switch (type) {
+      case CalendarEventType.birthday:
+        return AppColorScheme.of(context).red;
+      case CalendarEventType.anualEvent:
+        return AppColorScheme.of(context).mediumGray;
+      case CalendarEventType.oneTimeEvent:
+        return AppColorScheme.of(context).black;
+    }
+  }
+
+  void onMonthChange(DateTime centerDate) {
+    cubit.setVisibleEvents(centerDate);
   }
 
   @override
@@ -46,41 +75,46 @@ class _CalendarScreenState extends State<CalendarScreen> {
             DefaultAppHeader(
               title: Translations.of(context).drawer.calendar,
             ),
-            BlocBuilder<CalendarCubit, CalendarState>(
+            BlocListener<CalendarCubit, CalendarState>(
               bloc: cubit,
-              builder: (context, state) {
-                return CalendarControllerProvider(
-                  controller: getVisibleEventsForCalendar(state.visibleEvents),
-                  child: Expanded(
-                    child: MonthView(
-                      // headerStringBuilder: (date, {secondaryDate}) =>
-                      //     date.toString(),
-                      headerStyle: HeaderStyle(
-                        decoration: BoxDecoration(
-                          color: AppColorScheme.of(context).beige,
-                        ),
-                      ),
-                      borderColor: AppColorScheme.of(context).beige,
-                      showWeekTileBorder: false,
-                      cellBuilder: (date, events, isToday, isInMonth,
-                              hideDaysNotInMonth) =>
-                          FilledCell(
-                        date: date,
-                        shouldHighlight: isToday,
-                        titleColor: AppColorScheme.of(context).black,
-                        highlightColor:
-                            AppColorScheme.of(context).gray.withOpacity(0.75),
-                        backgroundColor: isInMonth
-                            ? AppColorScheme.of(context).white
-                            : AppColorScheme.of(context).white.withOpacity(0.4),
-                        events: events,
-                        onTileTap: (event, date) {},
-                        hideDaysNotInMonth: hideDaysNotInMonth,
+              listener: (context, state) {
+                setVisibleEventsForCalendar();
+              },
+              child: CalendarControllerProvider(
+                controller: eventController,
+                child: Expanded(
+                  child: MonthView(
+                    headerStringBuilder: (date, {secondaryDate}) =>
+                        date.formatMonthCalendarHeaderString(),
+                    headerStyle: HeaderStyle(
+                      decoration: BoxDecoration(
+                        color: AppColorScheme.of(context).beige,
                       ),
                     ),
+                    onPageChange: (date, page) => onMonthChange(date),
+                    borderColor: AppColorScheme.of(context).beige,
+                    showWeekTileBorder: false,
+                    cellBuilder: (date, events, isToday, isInMonth,
+                            hideDaysNotInMonth) =>
+                        FilledCell(
+                      date: date,
+                      shouldHighlight: isToday,
+                      titleColor: AppColorScheme.of(context).black,
+                      highlightColor:
+                          AppColorScheme.of(context).gray.withOpacity(0.75),
+                      backgroundColor: isInMonth
+                          ? AppColorScheme.of(context).white
+                          : AppColorScheme.of(context).white.withOpacity(0.4),
+                      events: events,
+                      onTileTap: (event, date) {},
+                      hideDaysNotInMonth: hideDaysNotInMonth,
+                    ),
+                    onCellTap: (events, date) {
+                      // TODO
+                    },
                   ),
-                );
-              },
+                ),
+              ),
             )
           ],
         ),

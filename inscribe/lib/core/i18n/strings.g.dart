@@ -6,7 +6,7 @@
 /// Locales: 2
 /// Strings: 190 (95 per locale)
 ///
-/// Built on 2024-08-26 at 13:35 UTC
+/// Built on 2024-08-29 at 12:58 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -26,7 +26,7 @@ const AppLocale _baseLocale = AppLocale.en;
 /// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
 	en(languageCode: 'en', build: Translations.build),
-	sr(languageCode: 'sr', build: _StringsSr.build);
+	srLatn(languageCode: 'sr', scriptCode: 'Latn', build: _StringsSrLatn.build);
 
 	const AppLocale({required this.languageCode, this.scriptCode, this.countryCode, required this.build}); // ignore: unused_element
 
@@ -320,13 +320,13 @@ class _StringsSettingsScreenEn {
 }
 
 // Path: <root>
-class _StringsSr implements Translations {
+class _StringsSrLatn implements Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsSr.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	_StringsSrLatn.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
-		    locale: AppLocale.sr,
+		    locale: AppLocale.srLatn,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
@@ -334,13 +334,13 @@ class _StringsSr implements Translations {
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
-	/// Metadata for the translations of <sr>.
+	/// Metadata for the translations of <sr-Latn>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
 	@override dynamic operator[](String key) => $meta.getTranslation(key);
 
-	@override late final _StringsSr _root = this; // ignore: unused_field
+	@override late final _StringsSrLatn _root = this; // ignore: unused_field
 
 	// Translations
 	@override String get appName => 'Inscribe';
@@ -349,30 +349,30 @@ class _StringsSr implements Translations {
 	@override String get undo => 'Poništi';
 	@override String get edit => 'Izmeni';
 	@override String get delete => 'Obriši';
-	@override late final _StringsErrorMessagesSr errorMessages = _StringsErrorMessagesSr._(_root);
-	@override late final _StringsDrawerSr drawer = _StringsDrawerSr._(_root);
-	@override late final _StringsWelcomeScreenSr welcomeScreen = _StringsWelcomeScreenSr._(_root);
-	@override late final _StringsHomeScreenSr homeScreen = _StringsHomeScreenSr._(_root);
-	@override late final _StringsNewNoteScreenSr newNoteScreen = _StringsNewNoteScreenSr._(_root);
-	@override late final _StringsArchivedNotesSr archivedNotes = _StringsArchivedNotesSr._(_root);
-	@override late final _StringsSettingsScreenSr settingsScreen = _StringsSettingsScreenSr._(_root);
+	@override late final _StringsErrorMessagesSrLatn errorMessages = _StringsErrorMessagesSrLatn._(_root);
+	@override late final _StringsDrawerSrLatn drawer = _StringsDrawerSrLatn._(_root);
+	@override late final _StringsWelcomeScreenSrLatn welcomeScreen = _StringsWelcomeScreenSrLatn._(_root);
+	@override late final _StringsHomeScreenSrLatn homeScreen = _StringsHomeScreenSrLatn._(_root);
+	@override late final _StringsNewNoteScreenSrLatn newNoteScreen = _StringsNewNoteScreenSrLatn._(_root);
+	@override late final _StringsArchivedNotesSrLatn archivedNotes = _StringsArchivedNotesSrLatn._(_root);
+	@override late final _StringsSettingsScreenSrLatn settingsScreen = _StringsSettingsScreenSrLatn._(_root);
 }
 
 // Path: errorMessages
-class _StringsErrorMessagesSr implements _StringsErrorMessagesEn {
-	_StringsErrorMessagesSr._(this._root);
+class _StringsErrorMessagesSrLatn implements _StringsErrorMessagesEn {
+	_StringsErrorMessagesSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String get mandatory_field => 'Ovo polje je obavezno.';
 }
 
 // Path: drawer
-class _StringsDrawerSr implements _StringsDrawerEn {
-	_StringsDrawerSr._(this._root);
+class _StringsDrawerSrLatn implements _StringsDrawerEn {
+	_StringsDrawerSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String get memoirs => 'Memoari';
@@ -385,10 +385,10 @@ class _StringsDrawerSr implements _StringsDrawerEn {
 }
 
 // Path: welcomeScreen
-class _StringsWelcomeScreenSr implements _StringsWelcomeScreenEn {
-	_StringsWelcomeScreenSr._(this._root);
+class _StringsWelcomeScreenSrLatn implements _StringsWelcomeScreenEn {
+	_StringsWelcomeScreenSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Dobrodošli u Inscribe!';
@@ -403,10 +403,10 @@ class _StringsWelcomeScreenSr implements _StringsWelcomeScreenEn {
 }
 
 // Path: homeScreen
-class _StringsHomeScreenSr implements _StringsHomeScreenEn {
-	_StringsHomeScreenSr._(this._root);
+class _StringsHomeScreenSrLatn implements _StringsHomeScreenEn {
+	_StringsHomeScreenSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String get welcome => 'Dobrodošli!';
@@ -421,10 +421,10 @@ class _StringsHomeScreenSr implements _StringsHomeScreenEn {
 }
 
 // Path: newNoteScreen
-class _StringsNewNoteScreenSr implements _StringsNewNoteScreenEn {
-	_StringsNewNoteScreenSr._(this._root);
+class _StringsNewNoteScreenSrLatn implements _StringsNewNoteScreenEn {
+	_StringsNewNoteScreenSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String get friend_name_hint => 'Kako se zove?';
@@ -469,10 +469,10 @@ class _StringsNewNoteScreenSr implements _StringsNewNoteScreenEn {
 }
 
 // Path: archivedNotes
-class _StringsArchivedNotesSr implements _StringsArchivedNotesEn {
-	_StringsArchivedNotesSr._(this._root);
+class _StringsArchivedNotesSrLatn implements _StringsArchivedNotesEn {
+	_StringsArchivedNotesSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String get no_archived_notes => 'Nema arhiviranih beležaka!';
@@ -488,10 +488,10 @@ class _StringsArchivedNotesSr implements _StringsArchivedNotesEn {
 }
 
 // Path: settingsScreen
-class _StringsSettingsScreenSr implements _StringsSettingsScreenEn {
-	_StringsSettingsScreenSr._(this._root);
+class _StringsSettingsScreenSrLatn implements _StringsSettingsScreenEn {
+	_StringsSettingsScreenSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String app_name_and_version({required Object version}) => 'Inscribe, v${version}';
@@ -620,7 +620,7 @@ extension on Translations {
 	}
 }
 
-extension on _StringsSr {
+extension on _StringsSrLatn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'appName': return 'Inscribe';

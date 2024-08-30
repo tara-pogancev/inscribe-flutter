@@ -17,7 +17,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  String appVersion = '1.0.0';
+  late String appVersion = "";
 
   @override
   void initState() {

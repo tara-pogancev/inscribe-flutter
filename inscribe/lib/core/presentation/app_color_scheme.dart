@@ -38,6 +38,7 @@ class AppColorScheme {
   final Color beige;
   final Color white;
   final Color red;
+  final Color mediumGray;
 
   BuildContext? context;
 
@@ -46,14 +47,16 @@ class AppColorScheme {
         gray = _getActiveScheme(context).gray,
         beige = _getActiveScheme(context).beige,
         white = _getActiveScheme(context).white,
-        red = _getActiveScheme(context).red;
+        red = _getActiveScheme(context).red,
+        mediumGray = _getActiveScheme(context).mediumGray;
 
   AppColorScheme(
       {required this.black,
       required this.gray,
       required this.beige,
       required this.white,
-      required this.red});
+      required this.red,
+      required this.mediumGray});
 }
 
 AppColorScheme _getActiveScheme(BuildContext context) {
@@ -65,11 +68,13 @@ final lightAppColorScheme = AppColorScheme(
     gray: const Color(0xff282D33),
     beige: const Color(0xffE5E2DD),
     white: const Color(0xffFFFFFF),
-    red: const Color(0xffde7878));
+    red: const Color(0xffde7878),
+    mediumGray: const Color.fromARGB(255, 81, 92, 105));
 
 final darkAppColorScheme = AppColorScheme(
     black: const Color(0xffFFFFFF),
     gray: const Color(0xffE5E2DD),
     beige: const Color(0xff282D33),
     white: const Color(0xff1A1D22),
-    red: const Color(0xffde7878));
+    red: const Color(0xffde7878),
+    mediumGray: const Color.fromARGB(255, 101, 98, 93));
