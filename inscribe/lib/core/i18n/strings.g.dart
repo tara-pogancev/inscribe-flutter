@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 190 (95 per locale)
+/// Strings: 196 (98 per locale)
 ///
-/// Built on 2024-08-29 at 12:58 UTC
+/// Built on 2024-08-30 at 13:47 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -161,6 +161,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsNewNoteScreenEn newNoteScreen = _StringsNewNoteScreenEn._(_root);
 	late final _StringsArchivedNotesEn archivedNotes = _StringsArchivedNotesEn._(_root);
 	late final _StringsSettingsScreenEn settingsScreen = _StringsSettingsScreenEn._(_root);
+	late final _StringsCalendarScreenEn calendarScreen = _StringsCalendarScreenEn._(_root);
 }
 
 // Path: errorMessages
@@ -319,6 +320,18 @@ class _StringsSettingsScreenEn {
 	String get this_action_will_restart_the_app => 'This action will restart the app';
 }
 
+// Path: calendarScreen
+class _StringsCalendarScreenEn {
+	_StringsCalendarScreenEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get birthday => 'Birthday';
+	String get annualEvent => 'Annual event';
+	String get oneTimeReminder => 'One time reminder';
+}
+
 // Path: <root>
 class _StringsSrLatn implements Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
@@ -356,6 +369,7 @@ class _StringsSrLatn implements Translations {
 	@override late final _StringsNewNoteScreenSrLatn newNoteScreen = _StringsNewNoteScreenSrLatn._(_root);
 	@override late final _StringsArchivedNotesSrLatn archivedNotes = _StringsArchivedNotesSrLatn._(_root);
 	@override late final _StringsSettingsScreenSrLatn settingsScreen = _StringsSettingsScreenSrLatn._(_root);
+	@override late final _StringsCalendarScreenSrLatn calendarScreen = _StringsCalendarScreenSrLatn._(_root);
 }
 
 // Path: errorMessages
@@ -514,6 +528,18 @@ class _StringsSettingsScreenSrLatn implements _StringsSettingsScreenEn {
 	@override String get this_action_will_restart_the_app => 'Ova akcija će restartovati aplikaciju';
 }
 
+// Path: calendarScreen
+class _StringsCalendarScreenSrLatn implements _StringsCalendarScreenEn {
+	_StringsCalendarScreenSrLatn._(this._root);
+
+	@override final _StringsSrLatn _root; // ignore: unused_field
+
+	// Translations
+	@override String get birthday => 'Rođendan';
+	@override String get annualEvent => 'Godišnji događaj';
+	@override String get oneTimeReminder => 'Jednokratni podsetnik';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -615,6 +641,9 @@ extension on Translations {
 			case 'settingsScreen.system': return 'System';
 			case 'settingsScreen.change_theme': return 'Change theme';
 			case 'settingsScreen.this_action_will_restart_the_app': return 'This action will restart the app';
+			case 'calendarScreen.birthday': return 'Birthday';
+			case 'calendarScreen.annualEvent': return 'Annual event';
+			case 'calendarScreen.oneTimeReminder': return 'One time reminder';
 			default: return null;
 		}
 	}
@@ -718,6 +747,9 @@ extension on _StringsSrLatn {
 			case 'settingsScreen.system': return 'Sistem';
 			case 'settingsScreen.change_theme': return 'Promeni temu';
 			case 'settingsScreen.this_action_will_restart_the_app': return 'Ova akcija će restartovati aplikaciju';
+			case 'calendarScreen.birthday': return 'Rođendan';
+			case 'calendarScreen.annualEvent': return 'Godišnji događaj';
+			case 'calendarScreen.oneTimeReminder': return 'Jednokratni podsetnik';
 			default: return null;
 		}
 	}

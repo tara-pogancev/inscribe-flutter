@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:calendar_view/calendar_view.dart';
+import 'package:inscribe/core/data/model/calendar_event_metadata.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
 import 'package:inscribe/core/data/repositories/notes/notes_repository.dart';
@@ -39,10 +40,11 @@ class CalendarCubit extends Cubit<CalendarState> {
     visibleEvents.addAll(visibleOneTimeEvents
         .map(
           (e) => CalendarEventData(
-              title: e.name,
-              description: e.noteId,
-              date: e.date,
-              event: CalendarEventType.oneTimeEvent),
+            title: e.name,
+            date: e.date,
+            event: CalendarEventMetadata(
+                type: CalendarEventType.oneTimeEvent, reminder: e),
+          ),
         )
         .toList());
 
@@ -58,9 +60,9 @@ class CalendarCubit extends Cubit<CalendarState> {
         .map(
           (e) => CalendarEventData(
             title: e.name,
-            description: e.noteId,
             date: e.date.copyWith(year: centerDate.year),
-            event: CalendarEventType.anualEvent,
+            event: CalendarEventMetadata(
+                type: CalendarEventType.anualEvent, reminder: e),
           ),
         )
         .toList());
@@ -77,9 +79,9 @@ class CalendarCubit extends Cubit<CalendarState> {
         .map(
           (e) => CalendarEventData(
             title: e.name,
-            description: e.id,
             date: e.dateOfBirth!.copyWith(year: centerDate.year),
-            event: CalendarEventType.birthday,
+            event: CalendarEventMetadata(
+                type: CalendarEventType.birthday, note: e),
           ),
         )
         .toList());
@@ -87,5 +89,3 @@ class CalendarCubit extends Cubit<CalendarState> {
     emit(state.copyWith(visibleEvents: visibleEvents));
   }
 }
-
-enum CalendarEventType { birthday, anualEvent, oneTimeEvent }

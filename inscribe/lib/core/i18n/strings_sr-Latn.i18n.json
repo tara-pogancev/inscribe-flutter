@@ -118,5 +118,11 @@
     "system": "Sistem",
     "change_theme": "Promeni temu",
     "this_action_will_restart_the_app": "Ova akcija će restartovati aplikaciju"
+  },
+
+  "calendarScreen": {
+    "birthday": "Rođendan",
+    "annualEvent": "Godišnji događaj",
+    "oneTimeReminder": "Jednokratni podsetnik"
   }
 }

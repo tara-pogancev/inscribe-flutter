@@ -1,6 +1,7 @@
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inscribe/core/data/model/calendar_event_metadata.dart';
 import 'package:inscribe/core/extensions/date_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
@@ -9,6 +10,7 @@ import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
 import 'package:inscribe/core/presentation/widgets/default_app_header.dart';
 import 'package:inscribe/features/calendar/cubit/calendar_cubit.dart';
+import 'package:inscribe/features/calendar/ui/daily_events_bottom_sheet.dart';
 
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
@@ -38,9 +40,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
           (e) => CalendarEventData(
             title: e.title,
             date: e.date,
-            color: getEventColorForType(
-              e.event as CalendarEventType,
-            ),
+            description: e.description,
+            event: e.event,
+            color: (e.event as CalendarEventMetadata)
+                .getEventColorForType(context),
           ),
         )
         .toList();
@@ -48,19 +51,20 @@ class _CalendarScreenState extends State<CalendarScreen> {
     eventController.addAll(caneldarEvents);
   }
 
-  Color getEventColorForType(CalendarEventType type) {
-    switch (type) {
-      case CalendarEventType.birthday:
-        return AppColorScheme.of(context).red;
-      case CalendarEventType.anualEvent:
-        return AppColorScheme.of(context).mediumGray;
-      case CalendarEventType.oneTimeEvent:
-        return AppColorScheme.of(context).black;
-    }
-  }
-
   void onMonthChange(DateTime centerDate) {
     cubit.setVisibleEvents(centerDate);
+  }
+
+  void showDailyEventsBottomSheet(
+      List<CalendarEventData> events, DateTime date) {
+    if (events.isNotEmpty) {
+      showModalBottomSheet(
+        context: context,
+        isDismissible: true,
+        builder: (context) =>
+            DailyEventsBottomSheet(events: events, date: date),
+      );
+    }
   }
 
   @override
@@ -123,9 +127,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       onTileTap: (event, date) {},
                       hideDaysNotInMonth: hideDaysNotInMonth,
                     ),
-                    onCellTap: (events, date) {
-                      // TODO
-                    },
+                    onCellTap: (events, date) =>
+                        showDailyEventsBottomSheet(events, date),
                   ),
                 ),
               ),
