@@ -25,9 +25,6 @@ class _ArchiveScreenState extends State<ArchiveScreen> {
       child: Column(
         children: [
           const ArchiveHeader(),
-          const SizedBox(
-            height: 10,
-          ),
           BlocBuilder<ArchiveCubit, ArchiveState>(
             bloc: _bloc,
             builder: (context, state) {

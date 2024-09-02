@@ -49,7 +49,7 @@ class NoNotesSection extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(
-              height: 50,
+              height: 20,
             ),
             SizedBox(
               width: double.infinity,
@@ -60,7 +60,10 @@ class NoNotesSection extends StatelessWidget {
                   _navigateNewNote(context);
                 },
               ),
-            )
+            ),
+            const SizedBox(
+              height: 100,
+            ),
           ],
         ),
       ),
