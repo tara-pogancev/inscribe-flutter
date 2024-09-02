@@ -117,6 +117,7 @@
     "visual": "Visual",
     "system": "System",
     "change_theme": "Change theme",
+    "apply_change": "Apply change?",
     "this_action_will_restart_the_app": "This action will restart the app"
   },
 

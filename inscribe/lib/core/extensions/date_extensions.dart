@@ -12,7 +12,7 @@ const dayCalendarHeader = "E";
 
 extension DateExtensions on DateTime {
   String _getLocaleCode() {
-    return IC.getIt<SharedPreferencesRepository>().getLocaleCode();
+    return IC.getIt<SharedPreferencesRepository>().getLocaleCode() ?? "en";
   }
 
   String formatString() {
@@ -72,7 +72,7 @@ extension DateExtensions on DateTime {
 
 extension StringDateExtensions on String {
   String _getLocaleCode() {
-    return IC.getIt<SharedPreferencesRepository>().getLocaleCode();
+    return IC.getIt<SharedPreferencesRepository>().getLocaleCode() ?? "en";
   }
 
   DateTime parseDateString() {
@@ -82,7 +82,7 @@ extension StringDateExtensions on String {
 
 extension IntDateExtensions on int {
   String _getLocaleCode() {
-    return IC.getIt<SharedPreferencesRepository>().getLocaleCode();
+    return IC.getIt<SharedPreferencesRepository>().getLocaleCode() ?? "en";
   }
 
   String formatDayCalendar() {

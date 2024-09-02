@@ -20,11 +20,16 @@ import 'package:inscribe/core/router/app_router.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  // Hive and IC
   await Hive.initFlutter();
   await Hive.openBox(hiveNotesBox);
   await Hive.openBox(hiveRemindersBox);
   IC.setUp();
+
+  // Google fonts
   GoogleFonts.config.allowRuntimeFetching = true;
+
+  // Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -33,6 +38,16 @@ void main() async {
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   }
 
+  // Initialize application language
+  final savedAppLocale =
+      IC.getIt<SharedPreferencesRepository>().getSavedAppLocale();
+  if (savedAppLocale == null) {
+    LocaleSettings.useDeviceLocale();
+  } else {
+    LocaleSettings.setLocale(savedAppLocale);
+  }
+
+  // Notifications
   AwesomeNotifications().initialize(
       "resource://drawable/res_app_icon",
       [

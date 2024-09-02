@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     : AnimatedCrossFade(
                         firstChild: const NoNotesSection(),
                         secondChild: const HomeNotesGrid(),
-                        crossFadeState: (state.notes.isNotEmpty)
+                        crossFadeState: (state.notes.isEmpty)
                             ? CrossFadeState.showFirst
                             : CrossFadeState.showSecond,
                         duration: Durations.long1),

@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 196 (98 per locale)
+/// Strings: 198 (99 per locale)
 ///
-/// Built on 2024-08-30 at 13:47 UTC
+/// Built on 2024-09-02 at 13:53 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -317,6 +317,7 @@ class _StringsSettingsScreenEn {
 	String get visual => 'Visual';
 	String get system => 'System';
 	String get change_theme => 'Change theme';
+	String get apply_change => 'Apply change?';
 	String get this_action_will_restart_the_app => 'This action will restart the app';
 }
 
@@ -525,6 +526,7 @@ class _StringsSettingsScreenSrLatn implements _StringsSettingsScreenEn {
 	@override String get visual => 'Vizuali';
 	@override String get system => 'Sistem';
 	@override String get change_theme => 'Promeni temu';
+	@override String get apply_change => 'Primeni promenu?';
 	@override String get this_action_will_restart_the_app => 'Ova akcija će restartovati aplikaciju';
 }
 
@@ -640,6 +642,7 @@ extension on Translations {
 			case 'settingsScreen.visual': return 'Visual';
 			case 'settingsScreen.system': return 'System';
 			case 'settingsScreen.change_theme': return 'Change theme';
+			case 'settingsScreen.apply_change': return 'Apply change?';
 			case 'settingsScreen.this_action_will_restart_the_app': return 'This action will restart the app';
 			case 'calendarScreen.birthday': return 'Birthday';
 			case 'calendarScreen.annualEvent': return 'Annual event';
@@ -746,6 +749,7 @@ extension on _StringsSrLatn {
 			case 'settingsScreen.visual': return 'Vizuali';
 			case 'settingsScreen.system': return 'Sistem';
 			case 'settingsScreen.change_theme': return 'Promeni temu';
+			case 'settingsScreen.apply_change': return 'Primeni promenu?';
 			case 'settingsScreen.this_action_will_restart_the_app': return 'Ova akcija će restartovati aplikaciju';
 			case 'calendarScreen.birthday': return 'Rođendan';
 			case 'calendarScreen.annualEvent': return 'Godišnji događaj';

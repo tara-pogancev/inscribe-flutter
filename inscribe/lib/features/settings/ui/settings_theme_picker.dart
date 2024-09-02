@@ -20,7 +20,7 @@ class _SettingsThemePickerState extends State<SettingsThemePicker> {
   void _setIsDarkTheme(bool isDarkTheme) async {
     final shouldChangeTheme = await showDialog(
         context: context,
-        builder: (context) => const ThemeChangeDialog()) as bool?;
+        builder: (context) => const ChangeWillRestartTheAppDialog()) as bool?;
 
     if (shouldChangeTheme ?? false) {
       DynamicTheme.of(context)

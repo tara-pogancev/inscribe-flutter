@@ -4,6 +4,7 @@ import 'package:inscribe/core/data/repositories/shared_preferences/shared_prefer
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/widgets/form_fields/app_dropdown_form_field.dart';
+import 'package:inscribe/features/settings/ui/theme_change_dialog.dart';
 
 class SettingsLanguagePicker extends StatelessWidget {
   const SettingsLanguagePicker({super.key});
@@ -13,9 +14,15 @@ class SettingsLanguagePicker extends StatelessWidget {
         {AppLocale.en: "English", AppLocale.srLatn: "Srpski"});
   }
 
-  void _setLocale(AppLocale locale) {
-    LocaleSettings.setLocale(locale);
-    IC.getIt<SharedPreferencesRepository>().setAppLocale(locale);
+  void _setLocale(AppLocale locale, BuildContext context) async {
+    final shouldChangeLanguage = await showDialog(
+        context: context,
+        builder: (context) => const ChangeWillRestartTheAppDialog()) as bool?;
+
+    if (shouldChangeLanguage ?? false) {
+      LocaleSettings.setLocale(locale);
+      IC.getIt<SharedPreferencesRepository>().setAppLocale(locale);
+    }
   }
 
   String? _getCurrentLocaleValue(BuildContext context) {
@@ -36,7 +43,7 @@ class SettingsLanguagePicker extends StatelessWidget {
               .firstWhere((entry) => entry.value == value)
               .key;
 
-          _setLocale(appLocale);
+          _setLocale(appLocale, context);
         },
       ),
     );

@@ -11,7 +11,7 @@ abstract class SharedPreferencesRepository {
 
   void setAppLocale(AppLocale value);
 
-  String getLocaleCode();
+  String? getLocaleCode();
 
-  AppLocale getSavedAppLocale();
+  AppLocale? getSavedAppLocale();
 }

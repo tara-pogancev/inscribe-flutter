@@ -44,8 +44,11 @@ class SharedPreferencesRepositoryImpl implements SharedPreferencesRepository {
   }
 
   @override
-  AppLocale getSavedAppLocale() {
+  AppLocale? getSavedAppLocale() {
     switch (getLocaleCode()) {
+      case "":
+        return null;
+
       case "en":
         return AppLocale.en;
 
@@ -55,13 +58,15 @@ class SharedPreferencesRepositoryImpl implements SharedPreferencesRepository {
   }
 
   @override
-  String getLocaleCode() {
+  String? getLocaleCode() {
     final languageCode =
         sharedPreferences.getString(settingsLocaleLanguageCode) ?? "";
     final scriptCode =
         sharedPreferences.getString(settingsLocaleScriptCode) ?? "";
 
-    if (scriptCode.isEmpty) {
+    if (languageCode.isEmpty) {
+      return null;
+    } else if (scriptCode.isEmpty) {
       return languageCode;
     } else {
       return "$languageCode-$scriptCode";
