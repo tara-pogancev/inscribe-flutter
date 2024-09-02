@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/features/app_drawer/app_drawer.dart';
@@ -8,11 +9,13 @@ class AppScaffold extends StatelessWidget {
       {super.key,
       required this.child,
       this.includeDefaultPadding = false,
+      this.ignoreAllPadding = false,
       this.enableDrawer = false,
       this.fab});
 
   final Widget child;
   final bool includeDefaultPadding;
+  final bool ignoreAllPadding;
 
   final bool enableDrawer;
   final Widget? fab;
@@ -27,12 +30,12 @@ class AppScaffold extends StatelessWidget {
         physics:
             const ClampingScrollPhysics(parent: NeverScrollableScrollPhysics()),
         child: SafeArea(
-          top: includeDefaultPadding,
+          top: !ignoreAllPadding,
           child: SizedBox(
             height: context.getScreenHeight(),
             child: Padding(
               padding: (includeDefaultPadding)
-                  ? const EdgeInsets.all(20)
+                  ? const EdgeInsets.all(defaultScreenPadding)
                   : EdgeInsets.zero,
               child: child,
             ),

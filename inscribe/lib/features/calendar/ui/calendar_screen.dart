@@ -55,8 +55,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
     cubit.setVisibleEvents(centerDate);
   }
 
-  void showDailyEventsBottomSheet(
-      List<CalendarEventData> events, DateTime date) {
+  void showDailyEventsBottomSheet(DateTime date) {
+    List<CalendarEventData> events = eventController.getEventsOnDay(date);
+
     if (events.isNotEmpty) {
       showModalBottomSheet(
         context: context,
@@ -78,6 +79,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DefaultAppHeader(
+              includeAdditionalPadding: true,
               title: Translations.of(context).drawer.calendar,
             ),
             BlocListener<CalendarCubit, CalendarState>(
@@ -128,7 +130,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       hideDaysNotInMonth: hideDaysNotInMonth,
                     ),
                     onCellTap: (events, date) =>
-                        showDailyEventsBottomSheet(events, date),
+                        showDailyEventsBottomSheet(date),
+                    onEventTap: (event, date) =>
+                        showDailyEventsBottomSheet(date),
                   ),
                 ),
               ),
