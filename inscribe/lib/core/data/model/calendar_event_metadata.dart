@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
+import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 
@@ -31,7 +32,9 @@ class CalendarEventMetadata {
       case CalendarEventType.birthday:
         return AppColorScheme.of(context).white;
       case CalendarEventType.anualEvent:
-        return AppColorScheme.of(context).black;
+        return (context.getIsDarkTheme())
+            ? AppColorScheme.of(context).black
+            : AppColorScheme.of(context).white;
       case CalendarEventType.oneTimeEvent:
         return AppColorScheme.of(context).white;
     }

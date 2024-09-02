@@ -1,3 +1,6 @@
+import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
+import 'package:inscribe/core/extensions/string_extensions.dart';
+import 'package:inscribe/core/injection_container.dart';
 import 'package:intl/intl.dart';
 
 const dateFormat = "dd MMM yyyy";
@@ -8,26 +11,30 @@ const monthCalendarHeader = "MMMM, yyyy";
 const dayCalendarHeader = "E";
 
 extension DateExtensions on DateTime {
+  String _getLocaleCode() {
+    return IC.getIt<SharedPreferencesRepository>().getLocaleCode();
+  }
+
   String formatString() {
-    return DateFormat(dateFormat).format(this);
+    return DateFormat(dateFormat, _getLocaleCode()).format(this);
   }
 
   String formatTimeOfDayString() {
-    return DateFormat(
-      timeOfDayFormat,
-    ).format(this);
+    return DateFormat(timeOfDayFormat, _getLocaleCode()).format(this);
   }
 
   String formatFullDateTimeString() {
-    return DateFormat(fullDateTimeFormat).format(this);
+    return DateFormat(fullDateTimeFormat, _getLocaleCode()).format(this);
   }
 
   String formatFullDateTimeNoYearString() {
-    return DateFormat(fullDateTimeFormatNoYear).format(this);
+    return DateFormat(fullDateTimeFormatNoYear, _getLocaleCode()).format(this);
   }
 
   String formatMonthCalendarHeaderString() {
-    return DateFormat(monthCalendarHeader).format(this);
+    return DateFormat(monthCalendarHeader, _getLocaleCode())
+        .format(this)
+        .capitalizeFirstLetter();
   }
 
   //*
@@ -64,14 +71,24 @@ extension DateExtensions on DateTime {
 }
 
 extension StringDateExtensions on String {
+  String _getLocaleCode() {
+    return IC.getIt<SharedPreferencesRepository>().getLocaleCode();
+  }
+
   DateTime parseDateString() {
-    return DateFormat(dateFormat).parse(this);
+    return DateFormat(dateFormat, _getLocaleCode()).parse(this);
   }
 }
 
 extension IntDateExtensions on int {
+  String _getLocaleCode() {
+    return IC.getIt<SharedPreferencesRepository>().getLocaleCode();
+  }
+
   String formatDayCalendar() {
     DateTime dateTime = DateTime(1970, 1, 4 + this);
-    return (DateFormat(dayCalendarHeader).format(dateTime)).substring(0, 1);
+    return (DateFormat(dayCalendarHeader, _getLocaleCode()).format(dateTime))
+        .substring(0, 1)
+        .toUpperCase();
   }
 }

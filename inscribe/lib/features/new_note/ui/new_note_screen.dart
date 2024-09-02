@@ -78,7 +78,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
   }
 
   @override
-  void initState()  {
+  void initState() {
     if (widget.noteId == null) {
       note = Note(
         name: "",
@@ -86,7 +86,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
       );
       _bloc.add(UpdateNoteEvent(note: note));
     } else {
-      note =  _bloc.getNoteById(widget.noteId!);
+      note = _bloc.getNoteById(widget.noteId!);
       _bloc.add(UpdateNoteEvent(note: note));
     }
 
@@ -108,6 +108,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
         }
       },
       child: AppScaffold(
+        ignoreAllPadding: true,
         fab: BlocConsumer<NewNoteBloc, NewNoteState>(
           bloc: _bloc,
           listener: (context, state) {

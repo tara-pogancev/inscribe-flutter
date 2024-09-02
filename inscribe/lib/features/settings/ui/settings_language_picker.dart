@@ -15,12 +15,7 @@ class SettingsLanguagePicker extends StatelessWidget {
 
   void _setLocale(AppLocale locale) {
     LocaleSettings.setLocale(locale);
-    IC
-        .getIt<SharedPreferencesRepository>()
-        .setLocaleLanguageCode(locale.languageCode);
-    IC
-        .getIt<SharedPreferencesRepository>()
-        .setLocaleScriptCode(locale.scriptCode ?? "");
+    IC.getIt<SharedPreferencesRepository>().setAppLocale(locale);
   }
 
   String? _getCurrentLocaleValue(BuildContext context) {

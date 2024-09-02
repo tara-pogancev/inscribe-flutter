@@ -37,33 +37,34 @@ class SharedPreferencesRepositoryImpl implements SharedPreferencesRepository {
   }
 
   @override
-  String getLocaleLanguageCode() {
-    return sharedPreferences.getString(settingsLocaleLanguageCode) ?? "en";
-  }
-
-  @override
-  void setLocaleLanguageCode(String value) {
-    sharedPreferences.setString(settingsLocaleLanguageCode, value);
-  }
-
-  @override
-  String getLocaleScriptCode() {
-    return sharedPreferences.getString(settingsLocaleScriptCode) ?? "";
-  }
-
-  @override
-  void setLocaleScriptCode(String value) {
-    sharedPreferences.setString(settingsLocaleScriptCode, value);
+  void setAppLocale(AppLocale value) {
+    sharedPreferences.setString(settingsLocaleLanguageCode, value.languageCode);
+    sharedPreferences.setString(
+        settingsLocaleScriptCode, value.scriptCode ?? "");
   }
 
   @override
   AppLocale getSavedAppLocale() {
-    switch (getLocaleLanguageCode()) {
-      case "sr":
-        return AppLocale.srLatn;
+    switch (getLocaleCode()) {
+      case "en":
+        return AppLocale.en;
 
       default:
-        return AppLocale.en;
+        return AppLocale.srLatn;
+    }
+  }
+
+  @override
+  String getLocaleCode() {
+    final languageCode =
+        sharedPreferences.getString(settingsLocaleLanguageCode) ?? "";
+    final scriptCode =
+        sharedPreferences.getString(settingsLocaleScriptCode) ?? "";
+
+    if (scriptCode.isEmpty) {
+      return languageCode;
+    } else {
+      return "$languageCode-$scriptCode";
     }
   }
 }

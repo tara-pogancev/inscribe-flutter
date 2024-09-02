@@ -9,13 +9,9 @@ abstract class SharedPreferencesRepository {
 
   bool getIsGridPreferedView();
 
-  void setLocaleLanguageCode(String value);
+  void setAppLocale(AppLocale value);
 
-  String getLocaleLanguageCode();
-
-  void setLocaleScriptCode(String value);
-
-  String getLocaleScriptCode();
+  String getLocaleCode();
 
   AppLocale getSavedAppLocale();
 }
