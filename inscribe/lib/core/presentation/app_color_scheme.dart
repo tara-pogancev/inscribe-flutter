@@ -2,24 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 
-class AppThemes {
-  static const int light = 0;
-  static const int dark = 1;
-}
+final lightTheme = ThemeData(
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
+    textTheme: GoogleFonts.montserratTextTheme(),
+    useMaterial3: true,
+    brightness: Brightness.light);
 
-// final themes = {
-//   AppThemes.light: ThemeData(
-//       colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
-//       textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
-//       useMaterial3: true,
-//       brightness: Brightness.light),
-//   AppThemes.dark: ThemeData(
-//       colorScheme: ColorScheme.fromSeed(
-//           seedColor: Colors.grey, brightness: Brightness.dark),
-//       textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
-//       useMaterial3: true,
-//       brightness: Brightness.dark),
-// };
+final darkTheme = ThemeData(
+    colorScheme: ColorScheme.fromSeed(
+        seedColor: Colors.grey, brightness: Brightness.dark),
+    textTheme: GoogleFonts.montserratTextTheme(),
+    useMaterial3: true,
+    brightness: Brightness.dark);
 
 class AppColorScheme {
   final Color black;
@@ -49,7 +43,9 @@ class AppColorScheme {
 }
 
 AppColorScheme _getActiveScheme(BuildContext context) {
-  return context.getIsLightTheme() ? lightAppColorScheme : darkAppColorScheme;
+  return context.getIsLightTheme()
+      ? lightAppColorScheme
+      : darkAppColorScheme;
 }
 
 final lightAppColorScheme = AppColorScheme(
