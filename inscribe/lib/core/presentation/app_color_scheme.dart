@@ -1,4 +1,3 @@
-import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
@@ -8,29 +7,19 @@ class AppThemes {
   static const int dark = 1;
 }
 
-ThemeCollection getThemeCollection(BuildContext context) => ThemeCollection(
-      themes: {
-        AppThemes.light: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
-            textTheme:
-                GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
-            useMaterial3: true,
-            brightness: Brightness.light),
-        AppThemes.dark: ThemeData(
-            colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.grey, brightness: Brightness.dark),
-            textTheme:
-                GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
-            useMaterial3: true,
-            brightness: Brightness.dark),
-      },
-      fallbackTheme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
-          textTheme:
-              GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
-          useMaterial3: true,
-          brightness: Brightness.light),
-    );
+// final themes = {
+//   AppThemes.light: ThemeData(
+//       colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
+//       textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+//       useMaterial3: true,
+//       brightness: Brightness.light),
+//   AppThemes.dark: ThemeData(
+//       colorScheme: ColorScheme.fromSeed(
+//           seedColor: Colors.grey, brightness: Brightness.dark),
+//       textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+//       useMaterial3: true,
+//       brightness: Brightness.dark),
+// };
 
 class AppColorScheme {
   final Color black;

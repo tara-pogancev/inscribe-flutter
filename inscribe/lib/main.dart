@@ -108,7 +108,7 @@ class _InscribeAppState extends State<InscribeApp> {
       ],
       locale: TranslationProvider.of(context).flutterLocale,
       supportedLocales: AppLocaleUtils.supportedLocales,
-      theme: getThemeCollection(context)[0],
+      // theme: getThemeCollection(context)[0],
     );
   }
 }

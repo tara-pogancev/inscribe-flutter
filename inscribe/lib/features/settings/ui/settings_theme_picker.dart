@@ -1,4 +1,4 @@
-import 'package:dynamic_themes/dynamic_themes.dart';
+
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
@@ -23,8 +23,8 @@ class _SettingsThemePickerState extends State<SettingsThemePicker> {
         builder: (context) => const ChangeWillRestartTheAppDialog()) as bool?;
 
     if (shouldChangeTheme ?? false) {
-      DynamicTheme.of(context)
-          ?.setTheme(isDarkTheme ? AppThemes.dark : AppThemes.light);
+      // DynamicTheme.of(context)
+      //     ?.setTheme(isDarkTheme ? AppThemes.dark : AppThemes.light);
 
       setState(() {
         isDarkTheme = isDarkTheme;
