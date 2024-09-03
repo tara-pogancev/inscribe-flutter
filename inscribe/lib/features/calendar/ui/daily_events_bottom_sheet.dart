@@ -1,9 +1,12 @@
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/model/calendar_event_metadata.dart';
 import 'package:inscribe/core/extensions/date_extensions.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
+import 'package:inscribe/core/presentation/widgets/clickable_rounded_container.dart';
+import 'package:inscribe/core/router/app_router.dart';
 
 class DailyEventsBottomSheet extends StatelessWidget {
   const DailyEventsBottomSheet(
@@ -12,6 +15,12 @@ class DailyEventsBottomSheet extends StatelessWidget {
   final List<CalendarEventData> events;
 
   final DateTime date;
+
+  void navigateNote(String noteId, BuildContext context) {
+    if (noteId.isNotEmpty) {
+      context.push(Routes.noteDetails, extra: noteId);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +56,14 @@ class DailyEventsBottomSheet extends StatelessWidget {
                         "$description, ${eventMetadata.reminder?.date.formatTimeOfDayString()}";
                   }
 
-                  return Container(
-                    decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                            Radius.circular(defaultBorderRadius)),
-                        color: event.color),
+                  final noteId =
+                      (eventMetadata.type == CalendarEventType.birthday)
+                          ? eventMetadata.note!.id
+                          : eventMetadata.reminder!.noteId;
+
+                  return ClickableRoundedContainer(
+                    onClick: () => navigateNote(noteId ?? "", context),
+                    color: event.color,
                     child: Padding(
                       padding: const EdgeInsets.all(5),
                       child: Column(

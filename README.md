@@ -27,19 +27,19 @@ Rename app: `rename setAppName --targets ios,android,web --value "Inscribe"`
 # 🧠 Planned upcoming features
 - [x] Reminders
 - [x] Notifications
-- [ ] Calendar screen
+- [x] Calendar screen
 - [ ] Export data
 - [ ] Import data
 - [ ] More languages
 - [ ] Better animations on friend screen
-- [ ] Replace AI illustrations with hand-drawn ones <3
+- [ ] Replace AI illustrations with hand-drawn ones ❤️
 
 ## 🐞 Known bugs
 - [x] Visual bug with safe area
 - [x] Notifications not opening specific page
 - [x] iOS language change
-- [ ] Dates formatting localization
-- [ ] Localization persisting after app quitting
+- [x] Dates formatting localization
+- [x] Localization persisting after app quitting
 - [x] iOS theme change
 
 # 🖼 Screenshots
