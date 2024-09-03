@@ -1,4 +1,6 @@
 import 'package:go_router/go_router.dart';
+import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
+import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/router/navigation_transitions.dart';
 import 'package:inscribe/features/archive/ui/archive_screen.dart';
 import 'package:inscribe/features/calendar/ui/calendar_screen.dart';
@@ -60,6 +62,15 @@ class AppRouter {
             ),
           ),
         ],
+        redirect: (context, state) {
+          bool isFirstRun =
+              IC.getIt<SharedPreferencesRepository>().getIsFirstRun();
+          if (isFirstRun) {
+            return Routes.welcome;
+          }
+
+          return null;
+        },
         initialLocation: initialLocation ?? Routes.home,
       );
 }

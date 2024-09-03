@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:inscribe/core/domain/model/usecase.dart';
+import 'package:inscribe/core/domain/usecase.dart';
 
 const assetProfileImagesNumber =
     10; // Adjust this according to the number of assets in the folder

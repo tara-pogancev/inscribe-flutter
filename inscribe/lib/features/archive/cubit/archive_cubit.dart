@@ -1,5 +1,5 @@
 import 'package:inscribe/core/data/model/note/note.dart';
-import 'package:inscribe/core/domain/model/app_cubit.dart';
+import 'package:inscribe/core/domain/app_cubit.dart';
 import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/features/archive/usecases/delete_all_notes_forever_usecase.dart';

@@ -1,6 +1,6 @@
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
-import 'package:inscribe/core/domain/model/usecase.dart';
+import 'package:inscribe/core/domain/usecase.dart';
 
 class AddOrUpdateNoteReminderUseCase extends UseCase {
   Note call(Note note, NoteReminder reminder) {

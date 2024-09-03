@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/data/model/note_type.dart';
 import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
-import 'package:inscribe/core/domain/model/app_bloc.dart';
+import 'package:inscribe/core/domain/app_bloc.dart';
 import 'package:inscribe/features/note_details/usecases/add_or_update_note_reminder_usecase.dart';
 import 'package:inscribe/features/note_details/usecases/archive_note_usecase.dart';
 import 'package:inscribe/features/note_details/usecases/get_note_by_id_usecase.dart';

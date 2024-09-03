@@ -26,6 +26,9 @@ class IC {
     );
     await getIt.isReady<SharedPreferences>();
 
+    // Set the router
+    // getIt.registerLazySingleton<GoRouter>(() => AppRouter.router());
+
     // Setup repositories
     getIt.registerLazySingleton<SharedPreferencesRepository>(
         () => SharedPreferencesRepositoryImpl(sharedPreferences: getIt()));

@@ -1,5 +1,4 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -12,11 +11,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/repositories/notes/notes_repository_impl.dart';
 import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
-import 'package:inscribe/core/domain/model/simple_bloc_observer.dart';
+import 'package:inscribe/core/domain/notification_controller.dart';
+import 'package:inscribe/core/domain/simple_bloc_observer.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
-import 'package:inscribe/core/presentation/notification_controller.dart';
 import 'package:inscribe/core/router/app_router.dart';
 
 import 'firebase_options.dart';
@@ -85,8 +84,6 @@ class InscribeApp extends StatefulWidget {
 }
 
 class _InscribeAppState extends State<InscribeApp> {
-  final SharedPreferencesRepository _sharedPreferencesRepository = IC.getIt();
-
   @override
   void initState() {
     AwesomeNotifications().setListeners(
@@ -103,32 +100,18 @@ class _InscribeAppState extends State<InscribeApp> {
 
   @override
   Widget build(BuildContext context) {
-    final isFirstRun = _sharedPreferencesRepository.getIsFirstRun();
-    String startRoute = (isFirstRun) ? Routes.welcome : Routes.home;
-
-    if (kDebugMode) {
-      // startRoute = Routes.calendar;
-    }
-
-    return DynamicTheme(
-      themeCollection: getThemeCollection(context),
-      defaultThemeId: AppThemes.light,
-      builder: (context, theme) {
-        InscribeApp.router = AppRouter.router(startRoute);
-        return MaterialApp.router(
-          routerConfig: InscribeApp.router,
-          debugShowCheckedModeBanner: false,
-          title: Translations.of(context).appName,
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          locale: TranslationProvider.of(context).flutterLocale,
-          supportedLocales: AppLocaleUtils.supportedLocales,
-          theme: theme,
-        );
-      },
+    return MaterialApp.router(
+      routerConfig: InscribeApp.router,
+      debugShowCheckedModeBanner: false,
+      title: Translations.of(context).appName,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      locale: TranslationProvider.of(context).flutterLocale,
+      supportedLocales: AppLocaleUtils.supportedLocales,
+      theme: getThemeCollection(context)[0],
     );
   }
 }
