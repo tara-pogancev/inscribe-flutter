@@ -6,11 +6,13 @@ import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
 import 'package:inscribe/core/data/repositories/notes/notes_repository.dart';
 import 'package:inscribe/core/extensions/date_extensions.dart';
 import 'package:inscribe/core/injection_container.dart';
+import 'package:inscribe/features/home/usecases/fetch_notes_usecase.dart';
 
 part 'calendar_state.dart';
 
 class CalendarCubit extends Cubit<CalendarState> {
   final NotesRepository notesRepository = IC.getIt();
+  final fetchNotesUseCase = FetchNotesUseCase();
 
   final eventsVisibleInMonthsRadius = 1;
 
@@ -20,7 +22,7 @@ class CalendarCubit extends Cubit<CalendarState> {
 
   void initState() async {
     final events = notesRepository.getAllReminders();
-    final notes = notesRepository.getNotes();
+    final notes = fetchNotesUseCase();
 
     emit(CalendarState(events: events, notes: notes));
 

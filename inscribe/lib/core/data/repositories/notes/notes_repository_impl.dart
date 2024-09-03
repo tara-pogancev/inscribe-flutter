@@ -134,7 +134,10 @@ class NotesRepositoryImpl implements NotesRepository {
 
     for (var reminderData in remindersFromBox) {
       final reminder = NoteReminder.fromJson(reminderData);
-      reminders.add(reminder);
+      final noteForReminder = getNoteById(reminder.noteId!);
+      if (!noteForReminder.isDeleted) {
+        reminders.add(reminder);
+      }
     }
 
     reminders.sort((a, b) =>
