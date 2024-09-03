@@ -19,9 +19,10 @@ class WelcomeBasePage extends StatelessWidget {
 
   final _bloc = IC.getIt<WelcomeBloc>();
 
-  void _navigateHome(BuildContext context) {
-    context.pushReplacement(Routes.home);
+  void _navigateHome(BuildContext context) async {
     _bloc.add(FinishFirstRunEvent());
+    await Future.delayed(Durations.short1);
+    context.pushReplacement(Routes.home);
   }
 
   @override
