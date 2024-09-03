@@ -16,7 +16,6 @@ import 'package:inscribe/core/domain/simple_bloc_observer.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
-import 'package:inscribe/core/router/app_router.dart';
 
 import 'firebase_options.dart';
 
@@ -77,8 +76,6 @@ void main() async {
 class InscribeApp extends StatefulWidget {
   const InscribeApp({super.key});
 
-  static GoRouter router = AppRouter.router();
-
   @override
   State<InscribeApp> createState() => _InscribeAppState();
 }
@@ -101,7 +98,7 @@ class _InscribeAppState extends State<InscribeApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: InscribeApp.router,
+      routerConfig: IC.getIt<GoRouter>(),
       debugShowCheckedModeBanner: false,
       title: Translations.of(context).appName,
       localizationsDelegates: const [
