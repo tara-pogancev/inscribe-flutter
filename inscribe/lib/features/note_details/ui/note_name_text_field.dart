@@ -5,7 +5,7 @@ import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
-import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
+import 'package:inscribe/features/note_details/bloc/note_details_bloc.dart';
 
 class NoteNameTextField extends StatefulWidget {
   const NoteNameTextField({super.key});
@@ -15,7 +15,7 @@ class NoteNameTextField extends StatefulWidget {
 }
 
 class _NoteNameTextFieldState extends State<NoteNameTextField> {
-  final _bloc = IC.getIt<NewNoteBloc>();
+  final _bloc = IC.getIt<NoteDetailsBloc>();
 
   String? name;
 
@@ -38,7 +38,7 @@ class _NoteNameTextFieldState extends State<NoteNameTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<NewNoteBloc, NewNoteState>(
+    return BlocListener<NoteDetailsBloc, NoteDetailsState>(
       bloc: _bloc,
       listener: (context, state) {
         if (name == null && state.note.name != "") {

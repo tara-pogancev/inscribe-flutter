@@ -4,23 +4,23 @@ import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/data/model/note_type.dart';
 import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
 import 'package:inscribe/core/domain/model/app_bloc.dart';
-import 'package:inscribe/features/new_note/usecases/add_or_update_note_reminder_usecase.dart';
-import 'package:inscribe/features/new_note/usecases/archive_note_usecase.dart';
-import 'package:inscribe/features/new_note/usecases/get_note_by_id_usecase.dart';
-import 'package:inscribe/features/new_note/usecases/save_note_usecase.dart';
-import 'package:inscribe/features/new_note/usecases/update_note_usecase.dart';
+import 'package:inscribe/features/note_details/usecases/add_or_update_note_reminder_usecase.dart';
+import 'package:inscribe/features/note_details/usecases/archive_note_usecase.dart';
+import 'package:inscribe/features/note_details/usecases/get_note_by_id_usecase.dart';
+import 'package:inscribe/features/note_details/usecases/save_note_usecase.dart';
+import 'package:inscribe/features/note_details/usecases/update_note_usecase.dart';
 
-part 'new_note_event.dart';
-part 'new_note_state.dart';
+part 'note_details_event.dart';
+part 'note_details_state.dart';
 
-class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
+class NoteDetailsBloc extends AppBloc<NoteDetailsEvent, NoteDetailsState> {
   final saveNoteUseCase = SaveNoteUseCase();
   final updateNoteUseCase = UpdateNoteUseCase();
   final archiveNoteUseCase = ArchiveNoteUseCase();
   final addOrUpdateNoteReminderUseCase = AddOrUpdateNoteReminderUseCase();
   final getNoteByIdUseCase = GetNoteByIdUsecase();
 
-  NewNoteBloc() : super(NewNoteState()) {
+  NoteDetailsBloc() : super(NoteDetailsState()) {
     on<SaveNoteEvent>((event, emit) {
       if (state.note.id == null) {
         saveNoteUseCase(state.note);
@@ -28,7 +28,7 @@ class NewNoteBloc extends AppBloc<NewNoteEvent, NewNoteState> {
         updateNoteUseCase(state.note);
       }
       emit(state.copyWith(isSuccess: true));
-      emit(NewNoteState());
+      emit(NoteDetailsState());
     });
 
     on<UpdateNoteEvent>((event, emit) {

@@ -3,7 +3,7 @@ import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/widgets/form_fields/app_form_field.dart';
-import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
+import 'package:inscribe/features/note_details/bloc/note_details_bloc.dart';
 
 class NoteGiftIdeasPage extends StatefulWidget {
   const NoteGiftIdeasPage({super.key, this.initialNote = const Note()});
@@ -16,7 +16,7 @@ class NoteGiftIdeasPage extends StatefulWidget {
 
 class _NoteGiftIdeasPageState extends State<NoteGiftIdeasPage>
     with AutomaticKeepAliveClientMixin<NoteGiftIdeasPage> {
-  final _bloc = IC.getIt<NewNoteBloc>();
+  final _bloc = IC.getIt<NoteDetailsBloc>();
 
   String? giftIdeas;
 

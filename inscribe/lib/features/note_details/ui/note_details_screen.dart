@@ -10,30 +10,30 @@ import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/widgets/app_button.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
-import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
-import 'package:inscribe/features/new_note/ui/dialog/unsaved_changes_dialog.dart';
-import 'package:inscribe/features/new_note/ui/gift_ideas/note_gift_ideas_page.dart';
-import 'package:inscribe/features/new_note/ui/new_note_header.dart';
-import 'package:inscribe/features/new_note/ui/note_tab_bar.dart';
-import 'package:inscribe/features/new_note/ui/overview/note_overview_page.dart';
-import 'package:inscribe/features/new_note/ui/reminders/note_reminders_page.dart';
-import 'package:inscribe/features/new_note/usecases/get_random_profile_image_usecase.dart';
+import 'package:inscribe/features/note_details/bloc/note_details_bloc.dart';
+import 'package:inscribe/features/note_details/ui/dialog/unsaved_changes_dialog.dart';
+import 'package:inscribe/features/note_details/ui/gift_ideas/note_gift_ideas_page.dart';
+import 'package:inscribe/features/note_details/ui/note_details_header.dart';
+import 'package:inscribe/features/note_details/ui/note_tab_bar.dart';
+import 'package:inscribe/features/note_details/ui/overview/note_overview_page.dart';
+import 'package:inscribe/features/note_details/ui/reminders/note_reminders_page.dart';
+import 'package:inscribe/features/note_details/usecases/get_random_profile_image_usecase.dart';
 
-class NewNoteScreen extends StatefulWidget {
-  const NewNoteScreen({super.key, this.noteId});
+class NoteDetailsScreen extends StatefulWidget {
+  const NoteDetailsScreen({super.key, this.noteId});
 
   final String? noteId;
 
   @override
-  State<NewNoteScreen> createState() => _NewNoteScreenState();
+  State<NoteDetailsScreen> createState() => _NoteDetailsScreenState();
 }
 
-class _NewNoteScreenState extends State<NewNoteScreen> {
+class _NoteDetailsScreenState extends State<NoteDetailsScreen> {
   final getRandomProfileImageUseCase = GetRandomProfileImageUseCase();
 
   final _formKey = GlobalKey<FormState>();
 
-  final _bloc = IC.getIt<NewNoteBloc>();
+  final _bloc = IC.getIt<NoteDetailsBloc>();
 
   late final Note note;
 
@@ -109,7 +109,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
       },
       child: AppScaffold(
         ignoreAllPadding: true,
-        fab: BlocConsumer<NewNoteBloc, NewNoteState>(
+        fab: BlocConsumer<NoteDetailsBloc, NoteDetailsState>(
           bloc: _bloc,
           listener: (context, state) {
             if (state.isSuccess) {
@@ -136,7 +136,7 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
                   SliverAppBar(
                     expandedHeight: newNoteAppBarExpandedHeight,
                     automaticallyImplyLeading: false,
-                    flexibleSpace: NewNoteHeader(
+                    flexibleSpace: NoteDetailsHeader(
                       onBack: () => _goBack(),
                     ),
                     pinned: true,

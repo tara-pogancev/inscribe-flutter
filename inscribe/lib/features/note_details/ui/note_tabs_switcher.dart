@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
-import 'package:inscribe/features/new_note/ui/gift_ideas/note_gift_ideas_page.dart';
-import 'package:inscribe/features/new_note/ui/overview/note_overview_page.dart';
-import 'package:inscribe/features/new_note/ui/reminders/note_reminders_page.dart';
+import 'package:inscribe/features/note_details/ui/gift_ideas/note_gift_ideas_page.dart';
+import 'package:inscribe/features/note_details/ui/overview/note_overview_page.dart';
+import 'package:inscribe/features/note_details/ui/reminders/note_reminders_page.dart';
 
 class NoteTabsSwitcher extends StatefulWidget {
   const NoteTabsSwitcher(

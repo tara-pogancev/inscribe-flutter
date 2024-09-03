@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/features/home/bloc/home_bloc.dart';
-import 'package:inscribe/features/new_note/usecases/archive_note_usecase.dart';
-import 'package:inscribe/features/new_note/usecases/undo_archive_note_usecase.dart';
+import 'package:inscribe/features/note_details/usecases/archive_note_usecase.dart';
+import 'package:inscribe/features/note_details/usecases/undo_archive_note_usecase.dart';
 import 'package:meta/meta.dart';
 
 part 'delete_note_event.dart';

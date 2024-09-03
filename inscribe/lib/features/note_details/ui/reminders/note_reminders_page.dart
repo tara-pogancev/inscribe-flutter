@@ -9,9 +9,9 @@ import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/app_button.dart';
-import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
-import 'package:inscribe/features/new_note/ui/reminders/new_reminder_dialog.dart';
-import 'package:inscribe/features/new_note/ui/reminders/reminder_card.dart';
+import 'package:inscribe/features/note_details/bloc/note_details_bloc.dart';
+import 'package:inscribe/features/note_details/ui/reminders/new_reminder_dialog.dart';
+import 'package:inscribe/features/note_details/ui/reminders/reminder_card.dart';
 
 class NoteRemindersPage extends StatefulWidget {
   const NoteRemindersPage({super.key, this.initialNote = const Note()});
@@ -24,7 +24,7 @@ class NoteRemindersPage extends StatefulWidget {
 
 class _NoteRemindersPageState extends State<NoteRemindersPage>
     with AutomaticKeepAliveClientMixin<NoteRemindersPage> {
-  final _bloc = IC.getIt<NewNoteBloc>();
+  final _bloc = IC.getIt<NoteDetailsBloc>();
 
   void _showNewReminderDialog() async {
     final NoteReminder? reminder = await showDialog(
@@ -71,7 +71,7 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
             text: Translations.of(context).newNoteScreen.add_reminder,
             onPressed: () => _showNewReminderDialog(),
           ),
-          BlocBuilder<NewNoteBloc, NewNoteState>(
+          BlocBuilder<NoteDetailsBloc, NoteDetailsState>(
             bloc: _bloc,
             builder: (context, state) {
               return (state.note.reminders.isEmpty)

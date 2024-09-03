@@ -1,6 +1,6 @@
-part of 'new_note_bloc.dart';
+part of 'note_details_bloc.dart';
 
-class NewNoteState {
+class NoteDetailsState {
   final bool isLoading;
   final Note note;
   final Note? initialNote;
@@ -8,7 +8,7 @@ class NewNoteState {
   final bool isDeleted;
   final bool hasChanges;
 
-  NewNoteState({
+  NoteDetailsState({
     this.isLoading = false,
     this.note = const Note(),
     this.initialNote,
@@ -17,7 +17,7 @@ class NewNoteState {
     this.hasChanges = false,
   });
 
-  NewNoteState copyWith({
+  NoteDetailsState copyWith({
     bool? isLoading,
     Note? note,
     Note? initialNote,
@@ -26,7 +26,7 @@ class NewNoteState {
     bool? hasChanges,
     bool? isValidateForm,
   }) {
-    return NewNoteState(
+    return NoteDetailsState(
       isLoading: isLoading ?? this.isLoading,
       note: note ?? this.note,
       initialNote: initialNote ?? this.initialNote,

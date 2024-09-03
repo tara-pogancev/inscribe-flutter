@@ -6,8 +6,8 @@ import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
-import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
-import 'package:inscribe/features/new_note/usecases/get_random_profile_image_usecase.dart';
+import 'package:inscribe/features/note_details/bloc/note_details_bloc.dart';
+import 'package:inscribe/features/note_details/usecases/get_random_profile_image_usecase.dart';
 
 const selectImage = "SELECT";
 const removeOrRandoizeImage = "REMOVE OR RANDONIZE";
@@ -23,7 +23,7 @@ class CircleImage extends StatefulWidget {
 
 class _CircleImageState extends State<CircleImage> {
   final _getRandomProfileImageUseCase = GetRandomProfileImageUseCase();
-  final NewNoteBloc _bloc = IC.getIt();
+  final NoteDetailsBloc _bloc = IC.getIt();
 
   void _openImagePicker() async {
     XFile? image = await ImagePicker().pickImage(source: ImageSource.gallery);

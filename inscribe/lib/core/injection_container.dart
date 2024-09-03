@@ -11,7 +11,7 @@ import 'package:inscribe/core/presentation/bloc/delete_note_bloc/delete_note_blo
 import 'package:inscribe/features/archive/cubit/archive_cubit.dart';
 import 'package:inscribe/features/calendar/cubit/calendar_cubit.dart';
 import 'package:inscribe/features/home/bloc/home_bloc.dart';
-import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
+import 'package:inscribe/features/note_details/bloc/note_details_bloc.dart';
 import 'package:inscribe/features/scheduled_notifications_debug_view/cubit/scheduled_notifications_cubit.dart';
 import 'package:inscribe/features/welcome/bloc/welcome_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -48,7 +48,7 @@ class IC {
 
     // Setup bloc
     getIt.registerLazySingleton(() => WelcomeBloc());
-    getIt.registerLazySingleton(() => NewNoteBloc());
+    getIt.registerLazySingleton(() => NoteDetailsBloc());
     getIt.registerLazySingleton(() => HomeBloc());
     getIt.registerLazySingleton(() => DeleteNoteBloc());
     getIt.registerLazySingleton(() => ArchiveCubit());

@@ -7,22 +7,22 @@ import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/bloc/delete_note_bloc/delete_note_bloc.dart';
-import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
-import 'package:inscribe/features/new_note/ui/circle_image.dart';
-import 'package:inscribe/features/new_note/ui/dialog/archive_note_dialog.dart';
-import 'package:inscribe/features/new_note/ui/note_name_text_field.dart';
+import 'package:inscribe/features/note_details/bloc/note_details_bloc.dart';
+import 'package:inscribe/features/note_details/ui/circle_image.dart';
+import 'package:inscribe/features/note_details/ui/dialog/archive_note_dialog.dart';
+import 'package:inscribe/features/note_details/ui/note_name_text_field.dart';
 
-class NewNoteHeader extends StatefulWidget {
-  const NewNoteHeader({super.key, required this.onBack});
+class NoteDetailsHeader extends StatefulWidget {
+  const NoteDetailsHeader({super.key, required this.onBack});
 
   final Function() onBack;
 
   @override
-  State<NewNoteHeader> createState() => _NewNoteHeaderState();
+  State<NoteDetailsHeader> createState() => _NoteDetailsHeaderState();
 }
 
-class _NewNoteHeaderState extends State<NewNoteHeader> {
-  final _bloc = IC.getIt<NewNoteBloc>();
+class _NoteDetailsHeaderState extends State<NoteDetailsHeader> {
+  final _bloc = IC.getIt<NoteDetailsBloc>();
 
   final _deleteNoteBloc = IC.getIt<DeleteNoteBloc>();
 
@@ -71,7 +71,7 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
                 const EdgeInsets.only(top: 40, bottom: 20, left: 20, right: 20),
             child: Column(
               children: [
-                BlocBuilder<NewNoteBloc, NewNoteState>(
+                BlocBuilder<NoteDetailsBloc, NoteDetailsState>(
                   bloc: _bloc,
                   builder: (context, state) {
                     return Row(
@@ -116,7 +116,7 @@ class _NewNoteHeaderState extends State<NewNoteHeader> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      BlocBuilder<NewNoteBloc, NewNoteState>(
+                      BlocBuilder<NoteDetailsBloc, NoteDetailsState>(
                         bloc: _bloc,
                         builder: (context, state) {
                           return CircleImage(note: state.note);
