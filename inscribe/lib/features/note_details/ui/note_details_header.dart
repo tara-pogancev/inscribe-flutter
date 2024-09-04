@@ -27,7 +27,7 @@ class _NoteDetailsHeaderState extends State<NoteDetailsHeader> {
   final _deleteNoteBloc = IC.getIt<DeleteNoteBloc>();
 
   final double minHeight =
-      newNoteAppBarExpandedHeight * 0.5; // Minimum height for fade effect
+      newNoteAppBarExpandedHeight * 0.65; // Minimum height for fade effect
 
   void _toggleNotePin() {
     _bloc.add(ToggleNotePinEvent());
