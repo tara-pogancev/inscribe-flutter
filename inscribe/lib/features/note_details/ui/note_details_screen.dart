@@ -133,14 +133,18 @@ class _NoteDetailsScreenState extends State<NoteDetailsScreen> {
               headerSliverBuilder:
                   (BuildContext context, bool innerBoxIsScrolled) {
                 return [
-                  SliverAppBar(
-                    expandedHeight: newNoteAppBarExpandedHeight,
-                    automaticallyImplyLeading: false,
-                    flexibleSpace: NoteDetailsHeader(
-                      onBack: () => _goBack(),
+                  SliverOverlapAbsorber(
+                    handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+                        context),
+                    sliver: SliverAppBar(
+                      expandedHeight: newNoteAppBarExpandedHeight,
+                      automaticallyImplyLeading: false,
+                      flexibleSpace: NoteDetailsHeader(
+                        onBack: () => _goBack(),
+                      ),
+                      pinned: true,
+                      bottom: const NoteTabBar(),
                     ),
-                    pinned: true,
-                    bottom: const NoteTabBar(),
                   ),
                 ];
               },
@@ -155,7 +159,21 @@ class _NoteDetailsScreenState extends State<NoteDetailsScreen> {
                   NoteRemindersPage(
                     initialNote: note,
                   )
-                ],
+                ]
+                    .map((tabView) => Builder(
+                          builder: (context) => CustomScrollView(
+                            slivers: [
+                              SliverOverlapInjector(
+                                handle: NestedScrollView
+                                    .sliverOverlapAbsorberHandleFor(context),
+                              ),
+                              SliverToBoxAdapter(
+                                child: tabView,
+                              ),
+                            ],
+                          ),
+                        ))
+                    .toList(),
               ),
             ),
           ),

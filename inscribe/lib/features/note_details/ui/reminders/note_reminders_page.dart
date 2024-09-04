@@ -82,6 +82,7 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
                   : ListView.separated(
                       itemCount: state.note.reminders.length,
                       shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
                       separatorBuilder: (BuildContext context, int index) {
                         return const SizedBox(
                           height: 10,
