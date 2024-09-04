@@ -46,7 +46,7 @@ class SharedPreferencesRepositoryImpl implements SharedPreferencesRepository {
   @override
   AppLocale? getSavedAppLocale() {
     switch (getLocaleCode()) {
-      case "":
+      case null:
         return null;
 
       case "en":
