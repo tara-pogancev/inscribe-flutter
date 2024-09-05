@@ -2,6 +2,8 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive/hive.dart';
+import 'package:inscribe/core/data/repositories/import_export/import_export_repository.dart';
+import 'package:inscribe/core/data/repositories/import_export/import_export_repository_impl.dart';
 import 'package:inscribe/core/data/repositories/notes/notes_repository.dart';
 import 'package:inscribe/core/data/repositories/notes/notes_repository_impl.dart';
 import 'package:inscribe/core/data/repositories/notifications/notifications_repository.dart';
@@ -47,6 +49,10 @@ class IC {
           notesBox: notesBox,
           remindersBox: remindersBox,
           notificationsRepository: getIt());
+    });
+
+    getIt.registerLazySingleton<ImportExportRepository>(() {
+      return ImportExportRepositoryImpl(notesRepository: getIt());
     });
 
     getIt.registerLazySingleton(() => const Uuid());

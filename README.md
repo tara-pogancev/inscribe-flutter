@@ -31,7 +31,7 @@ Rename app: `rename setAppName --targets ios,android,web --value "Inscribe"`
 - [ ] Export data
 - [ ] Import data
 - [ ] More languages
-- [ ] Better animations on friend screen
+- [x] Better animations on friend screen
 - [ ] Replace AI illustrations with hand-drawn ones ❤️
 
 ## 🐞 Known bugs

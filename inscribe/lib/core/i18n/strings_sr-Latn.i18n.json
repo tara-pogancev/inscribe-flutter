@@ -15,9 +15,13 @@
     "archive": "Arhiva",
     "settings": "Podešavanja",
     "calendar": "Kalendar",
-    "export": "Izvoz podataka [USKORO]",
-    "import": "Uvoz podataka [USKORO]",
+    "export": "Izvoz podataka",
+    "import": "Uvoz podataka",
     "debug_notifications": "[DEBUG] Obaveštenja"
+  },
+
+  "importExport": {
+    "fileDownloaded": "Podaci su sačuvani na uređaju."
   },
 
   "welcomeScreen": {

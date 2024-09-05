@@ -8,6 +8,7 @@ const timeOfDayFormat = "HH:mm";
 const fullDateTimeFormat = "dd MMM yy, HH:mm";
 const fullDateTimeFormatNoYear = "dd MMM, HH:mm";
 const monthCalendarHeader = "MMMM, yyyy";
+const filenameDate = "ddMMyyyy";
 const dayCalendarHeader = "E";
 
 extension DateExtensions on DateTime {
@@ -25,6 +26,10 @@ extension DateExtensions on DateTime {
 
   String formatFullDateTimeString() {
     return DateFormat(fullDateTimeFormat, _getLocaleCode()).format(this);
+  }
+
+  String formatFilenameDateString() {
+    return DateFormat(filenameDate, _getLocaleCode()).format(this);
   }
 
   String formatFullDateTimeNoYearString() {

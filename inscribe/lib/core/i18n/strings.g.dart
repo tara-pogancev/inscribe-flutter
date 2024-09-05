@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 198 (99 per locale)
+/// Strings: 200 (100 per locale)
 ///
-/// Built on 2024-09-02 at 13:53 UTC
+/// Built on 2024-09-05 at 08:56 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -156,6 +156,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get delete => 'Delete';
 	late final _StringsErrorMessagesEn errorMessages = _StringsErrorMessagesEn._(_root);
 	late final _StringsDrawerEn drawer = _StringsDrawerEn._(_root);
+	late final _StringsImportExportEn importExport = _StringsImportExportEn._(_root);
 	late final _StringsWelcomeScreenEn welcomeScreen = _StringsWelcomeScreenEn._(_root);
 	late final _StringsHomeScreenEn homeScreen = _StringsHomeScreenEn._(_root);
 	late final _StringsNewNoteScreenEn newNoteScreen = _StringsNewNoteScreenEn._(_root);
@@ -185,9 +186,19 @@ class _StringsDrawerEn {
 	String get archive => 'Archive';
 	String get settings => 'Settings';
 	String get calendar => 'Calendar';
-	String get export => 'Export [COMING SOON]';
-	String get import => 'Import [COMING SOON]';
+	String get export => 'Export';
+	String get import => 'Import';
 	String get debug_notifications => '[DEBUG] Notifications';
+}
+
+// Path: importExport
+class _StringsImportExportEn {
+	_StringsImportExportEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get fileDownloaded => 'The data has been saved on your file system.';
 }
 
 // Path: welcomeScreen
@@ -365,6 +376,7 @@ class _StringsSrLatn implements Translations {
 	@override String get delete => 'Obriši';
 	@override late final _StringsErrorMessagesSrLatn errorMessages = _StringsErrorMessagesSrLatn._(_root);
 	@override late final _StringsDrawerSrLatn drawer = _StringsDrawerSrLatn._(_root);
+	@override late final _StringsImportExportSrLatn importExport = _StringsImportExportSrLatn._(_root);
 	@override late final _StringsWelcomeScreenSrLatn welcomeScreen = _StringsWelcomeScreenSrLatn._(_root);
 	@override late final _StringsHomeScreenSrLatn homeScreen = _StringsHomeScreenSrLatn._(_root);
 	@override late final _StringsNewNoteScreenSrLatn newNoteScreen = _StringsNewNoteScreenSrLatn._(_root);
@@ -394,9 +406,19 @@ class _StringsDrawerSrLatn implements _StringsDrawerEn {
 	@override String get archive => 'Arhiva';
 	@override String get settings => 'Podešavanja';
 	@override String get calendar => 'Kalendar';
-	@override String get export => 'Izvoz podataka [USKORO]';
-	@override String get import => 'Uvoz podataka [USKORO]';
+	@override String get export => 'Izvoz podataka';
+	@override String get import => 'Uvoz podataka';
 	@override String get debug_notifications => '[DEBUG] Obaveštenja';
+}
+
+// Path: importExport
+class _StringsImportExportSrLatn implements _StringsImportExportEn {
+	_StringsImportExportSrLatn._(this._root);
+
+	@override final _StringsSrLatn _root; // ignore: unused_field
+
+	// Translations
+	@override String get fileDownloaded => 'Podaci su sačuvani na uređaju.';
 }
 
 // Path: welcomeScreen
@@ -559,9 +581,10 @@ extension on Translations {
 			case 'drawer.archive': return 'Archive';
 			case 'drawer.settings': return 'Settings';
 			case 'drawer.calendar': return 'Calendar';
-			case 'drawer.export': return 'Export [COMING SOON]';
-			case 'drawer.import': return 'Import [COMING SOON]';
+			case 'drawer.export': return 'Export';
+			case 'drawer.import': return 'Import';
 			case 'drawer.debug_notifications': return '[DEBUG] Notifications';
+			case 'importExport.fileDownloaded': return 'The data has been saved on your file system.';
 			case 'welcomeScreen.title': return 'Welcome to Inscribe!';
 			case 'welcomeScreen.slides.0': return 'Celebrate friendships with personalized notes on likes, birthdays, and gift ideas.';
 			case 'welcomeScreen.slides.1': return 'Curate thoughtful gift lists for each friend, making every occasion memorable.';
@@ -666,9 +689,10 @@ extension on _StringsSrLatn {
 			case 'drawer.archive': return 'Arhiva';
 			case 'drawer.settings': return 'Podešavanja';
 			case 'drawer.calendar': return 'Kalendar';
-			case 'drawer.export': return 'Izvoz podataka [USKORO]';
-			case 'drawer.import': return 'Uvoz podataka [USKORO]';
+			case 'drawer.export': return 'Izvoz podataka';
+			case 'drawer.import': return 'Uvoz podataka';
 			case 'drawer.debug_notifications': return '[DEBUG] Obaveštenja';
+			case 'importExport.fileDownloaded': return 'Podaci su sačuvani na uređaju.';
 			case 'welcomeScreen.title': return 'Dobrodošli u Inscribe!';
 			case 'welcomeScreen.slides.0': return 'Proslavite prijateljstva sa personalizovanim beleškama o omiljenim stvarima, rođendanima i idejama za poklone.';
 			case 'welcomeScreen.slides.1': return 'Kreirajte pažljivo odabrane liste poklona za svakog prijatelja, čineći svaki događaj nezaboravnim.';

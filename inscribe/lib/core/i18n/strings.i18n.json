@@ -15,9 +15,13 @@
     "archive": "Archive",
     "settings": "Settings",
     "calendar": "Calendar",
-    "export": "Export [COMING SOON]",
-    "import": "Import [COMING SOON]",
+    "export": "Export",
+    "import": "Import",
     "debug_notifications": "[DEBUG] Notifications"
+  },
+
+  "importExport": {
+    "fileDownloaded": "The data has been saved on your file system."
   },
 
   "welcomeScreen": {

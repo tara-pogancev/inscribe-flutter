@@ -1,6 +1,10 @@
+import 'package:file_saver/file_saver.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:inscribe/core/data/repositories/import_export/import_export_repository.dart';
+import 'package:inscribe/core/extensions/context_extensions.dart';
+import 'package:inscribe/core/extensions/date_extensions.dart';
 import 'package:inscribe/core/extensions/router_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
@@ -33,6 +37,21 @@ class _AppDrawerState extends State<AppDrawer> {
     }
   }
 
+  void exportData() async {
+    Uint8List bytes = IC.getIt<ImportExportRepository>().getExportedData();
+    final filename =
+        "Inscribe_Export_${DateTime.now().formatFilenameDateString()}";
+
+    final isExported = await FileSaver.instance.saveAs(
+        name: filename, bytes: bytes, ext: "json", mimeType: MimeType.json);
+
+    if (isExported != null) {
+      Scaffold.of(context).closeDrawer();
+      context.showSnackbar(
+          snackbarText: Translations.of(context).importExport.fileDownloaded);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -58,59 +77,45 @@ class _AppDrawerState extends State<AppDrawer> {
             enabled: router.getCurrentRoute() != Routes.home,
             leading: const Icon(Icons.home_outlined),
             title: Text(Translations.of(context).drawer.memoirs),
-            onTap: () {
-              navigateHomeRoute();
-            },
+            onTap: () => navigateHomeRoute(),
           ),
           ListTile(
             enabled: router.getCurrentRoute() != Routes.archive,
             leading: const Icon(Icons.delete_outline),
             title: Text(Translations.of(context).drawer.archive),
-            onTap: () {
-              navigateRoute(Routes.archive);
-            },
+            onTap: () => navigateRoute(Routes.archive),
           ),
           ListTile(
             enabled: router.getCurrentRoute() != Routes.settings,
             leading: const Icon(Icons.settings_outlined),
             title: Text(Translations.of(context).drawer.settings),
-            onTap: () {
-              navigateRoute(Routes.settings);
-            },
+            onTap: () => navigateRoute(Routes.settings),
           ),
           ListTile(
             enabled: router.getCurrentRoute() != Routes.calendar,
             leading: const Icon(Icons.calendar_month),
             title: Text(Translations.of(context).drawer.calendar),
-            onTap: () {
-              navigateRoute(Routes.calendar);
-            },
+            onTap: () => navigateRoute(Routes.calendar),
           ),
           if (kDebugMode)
             ListTile(
               enabled: router.getCurrentRoute() != Routes.notifications,
               leading: const Icon(Icons.notifications_outlined),
               title: const Text("[DEBUG] Notifications"),
-              onTap: () {
-                navigateRoute(Routes.notifications);
-              },
+              onTap: () => navigateRoute(Routes.notifications),
             ),
           const Divider(),
           ListTile(
-            enabled: false,
+            enabled: true,
             leading: const Icon(Icons.file_upload),
             title: Text(Translations.of(context).drawer.export),
-            onTap: () {
-              // _navigateRoute(context, Routes.home);
-            },
+            onTap: () => exportData(),
           ),
           ListTile(
             enabled: false,
             leading: const Icon(Icons.file_download),
             title: Text(Translations.of(context).drawer.import),
-            onTap: () {
-              // _navigateRoute(context, Routes.home);
-            },
+            // onTap: () => exportData(),
           ),
         ],
       ),
