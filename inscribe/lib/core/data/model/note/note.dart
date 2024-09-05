@@ -37,4 +37,20 @@ class Note with _$Note {
             .simplifyForSearch()
             .contains(searchText.simplifyForSearch());
   }
+
+  Map<String, dynamic> toJsonWithReminders() => <String, dynamic>{
+        'id': id,
+        'name': name,
+        'assetImage': assetImage,
+        'galleryImage': galleryImage?.toString(),
+        'dateOfBirth': dateOfBirth?.toIso8601String(),
+        'type': _$NoteTypeEnumMap[type],
+        'description': description,
+        'giftIdeas': giftIdeas,
+        'isDeleted': isDeleted,
+        'isPinned': isPinned,
+        'updatedAt': updatedAt?.toIso8601String(),
+        'createdAt': createdAt?.toIso8601String(),
+        'reminders': reminders.map((reminder) => reminder.toJson()).toList(),
+      };
 }

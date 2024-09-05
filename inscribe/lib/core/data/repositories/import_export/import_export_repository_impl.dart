@@ -11,10 +11,11 @@ class ImportExportRepositoryImpl extends ImportExportRepository {
 
   @override
   Uint8List getExportedData() {
-    final notes = notesRepository.getNotes();
+    var notes = notesRepository.getNotes();
+    notes = notes.where((note) => !note.isDeleted).toList();
 
     final List<Map<String, dynamic>> data =
-        notes.map((note) => note.toJson()).toList();
+        notes.map((note) => note.toJsonWithReminders()).toList();
 
     final jsonStringValue = jsonEncode(data);
 

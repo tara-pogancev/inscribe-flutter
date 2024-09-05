@@ -28,7 +28,7 @@ Rename app: `rename setAppName --targets ios,android,web --value "Inscribe"`
 - [x] Reminders
 - [x] Notifications
 - [x] Calendar screen
-- [ ] Export data
+- [x] Export data
 - [ ] Import data
 - [ ] More languages
 - [x] Better animations on friend screen

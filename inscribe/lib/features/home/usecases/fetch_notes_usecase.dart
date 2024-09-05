@@ -5,7 +5,7 @@ class FetchNotesUseCase extends UseCase {
   List<Note> call() {
     final notes = notesRepository.getNotes();
     final filteredNotes =
-        notes.where((element) => element.isDeleted == false).toList();
+        notes.where((element) => !element.isDeleted).toList();
     filteredNotes.sort((a, b) => (a.createdAt ??
             DateTime.fromMicrosecondsSinceEpoch(0))
         .compareTo((b.createdAt ?? DateTime.fromMicrosecondsSinceEpoch(0))));
