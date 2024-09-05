@@ -1,30 +1,37 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:dynamic_themes/dynamic_themes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/repositories/notes/notes_repository_impl.dart';
 import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
+import 'package:inscribe/core/domain/notification_controller.dart';
+import 'package:inscribe/core/domain/simple_bloc_observer.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
-import 'package:inscribe/core/presentation/notification_controller.dart';
-import 'package:inscribe/core/router/app_router.dart';
 
 import 'firebase_options.dart';
 
 void main() async {
+  // Hive, IC, Bloc Observer
   await Hive.initFlutter();
   await Hive.openBox(hiveNotesBox);
   await Hive.openBox(hiveRemindersBox);
   IC.setUp();
+  Bloc.observer = SimpleBlocObserver(shouldPrintDebugInfo: false);
+
+  // Google fonts
   GoogleFonts.config.allowRuntimeFetching = true;
-  LocaleSettings.useDeviceLocale();
+
+  // Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -33,6 +40,16 @@ void main() async {
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   }
 
+  // Initialize application language
+  final savedAppLocale =
+      IC.getIt<SharedPreferencesRepository>().getSavedAppLocale();
+  if (savedAppLocale == null) {
+    LocaleSettings.useDeviceLocale();
+  } else {
+    LocaleSettings.setLocale(savedAppLocale);
+  }
+
+  // Notifications
   AwesomeNotifications().initialize(
       "resource://drawable/res_app_icon",
       [
@@ -60,15 +77,11 @@ void main() async {
 class InscribeApp extends StatefulWidget {
   const InscribeApp({super.key});
 
-  static final router = AppRouter.router();
-
   @override
   State<InscribeApp> createState() => _InscribeAppState();
 }
 
 class _InscribeAppState extends State<InscribeApp> {
-  final SharedPreferencesRepository _sharedPreferencesRepository = IC.getIt();
-
   @override
   void initState() {
     AwesomeNotifications().setListeners(
@@ -85,27 +98,23 @@ class _InscribeAppState extends State<InscribeApp> {
 
   @override
   Widget build(BuildContext context) {
-    final isFirstRun = _sharedPreferencesRepository.getIsFirstRun();
-    String startRoute = (isFirstRun) ? Routes.welcome : Routes.home;
-
-    if (kDebugMode) {
-      // startRoute = Routes.notifications;
-    }
-
-    if (isFirstRun) {
-      InscribeApp.router.go(startRoute);
-    }
-
-    return DynamicTheme(
-      themeCollection: getThemeCollection(context),
-      defaultThemeId: AppThemes.light,
-      builder: (context, theme) => MaterialApp.router(
-        routerConfig: InscribeApp.router,
+    return AdaptiveTheme(
+      light: lightTheme,
+      dark: darkTheme,
+      initial: AdaptiveThemeMode.system,
+      builder: (theme, darkTheme) => MaterialApp.router(
+        routerConfig: IC.getIt<GoRouter>(),
         debugShowCheckedModeBanner: false,
         title: Translations.of(context).appName,
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         locale: TranslationProvider.of(context).flutterLocale,
-        localizationsDelegates: GlobalMaterialLocalizations.delegates,
+        supportedLocales: AppLocaleUtils.supportedLocales,
         theme: theme,
+        darkTheme: darkTheme,
       ),
     );
   }

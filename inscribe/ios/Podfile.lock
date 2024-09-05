@@ -4,6 +4,8 @@ PODS:
     - IosAwnCore (~> 0.9.3)
   - awesome_notifications_core (0.0.1):
     - Flutter
+  - file_saver (0.0.1):
+    - Flutter
   - Firebase/Analytics (10.27.0):
     - Firebase/Core
   - Firebase/Core (10.27.0):
@@ -189,6 +191,7 @@ PODS:
 DEPENDENCIES:
   - awesome_notifications (from `.symlinks/plugins/awesome_notifications/ios`)
   - awesome_notifications_core (from `.symlinks/plugins/awesome_notifications_core/ios`)
+  - file_saver (from `.symlinks/plugins/file_saver/ios`)
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
@@ -228,6 +231,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/awesome_notifications/ios"
   awesome_notifications_core:
     :path: ".symlinks/plugins/awesome_notifications_core/ios"
+  file_saver:
+    :path: ".symlinks/plugins/file_saver/ios"
   firebase_analytics:
     :path: ".symlinks/plugins/firebase_analytics/ios"
   firebase_core:
@@ -252,6 +257,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   awesome_notifications: 66d28ab7174ca2823b04d275cb043e0a4a3eb9cf
   awesome_notifications_core: d02eed89738fa362d56cbd372850e9adcd2c6bef
+  file_saver: 503e386464dbe118f630e17b4c2e1190fa0cf808
   Firebase: 26b040b20866a55f55eb3611b9fcf3ae64816b86
   firebase_analytics: cc6e3ca8f159facf99fb1ceb2d81bda9cc811556
   firebase_core: f8d0424c45e0f1e596811085fc12c638d628457c

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
+import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/widgets/dialog_text.dart';
 
 class DeleteNoteForeversDialog extends StatelessWidget {
@@ -9,6 +10,7 @@ class DeleteNoteForeversDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: AppColorScheme.of(context).beige,
       title: DialogText(
         Translations.of(context).archivedNotes.delete_note_forever_dialog_title,
       ),

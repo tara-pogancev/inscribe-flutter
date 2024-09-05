@@ -1,6 +1,9 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hive/hive.dart';
+import 'package:inscribe/core/data/repositories/import_export/import_export_repository.dart';
+import 'package:inscribe/core/data/repositories/import_export/import_export_repository_impl.dart';
 import 'package:inscribe/core/data/repositories/notes/notes_repository.dart';
 import 'package:inscribe/core/data/repositories/notes/notes_repository_impl.dart';
 import 'package:inscribe/core/data/repositories/notifications/notifications_repository.dart';
@@ -8,10 +11,11 @@ import 'package:inscribe/core/data/repositories/notifications/notifications_repo
 import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
 import 'package:inscribe/core/data/repositories/shared_preferences/shared_preferences_repository_impl.dart';
 import 'package:inscribe/core/presentation/bloc/delete_note_bloc/delete_note_bloc.dart';
+import 'package:inscribe/core/router/app_router.dart';
 import 'package:inscribe/features/archive/cubit/archive_cubit.dart';
 import 'package:inscribe/features/calendar/cubit/calendar_cubit.dart';
 import 'package:inscribe/features/home/bloc/home_bloc.dart';
-import 'package:inscribe/features/new_note/bloc/new_note_bloc.dart';
+import 'package:inscribe/features/note_details/bloc/note_details_bloc.dart';
 import 'package:inscribe/features/scheduled_notifications_debug_view/cubit/scheduled_notifications_cubit.dart';
 import 'package:inscribe/features/welcome/bloc/welcome_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,6 +29,9 @@ class IC {
       () => SharedPreferences.getInstance(),
     );
     await getIt.isReady<SharedPreferences>();
+
+    // Set the router
+    getIt.registerLazySingleton<GoRouter>(() => AppRouter.router());
 
     // Setup repositories
     getIt.registerLazySingleton<SharedPreferencesRepository>(
@@ -44,11 +51,15 @@ class IC {
           notificationsRepository: getIt());
     });
 
+    getIt.registerLazySingleton<ImportExportRepository>(() {
+      return ImportExportRepositoryImpl(notesRepository: getIt());
+    });
+
     getIt.registerLazySingleton(() => const Uuid());
 
     // Setup bloc
     getIt.registerLazySingleton(() => WelcomeBloc());
-    getIt.registerLazySingleton(() => NewNoteBloc());
+    getIt.registerLazySingleton(() => NoteDetailsBloc());
     getIt.registerLazySingleton(() => HomeBloc());
     getIt.registerLazySingleton(() => DeleteNoteBloc());
     getIt.registerLazySingleton(() => ArchiveCubit());

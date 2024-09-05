@@ -1,4 +1,4 @@
-import 'package:inscribe/core/domain/model/app_bloc.dart';
+import 'package:inscribe/core/domain/app_bloc.dart';
 import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
 import 'package:inscribe/core/injection_container.dart';
 

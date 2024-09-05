@@ -8,7 +8,8 @@ class NoArchivedNotesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final assetImagePath =  "assets/images/empty_illustration_${context.getIsDarkTheme() ? 'dark' : 'light'}.png";
+    final assetImagePath =
+        "assets/images/empty_illustration_${context.getIsDarkTheme() ? 'dark' : 'light'}.png";
 
     return FractionallySizedBox(
       widthFactor: 0.7,
@@ -33,6 +34,9 @@ class NoArchivedNotesSection extends StatelessWidget {
               style: AppTextStyles.of(context).defaultText,
               textAlign: TextAlign.center,
             ),
+            const SizedBox(
+              height: 100,
+            )
           ],
         ),
       ),

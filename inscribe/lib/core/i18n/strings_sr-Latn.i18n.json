@@ -1,0 +1,133 @@
+{
+  "appName": "Inscribe",
+  "cancel": "Otkaži",
+  "confirm": "Potvrdi",
+  "undo": "Poništi",
+  "edit": "Izmeni",
+  "delete": "Obriši",
+
+  "errorMessages": {
+    "mandatory_field": "Ovo polje je obavezno."
+  },
+
+  "drawer": {
+    "memoirs": "Memoari",
+    "archive": "Arhiva",
+    "settings": "Podešavanja",
+    "calendar": "Kalendar",
+    "export": "Izvoz podataka",
+    "import": "Uvoz podataka",
+    "debug_notifications": "[DEBUG] Obaveštenja"
+  },
+
+  "importExport": {
+    "fileDownloaded": "Podaci su sačuvani na uređaju."
+  },
+
+  "welcomeScreen": {
+    "title": "Dobrodošli u Inscribe!",
+    "slides": [
+      "Proslavite prijateljstva sa personalizovanim beleškama o omiljenim stvarima, rođendanima i idejama za poklone.",
+      "Kreirajte pažljivo odabrane liste poklona za svakog prijatelja, čineći svaki događaj nezaboravnim.",
+      "Nosite svoja prijateljstva svuda - lako preuzmite i prebacite svoje podatke.",
+      "Vaša privatnost je važna - uživajte u potpunoj offline funkcionalnosti, čuvajući svoje podatke sigurnim.",
+      "Nikada ne propustite važan trenutak - postavite podsetnike za posebne događaje i prilike."
+    ],
+    "startButton": "Započni beleženje!"
+  },
+
+  "homeScreen": {
+    "welcome": "Dobrodošli!",
+    "no_notes_title": "Nema beležaka!",
+    "no_notes_subtitle": "Počnite dodavanjem memoara o prijatelju.",
+    "add_note": "Dodaj belešku",
+    "pinned": "Prikačene",
+    "other": "Ostalo",
+    "search": "Pretraga",
+    "pin_note": "Prikvači belešku",
+    "unpin_note": "Otkvači belešku"
+  },
+
+  "newNoteScreen": {
+    "friend_name_hint": "Kako se zove?",
+    "fields_missing_error": "Izvinjavamo se! Neka polja nedostaju!",
+    "overview": "Pregled",
+    "gift_ideas": "Ideje za poklone",
+    "gift_ideas_hint": "Šta bi ova osoba volela kao poklon?",
+    "reminders": "Podsetnici",
+    "category": "Kategorija",
+    "categories": [
+      "Prijatelj 😄",
+      "Posao 💼",
+      "Porodica 🏠",
+      "Škola 🎒",
+      "Partner ❤️‍🔥"
+    ],
+    "date_of_birth": "Datum rođenja",
+    "description": "Opis",
+    "description_hint": "Dodajte bilo koje beleške ovde...",
+    "coming_soon": "Uskoro",
+    "some_fields_are_missing": "Neka polja nedostaju!",
+    "note_saved": "Beleška uspešno sačuvana!",
+    "archive_note": "Arhiviraj belešku",
+    "archive_note_are_you_sure": "Da li ste sigurni da želite da arhivirate belešku za '$name?'",
+    "note_achived": "Beleška arhivirana!",
+    "select_image": "Izaberi sliku",
+    "remove_image": "Ukloni sliku",
+    "randomize_illusrtation": "Nasuična ilustracija",
+    "unsaved_changes": "Nesačuvane izmene",
+    "save_changes_description": "Da li želite da sačuvate vaše izmene?",
+    "save": "Sačuvaj",
+    "discard": "Odbaci",
+    "add_reminder": "Dodaj podsetnik",
+    "annual": "Godišnji",
+    "this_reminder_will_be_repeated_every_year": "Podsetnik će biti ponovljen svake godine",
+    "name": "Naziv",
+    "date": "Datum",
+    "time": "Vreme",
+    "reminder_deleted": "Podsetnik obrisan!",
+    "no_reminders": "Nema podsetnika",
+    "reminder_created": "Podsetnik kreiran!"
+  },
+
+  "archivedNotes": {
+    "no_archived_notes": "Nema arhiviranih beležaka!",
+    "no_archived_notes_subtitle": "Vaše obrisane beleške će se pojaviti ovde.",
+    "delete_all_notes_forever_dialog_title": "Obriši sve beleške zauvek",
+    "delete_all_notes_forever_dialog_subtitle": "Ova radnja se ne može poništiti. Vaša arhiva će biti ispražnjena.",
+    "delete_note_forever_dialog_title": "Obriši belešku zauvek",
+    "delete_note_forever_dialog_subtitle": "Ova radnja se ne može poništiti. Vaša beleška će biti obrisana zauvek.",
+    "restore": "Vrati",
+    "delete_forever": "Obriši zauvek",
+    "note_deleted": "Beleška obrisana!",
+    "note_restored": "Beleška vraćena!"
+  },
+
+  "settingsScreen": {
+    "app_name_and_version": "Inscribe, v$version",
+    "theme": "Tema",
+    "dark": "Tamna tema",
+    "light": "Svetla tema",
+    "language": "Jezik",
+    "english": "Engleski",
+    "serbian": "Srpski",
+    "notes_view": "Pregled beleški",
+    "grid_view": "Mrežni prikaz",
+    "list_view": "Lista prikaz",
+    "use_dark_theme": "Koristi tamnu temu",
+    "dark_theme_description": "Smanjenje naprezanja očiju i ušteda baterije",
+    "use_grid_view": "Koristi tabelarni prikaz",
+    "grid_view_description": "Kartice zauzimaju manje prostora",
+    "visual": "Vizuali",
+    "system": "Sistem",
+    "change_theme": "Promeni temu",
+    "apply_change": "Primeni promenu?",
+    "this_action_will_restart_the_app": "Ova akcija će restartovati aplikaciju"
+  },
+
+  "calendarScreen": {
+    "birthday": "Rođendan",
+    "annualEvent": "Godišnji događaj",
+    "oneTimeReminder": "Jednokratni podsetnik"
+  }
+}

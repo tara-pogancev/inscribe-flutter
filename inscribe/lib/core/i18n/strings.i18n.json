@@ -15,9 +15,13 @@
     "archive": "Archive",
     "settings": "Settings",
     "calendar": "Calendar",
-    "export": "Export [COMING SOON]",
-    "import": "Import [COMING SOON]",
+    "export": "Export",
+    "import": "Import",
     "debug_notifications": "[DEBUG] Notifications"
+  },
+
+  "importExport": {
+    "fileDownloaded": "The data has been saved on your file system."
   },
 
   "welcomeScreen": {
@@ -117,6 +121,13 @@
     "visual": "Visual",
     "system": "System",
     "change_theme": "Change theme",
+    "apply_change": "Apply change?",
     "this_action_will_restart_the_app": "This action will restart the app"
+  },
+
+  "calendarScreen": {
+    "birthday": "Birthday",
+    "annualEvent": "Annual event",
+    "oneTimeReminder": "One time reminder"
   }
 }

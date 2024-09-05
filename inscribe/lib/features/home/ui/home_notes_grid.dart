@@ -14,7 +14,7 @@ import 'package:inscribe/core/presentation/widgets/faded_edges_container.dart';
 import 'package:inscribe/core/router/app_router.dart';
 import 'package:inscribe/features/home/bloc/home_bloc.dart';
 import 'package:inscribe/features/home/ui/note_card.dart';
-import 'package:inscribe/features/new_note/ui/dialog/archive_note_dialog.dart';
+import 'package:inscribe/features/note_details/ui/dialog/archive_note_dialog.dart';
 
 class HomeNotesGrid extends StatefulWidget {
   const HomeNotesGrid({super.key});

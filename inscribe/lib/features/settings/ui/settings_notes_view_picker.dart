@@ -57,6 +57,9 @@ class _SettingsNotesViewPickerState extends State<SettingsNotesViewPicker> {
               ),
             ],
           ),
+          const SizedBox(
+            width: 10,
+          ),
           Flexible(
             child: Switch(
               value: _getIsGridView(),

@@ -17,7 +17,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  String appVersion = '1.0.0';
+  late String appVersion = "";
 
   @override
   void initState() {
@@ -37,40 +37,45 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return AppScaffold(
       includeDefaultPadding: true,
       enableDrawer: true,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          DefaultAppHeader(
-            title: Translations.of(context).drawer.settings,
-          ),
-          const SizedBox(
-            height: defaultScreenPadding,
-          ),
-          Text(
-            Translations.of(context).settingsScreen.visual.toUpperCase(),
-            style: AppTextStyles.of(context).subtitle,
-          ),
-          const SettingsThemePicker(),
-          const SettingsNotesViewPicker(),
-          const Divider(
-            height: defaultScreenPadding,
-          ),
-          Text(
-            Translations.of(context).settingsScreen.system.toUpperCase(),
-            style: AppTextStyles.of(context).subtitle,
-          ),
-          const SettingsLanguagePicker(),
-          const Spacer(),
-          SizedBox(
-            width: double.infinity,
-            child: Text(
-              Translations.of(context)
-                  .settingsScreen
-                  .app_name_and_version(version: appVersion),
-              textAlign: TextAlign.center,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            DefaultAppHeader(
+              title: Translations.of(context).drawer.settings,
             ),
-          )
-        ],
+            const SizedBox(
+              height: defaultScreenPadding,
+            ),
+            Text(
+              Translations.of(context).settingsScreen.visual.toUpperCase(),
+              style: AppTextStyles.of(context).subtitle,
+            ),
+            const SettingsThemePicker(),
+            const SettingsNotesViewPicker(),
+            const Divider(
+              height: defaultScreenPadding,
+            ),
+            Text(
+              Translations.of(context).settingsScreen.system.toUpperCase(),
+              style: AppTextStyles.of(context).subtitle,
+            ),
+            const SettingsLanguagePicker(),
+            SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.all(30),
+                child: Text(
+                  Translations.of(context)
+                      .settingsScreen
+                      .app_name_and_version(version: appVersion),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

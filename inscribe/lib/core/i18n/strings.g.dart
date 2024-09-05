@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 2
-/// Strings: 190 (95 per locale)
+/// Strings: 200 (100 per locale)
 ///
-/// Built on 2024-08-26 at 13:35 UTC
+/// Built on 2024-09-05 at 08:56 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -26,7 +26,7 @@ const AppLocale _baseLocale = AppLocale.en;
 /// - if (LocaleSettings.currentLocale == AppLocale.en) // locale check
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
 	en(languageCode: 'en', build: Translations.build),
-	sr(languageCode: 'sr', build: _StringsSr.build);
+	srLatn(languageCode: 'sr', scriptCode: 'Latn', build: _StringsSrLatn.build);
 
 	const AppLocale({required this.languageCode, this.scriptCode, this.countryCode, required this.build}); // ignore: unused_element
 
@@ -156,11 +156,13 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	String get delete => 'Delete';
 	late final _StringsErrorMessagesEn errorMessages = _StringsErrorMessagesEn._(_root);
 	late final _StringsDrawerEn drawer = _StringsDrawerEn._(_root);
+	late final _StringsImportExportEn importExport = _StringsImportExportEn._(_root);
 	late final _StringsWelcomeScreenEn welcomeScreen = _StringsWelcomeScreenEn._(_root);
 	late final _StringsHomeScreenEn homeScreen = _StringsHomeScreenEn._(_root);
 	late final _StringsNewNoteScreenEn newNoteScreen = _StringsNewNoteScreenEn._(_root);
 	late final _StringsArchivedNotesEn archivedNotes = _StringsArchivedNotesEn._(_root);
 	late final _StringsSettingsScreenEn settingsScreen = _StringsSettingsScreenEn._(_root);
+	late final _StringsCalendarScreenEn calendarScreen = _StringsCalendarScreenEn._(_root);
 }
 
 // Path: errorMessages
@@ -184,9 +186,19 @@ class _StringsDrawerEn {
 	String get archive => 'Archive';
 	String get settings => 'Settings';
 	String get calendar => 'Calendar';
-	String get export => 'Export [COMING SOON]';
-	String get import => 'Import [COMING SOON]';
+	String get export => 'Export';
+	String get import => 'Import';
 	String get debug_notifications => '[DEBUG] Notifications';
+}
+
+// Path: importExport
+class _StringsImportExportEn {
+	_StringsImportExportEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get fileDownloaded => 'The data has been saved on your file system.';
 }
 
 // Path: welcomeScreen
@@ -316,17 +328,30 @@ class _StringsSettingsScreenEn {
 	String get visual => 'Visual';
 	String get system => 'System';
 	String get change_theme => 'Change theme';
+	String get apply_change => 'Apply change?';
 	String get this_action_will_restart_the_app => 'This action will restart the app';
 }
 
+// Path: calendarScreen
+class _StringsCalendarScreenEn {
+	_StringsCalendarScreenEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get birthday => 'Birthday';
+	String get annualEvent => 'Annual event';
+	String get oneTimeReminder => 'One time reminder';
+}
+
 // Path: <root>
-class _StringsSr implements Translations {
+class _StringsSrLatn implements Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsSr.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	_StringsSrLatn.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
-		    locale: AppLocale.sr,
+		    locale: AppLocale.srLatn,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
@@ -334,13 +359,13 @@ class _StringsSr implements Translations {
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
-	/// Metadata for the translations of <sr>.
+	/// Metadata for the translations of <sr-Latn>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
 	@override dynamic operator[](String key) => $meta.getTranslation(key);
 
-	@override late final _StringsSr _root = this; // ignore: unused_field
+	@override late final _StringsSrLatn _root = this; // ignore: unused_field
 
 	// Translations
 	@override String get appName => 'Inscribe';
@@ -349,46 +374,58 @@ class _StringsSr implements Translations {
 	@override String get undo => 'Poništi';
 	@override String get edit => 'Izmeni';
 	@override String get delete => 'Obriši';
-	@override late final _StringsErrorMessagesSr errorMessages = _StringsErrorMessagesSr._(_root);
-	@override late final _StringsDrawerSr drawer = _StringsDrawerSr._(_root);
-	@override late final _StringsWelcomeScreenSr welcomeScreen = _StringsWelcomeScreenSr._(_root);
-	@override late final _StringsHomeScreenSr homeScreen = _StringsHomeScreenSr._(_root);
-	@override late final _StringsNewNoteScreenSr newNoteScreen = _StringsNewNoteScreenSr._(_root);
-	@override late final _StringsArchivedNotesSr archivedNotes = _StringsArchivedNotesSr._(_root);
-	@override late final _StringsSettingsScreenSr settingsScreen = _StringsSettingsScreenSr._(_root);
+	@override late final _StringsErrorMessagesSrLatn errorMessages = _StringsErrorMessagesSrLatn._(_root);
+	@override late final _StringsDrawerSrLatn drawer = _StringsDrawerSrLatn._(_root);
+	@override late final _StringsImportExportSrLatn importExport = _StringsImportExportSrLatn._(_root);
+	@override late final _StringsWelcomeScreenSrLatn welcomeScreen = _StringsWelcomeScreenSrLatn._(_root);
+	@override late final _StringsHomeScreenSrLatn homeScreen = _StringsHomeScreenSrLatn._(_root);
+	@override late final _StringsNewNoteScreenSrLatn newNoteScreen = _StringsNewNoteScreenSrLatn._(_root);
+	@override late final _StringsArchivedNotesSrLatn archivedNotes = _StringsArchivedNotesSrLatn._(_root);
+	@override late final _StringsSettingsScreenSrLatn settingsScreen = _StringsSettingsScreenSrLatn._(_root);
+	@override late final _StringsCalendarScreenSrLatn calendarScreen = _StringsCalendarScreenSrLatn._(_root);
 }
 
 // Path: errorMessages
-class _StringsErrorMessagesSr implements _StringsErrorMessagesEn {
-	_StringsErrorMessagesSr._(this._root);
+class _StringsErrorMessagesSrLatn implements _StringsErrorMessagesEn {
+	_StringsErrorMessagesSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String get mandatory_field => 'Ovo polje je obavezno.';
 }
 
 // Path: drawer
-class _StringsDrawerSr implements _StringsDrawerEn {
-	_StringsDrawerSr._(this._root);
+class _StringsDrawerSrLatn implements _StringsDrawerEn {
+	_StringsDrawerSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String get memoirs => 'Memoari';
 	@override String get archive => 'Arhiva';
 	@override String get settings => 'Podešavanja';
 	@override String get calendar => 'Kalendar';
-	@override String get export => 'Izvoz podataka [USKORO]';
-	@override String get import => 'Uvoz podataka [USKORO]';
+	@override String get export => 'Izvoz podataka';
+	@override String get import => 'Uvoz podataka';
 	@override String get debug_notifications => '[DEBUG] Obaveštenja';
 }
 
-// Path: welcomeScreen
-class _StringsWelcomeScreenSr implements _StringsWelcomeScreenEn {
-	_StringsWelcomeScreenSr._(this._root);
+// Path: importExport
+class _StringsImportExportSrLatn implements _StringsImportExportEn {
+	_StringsImportExportSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
+
+	// Translations
+	@override String get fileDownloaded => 'Podaci su sačuvani na uređaju.';
+}
+
+// Path: welcomeScreen
+class _StringsWelcomeScreenSrLatn implements _StringsWelcomeScreenEn {
+	_StringsWelcomeScreenSrLatn._(this._root);
+
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Dobrodošli u Inscribe!';
@@ -403,10 +440,10 @@ class _StringsWelcomeScreenSr implements _StringsWelcomeScreenEn {
 }
 
 // Path: homeScreen
-class _StringsHomeScreenSr implements _StringsHomeScreenEn {
-	_StringsHomeScreenSr._(this._root);
+class _StringsHomeScreenSrLatn implements _StringsHomeScreenEn {
+	_StringsHomeScreenSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String get welcome => 'Dobrodošli!';
@@ -421,10 +458,10 @@ class _StringsHomeScreenSr implements _StringsHomeScreenEn {
 }
 
 // Path: newNoteScreen
-class _StringsNewNoteScreenSr implements _StringsNewNoteScreenEn {
-	_StringsNewNoteScreenSr._(this._root);
+class _StringsNewNoteScreenSrLatn implements _StringsNewNoteScreenEn {
+	_StringsNewNoteScreenSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String get friend_name_hint => 'Kako se zove?';
@@ -469,10 +506,10 @@ class _StringsNewNoteScreenSr implements _StringsNewNoteScreenEn {
 }
 
 // Path: archivedNotes
-class _StringsArchivedNotesSr implements _StringsArchivedNotesEn {
-	_StringsArchivedNotesSr._(this._root);
+class _StringsArchivedNotesSrLatn implements _StringsArchivedNotesEn {
+	_StringsArchivedNotesSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String get no_archived_notes => 'Nema arhiviranih beležaka!';
@@ -488,10 +525,10 @@ class _StringsArchivedNotesSr implements _StringsArchivedNotesEn {
 }
 
 // Path: settingsScreen
-class _StringsSettingsScreenSr implements _StringsSettingsScreenEn {
-	_StringsSettingsScreenSr._(this._root);
+class _StringsSettingsScreenSrLatn implements _StringsSettingsScreenEn {
+	_StringsSettingsScreenSrLatn._(this._root);
 
-	@override final _StringsSr _root; // ignore: unused_field
+	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
 	@override String app_name_and_version({required Object version}) => 'Inscribe, v${version}';
@@ -511,7 +548,20 @@ class _StringsSettingsScreenSr implements _StringsSettingsScreenEn {
 	@override String get visual => 'Vizuali';
 	@override String get system => 'Sistem';
 	@override String get change_theme => 'Promeni temu';
+	@override String get apply_change => 'Primeni promenu?';
 	@override String get this_action_will_restart_the_app => 'Ova akcija će restartovati aplikaciju';
+}
+
+// Path: calendarScreen
+class _StringsCalendarScreenSrLatn implements _StringsCalendarScreenEn {
+	_StringsCalendarScreenSrLatn._(this._root);
+
+	@override final _StringsSrLatn _root; // ignore: unused_field
+
+	// Translations
+	@override String get birthday => 'Rođendan';
+	@override String get annualEvent => 'Godišnji događaj';
+	@override String get oneTimeReminder => 'Jednokratni podsetnik';
 }
 
 /// Flat map(s) containing all translations.
@@ -531,9 +581,10 @@ extension on Translations {
 			case 'drawer.archive': return 'Archive';
 			case 'drawer.settings': return 'Settings';
 			case 'drawer.calendar': return 'Calendar';
-			case 'drawer.export': return 'Export [COMING SOON]';
-			case 'drawer.import': return 'Import [COMING SOON]';
+			case 'drawer.export': return 'Export';
+			case 'drawer.import': return 'Import';
 			case 'drawer.debug_notifications': return '[DEBUG] Notifications';
+			case 'importExport.fileDownloaded': return 'The data has been saved on your file system.';
 			case 'welcomeScreen.title': return 'Welcome to Inscribe!';
 			case 'welcomeScreen.slides.0': return 'Celebrate friendships with personalized notes on likes, birthdays, and gift ideas.';
 			case 'welcomeScreen.slides.1': return 'Curate thoughtful gift lists for each friend, making every occasion memorable.';
@@ -614,13 +665,17 @@ extension on Translations {
 			case 'settingsScreen.visual': return 'Visual';
 			case 'settingsScreen.system': return 'System';
 			case 'settingsScreen.change_theme': return 'Change theme';
+			case 'settingsScreen.apply_change': return 'Apply change?';
 			case 'settingsScreen.this_action_will_restart_the_app': return 'This action will restart the app';
+			case 'calendarScreen.birthday': return 'Birthday';
+			case 'calendarScreen.annualEvent': return 'Annual event';
+			case 'calendarScreen.oneTimeReminder': return 'One time reminder';
 			default: return null;
 		}
 	}
 }
 
-extension on _StringsSr {
+extension on _StringsSrLatn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'appName': return 'Inscribe';
@@ -634,9 +689,10 @@ extension on _StringsSr {
 			case 'drawer.archive': return 'Arhiva';
 			case 'drawer.settings': return 'Podešavanja';
 			case 'drawer.calendar': return 'Kalendar';
-			case 'drawer.export': return 'Izvoz podataka [USKORO]';
-			case 'drawer.import': return 'Uvoz podataka [USKORO]';
+			case 'drawer.export': return 'Izvoz podataka';
+			case 'drawer.import': return 'Uvoz podataka';
 			case 'drawer.debug_notifications': return '[DEBUG] Obaveštenja';
+			case 'importExport.fileDownloaded': return 'Podaci su sačuvani na uređaju.';
 			case 'welcomeScreen.title': return 'Dobrodošli u Inscribe!';
 			case 'welcomeScreen.slides.0': return 'Proslavite prijateljstva sa personalizovanim beleškama o omiljenim stvarima, rođendanima i idejama za poklone.';
 			case 'welcomeScreen.slides.1': return 'Kreirajte pažljivo odabrane liste poklona za svakog prijatelja, čineći svaki događaj nezaboravnim.';
@@ -717,7 +773,11 @@ extension on _StringsSr {
 			case 'settingsScreen.visual': return 'Vizuali';
 			case 'settingsScreen.system': return 'Sistem';
 			case 'settingsScreen.change_theme': return 'Promeni temu';
+			case 'settingsScreen.apply_change': return 'Primeni promenu?';
 			case 'settingsScreen.this_action_will_restart_the_app': return 'Ova akcija će restartovati aplikaciju';
+			case 'calendarScreen.birthday': return 'Rođendan';
+			case 'calendarScreen.annualEvent': return 'Godišnji događaj';
+			case 'calendarScreen.oneTimeReminder': return 'Jednokratni podsetnik';
 			default: return null;
 		}
 	}
