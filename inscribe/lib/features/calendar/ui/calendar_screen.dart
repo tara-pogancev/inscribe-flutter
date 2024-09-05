@@ -27,7 +27,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
   void initState() {
     super.initState();
     cubit.initState();
-    setVisibleEventsForCalendar();
   }
 
   void setVisibleEventsForCalendar() {
@@ -70,6 +69,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    setVisibleEventsForCalendar();
     return AppScaffold(
       includeDefaultPadding: false,
       enableDrawer: true,
