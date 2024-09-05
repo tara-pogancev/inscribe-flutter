@@ -21,7 +21,9 @@
   },
 
   "importExport": {
-    "fileDownloaded": "The data has been saved on your file system."
+    "fileDownloaded": "The data has been saved on your file system.",
+    "dataHasBeenImported": "Data from file has been imported.",
+    "error": "An error occurred while importing data from file."
   },
 
   "welcomeScreen": {

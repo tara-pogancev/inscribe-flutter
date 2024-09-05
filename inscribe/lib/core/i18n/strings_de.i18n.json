@@ -1,0 +1,135 @@
+{
+  "appName": "Inscribe",
+  "cancel": "Abbrechen",
+  "confirm": "Bestätigen",
+  "undo": "Rückgängig machen",
+  "edit": "Bearbeiten",
+  "delete": "Löschen",
+
+  "errorMessages": {
+    "mandatory_field": "Dieses Feld ist erforderlich."
+  },
+
+  "drawer": {
+    "memoirs": "Erinnerungen",
+    "archive": "Archiv",
+    "settings": "Einstellungen",
+    "calendar": "Kalender",
+    "export": "Exportieren",
+    "import": "Importieren",
+    "debug_notifications": "[DEBUG] Benachrichtigungen"
+  },
+
+  "importExport": {
+    "fileDownloaded": "Die Daten wurden auf Ihr Dateisystem gespeichert.",
+    "dataHasBeenImported": "Daten aus der Datei wurden importiert.",
+    "error": "Es ist ein Fehler beim Importieren der Daten aus der Datei aufgetreten."
+  },
+
+  "welcomeScreen": {
+    "title": "Willkommen bei Inscribe!",
+    "slides": [
+      "Feiern Sie Freundschaften mit personalisierten Notizen zu Vorlieben, Geburtstagen und Geschenkideen.",
+      "Erstellen Sie durchdachte Geschenkelisten für jeden Freund und machen Sie jeden Anlass unvergesslich.",
+      "Nehmen Sie Ihre Freundschaften überallhin mit - laden Sie Ihre Daten ganz einfach herunter und übertragen Sie sie.",
+      "Ihre Privatsphäre ist wichtig - genießen Sie die volle Offline-Funktionalität und halten Sie Ihre Daten sicher.",
+      "Verpassen Sie nichts - richten Sie Erinnerungen für besondere Anlässe und Ereignisse ein."
+    ],
+    "startButton": "Notizen erstellen!"
+  },
+
+  "homeScreen": {
+    "welcome": "Willkommen!",
+    "no_notes_title": "Keine Notizen gefunden!",
+    "no_notes_subtitle": "Beginnen Sie mit dem Hinzufügen einer Freundesnotiz.",
+    "add_note": "Notiz hinzufügen",
+    "pinned": "Angeheftet",
+    "other": "Andere",
+    "search": "Suchen",
+    "pin_note": "Notiz anheften",
+    "unpin_note": "Notiz lösen"
+  },
+
+  "newNoteScreen": {
+    "friend_name_hint": "Wie heißt er/sie?",
+    "fields_missing_error": "Entschuldigung! Einige Felder fehlen!",
+    "overview": "Übersicht",
+    "gift_ideas": "Geschenkideen",
+    "gift_ideas_hint": "Was würde dieser Person als Geschenk gefallen?",
+    "reminders": "Erinnerungen",
+    "category": "Kategorie",
+    "categories": [
+      "Freund 😄",
+      "Arbeit 💼",
+      "Familie 🏠",
+      "Schule 🎒",
+      "Romantisch ❤️‍🔥"
+    ],
+    "date_of_birth": "Geburtsdatum",
+    "description": "Beschreibung",
+    "description_hint": "Fügen Sie hier Ihre Notizen hinzu...",
+    "coming_soon": "Bald verfügbar",
+    "some_fields_are_missing": "Einige Felder fehlen!",
+    "note_saved": "Notiz erfolgreich gespeichert!",
+    "archive_note": "Notiz archivieren",
+    "archive_note_are_you_sure": "Möchten Sie die Notiz für '$name' wirklich archivieren?",
+    "note_achived": "Notiz archiviert!",
+    "select_image": "Bild auswählen",
+    "remove_image": "Bild entfernen",
+    "randomize_illusrtation": "Illustration zufällig auswählen",
+    "unsaved_changes": "Nicht gespeicherte Änderungen",
+    "save_changes_description": "Möchten Sie Ihre Änderungen speichern?",
+    "save": "Speichern",
+    "discard": "Verwerfen",
+    "add_reminder": "Erinnerung hinzufügen",
+    "annual": "Jährlich",
+    "this_reminder_will_be_repeated_every_year": "Diese Erinnerung wird jedes Jahr wiederholt",
+    "name": "Name",
+    "date": "Datum",
+    "time": "Uhrzeit",
+    "reminder_deleted": "Erinnerung gelöscht!",
+    "no_reminders": "Keine Erinnerungen",
+    "reminder_created": "Erinnerung erstellt!"
+  },
+
+  "archivedNotes": {
+    "no_archived_notes": "Keine archivierten Notizen!",
+    "no_archived_notes_subtitle": "Ihre gelöschten Notizen werden hier angezeigt.",
+    "delete_all_notes_forever_dialog_title": "Alle Notizen endgültig löschen",
+    "delete_all_notes_forever_dialog_subtitle": "Diese Aktion kann nicht rückgängig gemacht werden. Ihr Archiv wird geleert.",
+    "delete_note_forever_dialog_title": "Notiz endgültig löschen",
+    "delete_note_forever_dialog_subtitle": "Diese Aktion kann nicht rückgängig gemacht werden. Ihre Notiz wird endgültig gelöscht.",
+    "restore": "Wiederherstellen",
+    "delete_forever": "Endgültig löschen",
+    "note_deleted": "Notiz gelöscht!",
+    "note_restored": "Notiz wiederhergestellt!"
+  },
+
+  "settingsScreen": {
+    "app_name_and_version": "Inscribe, v$version",
+    "theme": "Thema",
+    "dark": "Dunkles Thema",
+    "light": "Helles Thema",
+    "language": "Sprache",
+    "english": "Englisch",
+    "serbian": "Serbisch",
+    "notes_view": "Notizansicht",
+    "grid_view": "Rasteransicht",
+    "list_view": "Listenansicht",
+    "use_dark_theme": "Dunkles Thema verwenden",
+    "dark_theme_description": "Reduziert die Augenbelastung und spart Batterie",
+    "use_grid_view": "Rasteransicht verwenden",
+    "grid_view_description": "Karten nehmen in der Rasteransicht weniger Platz ein",
+    "visual": "Visuell",
+    "system": "System",
+    "change_theme": "Thema ändern",
+    "apply_change": "Änderung anwenden?",
+    "this_action_will_restart_the_app": "Diese Aktion wird die App neu starten"
+  },
+
+  "calendarScreen": {
+    "birthday": "Geburtstag",
+    "annualEvent": "Jährliches Ereignis",
+    "oneTimeReminder": "Einmalige Erinnerung"
+  }
+}

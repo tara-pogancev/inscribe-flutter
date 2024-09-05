@@ -23,35 +23,35 @@ class _SettingsThemePickerState extends State<SettingsThemePicker> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  Translations.of(context).settingsScreen.use_dark_theme,
-                  style: AppTextStyles.of(context).settingsTitle,
-                ),
-                Text(
-                  Translations.of(context)
-                      .settingsScreen
-                      .dark_theme_description,
-                  style: AppTextStyles.of(context).settingsSubtitle,
-                ),
-              ],
+            Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    Translations.of(context).settingsScreen.use_dark_theme,
+                    style: AppTextStyles.of(context).settingsTitle,
+                  ),
+                  Text(
+                    Translations.of(context)
+                        .settingsScreen
+                        .dark_theme_description,
+                    style: AppTextStyles.of(context).settingsSubtitle,
+                  ),
+                ],
+              ),
             ),
             const SizedBox(
               width: 10,
             ),
-            Flexible(
-              child: Switch(
-                value: context.getIsDarkTheme(),
-                onChanged: (value) {
-                  if (value) {
-                    AdaptiveTheme.of(context).setDark();
-                  } else {
-                    AdaptiveTheme.of(context).setLight();
-                  }
-                },
-              ),
+            Switch(
+              value: context.getIsDarkTheme(),
+              onChanged: (value) {
+                if (value) {
+                  AdaptiveTheme.of(context).setDark();
+                } else {
+                  AdaptiveTheme.of(context).setLight();
+                }
+              },
             ),
           ],
         ),

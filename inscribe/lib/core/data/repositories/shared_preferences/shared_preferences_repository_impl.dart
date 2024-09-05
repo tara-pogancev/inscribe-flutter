@@ -52,8 +52,29 @@ class SharedPreferencesRepositoryImpl implements SharedPreferencesRepository {
       case "en":
         return AppLocale.en;
 
-      default:
+      case "sr-Latn":
         return AppLocale.srLatn;
+
+      case "ru":
+        return AppLocale.ru;
+
+      case "fr":
+        return AppLocale.fr;
+
+      case "es":
+        return AppLocale.es;
+
+      case "de":
+        return AppLocale.de;
+
+      case "it":
+        return AppLocale.it;
+
+      case "tr":
+        return AppLocale.tr;
+
+      default:
+        return AppLocale.en;
     }
   }
 

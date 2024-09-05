@@ -9,8 +9,16 @@ class SettingsLanguagePicker extends StatelessWidget {
   const SettingsLanguagePicker({super.key});
 
   Map<AppLocale, String> _getLanguageValues(BuildContext context) {
-    return Map<AppLocale, String>.from(
-        {AppLocale.en: "English", AppLocale.srLatn: "Srpski"});
+    return Map<AppLocale, String>.from({
+      AppLocale.en: "🇬🇧 English",
+      AppLocale.es: "🇪🇸 Español",
+      AppLocale.fr: "🇫🇷 Français",
+      AppLocale.de: "🇩🇪 Deutsch",
+      AppLocale.it: "🇮🇹 Italiano",
+      AppLocale.ru: "🇷🇺 Русский",
+      AppLocale.srLatn: "🇷🇸 Srpski",
+      AppLocale.tr: "🇹🇷 Türkçe"
+    });
   }
 
   void _setLocale(AppLocale locale, BuildContext context) async {

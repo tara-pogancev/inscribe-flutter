@@ -44,29 +44,29 @@ class _SettingsNotesViewPickerState extends State<SettingsNotesViewPicker> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                Translations.of(context).settingsScreen.use_grid_view,
-                style: AppTextStyles.of(context).settingsTitle,
-              ),
-              Text(
-                Translations.of(context).settingsScreen.grid_view_description,
-                style: AppTextStyles.of(context).settingsSubtitle,
-              ),
-            ],
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  Translations.of(context).settingsScreen.use_grid_view,
+                  style: AppTextStyles.of(context).settingsTitle,
+                ),
+                Text(
+                  Translations.of(context).settingsScreen.grid_view_description,
+                  style: AppTextStyles.of(context).settingsSubtitle,
+                ),
+              ],
+            ),
           ),
           const SizedBox(
             width: 10,
           ),
-          Flexible(
-            child: Switch(
-              value: _getIsGridView(),
-              onChanged: (value) {
-                _setIsGridView(value);
-              },
-            ),
+          Switch(
+            value: _getIsGridView(),
+            onChanged: (value) {
+              _setIsGridView(value);
+            },
           ),
         ],
       ),

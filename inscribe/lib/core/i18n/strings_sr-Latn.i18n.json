@@ -21,7 +21,9 @@
   },
 
   "importExport": {
-    "fileDownloaded": "Podaci su sačuvani na uređaju."
+    "fileDownloaded": "Podaci su sačuvani na uređaju.",
+    "dataHasBeenImported": "Podaci su uvezeni iz dokumenta.",
+    "error": "Došlo je do greške prilikom uvoza podataka."
   },
 
   "welcomeScreen": {
