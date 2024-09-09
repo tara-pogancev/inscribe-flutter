@@ -52,7 +52,8 @@ class IC {
     });
 
     getIt.registerLazySingleton<ImportExportRepository>(() {
-      return ImportExportRepositoryImpl(notesRepository: getIt());
+      return ImportExportRepositoryImpl(
+          notesRepository: getIt(), homeBloc: getIt());
     });
 
     getIt.registerLazySingleton(() => const Uuid());

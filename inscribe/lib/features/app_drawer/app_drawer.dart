@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +52,29 @@ class _AppDrawerState extends State<AppDrawer> {
       Scaffold.of(context).closeDrawer();
       context.showSnackbar(
           snackbarText: Translations.of(context).importExport.fileDownloaded);
+    }
+  }
+
+  void importData() async {
+    FilePickerResult? result = await FilePicker.platform
+        .pickFiles(allowedExtensions: ["json"], type: FileType.custom);
+
+    if (result != null) {
+      File file = File(result.files.single.path!);
+      final importResult =
+          await IC.getIt<ImportExportRepository>().importFromFile(file);
+
+      Scaffold.of(context).closeDrawer();
+      if (importResult) {
+        context.showSnackbar(
+          snackbarText:
+              Translations.of(context).importExport.dataHasBeenImported,
+        );
+      } else {
+        context.showSnackbar(
+          snackbarText: Translations.of(context).importExport.error,
+        );
+      }
     }
   }
 
@@ -112,10 +138,10 @@ class _AppDrawerState extends State<AppDrawer> {
             onTap: () => exportData(),
           ),
           ListTile(
-            enabled: false,
+            enabled: true,
             leading: const Icon(Icons.file_download),
             title: Text(Translations.of(context).drawer.import),
-            // onTap: () => exportData(),
+            onTap: () => importData(),
           ),
         ],
       ),

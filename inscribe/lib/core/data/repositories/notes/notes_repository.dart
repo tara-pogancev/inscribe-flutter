@@ -5,8 +5,11 @@ abstract class NotesRepository {
   List<Note> getNotes();
 
   void updateNote(Note note);
+  
   void deleteNote(Note note);
+
   void addNote(Note note);
+
   void deleteNoteList(List<Note> notesToDelete);
 
   List<NoteReminder> getRemindersForNote(Note note);
