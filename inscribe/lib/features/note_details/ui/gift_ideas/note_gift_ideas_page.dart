@@ -36,6 +36,7 @@ class _NoteGiftIdeasPageState extends State<NoteGiftIdeasPage>
             initialValue: widget.initialNote.giftIdeas,
             label: Translations.of(context).newNoteScreen.gift_ideas,
             hint: Translations.of(context).newNoteScreen.gift_ideas_hint,
+            keyboardType: TextInputType.multiline,
             // icon: Icons.card_giftcard_outlined,
             onChanged: (value) => _registerChanges(),
             minLines: 10,

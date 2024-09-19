@@ -76,6 +76,7 @@ class _NoteOverviewPageState extends State<NoteOverviewPage>
           AppFormField(
             label: Translations.of(context).newNoteScreen.description,
             hint: Translations.of(context).newNoteScreen.description_hint,
+            keyboardType: TextInputType.multiline,
             minLines: 4,
             maxLines: 16,
             onChanged: (value) => _registerChanges(),

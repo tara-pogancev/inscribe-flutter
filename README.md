@@ -25,20 +25,25 @@ Developed as a Flutter learning project, Inscribe tackles complex concepts and a
 - 🇮🇹 Italian
 
 # 🧠 Planned upcoming features
-- [x] Reminders
-- [x] Notifications
-- [x] Calendar screen
-- [x] Export data
-- [ ] Import data
-- [x] More languages
-- [x] Better animations on friend screen
-- [ ] Replace AI illustrations with hand-drawn ones ❤️
+- [x] So many great ideas...
+
+- [ ] Showing age and birthday on the cards on home screen
+- [ ] Gift ideas should be a list, not just a plain text field
 
 ## 🐞 Known bugs
 - [x] Bugs will appear here...
 
+- [ ] Infinite scroll on grid view when there are many cards
+- [ ] Add bottom padding on home
+- [ ] Birthdays in calendar not loading when changing months forwards-backwards
+- [x] Gift ideas panel not including enter on keyboard
+- [ ] Visual bug with adding new reminders, dialog changes size when text field expands
+
 #### Main libraries and practices
 Clean Architecture, BLOC, cubits, usecases, Hive, freezed, shared preferences, i18n + slang, getIt for DI, adaptive theme, awesome notifications.
+
+### Features
+Creating and editing notes, custom images from photos galery, one-time and annual reminders, birthday notifications, archive for temporary deleted notes, multiple languages, dark theme, import and export of data from/to files, calendar screen, hand-drawn illustrations, and many more! :)
 
 # 🖼 Screenshots
 
@@ -47,8 +52,6 @@ Clean Architecture, BLOC, cubits, usecases, Hive, freezed, shared preferences, i
 
 # 📚 Resources
 [https://www.freepik.com/](https://www.freepik.com/) - Illustrations
-
-[https://playground.com/](https://playground.com/) - AI Generating Illustrations
 
 [Figma SVG Asset Pack](https://www.figma.com/file/qJfFm08K6qeLqT8enQNVer/Vector-Library---SVG-Assets-Pack-(Community)?type=design&mode=design&t=eGPguRAznDmO61Ju-0) - Wave SVGs
 

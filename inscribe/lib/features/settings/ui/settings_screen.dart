@@ -71,6 +71,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       .settingsScreen
                       .app_name_and_version(version: appVersion),
                   textAlign: TextAlign.center,
+                  style: AppTextStyles.of(context).defaultText,
                 ),
               ),
             )
