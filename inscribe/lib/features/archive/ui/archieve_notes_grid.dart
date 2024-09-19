@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
@@ -23,10 +21,6 @@ class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
   final _cubit = IC.getIt<ArchiveCubit>();
 
   Offset _tapPosition = const Offset(0, 0);
-
-  double _getScrollViewHeight(BuildContext context) {
-    return (MediaQuery.of(context).size.height) - appBarPreferedSize;
-  }
 
   void _restoreNote(Note note) {
     _cubit.restoreNote(note);
@@ -84,19 +78,21 @@ class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
     return BlocBuilder<ArchiveCubit, ArchiveState>(
       bloc: _cubit,
       builder: (context, state) {
-        return SizedBox(
-          height: _getScrollViewHeight(context),
-          child: FadedEdgesContainer(
-            child: CustomScrollView(
-              slivers: [
-                const SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: gradientHeight,
-                  ),
+        return FadedEdgesContainer(
+          child: CustomScrollView(
+            slivers: [
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  height: gradientHeight,
                 ),
-                getGridForNotes(state.notes, state.isGridView)
-              ],
-            ),
+              ),
+              getGridForNotes(state.notes, state.isGridView),
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  height: gradientHeight,
+                ),
+              ),
+            ],
           ),
         );
       },
@@ -104,26 +100,31 @@ class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
   }
 
   Widget getGridForNotes(List<Note> notes, bool isGridView) {
-    return SliverMasonryGrid.count(
-      crossAxisCount: (isGridView) ? 2 : 1,
-      crossAxisSpacing: 15,
-      mainAxisSpacing: 10,
-      childCount: notes.length,
-      itemBuilder: (context, index) {
-        final note = notes[index];
-        return GestureDetector(
-          onTapDown: (position) {
-            _getTapPosition(position);
-          },
-          onLongPress: () {
-            HapticFeedback.mediumImpact();
-            _showContextMenu(note);
-          },
-          child: NoteCard(
-            note: note,
-          ),
-        );
-      },
+    return SliverGrid(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: (isGridView) ? 2 : 1,
+        crossAxisSpacing: 15,
+        mainAxisSpacing: 10,
+        mainAxisExtent: 120,
+      ),
+      delegate: SliverChildBuilderDelegate(
+        childCount: notes.length,
+        (context, index) {
+          final note = notes[index];
+          return GestureDetector(
+            onTapDown: (TapDownDetails tapDownDetails) {
+              _getTapPosition(tapDownDetails);
+            },
+            onLongPress: () {
+              HapticFeedback.mediumImpact();
+              _showContextMenu(note);
+            },
+            child: NoteCard(
+              note: note,
+            ),
+          );
+        },
+      ),
     );
   }
 }

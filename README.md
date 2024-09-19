@@ -14,7 +14,7 @@ Inscribe is a **Flutter** mobile application designed for taking notes based on 
 
 Developed as a Flutter learning project, Inscribe tackles complex concepts and aims to be personally useful, reducing the need for multiple Google Calendar reminders and separate notes. The app adheres to **Clean Architecture Design** and employs **BLOC** for state management, utilizing both Blocs and Cubits for learning purposes, and incorporating the UseCase approach where applicable.
 
-# 🌎 Supported Languages
+## 🌎 Supported Languages
 - 🇬🇧 English
 - 🇩🇪 German
 - 🇹🇷 Turkish
@@ -24,7 +24,7 @@ Developed as a Flutter learning project, Inscribe tackles complex concepts and a
 - 🇷🇺 Russian
 - 🇮🇹 Italian
 
-# 🧠 Planned upcoming features
+## 🧠 Planned upcoming features
 - [x] So many great ideas...
 
 - [ ] Showing age and birthday on the cards on home screen
@@ -45,17 +45,17 @@ Clean Architecture, BLOC, cubits, usecases, Hive, freezed, shared preferences, i
 ### Features
 Creating and editing notes, custom images from photos galery, one-time and annual reminders, birthday notifications, archive for temporary deleted notes, multiple languages, dark theme, import and export of data from/to files, calendar screen, hand-drawn illustrations, and many more! :)
 
-# 🖼 Screenshots
+## 🖼 Screenshots
 
 ![Inscribe](assets/git_feature_image.jpg)
 ![Inscribe](assets/feature_graphic.jpg)
 
-# 📚 Resources
+## 📚 Resources
 [https://www.freepik.com/](https://www.freepik.com/) - Illustrations
 
 [Figma SVG Asset Pack](https://www.figma.com/file/qJfFm08K6qeLqT8enQNVer/Vector-Library---SVG-Assets-Pack-(Community)?type=design&mode=design&t=eGPguRAznDmO61Ju-0) - Wave SVGs
 
-# 💻 Development Commands
+## 💻 Development Commands
 
 Generate translations: `dart run slang`
 

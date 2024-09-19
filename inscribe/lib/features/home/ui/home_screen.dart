@@ -19,11 +19,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _bloc = IC.getIt<HomeBloc>();
+  final bloc = IC.getIt<HomeBloc>();
 
   void _navigateNewNote(BuildContext context) async {
     await context.push(Routes.newNote);
-    _bloc.add(HomeFetchEvent());
+    bloc.add(HomeFetchEvent());
   }
 
   void _requestNotificationPermissions() {
@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           const HomeSearchBar(),
           BlocBuilder<HomeBloc, HomeState>(
-            bloc: _bloc,
+            bloc: bloc,
             builder: (context, state) {
               return Flexible(
                 child: (state.isLoading)

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/consts.dart';
-import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/features/app_drawer/app_drawer.dart';
 
@@ -26,21 +25,21 @@ class AppScaffold extends StatelessWidget {
       backgroundColor: AppColorScheme.of(context).beige,
       floatingActionButton: fab,
       drawer: (enableDrawer) ? const AppDrawer() : null,
-      body: SingleChildScrollView(
-        physics:
-            const ClampingScrollPhysics(parent: NeverScrollableScrollPhysics()),
-        child: SafeArea(
-          top: !ignoreAllPadding,
-          child: SizedBox(
-            height: context.getScreenHeight(),
-            child: Padding(
-              padding: (includeDefaultPadding)
-                  ? const EdgeInsets.all(defaultScreenPadding)
-                  : EdgeInsets.zero,
-              child: child,
-            ),
-          ),
+      body: SafeArea(
+        top: !ignoreAllPadding,
+        // child: SingleChildScrollView(
+        //   physics: const ClampingScrollPhysics(
+        //       parent: NeverScrollableScrollPhysics()),
+        //   child: SizedBox(
+        // height: double.infinity,
+        child: Padding(
+          padding: (includeDefaultPadding)
+              ? const EdgeInsets.all(defaultScreenPadding)
+              : EdgeInsets.zero,
+          child: child,
         ),
+        // ),
+        // ),
       ),
     );
   }

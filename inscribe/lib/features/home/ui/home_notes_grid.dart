@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
-import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
@@ -52,10 +50,6 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
     }
   }
 
-  double _getScrollViewHeight(BuildContext context) {
-    return (MediaQuery.of(context).size.height) - appBarPreferedSize;
-  }
-
   void _getTapPosition(TapDownDetails tapPosition) {
     final RenderBox referenceBox = context.findRenderObject() as RenderBox;
     setState(() {
@@ -96,53 +90,56 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
     return BlocBuilder<HomeBloc, HomeState>(
       bloc: _bloc,
       builder: (context, state) {
-        return SizedBox(
-          height: _getScrollViewHeight(context),
-          child: FadedEdgesContainer(
-            child: CustomScrollView(
-              slivers: [
-                const SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: gradientHeight,
+        return FadedEdgesContainer(
+          child: CustomScrollView(
+            slivers: [
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  height: gradientHeight,
+                ),
+              ),
+              if (state.filteredPinnedNotes.isNotEmpty)
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Text(
+                      Translations.of(context).homeScreen.pinned,
+                      style: AppTextStyles.of(context).homeTitle,
+                    ),
                   ),
                 ),
-                if (state.filteredPinnedNotes.isNotEmpty)
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text(
-                        Translations.of(context).homeScreen.pinned,
-                        style: AppTextStyles.of(context).homeTitle,
-                      ),
+              if (state.filteredPinnedNotes.isNotEmpty)
+                getGridForNotes(state.filteredPinnedNotes, state.isGridView),
+              if (state.filteredOtherdNotes.isNotEmpty &&
+                  state.filteredPinnedNotes.isNotEmpty)
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 30, bottom: 10),
+                    child: Text(
+                      Translations.of(context).homeScreen.other,
+                      style: AppTextStyles.of(context).homeTitle,
                     ),
                   ),
-                if (state.filteredPinnedNotes.isNotEmpty)
-                  getGridForNotes(state.filteredPinnedNotes, state.isGridView),
-                if (state.filteredOtherdNotes.isNotEmpty &&
-                    state.filteredPinnedNotes.isNotEmpty)
-                  SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 30, bottom: 10),
-                      child: Text(
-                        Translations.of(context).homeScreen.other,
-                        style: AppTextStyles.of(context).homeTitle,
-                      ),
-                    ),
-                  ),
-                getGridForNotes(state.filteredOtherdNotes, state.isGridView),
-                if (state.filteredPinnedNotes.isEmpty &&
-                    state.filteredOtherdNotes.isEmpty)
-                  SliverToBoxAdapter(
-                      child: SizedBox(
+                ),
+              getGridForNotes(state.filteredOtherdNotes, state.isGridView),
+              if (state.filteredPinnedNotes.isEmpty &&
+                  state.filteredOtherdNotes.isEmpty)
+                SliverToBoxAdapter(
+                  child: SizedBox(
                     width: double.infinity,
                     child: Text(
                       Translations.of(context).homeScreen.no_notes_title,
                       style: AppTextStyles.of(context).defaultText,
                       textAlign: TextAlign.center,
                     ),
-                  ))
-              ],
-            ),
+                  ),
+                ),
+              const SliverToBoxAdapter(
+                child: SizedBox(
+                  height: gradientHeight,
+                ),
+              ),
+            ],
           ),
         );
       },
@@ -150,29 +147,34 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
   }
 
   Widget getGridForNotes(List<Note> notes, bool isGridView) {
-    return SliverMasonryGrid.count(
-      crossAxisCount: (isGridView) ? 2 : 1,
-      crossAxisSpacing: 15,
-      mainAxisSpacing: 10,
-      childCount: notes.length,
-      itemBuilder: (context, index) {
-        final note = notes[index];
-        return GestureDetector(
-          onTapDown: (TapDownDetails tapDownDetails) {
-            _getTapPosition(tapDownDetails);
-          },
-          onLongPress: () {
-            HapticFeedback.mediumImpact();
-            _showContextMenu(note);
-          },
-          child: NoteCard(
-            note: note,
-            onClick: () {
-              _navigateNote(note);
+    return SliverGrid(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: (isGridView) ? 2 : 1,
+        crossAxisSpacing: 15,
+        mainAxisSpacing: 10,
+        mainAxisExtent: 120,
+      ),
+      delegate: SliverChildBuilderDelegate(
+        childCount: notes.length,
+        (context, index) {
+          final note = notes[index];
+          return GestureDetector(
+            onTapDown: (TapDownDetails tapDownDetails) {
+              _getTapPosition(tapDownDetails);
             },
-          ),
-        );
-      },
+            onLongPress: () {
+              HapticFeedback.mediumImpact();
+              _showContextMenu(note);
+            },
+            child: NoteCard(
+              note: note,
+              onClick: () {
+                _navigateNote(note);
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }

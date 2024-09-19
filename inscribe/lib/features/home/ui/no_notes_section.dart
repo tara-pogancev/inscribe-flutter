@@ -25,46 +25,49 @@ class NoNotesSection extends StatelessWidget {
     final assetImagePath =
         "assets/images/empty_illustration_${context.getIsDarkTheme() ? 'dark' : 'light'}.png";
 
-    return FractionallySizedBox(
-      widthFactor: 0.7,
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              assetImagePath,
-              width: double.infinity,
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            Text(
-              Translations.of(context).homeScreen.no_notes_title,
-              style: AppTextStyles.of(context).boldTitle,
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              Translations.of(context).homeScreen.no_notes_subtitle,
-              style: AppTextStyles.of(context).defaultText,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: AppButton(
-                text: Translations.of(context).homeScreen.add_note,
-                style: AppButtonStyles.of(context).black,
-                onPressed: () {
-                  _navigateNewNote(context);
-                },
+    return Center(
+      child: Container(
+        color: Colors.red,
+        child: FractionallySizedBox(
+          widthFactor: 0.7,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                assetImagePath,
+                width: double.infinity,
               ),
-            ),
-            const SizedBox(
-              height: 100,
-            ),
-          ],
+              const SizedBox(
+                height: 50,
+              ),
+              Text(
+                Translations.of(context).homeScreen.no_notes_title,
+                style: AppTextStyles.of(context).boldTitle,
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                Translations.of(context).homeScreen.no_notes_subtitle,
+                style: AppTextStyles.of(context).defaultText,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: AppButton(
+                  text: Translations.of(context).homeScreen.add_note,
+                  style: AppButtonStyles.of(context).black,
+                  onPressed: () {
+                    _navigateNewNote(context);
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 100,
+              ),
+            ],
+          ),
         ),
       ),
     );
