@@ -33,7 +33,7 @@ Developed as a Flutter learning project, Inscribe tackles complex concepts and a
 ## 🐞 Known bugs
 - [x] Bugs will appear here...
 
-- [ ] Staggered grid with separator not working properly
+- [x] Staggered grid with separator not working properly
 - [x] Infinite scroll on grid view when there are many cards
 - [x] Add bottom padding on home
 - [x] Birthdays in calendar not loading when changing months forwards-backwards

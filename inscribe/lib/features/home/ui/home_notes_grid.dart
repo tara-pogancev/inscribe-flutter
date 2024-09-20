@@ -106,13 +106,42 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
                     height: gradientHeight,
                   ),
                 ),
-                getGridForNotes(state.filteredPinnedNotes,
-                    state.filteredOtherdNotes, state.isGridView),
-                const SliverToBoxAdapter(
-                  child: SizedBox(
-                    height: gradientHeight,
+                if (state.filteredPinnedNotes.isNotEmpty)
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: Text(
+                        Translations.of(context).homeScreen.pinned,
+                        style: AppTextStyles.of(context).homeTitle,
+                      ),
+                    ),
                   ),
-                ),
+                if (state.filteredPinnedNotes.isNotEmpty)
+                  getStaticGridForPinnedNotes(
+                      state.filteredPinnedNotes, state.isGridView),
+                if (state.filteredOtherdNotes.isNotEmpty &&
+                    state.filteredPinnedNotes.isNotEmpty)
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 30, bottom: 10),
+                      child: Text(
+                        Translations.of(context).homeScreen.other,
+                        style: AppTextStyles.of(context).homeTitle,
+                      ),
+                    ),
+                  ),
+                getGridForNotes(state.filteredOtherdNotes, state.isGridView),
+                if (state.filteredPinnedNotes.isEmpty &&
+                    state.filteredOtherdNotes.isEmpty)
+                  SliverToBoxAdapter(
+                      child: SizedBox(
+                    width: double.infinity,
+                    child: Text(
+                      Translations.of(context).homeScreen.no_notes_title,
+                      style: AppTextStyles.of(context).defaultText,
+                      textAlign: TextAlign.center,
+                    ),
+                  ))
               ],
             ),
           ),
@@ -121,96 +150,61 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
     );
   }
 
-  Widget getGridForNotes(
-      List<Note> pinnedNotes, List<Note> notes, bool isGridView) {
-    final titleLengthAddition = (isGridView) ? 1 : 0;
-    final titleLength = (isGridView) ? 2 : 1;
-
-    const pinnedNotesTitleStartIndex = 0;
-    final pinnedNotesTitleEndIndex =
-        pinnedNotesTitleStartIndex + titleLengthAddition;
-
-    final pinnedNotesStartIndex = pinnedNotesTitleEndIndex + 1;
-    final pinnedNotesEndIndex = pinnedNotesStartIndex + pinnedNotes.length - 1;
-
-    final otherNotesTitleStartIndex = pinnedNotesEndIndex + 1;
-    final otherNotesTitleEndIndex =
-        otherNotesTitleStartIndex + titleLengthAddition;
-
-    return SliverMasonryGrid.count(
-      crossAxisCount: titleLength,
-      crossAxisSpacing: 15,
-      mainAxisSpacing: 10,
-      childCount: notes.length + pinnedNotes.length + (titleLength) * 2,
-      itemBuilder: (context, index) {
-        // 1. PINNED NOTES TITLE
-        if (pinnedNotesTitleStartIndex <= index &&
-            index <= pinnedNotesTitleEndIndex) {
-          return getListSubtitle(
-              text: Translations.of(context).homeScreen.pinned,
-              isHidden: pinnedNotes.isEmpty,
-              isTextEmpty:
-                  (index == pinnedNotesTitleEndIndex && titleLength > 1));
-        } else if (pinnedNotesStartIndex <= index &&
-            index <= pinnedNotesEndIndex) {
-          // 2. PINNED NOTES CARD
-          final note = pinnedNotes[index - pinnedNotesStartIndex];
-          return GestureDetector(
-            onTapDown: (TapDownDetails tapDownDetails) {
-              _getTapPosition(tapDownDetails);
-            },
-            onLongPress: () {
-              HapticFeedback.mediumImpact();
-              _showContextMenu(note);
-            },
-            child: NoteCard(
-              note: note,
-              onClick: () {
-                _navigateNote(note);
+  Widget getStaticGridForPinnedNotes(List<Note> notes, bool isGridView) {
+    return SliverToBoxAdapter(
+      child: StaggeredGrid.count(
+        crossAxisCount: (isGridView) ? 2 : 1,
+        crossAxisSpacing: 15,
+        mainAxisSpacing: 10,
+        children: List.generate(
+          notes.length,
+          (index) {
+            final note = notes[index];
+            return GestureDetector(
+              onTapDown: (TapDownDetails tapDownDetails) {
+                _getTapPosition(tapDownDetails);
               },
-            ),
-          );
-        } else if (otherNotesTitleStartIndex <= index &&
-            index <= otherNotesTitleEndIndex) {
-          // 3. OTHER NOTES TITLE
-          return getListSubtitle(
-              text: Translations.of(context).homeScreen.other,
-              isHidden: pinnedNotes.isEmpty,
-              isTextEmpty:
-                  (index == otherNotesTitleEndIndex && titleLength > 1));
-        } else {
-          // 4. OTHER NOTES CARD
-          final note = notes[(index - otherNotesTitleEndIndex - 1)];
-          return GestureDetector(
-            onTapDown: (TapDownDetails tapDownDetails) {
-              _getTapPosition(tapDownDetails);
-            },
-            onLongPress: () {
-              HapticFeedback.mediumImpact();
-              _showContextMenu(note);
-            },
-            child: NoteCard(
-              note: note,
-              onClick: () {
-                _navigateNote(note);
+              onLongPress: () {
+                HapticFeedback.mediumImpact();
+                _showContextMenu(note);
               },
-            ),
-          );
-        }
-      },
+              child: NoteCard(
+                note: note,
+                onClick: () {
+                  _navigateNote(note);
+                },
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 
-  Widget getListSubtitle(
-      {required String text,
-      required bool isHidden,
-      required bool isTextEmpty}) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: (!isHidden) ? 10 : 0),
-      child: Text(
-        (isTextEmpty) ? "" : text,
-        style: AppTextStyles.of(context).homeTitle,
-      ),
+  Widget getGridForNotes(List<Note> notes, bool isGridView) {
+    return SliverMasonryGrid.count(
+      crossAxisCount: (isGridView) ? 2 : 1,
+      crossAxisSpacing: 15,
+      mainAxisSpacing: 10,
+      childCount: notes.length,
+      itemBuilder: (context, index) {
+        final note = notes[index];
+        return GestureDetector(
+          onTapDown: (TapDownDetails tapDownDetails) {
+            _getTapPosition(tapDownDetails);
+          },
+          onLongPress: () {
+            HapticFeedback.mediumImpact();
+            _showContextMenu(note);
+          },
+          child: NoteCard(
+            note: note,
+            onClick: () {
+              _navigateNote(note);
+            },
+          ),
+        );
+      },
     );
   }
 }
