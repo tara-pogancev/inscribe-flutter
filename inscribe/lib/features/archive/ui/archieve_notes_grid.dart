@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
@@ -108,31 +109,26 @@ class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
   }
 
   Widget getGridForNotes(List<Note> notes, bool isGridView) {
-    return SliverGrid(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: (isGridView) ? 2 : 1,
-        crossAxisSpacing: 15,
-        mainAxisSpacing: 10,
-        mainAxisExtent: 120,
-      ),
-      delegate: SliverChildBuilderDelegate(
-        childCount: notes.length,
-        (context, index) {
-          final note = notes[index];
-          return GestureDetector(
-            onTapDown: (TapDownDetails tapDownDetails) {
-              _getTapPosition(tapDownDetails);
-            },
-            onLongPress: () {
-              HapticFeedback.mediumImpact();
-              _showContextMenu(note);
-            },
-            child: NoteCard(
-              note: note,
-            ),
-          );
-        },
-      ),
+    return SliverMasonryGrid.count(
+      crossAxisCount: (isGridView) ? 2 : 1,
+      crossAxisSpacing: 15,
+      mainAxisSpacing: 10,
+      childCount: notes.length,
+      itemBuilder: (context, index) {
+        final note = notes[index];
+        return GestureDetector(
+          onTapDown: (TapDownDetails tapDownDetails) {
+            _getTapPosition(tapDownDetails);
+          },
+          onLongPress: () {
+            HapticFeedback.mediumImpact();
+            _showContextMenu(note);
+          },
+          child: NoteCard(
+            note: note,
+          ),
+        );
+      },
     );
   }
 }

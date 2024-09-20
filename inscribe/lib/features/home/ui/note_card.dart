@@ -54,8 +54,6 @@ class NoteCard extends StatelessWidget {
                       Flexible(
                         child: Text(
                           note.name,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
                           style: AppTextStyles.of(context)
                               .cardTitle
                               .copyWith(color: textColor),
@@ -64,11 +62,13 @@ class NoteCard extends StatelessWidget {
                       const SizedBox(
                         height: 5,
                       ),
-                      Text(
-                        note.type?.getString(context) ?? "-",
-                        style: AppTextStyles.of(context)
-                            .cardSubtitle
-                            .copyWith(color: textColor),
+                      Flexible(
+                        child: Text(
+                          note.type?.getString(context) ?? "-",
+                          style: AppTextStyles.of(context)
+                              .cardSubtitle
+                              .copyWith(color: textColor),
+                        ),
                       ),
                     ],
                   ),
