@@ -106,15 +106,16 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   weekDayBuilder: (dayNumber) => Container(
                     color: AppColorScheme.of(context).white,
                     child: Center(
-                        child: Padding(
-                      padding: const EdgeInsets.all(4),
-                      child: Text(
-                        dayNumber.formatDayCalendar(),
-                        style: AppTextStyles.of(context)
-                            .defaultText
-                            .copyWith(fontWeight: FontWeight.bold),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4),
+                        child: Text(
+                          dayNumber.formatDayCalendar(),
+                          style: AppTextStyles.of(context)
+                              .defaultText
+                              .copyWith(fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    )),
+                    ),
                   ),
                   onPageChange: (date, page) => onMonthChange(date),
                   borderColor: AppColorScheme.of(context).beige,
