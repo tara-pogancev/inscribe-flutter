@@ -53,6 +53,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
   void onMonthChange(DateTime centerDate) {
     cubit.setVisibleEvents(centerDate);
+    setVisibleEventsForCalendar();
   }
 
   void showDailyEventsBottomSheet(DateTime date) {
@@ -87,12 +88,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
             includeAdditionalPadding: true,
             title: Translations.of(context).drawer.calendar,
           ),
-          BlocListener<CalendarCubit, CalendarState>(
+          BlocBuilder<CalendarCubit, CalendarState>(
             bloc: cubit,
-            listener: (context, state) {
-              setVisibleEventsForCalendar();
-            },
-            child: CalendarControllerProvider(
+            builder: (context, state) => CalendarControllerProvider(
               controller: eventController,
               child: Flexible(
                 child: MonthView(

@@ -85,87 +85,89 @@ class _NewReminderDialogState extends State<NewReminderDialog> {
       backgroundColor: AppColorScheme.of(context).beige,
       content: Form(
         key: _key,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              Translations.of(context).newNoteScreen.add_reminder,
-              style: AppTextStyles.of(context).cardTitle,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            AppFormField(
-              initialValue: widget.noteReminder?.name,
-              label: Translations.of(context).newNoteScreen.name,
-              validator: (value) {
-                return value.isRequired(context);
-              },
-              onSaved: (value) {
-                setState(() {
-                  name = value!;
-                });
-              },
-            ),
-            AppDateFormField(
-              label: Translations.of(context).newNoteScreen.date,
-              initialValue: selectedDateTime.formatString(),
-              includeFutureDates: true,
-              validator: (value) {
-                return value.isRequired(context);
-              },
-              onSaved: (value) {
-                final dateTime = value!.parseDateString();
-                setState(
-                  () {
-                    selectedDateTime = selectedDateTime.copyWith(
-                        day: dateTime.day,
-                        month: dateTime.month,
-                        year: dateTime.year);
-                  },
-                );
-              },
-            ),
-            InkWell(
-              onTap: () => showTimePickerDialog(),
-              child: Padding(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                Translations.of(context).newNoteScreen.add_reminder,
+                style: AppTextStyles.of(context).cardTitle,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              AppFormField(
+                initialValue: widget.noteReminder?.name,
+                label: Translations.of(context).newNoteScreen.name,
+                validator: (value) {
+                  return value.isRequired(context);
+                },
+                onSaved: (value) {
+                  setState(() {
+                    name = value!;
+                  });
+                },
+              ),
+              AppDateFormField(
+                label: Translations.of(context).newNoteScreen.date,
+                initialValue: selectedDateTime.formatString(),
+                includeFutureDates: true,
+                validator: (value) {
+                  return value.isRequired(context);
+                },
+                onSaved: (value) {
+                  final dateTime = value!.parseDateString();
+                  setState(
+                    () {
+                      selectedDateTime = selectedDateTime.copyWith(
+                          day: dateTime.day,
+                          month: dateTime.month,
+                          year: dateTime.year);
+                    },
+                  );
+                },
+              ),
+              InkWell(
+                onTap: () => showTimePickerDialog(),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        Translations.of(context).newNoteScreen.time,
+                        style: AppTextStyles.of(context).defaultText,
+                      ),
+                      const Spacer(),
+                      Text(
+                        selectedDateTime.formatTimeOfDayString(),
+                        style: AppTextStyles.of(context)
+                            .defaultText
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Text(
-                      Translations.of(context).newNoteScreen.time,
-                      style: AppTextStyles.of(context).defaultText,
-                    ),
+                    Text(Translations.of(context).newNoteScreen.annual,
+                        style: AppTextStyles.of(context).defaultText),
                     const Spacer(),
-                    Text(
-                      selectedDateTime.formatTimeOfDayString(),
-                      style: AppTextStyles.of(context)
-                          .defaultText
-                          .copyWith(fontWeight: FontWeight.bold),
+                    Checkbox(
+                      value: isAnual,
+                      onChanged: (value) {
+                        setState(() {
+                          isAnual = value ?? false;
+                        });
+                      },
                     ),
                   ],
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Text(Translations.of(context).newNoteScreen.annual,
-                      style: AppTextStyles.of(context).defaultText),
-                  const Spacer(),
-                  Checkbox(
-                    value: isAnual,
-                    onChanged: (value) {
-                      setState(() {
-                        isAnual = value ?? false;
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       actions: [

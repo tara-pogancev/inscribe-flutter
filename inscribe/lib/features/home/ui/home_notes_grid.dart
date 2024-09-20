@@ -123,26 +123,38 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
 
   Widget getGridForNotes(
       List<Note> pinnedNotes, List<Note> notes, bool isGridView) {
+    final titleLengthAddition = (isGridView) ? 1 : 0;
+    final titleLength = (isGridView) ? 2 : 1;
+
+    const pinnedNotesTitleStartIndex = 0;
+    final pinnedNotesTitleEndIndex =
+        pinnedNotesTitleStartIndex + titleLengthAddition;
+
+    final pinnedNotesStartIndex = pinnedNotesTitleEndIndex + 1;
+    final pinnedNotesEndIndex = pinnedNotesStartIndex + pinnedNotes.length - 1;
+
+    final otherNotesTitleStartIndex = pinnedNotesEndIndex + 1;
+    final otherNotesTitleEndIndex =
+        otherNotesTitleStartIndex + titleLengthAddition;
+
     return SliverMasonryGrid.count(
-      crossAxisCount: (isGridView) ? 2 : 1,
+      crossAxisCount: titleLength,
       crossAxisSpacing: 15,
       mainAxisSpacing: 10,
-      childCount: notes.length + pinnedNotes.length + 2,
+      childCount: notes.length + pinnedNotes.length + (titleLength) * 2,
       itemBuilder: (context, index) {
         // 1. PINNED NOTES TITLE
-        if (index == 0) {
-          return (pinnedNotes.isNotEmpty)
-              ? Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Text(
-                    Translations.of(context).homeScreen.pinned,
-                    style: AppTextStyles.of(context).homeTitle,
-                  ),
-                )
-              : Container();
-        } else if (1 <= index && index <= pinnedNotes.length) {
+        if (pinnedNotesTitleStartIndex <= index &&
+            index <= pinnedNotesTitleEndIndex) {
+          return getListSubtitle(
+              text: Translations.of(context).homeScreen.pinned,
+              isHidden: pinnedNotes.isEmpty,
+              isTextEmpty:
+                  (index == pinnedNotesTitleEndIndex && titleLength > 1));
+        } else if (pinnedNotesStartIndex <= index &&
+            index <= pinnedNotesEndIndex) {
           // 2. PINNED NOTES CARD
-          final note = pinnedNotes[index - 1];
+          final note = pinnedNotes[index - pinnedNotesStartIndex];
           return GestureDetector(
             onTapDown: (TapDownDetails tapDownDetails) {
               _getTapPosition(tapDownDetails);
@@ -158,20 +170,17 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
               },
             ),
           );
-        } else if (index == pinnedNotes.length + 1) {
+        } else if (otherNotesTitleStartIndex <= index &&
+            index <= otherNotesTitleEndIndex) {
           // 3. OTHER NOTES TITLE
-          return (notes.isNotEmpty)
-              ? Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Text(
-                    Translations.of(context).homeScreen.other,
-                    style: AppTextStyles.of(context).homeTitle,
-                  ),
-                )
-              : Container();
+          return getListSubtitle(
+              text: Translations.of(context).homeScreen.other,
+              isHidden: pinnedNotes.isEmpty,
+              isTextEmpty:
+                  (index == otherNotesTitleEndIndex && titleLength > 1));
         } else {
           // 4. OTHER NOTES CARD
-          final note = notes[(index - 2 - pinnedNotes.length)];
+          final note = notes[(index - otherNotesTitleEndIndex - 1)];
           return GestureDetector(
             onTapDown: (TapDownDetails tapDownDetails) {
               _getTapPosition(tapDownDetails);
@@ -189,6 +198,19 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
           );
         }
       },
+    );
+  }
+
+  Widget getListSubtitle(
+      {required String text,
+      required bool isHidden,
+      required bool isTextEmpty}) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: (!isHidden) ? 10 : 0),
+      child: Text(
+        (isTextEmpty) ? "" : text,
+        style: AppTextStyles.of(context).homeTitle,
+      ),
     );
   }
 }
