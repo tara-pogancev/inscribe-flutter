@@ -33,11 +33,12 @@ Developed as a Flutter learning project, Inscribe tackles complex concepts and a
 ## 🐞 Known bugs
 - [x] Bugs will appear here...
 
-- [ ] Infinite scroll on grid view when there are many cards
-- [ ] Add bottom padding on home
+- [x] Infinite scroll on grid view when there are many cards
+- [x] Add bottom padding on home
 - [ ] Birthdays in calendar not loading when changing months forwards-backwards
 - [x] Gift ideas panel not including enter on keyboard
 - [ ] Visual bug with adding new reminders, dialog changes size when text field expands
+- [ ] Callendar scrollable?
 
 #### Main libraries and practices
 Clean Architecture, BLOC, cubits, usecases, Hive, freezed, shared preferences, i18n + slang, getIt for DI, adaptive theme, awesome notifications.

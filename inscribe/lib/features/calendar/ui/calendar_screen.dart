@@ -10,6 +10,7 @@ import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
 import 'package:inscribe/core/presentation/widgets/default_app_header.dart';
 import 'package:inscribe/features/calendar/cubit/calendar_cubit.dart';
+import 'package:inscribe/features/calendar/ui/adaptable_filled_cell.dart';
 import 'package:inscribe/features/calendar/ui/daily_events_bottom_sheet.dart';
 
 class CalendarScreen extends StatefulWidget {
@@ -67,78 +68,78 @@ class _CalendarScreenState extends State<CalendarScreen> {
     }
   }
 
+  double calculateCellAspectRatio(double height, double width) {
+    final cellHeight = (height - 76) / 6;
+    final cellWidth = width / 7;
+    return cellWidth / cellHeight;
+  }
+
   @override
   Widget build(BuildContext context) {
     setVisibleEventsForCalendar();
     return AppScaffold(
       includeDefaultPadding: false,
       enableDrawer: true,
-      child: SafeArea(
-        top: true,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            DefaultAppHeader(
-              includeAdditionalPadding: true,
-              title: Translations.of(context).drawer.calendar,
-            ),
-            BlocListener<CalendarCubit, CalendarState>(
-              bloc: cubit,
-              listener: (context, state) {
-                setVisibleEventsForCalendar();
-              },
-              child: CalendarControllerProvider(
-                controller: eventController,
-                child: Expanded(
-                  child: MonthView(
-                    headerBuilder: (date) => Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(date.formatMonthCalendarHeaderString(),
-                            style: AppTextStyles.of(context).cardPrimaryText),
-                      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          DefaultAppHeader(
+            includeAdditionalPadding: true,
+            title: Translations.of(context).drawer.calendar,
+          ),
+          BlocListener<CalendarCubit, CalendarState>(
+            bloc: cubit,
+            listener: (context, state) {
+              setVisibleEventsForCalendar();
+            },
+            child: CalendarControllerProvider(
+              controller: eventController,
+              child: Flexible(
+                child: MonthView(
+                  // cellAspectRatio: calculateCellAspectRatio(
+                  //     constraints.maxHeight, constraints.maxWidth),
+                  headerBuilder: (date) => Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(date.formatMonthCalendarHeaderString(),
+                          style: AppTextStyles.of(context).cardPrimaryText),
                     ),
-                    weekDayBuilder: (dayNumber) => Container(
-                      color: AppColorScheme.of(context).white,
-                      child: Center(
-                          child: Padding(
-                        padding: const EdgeInsets.all(4),
-                        child: Text(
-                          dayNumber.formatDayCalendar(),
-                          style: AppTextStyles.of(context)
-                              .defaultText
-                              .copyWith(fontWeight: FontWeight.bold),
-                        ),
-                      )),
-                    ),
-                    onPageChange: (date, page) => onMonthChange(date),
-                    borderColor: AppColorScheme.of(context).beige,
-                    showWeekTileBorder: false,
-                    cellBuilder: (date, events, isToday, isInMonth,
-                            hideDaysNotInMonth) =>
-                        FilledCell(
-                      date: date,
-                      shouldHighlight: isToday,
-                      titleColor: AppColorScheme.of(context).black,
-                      highlightColor:
-                          AppColorScheme.of(context).gray.withOpacity(0.75),
-                      backgroundColor: isInMonth
-                          ? AppColorScheme.of(context).white
-                          : AppColorScheme.of(context).white.withOpacity(0.4),
-                      events: events,
-                      onTileTap: (event, date) {},
-                      hideDaysNotInMonth: hideDaysNotInMonth,
-                    ),
-                    onCellTap: (events, date) =>
-                        showDailyEventsBottomSheet(date),
-                    onEventTap: (event, date) =>
-                        showDailyEventsBottomSheet(date),
                   ),
+                  weekDayBuilder: (dayNumber) => Container(
+                    color: AppColorScheme.of(context).white,
+                    child: Center(
+                        child: Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: Text(
+                        dayNumber.formatDayCalendar(),
+                        style: AppTextStyles.of(context)
+                            .defaultText
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    )),
+                  ),
+                  onPageChange: (date, page) => onMonthChange(date),
+                  borderColor: AppColorScheme.of(context).beige,
+                  showWeekTileBorder: false,
+                  cellBuilder:
+                      (date, events, isToday, isInMonth, hideDaysNotInMonth) =>
+                          AdaptableFilledCell(
+                    date: date,
+                    shouldHighlight: isToday,
+                    backgroundColor: isInMonth
+                        ? AppColorScheme.of(context).white
+                        : AppColorScheme.of(context).white.withOpacity(0.4),
+                    events: events,
+                    onTileTap: (event, date) {},
+                    hideDaysNotInMonth: hideDaysNotInMonth,
+                  ),
+                  onCellTap: (events, date) => showDailyEventsBottomSheet(date),
+                  onEventTap: (event, date) => showDailyEventsBottomSheet(date),
                 ),
               ),
-            )
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
