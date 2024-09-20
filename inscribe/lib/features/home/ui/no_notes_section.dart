@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
@@ -26,48 +27,49 @@ class NoNotesSection extends StatelessWidget {
         "assets/images/empty_illustration_${context.getIsDarkTheme() ? 'dark' : 'light'}.png";
 
     return Center(
-      child: Container(
-        color: Colors.red,
-        child: FractionallySizedBox(
-          widthFactor: 0.7,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset(
+      child: FractionallySizedBox(
+        widthFactor: 0.7,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: defaultScreenPadding),
+              child: Image.asset(
                 assetImagePath,
                 width: double.infinity,
               ),
-              const SizedBox(
-                height: 50,
+            ),
+            const SizedBox(
+              height: defaultScreenPadding,
+            ),
+            Text(
+              Translations.of(context).homeScreen.no_notes_title,
+              style: AppTextStyles.of(context).boldTitle,
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              Translations.of(context).homeScreen.no_notes_subtitle,
+              style: AppTextStyles.of(context).defaultText,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: defaultScreenPadding,
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: AppButton(
+                text: Translations.of(context).homeScreen.add_note,
+                style: AppButtonStyles.of(context).black,
+                onPressed: () {
+                  _navigateNewNote(context);
+                },
               ),
-              Text(
-                Translations.of(context).homeScreen.no_notes_title,
-                style: AppTextStyles.of(context).boldTitle,
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                Translations.of(context).homeScreen.no_notes_subtitle,
-                style: AppTextStyles.of(context).defaultText,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: AppButton(
-                  text: Translations.of(context).homeScreen.add_note,
-                  style: AppButtonStyles.of(context).black,
-                  onPressed: () {
-                    _navigateNewNote(context);
-                  },
-                ),
-              ),
-              const SizedBox(
-                height: 100,
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: defaultScreenPadding,
+            ),
+          ],
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
@@ -17,12 +18,16 @@ class NoArchivedNotesSection extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(
-              assetImagePath,
-              width: double.infinity,
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: defaultScreenPadding),
+              child: Image.asset(
+                assetImagePath,
+                width: double.infinity,
+              ),
             ),
             const SizedBox(
-              height: 50,
+              height: defaultScreenPadding,
             ),
             Text(
               Translations.of(context).archivedNotes.no_archived_notes,
@@ -35,7 +40,7 @@ class NoArchivedNotesSection extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(
-              height: 100,
+              height: defaultScreenPadding,
             )
           ],
         ),

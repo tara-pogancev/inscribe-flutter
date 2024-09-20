@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
@@ -85,61 +86,68 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
     }
   }
 
+  double _getScrollViewHeight(BuildContext context) {
+    return (MediaQuery.of(context).size.height) - appBarPreferedSize;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       bloc: _bloc,
       builder: (context, state) {
-        return FadedEdgesContainer(
-          child: CustomScrollView(
-            slivers: [
-              const SliverToBoxAdapter(
-                child: SizedBox(
-                  height: gradientHeight,
-                ),
-              ),
-              if (state.filteredPinnedNotes.isNotEmpty)
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: Text(
-                      Translations.of(context).homeScreen.pinned,
-                      style: AppTextStyles.of(context).homeTitle,
-                    ),
-                  ),
-                ),
-              if (state.filteredPinnedNotes.isNotEmpty)
-                getGridForNotes(state.filteredPinnedNotes, state.isGridView),
-              if (state.filteredOtherdNotes.isNotEmpty &&
-                  state.filteredPinnedNotes.isNotEmpty)
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 30, bottom: 10),
-                    child: Text(
-                      Translations.of(context).homeScreen.other,
-                      style: AppTextStyles.of(context).homeTitle,
-                    ),
-                  ),
-                ),
-              getGridForNotes(state.filteredOtherdNotes, state.isGridView),
-              if (state.filteredPinnedNotes.isEmpty &&
-                  state.filteredOtherdNotes.isEmpty)
-                SliverToBoxAdapter(
+        return SizedBox(
+          height: _getScrollViewHeight(context),
+          child: FadedEdgesContainer(
+            child: CustomScrollView(
+              slivers: [
+                const SliverToBoxAdapter(
                   child: SizedBox(
-                    width: double.infinity,
-                    child: Text(
-                      Translations.of(context).homeScreen.no_notes_title,
-                      style: AppTextStyles.of(context).defaultText,
-                      textAlign: TextAlign.center,
-                    ),
+                    height: gradientHeight,
                   ),
                 ),
-              const SliverToBoxAdapter(
-                child: SizedBox(
-                  height: gradientHeight,
+                if (state.filteredPinnedNotes.isNotEmpty)
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: Text(
+                        Translations.of(context).homeScreen.pinned,
+                        style: AppTextStyles.of(context).homeTitle,
+                      ),
+                    ),
+                  ),
+                if (state.filteredPinnedNotes.isNotEmpty)
+                  getGridForNotes(state.filteredPinnedNotes, state.isGridView),
+                if (state.filteredOtherdNotes.isNotEmpty &&
+                    state.filteredPinnedNotes.isNotEmpty)
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 30, bottom: 10),
+                      child: Text(
+                        Translations.of(context).homeScreen.other,
+                        style: AppTextStyles.of(context).homeTitle,
+                      ),
+                    ),
+                  ),
+                getGridForNotes(state.filteredOtherdNotes, state.isGridView),
+                if (state.filteredPinnedNotes.isEmpty &&
+                    state.filteredOtherdNotes.isEmpty)
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        Translations.of(context).homeScreen.no_notes_title,
+                        style: AppTextStyles.of(context).defaultText,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                const SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: gradientHeight,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

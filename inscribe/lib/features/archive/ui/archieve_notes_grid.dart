@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
@@ -73,26 +74,33 @@ class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
     }
   }
 
+  double _getScrollViewHeight(BuildContext context) {
+    return (MediaQuery.of(context).size.height) - appBarPreferedSize;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ArchiveCubit, ArchiveState>(
       bloc: _cubit,
       builder: (context, state) {
-        return FadedEdgesContainer(
-          child: CustomScrollView(
-            slivers: [
-              const SliverToBoxAdapter(
-                child: SizedBox(
-                  height: gradientHeight,
+        return SizedBox(
+          height: _getScrollViewHeight(context),
+          child: FadedEdgesContainer(
+            child: CustomScrollView(
+              slivers: [
+                const SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: gradientHeight,
+                  ),
                 ),
-              ),
-              getGridForNotes(state.notes, state.isGridView),
-              const SliverToBoxAdapter(
-                child: SizedBox(
-                  height: gradientHeight,
+                getGridForNotes(state.notes, state.isGridView),
+                const SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: gradientHeight,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
