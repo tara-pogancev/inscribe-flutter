@@ -51,7 +51,7 @@
   },
 
   "newNoteScreen": {
-    "friend_name_hint": "Kako se zove?",
+    "friend_name_hint": "Ime",
     "fields_missing_error": "Izvinjavamo se! Neka polja nedostaju!",
     "overview": "Pregled",
     "gift_ideas": "Ideje za poklone",

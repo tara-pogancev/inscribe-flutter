@@ -29,18 +29,16 @@ Developed as a Flutter learning project, Inscribe tackles complex concepts and a
 
 - [ ] Showing age and birthday on the cards on home screen
 - [ ] Gift ideas should be a list, not just a plain text field
+- [ ] Add image of persion in reninder view in the calendar
+- [ ] Weekly reminder view
 
 ## 🐞 Known bugs
 - [x] Bugs will appear here...
 
-- [x] Staggered grid with separator not working properly
-- [x] Infinite scroll on grid view when there are many cards
-- [x] Add bottom padding on home
-- [x] Birthdays in calendar not loading when changing months forwards-backwards
-- [x] Gift ideas panel not including enter on keyboard
-- [x] Visual bug with dialog when keyboard is open
-- [x] Bug with archiving notes not refreshing
 - [ ] Callendar slightly scrollable
+- [x] Caledar offset by 1 day
+- [x] Make reminders a sheet instead of a dialog
+- [x] Shorter name for name title
 
 #### Main libraries and practices
 Clean Architecture, BLOC, cubits, usecases, Hive, freezed, shared preferences, i18n + slang, getIt for DI, adaptive theme, awesome notifications.

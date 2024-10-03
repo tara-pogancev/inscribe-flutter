@@ -103,6 +103,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           style: AppTextStyles.of(context).cardPrimaryText),
                     ),
                   ),
+                  startDay: WeekDays.monday,
                   weekDayBuilder: (dayNumber) => Container(
                     color: AppColorScheme.of(context).white,
                     child: Center(

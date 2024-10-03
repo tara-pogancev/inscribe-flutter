@@ -7,10 +7,11 @@ import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
+import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/app_button.dart';
 import 'package:inscribe/features/note_details/bloc/note_details_bloc.dart';
-import 'package:inscribe/features/note_details/ui/reminders/new_reminder_dialog.dart';
+import 'package:inscribe/features/note_details/ui/reminders/new_reminder_sheet.dart';
 import 'package:inscribe/features/note_details/ui/reminders/reminder_card.dart';
 
 class NoteRemindersPage extends StatefulWidget {
@@ -27,9 +28,12 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
   final _bloc = IC.getIt<NoteDetailsBloc>();
 
   void _showNewReminderDialog() async {
-    final NoteReminder? reminder = await showDialog(
+    final NoteReminder? reminder = await showModalBottomSheet(
       context: context,
-      builder: (context) => const NewReminderDialog(),
+      useRootNavigator: true,
+      isScrollControlled: true,
+      backgroundColor: AppColorScheme.of(context).beige,
+      builder: (context) => const NewReminderSheet(),
     );
 
     if (reminder != null) {
@@ -41,15 +45,18 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
   }
 
   _showEditReminderDialog(NoteReminder reminder) async {
-    final NoteReminder? updatedReminder = await showDialog(
+    final NoteReminder? shouldUpdate = await showModalBottomSheet(
       context: context,
-      builder: (context) => NewReminderDialog(
+      useRootNavigator: true,
+      isScrollControlled: true,
+      backgroundColor: AppColorScheme.of(context).beige,
+      builder: (context) => NewReminderSheet(
         noteReminder: reminder,
       ),
     );
 
-    if (updatedReminder != null) {
-      _bloc.add(CreateOrUpdateReminderEvent(reminder: updatedReminder));
+    if (shouldUpdate != null) {
+      _bloc.add(CreateOrUpdateReminderEvent(reminder: reminder));
     }
   }
 
