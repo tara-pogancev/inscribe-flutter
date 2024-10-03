@@ -6,7 +6,7 @@
 /// Locales: 8
 /// Strings: 816 (102 per locale)
 ///
-/// Built on 2024-09-05 at 15:17 UTC
+/// Built on 2024-10-03 at 11:39 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -252,7 +252,7 @@ class _StringsNewNoteScreenEn {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get friend_name_hint => 'What\'s their name?';
+	String get friend_name_hint => 'Their name';
 	String get fields_missing_error => 'Sorry! Some fields are missing!';
 	String get overview => 'Overview';
 	String get gift_ideas => 'Gift ideas';
@@ -1584,7 +1584,7 @@ class _StringsNewNoteScreenSrLatn implements _StringsNewNoteScreenEn {
 	@override final _StringsSrLatn _root; // ignore: unused_field
 
 	// Translations
-	@override String get friend_name_hint => 'Kako se zove?';
+	@override String get friend_name_hint => 'Ime';
 	@override String get fields_missing_error => 'Izvinjavamo se! Neka polja nedostaju!';
 	@override String get overview => 'Pregled';
 	@override String get gift_ideas => 'Ideje za poklone';
@@ -1945,7 +1945,7 @@ extension on Translations {
 			case 'homeScreen.search': return 'Search';
 			case 'homeScreen.pin_note': return 'Pin note';
 			case 'homeScreen.unpin_note': return 'Unpin note';
-			case 'newNoteScreen.friend_name_hint': return 'What\'s their name?';
+			case 'newNoteScreen.friend_name_hint': return 'Their name';
 			case 'newNoteScreen.fields_missing_error': return 'Sorry! Some fields are missing!';
 			case 'newNoteScreen.overview': return 'Overview';
 			case 'newNoteScreen.gift_ideas': return 'Gift ideas';
@@ -2605,7 +2605,7 @@ extension on _StringsSrLatn {
 			case 'homeScreen.search': return 'Pretraga';
 			case 'homeScreen.pin_note': return 'Prikvači belešku';
 			case 'homeScreen.unpin_note': return 'Otkvači belešku';
-			case 'newNoteScreen.friend_name_hint': return 'Kako se zove?';
+			case 'newNoteScreen.friend_name_hint': return 'Ime';
 			case 'newNoteScreen.fields_missing_error': return 'Izvinjavamo se! Neka polja nedostaju!';
 			case 'newNoteScreen.overview': return 'Pregled';
 			case 'newNoteScreen.gift_ideas': return 'Ideje za poklone';

@@ -91,7 +91,7 @@ extension IntDateExtensions on int {
   }
 
   String formatDayCalendar() {
-    DateTime dateTime = DateTime(1970, 1, 4 + this);
+    DateTime dateTime = DateTime(1970, 1, 5 + this);
     return (DateFormat(dayCalendarHeader, _getLocaleCode()).format(dateTime))
         .substring(0, 1)
         .toUpperCase();
