@@ -1,0 +1,135 @@
+{
+  "appName": "Inscribe",
+  "cancel": "Cancelar",
+  "confirm": "Confirmar",
+  "undo": "Deshacer",
+  "edit": "Editar",
+  "delete": "Eliminar",
+
+  "errorMessages": {
+    "mandatory_field": "Este campo es obligatorio."
+  },
+
+  "drawer": {
+    "memoirs": "Memorias",
+    "archive": "Archivo",
+    "settings": "Configuración",
+    "calendar": "Calendario",
+    "export": "Exportar",
+    "import": "Importar",
+    "debug_notifications": "[DEBUG] Notificaciones"
+  },
+
+  "importExport": {
+    "fileDownloaded": "Los datos se han guardado en su sistema de archivos.",
+    "dataHasBeenImported": "Los datos del archivo se han importado.",
+    "error": "Se produjo un error al importar los datos del archivo."
+  },
+
+  "welcomeScreen": {
+    "title": "¡Bienvenido a Inscribe!",
+    "slides": [
+      "Celebra las amistades con notas personalizadas sobre gustos, cumpleaños e ideas de regalos.",
+      "Crea listas de regalos pensadas para cada amigo, haciendo que cada ocasión sea memorable.",
+      "Lleva tus amistades a donde quieras: descarga y transfiere tus datos fácilmente.",
+      "Tu privacidad es importante: disfruta de la funcionalidad totalmente offline, manteniendo tus datos seguros.",
+      "No te pierdas nada: establece recordatorios para ocasiones especiales y eventos."
+    ],
+    "startButton": "¡Comienza a anotar!"
+  },
+
+  "homeScreen": {
+    "welcome": "¡Bienvenido!",
+    "no_notes_title": "¡No se encontraron notas!",
+    "no_notes_subtitle": "Comienza agregando una memoria de un amigo.",
+    "add_note": "Agregar nota",
+    "pinned": "Fijado",
+    "other": "Otro",
+    "search": "Buscar",
+    "pin_note": "Fijar nota",
+    "unpin_note": "Desfijar nota"
+  },
+
+  "newNoteScreen": {
+    "friend_name_hint": "¿Cómo se llama?",
+    "fields_missing_error": "¡Lo siento! Faltan algunos campos.",
+    "overview": "Visión general",
+    "gift_ideas": "Ideas de regalo",
+    "gift_ideas_hint": "¿Qué le gustaría recibir como regalo?",
+    "reminders": "Recordatorios",
+    "category": "Categoría",
+    "categories": [
+      "Amigo 😄",
+      "Trabajo 💼",
+      "Familia 🏠",
+      "Escuela 🎒",
+      "Romántico ❤️‍🔥"
+    ],
+    "date_of_birth": "Fecha de nacimiento",
+    "description": "Descripción",
+    "description_hint": "Añade aquí las notas que desees...",
+    "coming_soon": "Próximamente",
+    "some_fields_are_missing": "¡Faltan algunos campos!",
+    "note_saved": "¡Nota guardada con éxito!",
+    "archive_note": "Archivar nota",
+    "archive_note_are_you_sure": "¿Estás seguro de que deseas archivar la nota para '$name'?",
+    "note_achived": "¡Nota archivada!",
+    "select_image": "Seleccionar imagen",
+    "remove_image": "Eliminar imagen",
+    "randomize_illusrtation": "Aleatorizar ilustración",
+    "unsaved_changes": "Cambios no guardados",
+    "save_changes_description": "¿Deseas guardar tus cambios?",
+    "save": "Guardar",
+    "discard": "Descartar",
+    "add_reminder": "Agregar recordatorio",
+    "annual": "Anual",
+    "this_reminder_will_be_repeated_every_year": "Este recordatorio se repetirá todos los años",
+    "name": "Nombre",
+    "date": "Fecha",
+    "time": "Hora",
+    "reminder_deleted": "¡Recordatorio eliminado!",
+    "no_reminders": "Sin recordatorios",
+    "reminder_created": "¡Recordatorio creado!"
+  },
+
+  "archivedNotes": {
+    "no_archived_notes": "¡No hay notas archivadas!",
+    "no_archived_notes_subtitle": "Tus notas eliminadas aparecerán aquí.",
+    "delete_all_notes_forever_dialog_title": "Eliminar todas las notas para siempre",
+    "delete_all_notes_forever_dialog_subtitle": "Esta acción no se puede deshacer. Tu archivo se vaciará.",
+    "delete_note_forever_dialog_title": "Eliminar nota para siempre",
+    "delete_note_forever_dialog_subtitle": "Esta acción no se puede deshacer. Tu nota se eliminará para siempre.",
+    "restore": "Restaurar",
+    "delete_forever": "Eliminar para siempre",
+    "note_deleted": "¡Nota eliminada!",
+    "note_restored": "¡Nota restaurada!"
+  },
+
+  "settingsScreen": {
+    "app_name_and_version": "Inscribe, v$version",
+    "theme": "Tema",
+    "dark": "Tema oscuro",
+    "light": "Tema claro",
+    "language": "Idioma",
+    "english": "Inglés",
+    "serbian": "Serbio",
+    "notes_view": "Vista de notas",
+    "grid_view": "Vista de cuadrícula",
+    "list_view": "Vista de lista",
+    "use_dark_theme": "Usar tema oscuro",
+    "dark_theme_description": "Reduce el esfuerzo visual y ahorra batería",
+    "use_grid_view": "Usar vista de cuadrícula",
+    "grid_view_description": "Las tarjetas ocupan menos espacio en la vista de cuadrícula",
+    "visual": "Visual",
+    "system": "Sistema",
+    "change_theme": "Cambiar tema",
+    "apply_change": "¿Aplicar cambio?",
+    "this_action_will_restart_the_app": "Esta acción reiniciará la aplicación"
+  },
+
+  "calendarScreen": {
+    "birthday": "Cumpleaños",
+    "annualEvent": "Evento anual",
+    "oneTimeReminder": "Recordatorio único"
+  }
+}

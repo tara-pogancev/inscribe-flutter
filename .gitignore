@@ -45,3 +45,6 @@ inscribe/android/app/google-services.json
 inscribe/ios/Runner/GoogleService-Info.plist
 .DS_Store
 .DS_Store
+key.propreties
+keystore.propreties
+inscribe/android/keystore.properties

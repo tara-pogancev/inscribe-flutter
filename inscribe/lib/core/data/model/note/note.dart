@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:inscribe/core/data/model/note_type.dart';
+import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
 import 'package:inscribe/core/extensions/string_extensions.dart';
 
 part 'note.freezed.dart';
@@ -20,6 +21,7 @@ class Note with _$Note {
     @Default(false) bool isPinned,
     @Default(null) DateTime? updatedAt,
     @Default(null) DateTime? createdAt,
+    @Default([]) @JsonKey(includeToJson: false) List<NoteReminder> reminders,
   }) = _Note;
 
   factory Note.fromJson(Map<String, dynamic> json) => _$NoteFromJson(json);
@@ -35,4 +37,20 @@ class Note with _$Note {
             .simplifyForSearch()
             .contains(searchText.simplifyForSearch());
   }
+
+  Map<String, dynamic> toJsonWithReminders() => <String, dynamic>{
+        'id': id,
+        'name': name,
+        'assetImage': assetImage,
+        'galleryImage': galleryImage?.toString(),
+        'dateOfBirth': dateOfBirth?.toIso8601String(),
+        'type': _$NoteTypeEnumMap[type],
+        'description': description,
+        'giftIdeas': giftIdeas,
+        'isDeleted': isDeleted,
+        'isPinned': isPinned,
+        'updatedAt': updatedAt?.toIso8601String(),
+        'createdAt': createdAt?.toIso8601String(),
+        'reminders': reminders.map((reminder) => reminder.toJson()).toList(),
+      };
 }

@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -18,15 +19,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _bloc = IC.getIt<HomeBloc>();
+  final bloc = IC.getIt<HomeBloc>();
 
   void _navigateNewNote(BuildContext context) async {
     await context.push(Routes.newNote);
-    _bloc.add(HomeFetchEvent());
+    bloc.add(HomeFetchEvent());
+  }
+
+  void _requestNotificationPermissions() {
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+      if (!isAllowed) {
+        AwesomeNotifications().requestPermissionToSendNotifications();
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    _requestNotificationPermissions();
     return AppScaffold(
       includeDefaultPadding: true,
       enableDrawer: true,
@@ -41,18 +51,15 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: [
           const HomeSearchBar(),
-          SizedBox(
-            height: 10,
-          ),
           BlocBuilder<HomeBloc, HomeState>(
-            bloc: _bloc,
+            bloc: bloc,
             builder: (context, state) {
               return Flexible(
                 child: (state.isLoading)
                     ? Container()
                     : AnimatedCrossFade(
                         firstChild: const NoNotesSection(),
-                        secondChild: HomeNotesGrid(),
+                        secondChild: const HomeNotesGrid(),
                         crossFadeState: (state.notes.isEmpty)
                             ? CrossFadeState.showFirst
                             : CrossFadeState.showSecond,

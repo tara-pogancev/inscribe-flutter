@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: unnecessary_null_in_if_null_operators
+
 part of 'note.dart';
 
 // **************************************************************************
@@ -27,6 +29,10 @@ _$NoteImpl _$$NoteImplFromJson(Map<String, dynamic> json) => _$NoteImpl(
       createdAt: json['createdAt'] == null
           ? null
           : DateTime.parse(json['createdAt'] as String),
+      reminders: (json['reminders'] as List<dynamic>?)
+              ?.map((e) => NoteReminder.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$NoteImplToJson(_$NoteImpl instance) =>
@@ -49,6 +55,6 @@ const _$NoteTypeEnumMap = {
   NoteType.friend: 'friend',
   NoteType.school: 'school',
   NoteType.work: 'work',
-  NoteType.romantic: 'romantic',
   NoteType.family: 'family',
+  NoteType.romantic: 'romantic',
 };

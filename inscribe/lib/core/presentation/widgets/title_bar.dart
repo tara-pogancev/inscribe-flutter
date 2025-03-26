@@ -3,11 +3,11 @@ import 'package:inscribe/core/presentation/app_text_styles.dart';
 
 class TitleBar extends StatelessWidget {
   const TitleBar({
-    Key? key,
+    super.key,
     required this.title,
     this.startWidget,
     this.endWidget,
-  }) : super(key: key);
+  });
 
   final String title;
   final Widget? startWidget;
@@ -15,16 +15,28 @@ class TitleBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const iconButtonWidth = 48.0;
+
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        startWidget ?? Container(),
-        Text(
-          title,
-          style: AppTextStyles.of(context).boldTitle,
+        startWidget ??
+            Container(
+              width: iconButtonWidth,
+            ),
+        Flexible(
+          flex: 1,
+          child: Text(
+            title,
+            style: AppTextStyles.of(context).boldTitle,
+            textAlign: TextAlign.center,
+          ),
         ),
-        Spacer(),
-        endWidget ?? Container(),
+        endWidget ??
+            Container(
+              width: iconButtonWidth,
+            ),
       ],
     );
   }

@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
-import 'package:inscribe/core/domain/repositories/shared_preference_repository.dart';
+import 'package:inscribe/core/data/repositories/shared_preferences/shared_preference_repository.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/features/home/usecases/fetch_notes_usecase.dart';
-import 'package:inscribe/features/new_note/usecases/update_note_usecase.dart';
+import 'package:inscribe/features/note_details/usecases/update_note_usecase.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -14,8 +14,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final updateNoteUseCase = UpdateNoteUseCase();
 
   HomeBloc() : super(HomeState()) {
-    on<HomeFetchEvent>((event, emit) async {
-      final notes = await fetchNotesUseCase();
+    on<HomeFetchEvent>((event, emit) {
+      final notes = fetchNotesUseCase();
       final isGridView = sharedPreferencesRepository.getIsGridPreferedView();
 
       final otherNotes = notes.where((note) => note.isPinned == false).toList();
@@ -56,9 +56,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           filteredOtherdNotes: otherNotes, filteredPinnedNotes: pinnedNotes));
     });
 
-    on<SwitchNotePinEvent>((event, emit) async {
-      await updateNoteUseCase(
-          event.note.copyWith(isPinned: !event.note.isPinned));
+    on<SwitchNotePinEvent>((event, emit) {
+      updateNoteUseCase(event.note.copyWith(isPinned: !event.note.isPinned));
       add(HomeFetchEvent());
     });
 

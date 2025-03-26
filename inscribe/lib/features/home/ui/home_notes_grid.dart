@@ -14,7 +14,7 @@ import 'package:inscribe/core/presentation/widgets/faded_edges_container.dart';
 import 'package:inscribe/core/router/app_router.dart';
 import 'package:inscribe/features/home/bloc/home_bloc.dart';
 import 'package:inscribe/features/home/ui/note_card.dart';
-import 'package:inscribe/features/new_note/ui/dialog/archive_note_dialog.dart';
+import 'package:inscribe/features/note_details/ui/dialog/archive_note_dialog.dart';
 
 class HomeNotesGrid extends StatefulWidget {
   const HomeNotesGrid({super.key});
@@ -27,10 +27,10 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
   final _bloc = IC.getIt<HomeBloc>();
   final _deleteNoteBloc = IC.getIt<DeleteNoteBloc>();
 
-  var _tapPosition;
+  Offset _tapPosition = const Offset(0, 0);
 
   void _navigateNote(note) async {
-    await context.push(Routes.noteDetails, extra: note);
+    await context.push(Routes.noteDetails, extra: note.id);
     _bloc.add(HomeFetchEvent());
   }
 
@@ -52,15 +52,10 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
     }
   }
 
-  double _getScrollViewHeight(BuildContext context) {
-    return (MediaQuery.of(context).size.height) - appBarPreferedSize;
-  }
-
   void _getTapPosition(TapDownDetails tapPosition) {
     final RenderBox referenceBox = context.findRenderObject() as RenderBox;
     setState(() {
       _tapPosition = referenceBox.globalToLocal(tapPosition.globalPosition);
-      print(_tapPosition);
     });
   }
 
@@ -92,17 +87,21 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
     }
   }
 
+  double _getScrollViewHeight(BuildContext context) {
+    return (MediaQuery.of(context).size.height) - appBarPreferedSize;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       bloc: _bloc,
       builder: (context, state) {
-        return Container(
+        return SizedBox(
           height: _getScrollViewHeight(context),
           child: FadedEdgesContainer(
             child: CustomScrollView(
               slivers: [
-                SliverToBoxAdapter(
+                const SliverToBoxAdapter(
                   child: SizedBox(
                     height: gradientHeight,
                   ),
@@ -118,8 +117,10 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
                     ),
                   ),
                 if (state.filteredPinnedNotes.isNotEmpty)
-                  getGridForNotes(state.filteredPinnedNotes, state.isGridView),
-                if (state.filteredOtherdNotes.isNotEmpty)
+                  getStaticGridForPinnedNotes(
+                      state.filteredPinnedNotes, state.isGridView),
+                if (state.filteredOtherdNotes.isNotEmpty &&
+                    state.filteredPinnedNotes.isNotEmpty)
                   SliverToBoxAdapter(
                     child: Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 10),
@@ -146,6 +147,37 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
           ),
         );
       },
+    );
+  }
+
+  Widget getStaticGridForPinnedNotes(List<Note> notes, bool isGridView) {
+    return SliverToBoxAdapter(
+      child: StaggeredGrid.count(
+        crossAxisCount: (isGridView) ? 2 : 1,
+        crossAxisSpacing: 15,
+        mainAxisSpacing: 10,
+        children: List.generate(
+          notes.length,
+          (index) {
+            final note = notes[index];
+            return GestureDetector(
+              onTapDown: (TapDownDetails tapDownDetails) {
+                _getTapPosition(tapDownDetails);
+              },
+              onLongPress: () {
+                HapticFeedback.mediumImpact();
+                _showContextMenu(note);
+              },
+              child: NoteCard(
+                note: note,
+                onClick: () {
+                  _navigateNote(note);
+                },
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 

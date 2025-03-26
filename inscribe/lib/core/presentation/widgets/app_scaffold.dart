@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inscribe/core/extensions/context_extensions.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/features/app_drawer/app_drawer.dart';
 
@@ -8,13 +8,13 @@ class AppScaffold extends StatelessWidget {
       {super.key,
       required this.child,
       this.includeDefaultPadding = false,
-      this.includeTopPadding = false,
+      this.ignoreAllPadding = false,
       this.enableDrawer = false,
       this.fab});
 
   final Widget child;
   final bool includeDefaultPadding;
-  final bool includeTopPadding;
+  final bool ignoreAllPadding;
 
   final bool enableDrawer;
   final Widget? fab;
@@ -24,21 +24,22 @@ class AppScaffold extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColorScheme.of(context).beige,
       floatingActionButton: fab,
-      drawer: (enableDrawer) ? AppDrawer() : null,
-      body: SingleChildScrollView(
-        physics:
-            const ClampingScrollPhysics(parent: NeverScrollableScrollPhysics()),
-        child: SizedBox(
-          height: context.getScreenHeight(),
-          child: Padding(
-            padding: EdgeInsets.all((includeDefaultPadding) ? 20 : 0),
-            child: Padding(
-              padding: EdgeInsets.only(
-                  top: (includeDefaultPadding || includeTopPadding) ? 30 : 0),
-              child: child,
-            ),
-          ),
+      drawer: (enableDrawer) ? const AppDrawer() : null,
+      body: SafeArea(
+        top: !ignoreAllPadding,
+        // child: SingleChildScrollView(
+        //   physics: const ClampingScrollPhysics(
+        //       parent: NeverScrollableScrollPhysics()),
+        //   child: SizedBox(
+        // height: double.infinity,
+        child: Padding(
+          padding: (includeDefaultPadding)
+              ? const EdgeInsets.all(defaultScreenPadding)
+              : EdgeInsets.zero,
+          child: child,
         ),
+        // ),
+        // ),
       ),
     );
   }

@@ -40,7 +40,7 @@ class AppFormField extends StatelessWidget {
         onSaved: (newValue) => onSaved?.call(newValue),
         validator: (value) => validator?.call(value),
         textCapitalization: TextCapitalization.sentences,
-        keyboardType: TextInputType.text,
+        keyboardType: keyboardType,
         onTapOutside: (event) {
           FocusScope.of(context).requestFocus(FocusNode());
         },

@@ -1,4 +1,4 @@
-import 'package:dynamic_themes/dynamic_themes.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 
 extension ContextExtensions on BuildContext {
@@ -29,13 +29,13 @@ extension ContextExtensions on BuildContext {
 
   bool getIsDarkTheme() {
     final Brightness brightness =
-        DynamicTheme.of(this)?.theme.brightness ?? Brightness.light;
+        AdaptiveTheme.of(this).brightness ?? Brightness.light;
     return brightness == Brightness.dark;
   }
 
   bool getIsLightTheme() {
     final Brightness brightness =
-        DynamicTheme.of(this)?.theme.brightness ?? Brightness.light;
+        AdaptiveTheme.of(this).brightness ?? Brightness.light;
     return brightness == Brightness.light;
   }
 }

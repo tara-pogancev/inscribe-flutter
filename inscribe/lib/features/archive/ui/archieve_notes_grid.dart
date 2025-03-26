@@ -22,11 +22,7 @@ class ArchieveNotesGrid extends StatefulWidget {
 class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
   final _cubit = IC.getIt<ArchiveCubit>();
 
-  var _tapPosition;
-
-  double _getScrollViewHeight(BuildContext context) {
-    return (MediaQuery.of(context).size.height) - appBarPreferedSize;
-  }
+  Offset _tapPosition = const Offset(0, 0);
 
   void _restoreNote(Note note) {
     _cubit.restoreNote(note);
@@ -37,7 +33,7 @@ class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
   void _deleteNoteForever(Note note) async {
     final shouldDelete = await showDialog(
         context: context,
-        builder: (context) => DeleteNoteForeversDialog()) as bool?;
+        builder: (context) => const DeleteNoteForeversDialog()) as bool?;
 
     if (shouldDelete ?? false) {
       _cubit.deleteNote(note);
@@ -50,7 +46,6 @@ class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
     final RenderBox referenceBox = context.findRenderObject() as RenderBox;
     setState(() {
       _tapPosition = referenceBox.globalToLocal(tapPosition.globalPosition);
-      print(_tapPosition);
     });
   }
 
@@ -80,22 +75,31 @@ class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
     }
   }
 
+  double _getScrollViewHeight(BuildContext context) {
+    return (MediaQuery.of(context).size.height) - appBarPreferedSize;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ArchiveCubit, ArchiveState>(
       bloc: _cubit,
       builder: (context, state) {
-        return Container(
+        return SizedBox(
           height: _getScrollViewHeight(context),
           child: FadedEdgesContainer(
             child: CustomScrollView(
               slivers: [
-                SliverToBoxAdapter(
+                const SliverToBoxAdapter(
                   child: SizedBox(
                     height: gradientHeight,
                   ),
                 ),
-                getGridForNotes(state.notes, state.isGridView)
+                getGridForNotes(state.notes, state.isGridView),
+                const SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: gradientHeight,
+                  ),
+                ),
               ],
             ),
           ),
@@ -113,8 +117,8 @@ class _ArchieveNotesGridState extends State<ArchieveNotesGrid> {
       itemBuilder: (context, index) {
         final note = notes[index];
         return GestureDetector(
-          onTapDown: (position) {
-            _getTapPosition(position);
+          onTapDown: (TapDownDetails tapDownDetails) {
+            _getTapPosition(tapDownDetails);
           },
           onLongPress: () {
             HapticFeedback.mediumImpact();

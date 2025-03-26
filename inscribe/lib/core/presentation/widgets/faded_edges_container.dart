@@ -5,10 +5,10 @@ const double gradientHeight = 20;
 
 class FadedEdgesContainer extends StatelessWidget {
   const FadedEdgesContainer({
-    Key? key,
+    super.key,
     this.color,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Color? color;
   final Widget child;

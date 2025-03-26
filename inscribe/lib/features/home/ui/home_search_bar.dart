@@ -16,7 +16,7 @@ class HomeSearchBar extends StatefulWidget {
 
 class _HomeSearchBarState extends State<HomeSearchBar> {
   final HomeBloc _bloc = IC.getIt();
-  final _textEditingController = new TextEditingController();
+  final _textEditingController = TextEditingController();
 
   void _toggleViewMode() {
     _bloc.add(HomeToggleView());

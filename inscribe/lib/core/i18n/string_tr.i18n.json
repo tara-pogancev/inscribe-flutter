@@ -1,0 +1,129 @@
+{
+  "appName": "Inscribe",
+  "cancel": "İptal",
+  "confirm": "Onayla",
+  "undo": "Geri al",
+  "edit": "Düzenle",
+  "delete": "Sil",
+
+  "errorMessages": {
+    "mandatory_field": "Bu alan zorunludur."
+  },
+
+  "drawer": {
+    "memoirs": "Anılar",
+    "archive": "Arşiv",
+    "settings": "Ayarlar",
+    "calendar": "Takvim",
+    "export": "Dışa aktar",
+    "import": "İçe aktar",
+    "debug_notifications": "[DEBUG] Bildirimler"
+  },
+
+  "importExport": {
+    "fileDownloaded": "Veriler dosya sisteminize kaydedildi.",
+    "dataHasBeenImported": "Dosyadan veri içe aktarıldı.",
+    "error": "Dosyadan veri içe aktarılırken bir hata oluştu."
+  },
+
+  "welcomeScreen": {
+    "title": "Inscribe'a Hoş Geldiniz!",
+    "slides": [
+      "Arkadaşlıkları, beğeniler, doğum günleri ve hediye fikirlerine dair kişiselleştirilmiş notlarla kutlayın.",
+      "Her arkadaşınız için özenli hediye listeleri hazırlayın ve her etkinliği unutulmaz kılın.",
+      "Arkadaşlıklarınızı her yere taşıyın - verilerinizi kolayca indirin ve aktarın.",
+      "Gizliliğiniz önemlidir - verilerinizi güvende tutarak tam çevrimdışı işlevselliğin keyfini çıkarın.",
+      "Hiçbir anı kaçırmayın - özel etkinlikler ve olaylar için hatırlatıcılar kurun."
+    ],
+    "startButton": "Not almaya başla!"
+  },
+
+  "homeScreen": {
+    "welcome": "Hoş geldiniz!",
+    "no_notes_title": "Not bulunamadı!",
+    "no_notes_subtitle": "Bir arkadaş anısı ekleyerek başlayın.",
+    "add_note": "Not ekle",
+    "pinned": "Sabitlenmiş",
+    "other": "Diğer",
+    "search": "Ara",
+    "pin_note": "Notu sabitle",
+    "unpin_note": "Notu sabitlemeden çıkar"
+  },
+
+  "newNoteScreen": {
+    "friend_name_hint": "Adı nedir?",
+    "fields_missing_error": "Üzgünüz! Bazı alanlar eksik!",
+    "overview": "Genel Bakış",
+    "gift_ideas": "Hediye fikirleri",
+    "gift_ideas_hint": "Bu kişi neyi hediye olarak sever?",
+    "reminders": "Hatırlatıcılar",
+    "category": "Kategori",
+    "categories": ["Arkadaş 😄", "İş 💼", "Aile 🏠", "Okul 🎒", "Romantik ❤️‍🔥"],
+    "date_of_birth": "Doğum tarihi",
+    "description": "Açıklama",
+    "description_hint": "Buraya istediğiniz notları ekleyin...",
+    "coming_soon": "Yakında geliyor",
+    "some_fields_are_missing": "Bazı alanlar eksik!",
+    "note_saved": "Not başarıyla kaydedildi!",
+    "archive_note": "Notu arşivle",
+    "archive_note_are_you_sure": "Bu notu '$name' arşivlemek istediğinize emin misiniz?",
+    "note_achived": "Not arşivlendi!",
+    "select_image": "Resim seç",
+    "remove_image": "Resmi kaldır",
+    "randomize_illusrtation": "İllüstrasyonu rastgele seç",
+    "unsaved_changes": "Kaydedilmemiş değişiklikler",
+    "save_changes_description": "Değişiklikleri kaydetmek istiyor musunuz?",
+    "save": "Kaydet",
+    "discard": "Vazgeç",
+    "add_reminder": "Hatırlatıcı ekle",
+    "annual": "Yıllık",
+    "this_reminder_will_be_repeated_every_year": "Bu hatırlatıcı her yıl tekrarlanacak",
+    "name": "Ad",
+    "date": "Tarih",
+    "time": "Saat",
+    "reminder_deleted": "Hatırlatıcı silindi!",
+    "no_reminders": "Hatırlatıcı yok",
+    "reminder_created": "Hatırlatıcı oluşturuldu!"
+  },
+
+  "archivedNotes": {
+    "no_archived_notes": "Arşivlenmiş not yok!",
+    "no_archived_notes_subtitle": "Silinen notlarınız burada görünecek.",
+    "delete_all_notes_forever_dialog_title": "Tüm notları sonsuza kadar sil",
+    "delete_all_notes_forever_dialog_subtitle": "Bu işlem geri alınamaz. Arşiv boşaltılacak.",
+    "delete_note_forever_dialog_title": "Notu sonsuza kadar sil",
+    "delete_note_forever_dialog_subtitle": "Bu işlem geri alınamaz. Notunuz kalıcı olarak silinecek.",
+    "restore": "Geri yükle",
+    "delete_forever": "Sonsuza kadar sil",
+    "note_deleted": "Not silindi!",
+    "note_restored": "Not geri yüklendi!"
+  },
+
+  "settingsScreen": {
+    "app_name_and_version": "Inscribe, v$version",
+    "theme": "Tema",
+    "dark": "Koyu tema",
+    "light": "Açık tema",
+    "language": "Dil",
+    "english": "İngilizce",
+    "serbian": "Sırpça",
+    "notes_view": "Not görünümü",
+    "grid_view": "Izgara görünümü",
+    "list_view": "Liste görünümü",
+    "use_dark_theme": "Koyu temayı kullan",
+    "dark_theme_description": "Göz yorgunluğunu azaltın ve pil tasarrufu yapın",
+    "use_grid_view": "Izgara görünümünü kullan",
+    "grid_view_description": "Kartlar ızgara görünümünde daha az yer kaplar",
+    "visual": "Görsel",
+    "system": "Sistem",
+    "change_theme": "Temayı değiştir",
+    "apply_change": "Değişiklik uygulansın mı?",
+    "this_action_will_restart_the_app": "Bu işlem uygulamayı yeniden başlatacak"
+  },
+
+  "calendarScreen": {
+    "birthday": "Doğum günü",
+    "annualEvent": "Yıllık etkinlik",
+    "oneTimeReminder": "Tek seferlik hatırlatıcı"
+  }
+}

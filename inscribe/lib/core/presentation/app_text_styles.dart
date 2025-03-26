@@ -118,4 +118,23 @@ class AppTextStyles {
       fontSize: 14,
     );
   }
+
+  TextStyle get cardPrimaryText {
+    return GoogleFonts.montserrat(
+        color: AppColorScheme.of(context).black,
+        fontSize: 14,
+        fontWeight: FontWeight.bold);
+  }
+
+  TextStyle get cardSecondaryText {
+    return GoogleFonts.montserrat(
+        color: AppColorScheme.of(context).black, fontSize: 14);
+  }
+
+  TextStyle get cardTernaryText {
+    return GoogleFonts.montserrat(
+      color: AppColorScheme.of(context).gray,
+      fontSize: 12,
+    );
+  }
 }

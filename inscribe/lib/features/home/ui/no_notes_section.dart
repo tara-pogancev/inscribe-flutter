@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
@@ -25,18 +26,22 @@ class NoNotesSection extends StatelessWidget {
     final assetImagePath =
         "assets/images/empty_illustration_${context.getIsDarkTheme() ? 'dark' : 'light'}.png";
 
-    return FractionallySizedBox(
-      widthFactor: 0.7,
-      child: Center(
+    return Center(
+      child: FractionallySizedBox(
+        widthFactor: 0.7,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(
-              assetImagePath,
-              width: double.infinity,
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: defaultScreenPadding),
+              child: Image.asset(
+                assetImagePath,
+                width: double.infinity,
+              ),
             ),
             const SizedBox(
-              height: 50,
+              height: defaultScreenPadding,
             ),
             Text(
               Translations.of(context).homeScreen.no_notes_title,
@@ -49,7 +54,7 @@ class NoNotesSection extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(
-              height: 50,
+              height: defaultScreenPadding,
             ),
             SizedBox(
               width: double.infinity,
@@ -60,7 +65,10 @@ class NoNotesSection extends StatelessWidget {
                   _navigateNewNote(context);
                 },
               ),
-            )
+            ),
+            const SizedBox(
+              height: defaultScreenPadding,
+            ),
           ],
         ),
       ),

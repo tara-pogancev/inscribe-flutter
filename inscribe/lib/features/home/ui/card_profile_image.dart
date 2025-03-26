@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
-import 'package:inscribe/features/new_note/usecases/get_random_profile_image_usecase.dart';
+import 'package:inscribe/features/note_details/usecases/get_random_profile_image_usecase.dart';
 
 const cardProfileImageSize = 50.0;
 
