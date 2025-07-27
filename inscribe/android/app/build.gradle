@@ -36,9 +36,7 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace "com.example.inscribe"
     compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
-
-    
+    ndkVersion flutter.ndkVersion    
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -72,6 +70,9 @@ android {
    }
    buildTypes {
        release {
+            minifyEnabled false
+            shrinkResources false
+
             if (keystoreProperties['RELEASE_KEY_ALIAS'] == null) {
                  signingConfig signingConfigs.debug
             } else {

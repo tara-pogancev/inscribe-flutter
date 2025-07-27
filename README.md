@@ -30,7 +30,7 @@ Developed as a Flutter learning project, Inscribe tackles complex concepts and a
 
 - [x] So many great ideas...
 
-- [ ] Indicator for notification behavior
+- [x] Indicator for notification behavior when offline
 - [x] Change notifications from 10 AM to 9 AM
 - [x] Add label on homescreen for current birthdays
 - [x] Add name of the person in notifications for events
@@ -41,6 +41,7 @@ Developed as a Flutter learning project, Inscribe tackles complex concepts and a
 
 - [x] Bugs will appear here...
 
+- [ ] Notifications not rescheduling after reboot
 - [ ] Callendar slightly scrollable
 
 #### Main libraries and practices
