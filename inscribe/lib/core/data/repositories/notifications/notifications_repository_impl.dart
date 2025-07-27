@@ -20,7 +20,7 @@ class NotificationsRepositoryImpl implements NotificationsRepository {
         content: NotificationContent(
             id: reminder.id.hashCode,
             channelKey: remindersChannelKey,
-            title: reminder.name,
+            title: reminder.notificationTitle,
             body: "Inscribe reminder",
             payload: {"noteId": reminder.noteId}),
         localizations: {

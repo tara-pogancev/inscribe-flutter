@@ -117,7 +117,9 @@
     "system": "Sistema",
     "change_theme": "Cambiar tema",
     "apply_change": "¿Aplicar cambio?",
-    "this_action_will_restart_the_app": "Esta acción reiniciará la aplicación"
+    "this_action_will_restart_the_app": "Esta acción reiniciará la aplicación",
+    "remindersNote": "🔔 Nota de recordatorios",
+    "remindersNoteDescription": "Si has habilitado recordatorios para esta aplicación, asegúrate de abrirla periódicamente para recibir correctamente los recordatorios programados. Debido a la naturaleza completamente offline de esta aplicación, los recordatorios no se enviarán si la aplicación no se abre durante mucho tiempo. ¡Gracias por tu comprensión!"
   },
   "calendarScreen": {
     "birthday": "Cumpleaños",

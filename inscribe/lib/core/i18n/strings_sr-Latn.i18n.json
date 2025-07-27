@@ -117,7 +117,9 @@
     "system": "Sistem",
     "change_theme": "Promeni temu",
     "apply_change": "Primeni promenu?",
-    "this_action_will_restart_the_app": "Ova akcija će restartovati aplikaciju"
+    "this_action_will_restart_the_app": "Ova akcija će restartovati aplikaciju",
+    "remindersNote": "🔔 Napomena o podsetnicima",
+    "remindersNoteDescription": "Ako ste aktivirali podsetnike za ovu aplikaciju, molimo vas da je periodično otvarate kako biste ispravno primali zakazane podsetnike. Zbog potpuno offline prirode ove aplikacije, podsetnici neće biti poslati ako aplikacija nije otvorena duže vreme. Hvala na razumevanju!"
   },
   "calendarScreen": {
     "birthday": "Rođendan",

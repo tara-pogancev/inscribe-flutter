@@ -117,7 +117,9 @@
     "system": "System",
     "change_theme": "Thema ändern",
     "apply_change": "Änderung anwenden?",
-    "this_action_will_restart_the_app": "Diese Aktion wird die App neu starten"
+    "this_action_will_restart_the_app": "Diese Aktion wird die App neu starten",
+    "remindersNote": "🔔 Erinnerungen Hinweis",
+    "remindersNoteDescription": "Wenn Sie Erinnerungen für diese App aktiviert haben, stellen Sie bitte sicher, dass Sie sie regelmäßig öffnen, um die geplanten Erinnerungen ordnungsgemäß zu erhalten. Aufgrund der vollständig offline funktionierenden Natur dieser App werden Erinnerungen nicht gesendet, wenn die App über einen längeren Zeitraum nicht geöffnet wird. Vielen Dank für Ihr Verständnis!"
   },
   "calendarScreen": {
     "birthday": "Geburtstag",

@@ -24,6 +24,8 @@ mixin _$NoteReminder {
   set id(String? value) => throw _privateConstructorUsedError;
   String? get noteId => throw _privateConstructorUsedError;
   set noteId(String? value) => throw _privateConstructorUsedError;
+  String? get personName => throw _privateConstructorUsedError;
+  set personName(String? value) => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   set name(String value) => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
@@ -31,8 +33,12 @@ mixin _$NoteReminder {
   bool get isAnual => throw _privateConstructorUsedError;
   set isAnual(bool value) => throw _privateConstructorUsedError;
 
+  /// Serializes this NoteReminder to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NoteReminder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NoteReminderCopyWith<NoteReminder> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,7 +50,12 @@ abstract class $NoteReminderCopyWith<$Res> {
       _$NoteReminderCopyWithImpl<$Res, NoteReminder>;
   @useResult
   $Res call(
-      {String? id, String? noteId, String name, DateTime date, bool isAnual});
+      {String? id,
+      String? noteId,
+      String? personName,
+      String name,
+      DateTime date,
+      bool isAnual});
 }
 
 /// @nodoc
@@ -57,11 +68,14 @@ class _$NoteReminderCopyWithImpl<$Res, $Val extends NoteReminder>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NoteReminder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
     Object? noteId = freezed,
+    Object? personName = freezed,
     Object? name = null,
     Object? date = null,
     Object? isAnual = null,
@@ -74,6 +88,10 @@ class _$NoteReminderCopyWithImpl<$Res, $Val extends NoteReminder>
       noteId: freezed == noteId
           ? _value.noteId
           : noteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      personName: freezed == personName
+          ? _value.personName
+          : personName // ignore: cast_nullable_to_non_nullable
               as String?,
       name: null == name
           ? _value.name
@@ -100,7 +118,12 @@ abstract class _$$NoteReminderImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? id, String? noteId, String name, DateTime date, bool isAnual});
+      {String? id,
+      String? noteId,
+      String? personName,
+      String name,
+      DateTime date,
+      bool isAnual});
 }
 
 /// @nodoc
@@ -111,11 +134,14 @@ class __$$NoteReminderImplCopyWithImpl<$Res>
       _$NoteReminderImpl _value, $Res Function(_$NoteReminderImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NoteReminder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
     Object? noteId = freezed,
+    Object? personName = freezed,
     Object? name = null,
     Object? date = null,
     Object? isAnual = null,
@@ -128,6 +154,10 @@ class __$$NoteReminderImplCopyWithImpl<$Res>
       noteId: freezed == noteId
           ? _value.noteId
           : noteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      personName: freezed == personName
+          ? _value.personName
+          : personName // ignore: cast_nullable_to_non_nullable
               as String?,
       name: null == name
           ? _value.name
@@ -151,6 +181,7 @@ class _$NoteReminderImpl extends _NoteReminder {
   _$NoteReminderImpl(
       {this.id = null,
       this.noteId = null,
+      this.personName = null,
       required this.name,
       required this.date,
       this.isAnual = false})
@@ -166,6 +197,9 @@ class _$NoteReminderImpl extends _NoteReminder {
   @JsonKey()
   String? noteId;
   @override
+  @JsonKey()
+  String? personName;
+  @override
   String name;
   @override
   DateTime date;
@@ -175,10 +209,12 @@ class _$NoteReminderImpl extends _NoteReminder {
 
   @override
   String toString() {
-    return 'NoteReminder(id: $id, noteId: $noteId, name: $name, date: $date, isAnual: $isAnual)';
+    return 'NoteReminder(id: $id, noteId: $noteId, personName: $personName, name: $name, date: $date, isAnual: $isAnual)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NoteReminder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NoteReminderImplCopyWith<_$NoteReminderImpl> get copyWith =>
@@ -196,6 +232,7 @@ abstract class _NoteReminder extends NoteReminder {
   factory _NoteReminder(
       {String? id,
       String? noteId,
+      String? personName,
       required String name,
       required DateTime date,
       bool isAnual}) = _$NoteReminderImpl;
@@ -211,6 +248,9 @@ abstract class _NoteReminder extends NoteReminder {
   String? get noteId;
   set noteId(String? value);
   @override
+  String? get personName;
+  set personName(String? value);
+  @override
   String get name;
   set name(String value);
   @override
@@ -219,8 +259,11 @@ abstract class _NoteReminder extends NoteReminder {
   @override
   bool get isAnual;
   set isAnual(bool value);
+
+  /// Create a copy of NoteReminder
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NoteReminderImplCopyWith<_$NoteReminderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

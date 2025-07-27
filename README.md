@@ -32,10 +32,10 @@ Developed as a Flutter learning project, Inscribe tackles complex concepts and a
 
 - [ ] Indicator for notification behavior
 - [x] Change notifications from 10 AM to 9 AM
-- [ ] Make daily notifications time configurable
 - [x] Add label on homescreen for current birthdays
-- [ ] Add name of the person in notifications for events
+- [x] Add name of the person in notifications for events
 - [x] Make app icon more bold
+- [ ] Make daily notifications time configurable
 
 ## 🐞 Known bugs
 

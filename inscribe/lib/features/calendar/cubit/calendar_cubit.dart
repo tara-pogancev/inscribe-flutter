@@ -42,7 +42,7 @@ class CalendarCubit extends Cubit<CalendarState> {
     visibleEvents.addAll(visibleOneTimeEvents
         .map(
           (e) => CalendarEventData(
-            title: e.name,
+            title: e.notificationTitle,
             date: e.date,
             event: CalendarEventMetadata(
                 type: CalendarEventType.oneTimeEvent, reminder: e),

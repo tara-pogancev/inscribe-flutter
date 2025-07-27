@@ -7,6 +7,7 @@ class AddOrUpdateNoteReminderUseCase extends UseCase {
     reminder.id ??= uuid.v1();
 
     reminder.noteId = note.id;
+    reminder.personName = note.name;
 
     var reminders = List<NoteReminder>.from(note.reminders);
 

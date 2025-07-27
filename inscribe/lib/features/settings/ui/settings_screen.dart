@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
+import 'package:inscribe/core/presentation/app_box_decorations.dart';
+import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
 import 'package:inscribe/core/presentation/widgets/default_app_header.dart';
@@ -39,7 +41,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       enableDrawer: true,
       child: SingleChildScrollView(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DefaultAppHeader(
@@ -62,6 +64,37 @@ class _SettingsScreenState extends State<SettingsScreen> {
               style: AppTextStyles.of(context).subtitle,
             ),
             const SettingsLanguagePicker(),
+            SizedBox(
+              height: defaultScreenPadding,
+            ),
+            Container(
+              padding: EdgeInsets.all(15),
+              decoration: AppBoxDecorations.of(context).outlined,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 12,
+                children: [
+                  Text(
+                    Translations.of(context).settingsScreen.remindersNote,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: AppColorScheme.of(context).black),
+                    textAlign: TextAlign.start,
+                  ),
+                  Text(
+                    Translations.of(context)
+                        .settingsScreen
+                        .remindersNoteDescription,
+                    textAlign: TextAlign.start,
+                    style: TextStyle(color: AppColorScheme.of(context).gray),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: defaultScreenPadding,
+            ),
             SizedBox(
               width: double.infinity,
               child: Padding(

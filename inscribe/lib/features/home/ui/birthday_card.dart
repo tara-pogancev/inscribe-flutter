@@ -30,8 +30,7 @@ class BirthdayCard extends StatelessWidget {
             Translations.of(context)
                 .homeScreen
                 .its_birthday_today(name: birthdayNote.name),
-            style: TextStyle(
-                color: AppColorScheme.of(context).white, fontSize: 16),
+            style: TextStyle(color: lightAppColorScheme.white, fontSize: 16),
             textAlign: TextAlign.start,
           ),
         ),

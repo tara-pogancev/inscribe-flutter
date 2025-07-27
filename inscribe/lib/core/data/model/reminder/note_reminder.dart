@@ -8,6 +8,7 @@ class NoteReminder with _$NoteReminder {
   factory NoteReminder({
     @Default(null) String? id,
     @Default(null) String? noteId,
+    @Default(null) String? personName,
     required String name,
     required DateTime date,
     @Default(false) bool isAnual,
@@ -17,4 +18,7 @@ class NoteReminder with _$NoteReminder {
 
   factory NoteReminder.fromJson(Map<String, dynamic> json) =>
       _$NoteReminderFromJson(json);
+
+  String get notificationTitle =>
+      (personName != null) ? "$personName - $name" : name;
 }

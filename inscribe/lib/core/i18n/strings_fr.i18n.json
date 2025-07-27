@@ -117,7 +117,9 @@
     "system": "Système",
     "change_theme": "Changer de thème",
     "apply_change": "Appliquer le changement ?",
-    "this_action_will_restart_the_app": "Cette action redémarrera l'application"
+    "this_action_will_restart_the_app": "Cette action redémarrera l'application",
+    "remindersNote": "🔔 Note de rappels",
+    "remindersNoteDescription": "Si vous avez activé les rappels pour cette application, veuillez vous assurer de l'ouvrir périodiquement afin de recevoir correctement les rappels programmés. En raison de la nature complètement hors ligne de cette application, les rappels ne seront pas envoyés si l'application n'est pas ouverte pendant une longue période. Merci de votre compréhension !"
   },
   "calendarScreen": {
     "birthday": "Anniversaire",

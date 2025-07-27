@@ -35,8 +35,12 @@ mixin _$Note {
   @JsonKey(includeToJson: false)
   List<NoteReminder> get reminders => throw _privateConstructorUsedError;
 
+  /// Serializes this Note to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Note
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NoteCopyWith<Note> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -71,6 +75,8 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Note
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -175,6 +181,8 @@ class __$$NoteImplCopyWithImpl<$Res>
   __$$NoteImplCopyWithImpl(_$NoteImpl _value, $Res Function(_$NoteImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Note
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -353,7 +361,7 @@ class _$NoteImpl extends _Note {
                 .equals(other._reminders, _reminders));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -371,7 +379,9 @@ class _$NoteImpl extends _Note {
       createdAt,
       const DeepCollectionEquality().hash(_reminders));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Note
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NoteImplCopyWith<_$NoteImpl> get copyWith =>
@@ -432,8 +442,11 @@ abstract class _Note extends Note {
   @override
   @JsonKey(includeToJson: false)
   List<NoteReminder> get reminders;
+
+  /// Create a copy of Note
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NoteImplCopyWith<_$NoteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
