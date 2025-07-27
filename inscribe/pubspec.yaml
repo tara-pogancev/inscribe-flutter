@@ -69,11 +69,3 @@ flutter:
     - family: Brogi
       fonts:
         - asset: assets/fonts/brogi_regular.otf
-
-flutter_launcher_icons:
-  image_path: "assets/icon/app-icon.png"
-  android: true
-  ios: true
-  min_sdk_android: 21
-  remove_alpha_ios: true
-  background_color_ios: "#e4e2de"

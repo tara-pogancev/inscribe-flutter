@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +13,8 @@ import 'package:inscribe/features/home/ui/birthday_card.dart';
 import 'package:inscribe/features/home/ui/home_notes_grid.dart';
 import 'package:inscribe/features/home/ui/home_search_bar.dart';
 import 'package:inscribe/features/home/ui/no_notes_section.dart';
+
+const int _maxBirtihdayCards = 3;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -53,34 +57,34 @@ class _HomeScreenState extends State<HomeScreen> {
         bloc: bloc,
         builder: (context, state) {
           return Column(
+            mainAxisSize: MainAxisSize.max,
             children: [
               const HomeSearchBar(),
-              if (state.isLoading == false)
-                Flexible(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount:
-                        state.notes.where((e) => e.isBirthdayToday()).length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return BirthdayCard(
-                        birthdayNote: state.notes
-                            .where((e) => e.isBirthdayToday())
-                            .toList()[index],
-                      );
-                    },
-                  ),
+              if (state.isLoading == false) ...[
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: min(
+                      state.notes.where((e) => e.isBirthdayToday()).length,
+                      _maxBirtihdayCards),
+                  itemBuilder: (BuildContext context, int index) {
+                    return BirthdayCard(
+                      birthdayNote: state.notes
+                          .where((e) => e.isBirthdayToday())
+                          .toList()[index],
+                    );
+                  },
                 ),
-              Expanded(
-                child: (state.isLoading)
-                    ? Container()
-                    : AnimatedCrossFade(
-                        firstChild: const NoNotesSection(),
-                        secondChild: const HomeNotesGrid(),
-                        crossFadeState: (state.notes.isEmpty)
-                            ? CrossFadeState.showFirst
-                            : CrossFadeState.showSecond,
-                        duration: Durations.long1),
-              )
+                Expanded(
+                  child: AnimatedCrossFade(
+                      firstChild: const NoNotesSection(),
+                      secondChild: const HomeNotesGrid(),
+                      crossFadeState: (state.notes.isEmpty)
+                          ? CrossFadeState.showFirst
+                          : CrossFadeState.showSecond,
+                      duration: Durations.long1),
+                ),
+              ],
             ],
           );
         },
