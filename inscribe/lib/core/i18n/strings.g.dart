@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 8
-/// Strings: 816 (102 per locale)
+/// Strings: 824 (103 per locale)
 ///
-/// Built on 2024-10-03 at 11:39 UTC
+/// Built on 2025-07-26 at 19:09 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -243,6 +243,7 @@ class _StringsHomeScreenEn {
 	String get search => 'Search';
 	String get pin_note => 'Pin note';
 	String get unpin_note => 'Unpin note';
+	String its_birthday_today({required Object name}) => '🎂 It\'s ${name}\'s birthday today!';
 }
 
 // Path: newNoteScreen
@@ -353,7 +354,7 @@ class _StringsCalendarScreenEn {
 }
 
 // Path: <root>
-class _StringsDe implements Translations {
+class _StringsDe extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	_StringsDe.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
@@ -363,7 +364,9 @@ class _StringsDe implements Translations {
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
-		  ) {
+		  ),
+		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver) {
+		super.$meta.setFlatMapFunction($meta.getTranslation); // copy base translations to super.$meta
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
@@ -371,7 +374,7 @@ class _StringsDe implements Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => $meta.getTranslation(key) ?? super.$meta.getTranslation(key);
 
 	@override late final _StringsDe _root = this; // ignore: unused_field
 
@@ -394,8 +397,8 @@ class _StringsDe implements Translations {
 }
 
 // Path: errorMessages
-class _StringsErrorMessagesDe implements _StringsErrorMessagesEn {
-	_StringsErrorMessagesDe._(this._root);
+class _StringsErrorMessagesDe extends _StringsErrorMessagesEn {
+	_StringsErrorMessagesDe._(_StringsDe root) : this._root = root, super._(root);
 
 	@override final _StringsDe _root; // ignore: unused_field
 
@@ -404,8 +407,8 @@ class _StringsErrorMessagesDe implements _StringsErrorMessagesEn {
 }
 
 // Path: drawer
-class _StringsDrawerDe implements _StringsDrawerEn {
-	_StringsDrawerDe._(this._root);
+class _StringsDrawerDe extends _StringsDrawerEn {
+	_StringsDrawerDe._(_StringsDe root) : this._root = root, super._(root);
 
 	@override final _StringsDe _root; // ignore: unused_field
 
@@ -420,8 +423,8 @@ class _StringsDrawerDe implements _StringsDrawerEn {
 }
 
 // Path: importExport
-class _StringsImportExportDe implements _StringsImportExportEn {
-	_StringsImportExportDe._(this._root);
+class _StringsImportExportDe extends _StringsImportExportEn {
+	_StringsImportExportDe._(_StringsDe root) : this._root = root, super._(root);
 
 	@override final _StringsDe _root; // ignore: unused_field
 
@@ -432,8 +435,8 @@ class _StringsImportExportDe implements _StringsImportExportEn {
 }
 
 // Path: welcomeScreen
-class _StringsWelcomeScreenDe implements _StringsWelcomeScreenEn {
-	_StringsWelcomeScreenDe._(this._root);
+class _StringsWelcomeScreenDe extends _StringsWelcomeScreenEn {
+	_StringsWelcomeScreenDe._(_StringsDe root) : this._root = root, super._(root);
 
 	@override final _StringsDe _root; // ignore: unused_field
 
@@ -450,8 +453,8 @@ class _StringsWelcomeScreenDe implements _StringsWelcomeScreenEn {
 }
 
 // Path: homeScreen
-class _StringsHomeScreenDe implements _StringsHomeScreenEn {
-	_StringsHomeScreenDe._(this._root);
+class _StringsHomeScreenDe extends _StringsHomeScreenEn {
+	_StringsHomeScreenDe._(_StringsDe root) : this._root = root, super._(root);
 
 	@override final _StringsDe _root; // ignore: unused_field
 
@@ -465,11 +468,12 @@ class _StringsHomeScreenDe implements _StringsHomeScreenEn {
 	@override String get search => 'Suchen';
 	@override String get pin_note => 'Notiz anheften';
 	@override String get unpin_note => 'Notiz lösen';
+	@override String its_birthday_today({required Object name}) => '🎂 Heute ist ${name}\'s Geburtstag!';
 }
 
 // Path: newNoteScreen
-class _StringsNewNoteScreenDe implements _StringsNewNoteScreenEn {
-	_StringsNewNoteScreenDe._(this._root);
+class _StringsNewNoteScreenDe extends _StringsNewNoteScreenEn {
+	_StringsNewNoteScreenDe._(_StringsDe root) : this._root = root, super._(root);
 
 	@override final _StringsDe _root; // ignore: unused_field
 
@@ -516,8 +520,8 @@ class _StringsNewNoteScreenDe implements _StringsNewNoteScreenEn {
 }
 
 // Path: archivedNotes
-class _StringsArchivedNotesDe implements _StringsArchivedNotesEn {
-	_StringsArchivedNotesDe._(this._root);
+class _StringsArchivedNotesDe extends _StringsArchivedNotesEn {
+	_StringsArchivedNotesDe._(_StringsDe root) : this._root = root, super._(root);
 
 	@override final _StringsDe _root; // ignore: unused_field
 
@@ -535,8 +539,8 @@ class _StringsArchivedNotesDe implements _StringsArchivedNotesEn {
 }
 
 // Path: settingsScreen
-class _StringsSettingsScreenDe implements _StringsSettingsScreenEn {
-	_StringsSettingsScreenDe._(this._root);
+class _StringsSettingsScreenDe extends _StringsSettingsScreenEn {
+	_StringsSettingsScreenDe._(_StringsDe root) : this._root = root, super._(root);
 
 	@override final _StringsDe _root; // ignore: unused_field
 
@@ -563,8 +567,8 @@ class _StringsSettingsScreenDe implements _StringsSettingsScreenEn {
 }
 
 // Path: calendarScreen
-class _StringsCalendarScreenDe implements _StringsCalendarScreenEn {
-	_StringsCalendarScreenDe._(this._root);
+class _StringsCalendarScreenDe extends _StringsCalendarScreenEn {
+	_StringsCalendarScreenDe._(_StringsDe root) : this._root = root, super._(root);
 
 	@override final _StringsDe _root; // ignore: unused_field
 
@@ -575,7 +579,7 @@ class _StringsCalendarScreenDe implements _StringsCalendarScreenEn {
 }
 
 // Path: <root>
-class _StringsEs implements Translations {
+class _StringsEs extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	_StringsEs.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
@@ -585,7 +589,9 @@ class _StringsEs implements Translations {
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
-		  ) {
+		  ),
+		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver) {
+		super.$meta.setFlatMapFunction($meta.getTranslation); // copy base translations to super.$meta
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
@@ -593,7 +599,7 @@ class _StringsEs implements Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => $meta.getTranslation(key) ?? super.$meta.getTranslation(key);
 
 	@override late final _StringsEs _root = this; // ignore: unused_field
 
@@ -616,8 +622,8 @@ class _StringsEs implements Translations {
 }
 
 // Path: errorMessages
-class _StringsErrorMessagesEs implements _StringsErrorMessagesEn {
-	_StringsErrorMessagesEs._(this._root);
+class _StringsErrorMessagesEs extends _StringsErrorMessagesEn {
+	_StringsErrorMessagesEs._(_StringsEs root) : this._root = root, super._(root);
 
 	@override final _StringsEs _root; // ignore: unused_field
 
@@ -626,8 +632,8 @@ class _StringsErrorMessagesEs implements _StringsErrorMessagesEn {
 }
 
 // Path: drawer
-class _StringsDrawerEs implements _StringsDrawerEn {
-	_StringsDrawerEs._(this._root);
+class _StringsDrawerEs extends _StringsDrawerEn {
+	_StringsDrawerEs._(_StringsEs root) : this._root = root, super._(root);
 
 	@override final _StringsEs _root; // ignore: unused_field
 
@@ -642,8 +648,8 @@ class _StringsDrawerEs implements _StringsDrawerEn {
 }
 
 // Path: importExport
-class _StringsImportExportEs implements _StringsImportExportEn {
-	_StringsImportExportEs._(this._root);
+class _StringsImportExportEs extends _StringsImportExportEn {
+	_StringsImportExportEs._(_StringsEs root) : this._root = root, super._(root);
 
 	@override final _StringsEs _root; // ignore: unused_field
 
@@ -654,8 +660,8 @@ class _StringsImportExportEs implements _StringsImportExportEn {
 }
 
 // Path: welcomeScreen
-class _StringsWelcomeScreenEs implements _StringsWelcomeScreenEn {
-	_StringsWelcomeScreenEs._(this._root);
+class _StringsWelcomeScreenEs extends _StringsWelcomeScreenEn {
+	_StringsWelcomeScreenEs._(_StringsEs root) : this._root = root, super._(root);
 
 	@override final _StringsEs _root; // ignore: unused_field
 
@@ -672,8 +678,8 @@ class _StringsWelcomeScreenEs implements _StringsWelcomeScreenEn {
 }
 
 // Path: homeScreen
-class _StringsHomeScreenEs implements _StringsHomeScreenEn {
-	_StringsHomeScreenEs._(this._root);
+class _StringsHomeScreenEs extends _StringsHomeScreenEn {
+	_StringsHomeScreenEs._(_StringsEs root) : this._root = root, super._(root);
 
 	@override final _StringsEs _root; // ignore: unused_field
 
@@ -687,11 +693,12 @@ class _StringsHomeScreenEs implements _StringsHomeScreenEn {
 	@override String get search => 'Buscar';
 	@override String get pin_note => 'Fijar nota';
 	@override String get unpin_note => 'Desfijar nota';
+	@override String its_birthday_today({required Object name}) => '🎂 ¡Es el cumpleaños de ${name} hoy!';
 }
 
 // Path: newNoteScreen
-class _StringsNewNoteScreenEs implements _StringsNewNoteScreenEn {
-	_StringsNewNoteScreenEs._(this._root);
+class _StringsNewNoteScreenEs extends _StringsNewNoteScreenEn {
+	_StringsNewNoteScreenEs._(_StringsEs root) : this._root = root, super._(root);
 
 	@override final _StringsEs _root; // ignore: unused_field
 
@@ -738,8 +745,8 @@ class _StringsNewNoteScreenEs implements _StringsNewNoteScreenEn {
 }
 
 // Path: archivedNotes
-class _StringsArchivedNotesEs implements _StringsArchivedNotesEn {
-	_StringsArchivedNotesEs._(this._root);
+class _StringsArchivedNotesEs extends _StringsArchivedNotesEn {
+	_StringsArchivedNotesEs._(_StringsEs root) : this._root = root, super._(root);
 
 	@override final _StringsEs _root; // ignore: unused_field
 
@@ -757,8 +764,8 @@ class _StringsArchivedNotesEs implements _StringsArchivedNotesEn {
 }
 
 // Path: settingsScreen
-class _StringsSettingsScreenEs implements _StringsSettingsScreenEn {
-	_StringsSettingsScreenEs._(this._root);
+class _StringsSettingsScreenEs extends _StringsSettingsScreenEn {
+	_StringsSettingsScreenEs._(_StringsEs root) : this._root = root, super._(root);
 
 	@override final _StringsEs _root; // ignore: unused_field
 
@@ -785,8 +792,8 @@ class _StringsSettingsScreenEs implements _StringsSettingsScreenEn {
 }
 
 // Path: calendarScreen
-class _StringsCalendarScreenEs implements _StringsCalendarScreenEn {
-	_StringsCalendarScreenEs._(this._root);
+class _StringsCalendarScreenEs extends _StringsCalendarScreenEn {
+	_StringsCalendarScreenEs._(_StringsEs root) : this._root = root, super._(root);
 
 	@override final _StringsEs _root; // ignore: unused_field
 
@@ -797,7 +804,7 @@ class _StringsCalendarScreenEs implements _StringsCalendarScreenEn {
 }
 
 // Path: <root>
-class _StringsFr implements Translations {
+class _StringsFr extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	_StringsFr.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
@@ -807,7 +814,9 @@ class _StringsFr implements Translations {
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
-		  ) {
+		  ),
+		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver) {
+		super.$meta.setFlatMapFunction($meta.getTranslation); // copy base translations to super.$meta
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
@@ -815,7 +824,7 @@ class _StringsFr implements Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => $meta.getTranslation(key) ?? super.$meta.getTranslation(key);
 
 	@override late final _StringsFr _root = this; // ignore: unused_field
 
@@ -838,8 +847,8 @@ class _StringsFr implements Translations {
 }
 
 // Path: errorMessages
-class _StringsErrorMessagesFr implements _StringsErrorMessagesEn {
-	_StringsErrorMessagesFr._(this._root);
+class _StringsErrorMessagesFr extends _StringsErrorMessagesEn {
+	_StringsErrorMessagesFr._(_StringsFr root) : this._root = root, super._(root);
 
 	@override final _StringsFr _root; // ignore: unused_field
 
@@ -848,8 +857,8 @@ class _StringsErrorMessagesFr implements _StringsErrorMessagesEn {
 }
 
 // Path: drawer
-class _StringsDrawerFr implements _StringsDrawerEn {
-	_StringsDrawerFr._(this._root);
+class _StringsDrawerFr extends _StringsDrawerEn {
+	_StringsDrawerFr._(_StringsFr root) : this._root = root, super._(root);
 
 	@override final _StringsFr _root; // ignore: unused_field
 
@@ -864,8 +873,8 @@ class _StringsDrawerFr implements _StringsDrawerEn {
 }
 
 // Path: importExport
-class _StringsImportExportFr implements _StringsImportExportEn {
-	_StringsImportExportFr._(this._root);
+class _StringsImportExportFr extends _StringsImportExportEn {
+	_StringsImportExportFr._(_StringsFr root) : this._root = root, super._(root);
 
 	@override final _StringsFr _root; // ignore: unused_field
 
@@ -876,8 +885,8 @@ class _StringsImportExportFr implements _StringsImportExportEn {
 }
 
 // Path: welcomeScreen
-class _StringsWelcomeScreenFr implements _StringsWelcomeScreenEn {
-	_StringsWelcomeScreenFr._(this._root);
+class _StringsWelcomeScreenFr extends _StringsWelcomeScreenEn {
+	_StringsWelcomeScreenFr._(_StringsFr root) : this._root = root, super._(root);
 
 	@override final _StringsFr _root; // ignore: unused_field
 
@@ -894,8 +903,8 @@ class _StringsWelcomeScreenFr implements _StringsWelcomeScreenEn {
 }
 
 // Path: homeScreen
-class _StringsHomeScreenFr implements _StringsHomeScreenEn {
-	_StringsHomeScreenFr._(this._root);
+class _StringsHomeScreenFr extends _StringsHomeScreenEn {
+	_StringsHomeScreenFr._(_StringsFr root) : this._root = root, super._(root);
 
 	@override final _StringsFr _root; // ignore: unused_field
 
@@ -909,11 +918,12 @@ class _StringsHomeScreenFr implements _StringsHomeScreenEn {
 	@override String get search => 'Rechercher';
 	@override String get pin_note => 'Épingler la note';
 	@override String get unpin_note => 'Détacher la note';
+	@override String its_birthday_today({required Object name}) => '🎂 C\'est l\'anniversaire de ${name} aujourd\'hui !';
 }
 
 // Path: newNoteScreen
-class _StringsNewNoteScreenFr implements _StringsNewNoteScreenEn {
-	_StringsNewNoteScreenFr._(this._root);
+class _StringsNewNoteScreenFr extends _StringsNewNoteScreenEn {
+	_StringsNewNoteScreenFr._(_StringsFr root) : this._root = root, super._(root);
 
 	@override final _StringsFr _root; // ignore: unused_field
 
@@ -960,8 +970,8 @@ class _StringsNewNoteScreenFr implements _StringsNewNoteScreenEn {
 }
 
 // Path: archivedNotes
-class _StringsArchivedNotesFr implements _StringsArchivedNotesEn {
-	_StringsArchivedNotesFr._(this._root);
+class _StringsArchivedNotesFr extends _StringsArchivedNotesEn {
+	_StringsArchivedNotesFr._(_StringsFr root) : this._root = root, super._(root);
 
 	@override final _StringsFr _root; // ignore: unused_field
 
@@ -979,8 +989,8 @@ class _StringsArchivedNotesFr implements _StringsArchivedNotesEn {
 }
 
 // Path: settingsScreen
-class _StringsSettingsScreenFr implements _StringsSettingsScreenEn {
-	_StringsSettingsScreenFr._(this._root);
+class _StringsSettingsScreenFr extends _StringsSettingsScreenEn {
+	_StringsSettingsScreenFr._(_StringsFr root) : this._root = root, super._(root);
 
 	@override final _StringsFr _root; // ignore: unused_field
 
@@ -1007,8 +1017,8 @@ class _StringsSettingsScreenFr implements _StringsSettingsScreenEn {
 }
 
 // Path: calendarScreen
-class _StringsCalendarScreenFr implements _StringsCalendarScreenEn {
-	_StringsCalendarScreenFr._(this._root);
+class _StringsCalendarScreenFr extends _StringsCalendarScreenEn {
+	_StringsCalendarScreenFr._(_StringsFr root) : this._root = root, super._(root);
 
 	@override final _StringsFr _root; // ignore: unused_field
 
@@ -1019,7 +1029,7 @@ class _StringsCalendarScreenFr implements _StringsCalendarScreenEn {
 }
 
 // Path: <root>
-class _StringsIt implements Translations {
+class _StringsIt extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	_StringsIt.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
@@ -1029,7 +1039,9 @@ class _StringsIt implements Translations {
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
-		  ) {
+		  ),
+		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver) {
+		super.$meta.setFlatMapFunction($meta.getTranslation); // copy base translations to super.$meta
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
@@ -1037,7 +1049,7 @@ class _StringsIt implements Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => $meta.getTranslation(key) ?? super.$meta.getTranslation(key);
 
 	@override late final _StringsIt _root = this; // ignore: unused_field
 
@@ -1060,8 +1072,8 @@ class _StringsIt implements Translations {
 }
 
 // Path: errorMessages
-class _StringsErrorMessagesIt implements _StringsErrorMessagesEn {
-	_StringsErrorMessagesIt._(this._root);
+class _StringsErrorMessagesIt extends _StringsErrorMessagesEn {
+	_StringsErrorMessagesIt._(_StringsIt root) : this._root = root, super._(root);
 
 	@override final _StringsIt _root; // ignore: unused_field
 
@@ -1070,8 +1082,8 @@ class _StringsErrorMessagesIt implements _StringsErrorMessagesEn {
 }
 
 // Path: drawer
-class _StringsDrawerIt implements _StringsDrawerEn {
-	_StringsDrawerIt._(this._root);
+class _StringsDrawerIt extends _StringsDrawerEn {
+	_StringsDrawerIt._(_StringsIt root) : this._root = root, super._(root);
 
 	@override final _StringsIt _root; // ignore: unused_field
 
@@ -1086,8 +1098,8 @@ class _StringsDrawerIt implements _StringsDrawerEn {
 }
 
 // Path: importExport
-class _StringsImportExportIt implements _StringsImportExportEn {
-	_StringsImportExportIt._(this._root);
+class _StringsImportExportIt extends _StringsImportExportEn {
+	_StringsImportExportIt._(_StringsIt root) : this._root = root, super._(root);
 
 	@override final _StringsIt _root; // ignore: unused_field
 
@@ -1098,8 +1110,8 @@ class _StringsImportExportIt implements _StringsImportExportEn {
 }
 
 // Path: welcomeScreen
-class _StringsWelcomeScreenIt implements _StringsWelcomeScreenEn {
-	_StringsWelcomeScreenIt._(this._root);
+class _StringsWelcomeScreenIt extends _StringsWelcomeScreenEn {
+	_StringsWelcomeScreenIt._(_StringsIt root) : this._root = root, super._(root);
 
 	@override final _StringsIt _root; // ignore: unused_field
 
@@ -1116,8 +1128,8 @@ class _StringsWelcomeScreenIt implements _StringsWelcomeScreenEn {
 }
 
 // Path: homeScreen
-class _StringsHomeScreenIt implements _StringsHomeScreenEn {
-	_StringsHomeScreenIt._(this._root);
+class _StringsHomeScreenIt extends _StringsHomeScreenEn {
+	_StringsHomeScreenIt._(_StringsIt root) : this._root = root, super._(root);
 
 	@override final _StringsIt _root; // ignore: unused_field
 
@@ -1131,11 +1143,12 @@ class _StringsHomeScreenIt implements _StringsHomeScreenEn {
 	@override String get search => 'Cerca';
 	@override String get pin_note => 'Metti in evidenza';
 	@override String get unpin_note => 'Togli dall\'evidenza';
+	@override String its_birthday_today({required Object name}) => '🎂 Oggi è il compleanno di ${name}!';
 }
 
 // Path: newNoteScreen
-class _StringsNewNoteScreenIt implements _StringsNewNoteScreenEn {
-	_StringsNewNoteScreenIt._(this._root);
+class _StringsNewNoteScreenIt extends _StringsNewNoteScreenEn {
+	_StringsNewNoteScreenIt._(_StringsIt root) : this._root = root, super._(root);
 
 	@override final _StringsIt _root; // ignore: unused_field
 
@@ -1182,8 +1195,8 @@ class _StringsNewNoteScreenIt implements _StringsNewNoteScreenEn {
 }
 
 // Path: archivedNotes
-class _StringsArchivedNotesIt implements _StringsArchivedNotesEn {
-	_StringsArchivedNotesIt._(this._root);
+class _StringsArchivedNotesIt extends _StringsArchivedNotesEn {
+	_StringsArchivedNotesIt._(_StringsIt root) : this._root = root, super._(root);
 
 	@override final _StringsIt _root; // ignore: unused_field
 
@@ -1201,8 +1214,8 @@ class _StringsArchivedNotesIt implements _StringsArchivedNotesEn {
 }
 
 // Path: settingsScreen
-class _StringsSettingsScreenIt implements _StringsSettingsScreenEn {
-	_StringsSettingsScreenIt._(this._root);
+class _StringsSettingsScreenIt extends _StringsSettingsScreenEn {
+	_StringsSettingsScreenIt._(_StringsIt root) : this._root = root, super._(root);
 
 	@override final _StringsIt _root; // ignore: unused_field
 
@@ -1229,8 +1242,8 @@ class _StringsSettingsScreenIt implements _StringsSettingsScreenEn {
 }
 
 // Path: calendarScreen
-class _StringsCalendarScreenIt implements _StringsCalendarScreenEn {
-	_StringsCalendarScreenIt._(this._root);
+class _StringsCalendarScreenIt extends _StringsCalendarScreenEn {
+	_StringsCalendarScreenIt._(_StringsIt root) : this._root = root, super._(root);
 
 	@override final _StringsIt _root; // ignore: unused_field
 
@@ -1241,7 +1254,7 @@ class _StringsCalendarScreenIt implements _StringsCalendarScreenEn {
 }
 
 // Path: <root>
-class _StringsRu implements Translations {
+class _StringsRu extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	_StringsRu.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
@@ -1251,7 +1264,9 @@ class _StringsRu implements Translations {
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
-		  ) {
+		  ),
+		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver) {
+		super.$meta.setFlatMapFunction($meta.getTranslation); // copy base translations to super.$meta
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
@@ -1259,7 +1274,7 @@ class _StringsRu implements Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => $meta.getTranslation(key) ?? super.$meta.getTranslation(key);
 
 	@override late final _StringsRu _root = this; // ignore: unused_field
 
@@ -1282,8 +1297,8 @@ class _StringsRu implements Translations {
 }
 
 // Path: errorMessages
-class _StringsErrorMessagesRu implements _StringsErrorMessagesEn {
-	_StringsErrorMessagesRu._(this._root);
+class _StringsErrorMessagesRu extends _StringsErrorMessagesEn {
+	_StringsErrorMessagesRu._(_StringsRu root) : this._root = root, super._(root);
 
 	@override final _StringsRu _root; // ignore: unused_field
 
@@ -1292,8 +1307,8 @@ class _StringsErrorMessagesRu implements _StringsErrorMessagesEn {
 }
 
 // Path: drawer
-class _StringsDrawerRu implements _StringsDrawerEn {
-	_StringsDrawerRu._(this._root);
+class _StringsDrawerRu extends _StringsDrawerEn {
+	_StringsDrawerRu._(_StringsRu root) : this._root = root, super._(root);
 
 	@override final _StringsRu _root; // ignore: unused_field
 
@@ -1308,8 +1323,8 @@ class _StringsDrawerRu implements _StringsDrawerEn {
 }
 
 // Path: importExport
-class _StringsImportExportRu implements _StringsImportExportEn {
-	_StringsImportExportRu._(this._root);
+class _StringsImportExportRu extends _StringsImportExportEn {
+	_StringsImportExportRu._(_StringsRu root) : this._root = root, super._(root);
 
 	@override final _StringsRu _root; // ignore: unused_field
 
@@ -1320,8 +1335,8 @@ class _StringsImportExportRu implements _StringsImportExportEn {
 }
 
 // Path: welcomeScreen
-class _StringsWelcomeScreenRu implements _StringsWelcomeScreenEn {
-	_StringsWelcomeScreenRu._(this._root);
+class _StringsWelcomeScreenRu extends _StringsWelcomeScreenEn {
+	_StringsWelcomeScreenRu._(_StringsRu root) : this._root = root, super._(root);
 
 	@override final _StringsRu _root; // ignore: unused_field
 
@@ -1338,8 +1353,8 @@ class _StringsWelcomeScreenRu implements _StringsWelcomeScreenEn {
 }
 
 // Path: homeScreen
-class _StringsHomeScreenRu implements _StringsHomeScreenEn {
-	_StringsHomeScreenRu._(this._root);
+class _StringsHomeScreenRu extends _StringsHomeScreenEn {
+	_StringsHomeScreenRu._(_StringsRu root) : this._root = root, super._(root);
 
 	@override final _StringsRu _root; // ignore: unused_field
 
@@ -1353,11 +1368,12 @@ class _StringsHomeScreenRu implements _StringsHomeScreenEn {
 	@override String get search => 'Поиск';
 	@override String get pin_note => 'Закрепить заметку';
 	@override String get unpin_note => 'Открепить заметку';
+	@override String its_birthday_today({required Object name}) => '🎂 Сегодня день рождения ${name}!';
 }
 
 // Path: newNoteScreen
-class _StringsNewNoteScreenRu implements _StringsNewNoteScreenEn {
-	_StringsNewNoteScreenRu._(this._root);
+class _StringsNewNoteScreenRu extends _StringsNewNoteScreenEn {
+	_StringsNewNoteScreenRu._(_StringsRu root) : this._root = root, super._(root);
 
 	@override final _StringsRu _root; // ignore: unused_field
 
@@ -1404,8 +1420,8 @@ class _StringsNewNoteScreenRu implements _StringsNewNoteScreenEn {
 }
 
 // Path: archivedNotes
-class _StringsArchivedNotesRu implements _StringsArchivedNotesEn {
-	_StringsArchivedNotesRu._(this._root);
+class _StringsArchivedNotesRu extends _StringsArchivedNotesEn {
+	_StringsArchivedNotesRu._(_StringsRu root) : this._root = root, super._(root);
 
 	@override final _StringsRu _root; // ignore: unused_field
 
@@ -1423,8 +1439,8 @@ class _StringsArchivedNotesRu implements _StringsArchivedNotesEn {
 }
 
 // Path: settingsScreen
-class _StringsSettingsScreenRu implements _StringsSettingsScreenEn {
-	_StringsSettingsScreenRu._(this._root);
+class _StringsSettingsScreenRu extends _StringsSettingsScreenEn {
+	_StringsSettingsScreenRu._(_StringsRu root) : this._root = root, super._(root);
 
 	@override final _StringsRu _root; // ignore: unused_field
 
@@ -1451,8 +1467,8 @@ class _StringsSettingsScreenRu implements _StringsSettingsScreenEn {
 }
 
 // Path: calendarScreen
-class _StringsCalendarScreenRu implements _StringsCalendarScreenEn {
-	_StringsCalendarScreenRu._(this._root);
+class _StringsCalendarScreenRu extends _StringsCalendarScreenEn {
+	_StringsCalendarScreenRu._(_StringsRu root) : this._root = root, super._(root);
 
 	@override final _StringsRu _root; // ignore: unused_field
 
@@ -1463,7 +1479,7 @@ class _StringsCalendarScreenRu implements _StringsCalendarScreenEn {
 }
 
 // Path: <root>
-class _StringsSrLatn implements Translations {
+class _StringsSrLatn extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	_StringsSrLatn.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
@@ -1473,7 +1489,9 @@ class _StringsSrLatn implements Translations {
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
-		  ) {
+		  ),
+		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver) {
+		super.$meta.setFlatMapFunction($meta.getTranslation); // copy base translations to super.$meta
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
@@ -1481,7 +1499,7 @@ class _StringsSrLatn implements Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => $meta.getTranslation(key) ?? super.$meta.getTranslation(key);
 
 	@override late final _StringsSrLatn _root = this; // ignore: unused_field
 
@@ -1504,8 +1522,8 @@ class _StringsSrLatn implements Translations {
 }
 
 // Path: errorMessages
-class _StringsErrorMessagesSrLatn implements _StringsErrorMessagesEn {
-	_StringsErrorMessagesSrLatn._(this._root);
+class _StringsErrorMessagesSrLatn extends _StringsErrorMessagesEn {
+	_StringsErrorMessagesSrLatn._(_StringsSrLatn root) : this._root = root, super._(root);
 
 	@override final _StringsSrLatn _root; // ignore: unused_field
 
@@ -1514,8 +1532,8 @@ class _StringsErrorMessagesSrLatn implements _StringsErrorMessagesEn {
 }
 
 // Path: drawer
-class _StringsDrawerSrLatn implements _StringsDrawerEn {
-	_StringsDrawerSrLatn._(this._root);
+class _StringsDrawerSrLatn extends _StringsDrawerEn {
+	_StringsDrawerSrLatn._(_StringsSrLatn root) : this._root = root, super._(root);
 
 	@override final _StringsSrLatn _root; // ignore: unused_field
 
@@ -1530,8 +1548,8 @@ class _StringsDrawerSrLatn implements _StringsDrawerEn {
 }
 
 // Path: importExport
-class _StringsImportExportSrLatn implements _StringsImportExportEn {
-	_StringsImportExportSrLatn._(this._root);
+class _StringsImportExportSrLatn extends _StringsImportExportEn {
+	_StringsImportExportSrLatn._(_StringsSrLatn root) : this._root = root, super._(root);
 
 	@override final _StringsSrLatn _root; // ignore: unused_field
 
@@ -1542,8 +1560,8 @@ class _StringsImportExportSrLatn implements _StringsImportExportEn {
 }
 
 // Path: welcomeScreen
-class _StringsWelcomeScreenSrLatn implements _StringsWelcomeScreenEn {
-	_StringsWelcomeScreenSrLatn._(this._root);
+class _StringsWelcomeScreenSrLatn extends _StringsWelcomeScreenEn {
+	_StringsWelcomeScreenSrLatn._(_StringsSrLatn root) : this._root = root, super._(root);
 
 	@override final _StringsSrLatn _root; // ignore: unused_field
 
@@ -1560,8 +1578,8 @@ class _StringsWelcomeScreenSrLatn implements _StringsWelcomeScreenEn {
 }
 
 // Path: homeScreen
-class _StringsHomeScreenSrLatn implements _StringsHomeScreenEn {
-	_StringsHomeScreenSrLatn._(this._root);
+class _StringsHomeScreenSrLatn extends _StringsHomeScreenEn {
+	_StringsHomeScreenSrLatn._(_StringsSrLatn root) : this._root = root, super._(root);
 
 	@override final _StringsSrLatn _root; // ignore: unused_field
 
@@ -1575,11 +1593,12 @@ class _StringsHomeScreenSrLatn implements _StringsHomeScreenEn {
 	@override String get search => 'Pretraga';
 	@override String get pin_note => 'Prikvači belešku';
 	@override String get unpin_note => 'Otkvači belešku';
+	@override String its_birthday_today({required Object name}) => '🎂 Danas je rođendan ${name}!';
 }
 
 // Path: newNoteScreen
-class _StringsNewNoteScreenSrLatn implements _StringsNewNoteScreenEn {
-	_StringsNewNoteScreenSrLatn._(this._root);
+class _StringsNewNoteScreenSrLatn extends _StringsNewNoteScreenEn {
+	_StringsNewNoteScreenSrLatn._(_StringsSrLatn root) : this._root = root, super._(root);
 
 	@override final _StringsSrLatn _root; // ignore: unused_field
 
@@ -1626,8 +1645,8 @@ class _StringsNewNoteScreenSrLatn implements _StringsNewNoteScreenEn {
 }
 
 // Path: archivedNotes
-class _StringsArchivedNotesSrLatn implements _StringsArchivedNotesEn {
-	_StringsArchivedNotesSrLatn._(this._root);
+class _StringsArchivedNotesSrLatn extends _StringsArchivedNotesEn {
+	_StringsArchivedNotesSrLatn._(_StringsSrLatn root) : this._root = root, super._(root);
 
 	@override final _StringsSrLatn _root; // ignore: unused_field
 
@@ -1645,8 +1664,8 @@ class _StringsArchivedNotesSrLatn implements _StringsArchivedNotesEn {
 }
 
 // Path: settingsScreen
-class _StringsSettingsScreenSrLatn implements _StringsSettingsScreenEn {
-	_StringsSettingsScreenSrLatn._(this._root);
+class _StringsSettingsScreenSrLatn extends _StringsSettingsScreenEn {
+	_StringsSettingsScreenSrLatn._(_StringsSrLatn root) : this._root = root, super._(root);
 
 	@override final _StringsSrLatn _root; // ignore: unused_field
 
@@ -1673,8 +1692,8 @@ class _StringsSettingsScreenSrLatn implements _StringsSettingsScreenEn {
 }
 
 // Path: calendarScreen
-class _StringsCalendarScreenSrLatn implements _StringsCalendarScreenEn {
-	_StringsCalendarScreenSrLatn._(this._root);
+class _StringsCalendarScreenSrLatn extends _StringsCalendarScreenEn {
+	_StringsCalendarScreenSrLatn._(_StringsSrLatn root) : this._root = root, super._(root);
 
 	@override final _StringsSrLatn _root; // ignore: unused_field
 
@@ -1685,7 +1704,7 @@ class _StringsCalendarScreenSrLatn implements _StringsCalendarScreenEn {
 }
 
 // Path: <root>
-class _StringsTr implements Translations {
+class _StringsTr extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	_StringsTr.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
@@ -1695,7 +1714,9 @@ class _StringsTr implements Translations {
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
-		  ) {
+		  ),
+		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver) {
+		super.$meta.setFlatMapFunction($meta.getTranslation); // copy base translations to super.$meta
 		$meta.setFlatMapFunction(_flatMapFunction);
 	}
 
@@ -1703,7 +1724,7 @@ class _StringsTr implements Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	/// Access flat map
-	@override dynamic operator[](String key) => $meta.getTranslation(key);
+	@override dynamic operator[](String key) => $meta.getTranslation(key) ?? super.$meta.getTranslation(key);
 
 	@override late final _StringsTr _root = this; // ignore: unused_field
 
@@ -1726,8 +1747,8 @@ class _StringsTr implements Translations {
 }
 
 // Path: errorMessages
-class _StringsErrorMessagesTr implements _StringsErrorMessagesEn {
-	_StringsErrorMessagesTr._(this._root);
+class _StringsErrorMessagesTr extends _StringsErrorMessagesEn {
+	_StringsErrorMessagesTr._(_StringsTr root) : this._root = root, super._(root);
 
 	@override final _StringsTr _root; // ignore: unused_field
 
@@ -1736,8 +1757,8 @@ class _StringsErrorMessagesTr implements _StringsErrorMessagesEn {
 }
 
 // Path: drawer
-class _StringsDrawerTr implements _StringsDrawerEn {
-	_StringsDrawerTr._(this._root);
+class _StringsDrawerTr extends _StringsDrawerEn {
+	_StringsDrawerTr._(_StringsTr root) : this._root = root, super._(root);
 
 	@override final _StringsTr _root; // ignore: unused_field
 
@@ -1752,8 +1773,8 @@ class _StringsDrawerTr implements _StringsDrawerEn {
 }
 
 // Path: importExport
-class _StringsImportExportTr implements _StringsImportExportEn {
-	_StringsImportExportTr._(this._root);
+class _StringsImportExportTr extends _StringsImportExportEn {
+	_StringsImportExportTr._(_StringsTr root) : this._root = root, super._(root);
 
 	@override final _StringsTr _root; // ignore: unused_field
 
@@ -1764,8 +1785,8 @@ class _StringsImportExportTr implements _StringsImportExportEn {
 }
 
 // Path: welcomeScreen
-class _StringsWelcomeScreenTr implements _StringsWelcomeScreenEn {
-	_StringsWelcomeScreenTr._(this._root);
+class _StringsWelcomeScreenTr extends _StringsWelcomeScreenEn {
+	_StringsWelcomeScreenTr._(_StringsTr root) : this._root = root, super._(root);
 
 	@override final _StringsTr _root; // ignore: unused_field
 
@@ -1782,8 +1803,8 @@ class _StringsWelcomeScreenTr implements _StringsWelcomeScreenEn {
 }
 
 // Path: homeScreen
-class _StringsHomeScreenTr implements _StringsHomeScreenEn {
-	_StringsHomeScreenTr._(this._root);
+class _StringsHomeScreenTr extends _StringsHomeScreenEn {
+	_StringsHomeScreenTr._(_StringsTr root) : this._root = root, super._(root);
 
 	@override final _StringsTr _root; // ignore: unused_field
 
@@ -1797,11 +1818,12 @@ class _StringsHomeScreenTr implements _StringsHomeScreenEn {
 	@override String get search => 'Ara';
 	@override String get pin_note => 'Notu sabitle';
 	@override String get unpin_note => 'Notu sabitlemeden çıkar';
+	@override String its_birthday_today({required Object name}) => '🎂 Bugün ${name}\'in doğum günü!';
 }
 
 // Path: newNoteScreen
-class _StringsNewNoteScreenTr implements _StringsNewNoteScreenEn {
-	_StringsNewNoteScreenTr._(this._root);
+class _StringsNewNoteScreenTr extends _StringsNewNoteScreenEn {
+	_StringsNewNoteScreenTr._(_StringsTr root) : this._root = root, super._(root);
 
 	@override final _StringsTr _root; // ignore: unused_field
 
@@ -1848,8 +1870,8 @@ class _StringsNewNoteScreenTr implements _StringsNewNoteScreenEn {
 }
 
 // Path: archivedNotes
-class _StringsArchivedNotesTr implements _StringsArchivedNotesEn {
-	_StringsArchivedNotesTr._(this._root);
+class _StringsArchivedNotesTr extends _StringsArchivedNotesEn {
+	_StringsArchivedNotesTr._(_StringsTr root) : this._root = root, super._(root);
 
 	@override final _StringsTr _root; // ignore: unused_field
 
@@ -1867,8 +1889,8 @@ class _StringsArchivedNotesTr implements _StringsArchivedNotesEn {
 }
 
 // Path: settingsScreen
-class _StringsSettingsScreenTr implements _StringsSettingsScreenEn {
-	_StringsSettingsScreenTr._(this._root);
+class _StringsSettingsScreenTr extends _StringsSettingsScreenEn {
+	_StringsSettingsScreenTr._(_StringsTr root) : this._root = root, super._(root);
 
 	@override final _StringsTr _root; // ignore: unused_field
 
@@ -1895,8 +1917,8 @@ class _StringsSettingsScreenTr implements _StringsSettingsScreenEn {
 }
 
 // Path: calendarScreen
-class _StringsCalendarScreenTr implements _StringsCalendarScreenEn {
-	_StringsCalendarScreenTr._(this._root);
+class _StringsCalendarScreenTr extends _StringsCalendarScreenEn {
+	_StringsCalendarScreenTr._(_StringsTr root) : this._root = root, super._(root);
 
 	@override final _StringsTr _root; // ignore: unused_field
 
@@ -1945,6 +1967,7 @@ extension on Translations {
 			case 'homeScreen.search': return 'Search';
 			case 'homeScreen.pin_note': return 'Pin note';
 			case 'homeScreen.unpin_note': return 'Unpin note';
+			case 'homeScreen.its_birthday_today': return ({required Object name}) => '🎂 It\'s ${name}\'s birthday today!';
 			case 'newNoteScreen.friend_name_hint': return 'Their name';
 			case 'newNoteScreen.fields_missing_error': return 'Sorry! Some fields are missing!';
 			case 'newNoteScreen.overview': return 'Overview';
@@ -2055,6 +2078,7 @@ extension on _StringsDe {
 			case 'homeScreen.search': return 'Suchen';
 			case 'homeScreen.pin_note': return 'Notiz anheften';
 			case 'homeScreen.unpin_note': return 'Notiz lösen';
+			case 'homeScreen.its_birthday_today': return ({required Object name}) => '🎂 Heute ist ${name}\'s Geburtstag!';
 			case 'newNoteScreen.friend_name_hint': return 'Wie heißt er/sie?';
 			case 'newNoteScreen.fields_missing_error': return 'Entschuldigung! Einige Felder fehlen!';
 			case 'newNoteScreen.overview': return 'Übersicht';
@@ -2165,6 +2189,7 @@ extension on _StringsEs {
 			case 'homeScreen.search': return 'Buscar';
 			case 'homeScreen.pin_note': return 'Fijar nota';
 			case 'homeScreen.unpin_note': return 'Desfijar nota';
+			case 'homeScreen.its_birthday_today': return ({required Object name}) => '🎂 ¡Es el cumpleaños de ${name} hoy!';
 			case 'newNoteScreen.friend_name_hint': return '¿Cómo se llama?';
 			case 'newNoteScreen.fields_missing_error': return '¡Lo siento! Faltan algunos campos.';
 			case 'newNoteScreen.overview': return 'Visión general';
@@ -2275,6 +2300,7 @@ extension on _StringsFr {
 			case 'homeScreen.search': return 'Rechercher';
 			case 'homeScreen.pin_note': return 'Épingler la note';
 			case 'homeScreen.unpin_note': return 'Détacher la note';
+			case 'homeScreen.its_birthday_today': return ({required Object name}) => '🎂 C\'est l\'anniversaire de ${name} aujourd\'hui !';
 			case 'newNoteScreen.friend_name_hint': return 'Comment s\'appelle-t-il/elle ?';
 			case 'newNoteScreen.fields_missing_error': return 'Désolé ! Certains champs sont manquants !';
 			case 'newNoteScreen.overview': return 'Aperçu';
@@ -2385,6 +2411,7 @@ extension on _StringsIt {
 			case 'homeScreen.search': return 'Cerca';
 			case 'homeScreen.pin_note': return 'Metti in evidenza';
 			case 'homeScreen.unpin_note': return 'Togli dall\'evidenza';
+			case 'homeScreen.its_birthday_today': return ({required Object name}) => '🎂 Oggi è il compleanno di ${name}!';
 			case 'newNoteScreen.friend_name_hint': return 'Come si chiama?';
 			case 'newNoteScreen.fields_missing_error': return 'Spiacente! Alcuni campi sono mancanti!';
 			case 'newNoteScreen.overview': return 'Panoramica';
@@ -2495,6 +2522,7 @@ extension on _StringsRu {
 			case 'homeScreen.search': return 'Поиск';
 			case 'homeScreen.pin_note': return 'Закрепить заметку';
 			case 'homeScreen.unpin_note': return 'Открепить заметку';
+			case 'homeScreen.its_birthday_today': return ({required Object name}) => '🎂 Сегодня день рождения ${name}!';
 			case 'newNoteScreen.friend_name_hint': return 'Как его зовут?';
 			case 'newNoteScreen.fields_missing_error': return 'Извините! Некоторые поля отсутствуют!';
 			case 'newNoteScreen.overview': return 'Обзор';
@@ -2605,6 +2633,7 @@ extension on _StringsSrLatn {
 			case 'homeScreen.search': return 'Pretraga';
 			case 'homeScreen.pin_note': return 'Prikvači belešku';
 			case 'homeScreen.unpin_note': return 'Otkvači belešku';
+			case 'homeScreen.its_birthday_today': return ({required Object name}) => '🎂 Danas je rođendan ${name}!';
 			case 'newNoteScreen.friend_name_hint': return 'Ime';
 			case 'newNoteScreen.fields_missing_error': return 'Izvinjavamo se! Neka polja nedostaju!';
 			case 'newNoteScreen.overview': return 'Pregled';
@@ -2715,6 +2744,7 @@ extension on _StringsTr {
 			case 'homeScreen.search': return 'Ara';
 			case 'homeScreen.pin_note': return 'Notu sabitle';
 			case 'homeScreen.unpin_note': return 'Notu sabitlemeden çıkar';
+			case 'homeScreen.its_birthday_today': return ({required Object name}) => '🎂 Bugün ${name}\'in doğum günü!';
 			case 'newNoteScreen.friend_name_hint': return 'Adı nedir?';
 			case 'newNoteScreen.fields_missing_error': return 'Üzgünüz! Bazı alanlar eksik!';
 			case 'newNoteScreen.overview': return 'Genel Bakış';

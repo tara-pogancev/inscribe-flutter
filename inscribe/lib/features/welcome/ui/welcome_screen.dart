@@ -73,7 +73,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               dotHeight: 10,
               dotWidth: 10,
               spacing: 15,
-              dotColor: AppColorScheme.of(context).beige.withOpacity(0.5),
+              dotColor: AppColorScheme.of(context).beige.withAlpha(112),
               activeDotColor: AppColorScheme.of(context).beige),
         ),
       ),

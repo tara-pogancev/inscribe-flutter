@@ -5,11 +5,9 @@
   "undo": "Rückgängig machen",
   "edit": "Bearbeiten",
   "delete": "Löschen",
-
   "errorMessages": {
     "mandatory_field": "Dieses Feld ist erforderlich."
   },
-
   "drawer": {
     "memoirs": "Erinnerungen",
     "archive": "Archiv",
@@ -19,13 +17,11 @@
     "import": "Importieren",
     "debug_notifications": "[DEBUG] Benachrichtigungen"
   },
-
   "importExport": {
     "fileDownloaded": "Die Daten wurden auf Ihr Dateisystem gespeichert.",
     "dataHasBeenImported": "Daten aus der Datei wurden importiert.",
     "error": "Es ist ein Fehler beim Importieren der Daten aus der Datei aufgetreten."
   },
-
   "welcomeScreen": {
     "title": "Willkommen bei Inscribe!",
     "slides": [
@@ -37,7 +33,6 @@
     ],
     "startButton": "Notizen erstellen!"
   },
-
   "homeScreen": {
     "welcome": "Willkommen!",
     "no_notes_title": "Keine Notizen gefunden!",
@@ -47,9 +42,9 @@
     "other": "Andere",
     "search": "Suchen",
     "pin_note": "Notiz anheften",
-    "unpin_note": "Notiz lösen"
+    "unpin_note": "Notiz lösen",
+    "its_birthday_today": "🎂 Heute ist ${name}'s Geburtstag!"
   },
-
   "newNoteScreen": {
     "friend_name_hint": "Wie heißt er/sie?",
     "fields_missing_error": "Entschuldigung! Einige Felder fehlen!",
@@ -91,7 +86,6 @@
     "no_reminders": "Keine Erinnerungen",
     "reminder_created": "Erinnerung erstellt!"
   },
-
   "archivedNotes": {
     "no_archived_notes": "Keine archivierten Notizen!",
     "no_archived_notes_subtitle": "Ihre gelöschten Notizen werden hier angezeigt.",
@@ -104,7 +98,6 @@
     "note_deleted": "Notiz gelöscht!",
     "note_restored": "Notiz wiederhergestellt!"
   },
-
   "settingsScreen": {
     "app_name_and_version": "Inscribe, v$version",
     "theme": "Thema",
@@ -126,7 +119,6 @@
     "apply_change": "Änderung anwenden?",
     "this_action_will_restart_the_app": "Diese Aktion wird die App neu starten"
   },
-
   "calendarScreen": {
     "birthday": "Geburtstag",
     "annualEvent": "Jährliches Ereignis",

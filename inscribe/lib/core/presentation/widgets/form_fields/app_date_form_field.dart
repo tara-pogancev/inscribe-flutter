@@ -77,7 +77,7 @@ class _AppDateFormFieldState extends State<AppDateFormField> {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(defaultBorderRadius),
             borderSide: BorderSide(
-                color: AppColorScheme.of(context).black.withOpacity(0.5)),
+                color: AppColorScheme.of(context).black.withAlpha(127)),
           ),
           suffixIcon: IconButton(
             icon: const Icon(Icons.calendar_month_outlined),

@@ -76,7 +76,7 @@ class _NoteNameTextFieldState extends State<NoteNameTextField> {
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(
                   color: lightAppColorScheme.beige
-                      .withOpacity(0.2)), // Line color when not focused
+                      .withAlpha(45)), // Line color when not focused
             ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(

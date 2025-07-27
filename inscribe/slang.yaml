@@ -1,0 +1,12 @@
+# existing config
+base_locale: en
+fallback_strategy: base_locale
+input_directory: lib/core/i18n
+input_file_pattern: .i18n.json
+output_directory: lib/core/i18n
+
+# add this
+gpt:
+  model: gpt-4o-mini
+  description: |
+    "Inscribe is an app for tracking people's birthdays, notes, gift ideas, and important events via reminders .

@@ -5,11 +5,9 @@
   "undo": "Geri al",
   "edit": "Düzenle",
   "delete": "Sil",
-
   "errorMessages": {
     "mandatory_field": "Bu alan zorunludur."
   },
-
   "drawer": {
     "memoirs": "Anılar",
     "archive": "Arşiv",
@@ -19,13 +17,11 @@
     "import": "İçe aktar",
     "debug_notifications": "[DEBUG] Bildirimler"
   },
-
   "importExport": {
     "fileDownloaded": "Veriler dosya sisteminize kaydedildi.",
     "dataHasBeenImported": "Dosyadan veri içe aktarıldı.",
     "error": "Dosyadan veri içe aktarılırken bir hata oluştu."
   },
-
   "welcomeScreen": {
     "title": "Inscribe'a Hoş Geldiniz!",
     "slides": [
@@ -37,7 +33,6 @@
     ],
     "startButton": "Not almaya başla!"
   },
-
   "homeScreen": {
     "welcome": "Hoş geldiniz!",
     "no_notes_title": "Not bulunamadı!",
@@ -47,9 +42,9 @@
     "other": "Diğer",
     "search": "Ara",
     "pin_note": "Notu sabitle",
-    "unpin_note": "Notu sabitlemeden çıkar"
+    "unpin_note": "Notu sabitlemeden çıkar",
+    "its_birthday_today": "🎂 Bugün ${name}'in doğum günü!"
   },
-
   "newNoteScreen": {
     "friend_name_hint": "Adı nedir?",
     "fields_missing_error": "Üzgünüz! Bazı alanlar eksik!",
@@ -58,7 +53,13 @@
     "gift_ideas_hint": "Bu kişi neyi hediye olarak sever?",
     "reminders": "Hatırlatıcılar",
     "category": "Kategori",
-    "categories": ["Arkadaş 😄", "İş 💼", "Aile 🏠", "Okul 🎒", "Romantik ❤️‍🔥"],
+    "categories": [
+      "Arkadaş 😄",
+      "İş 💼",
+      "Aile 🏠",
+      "Okul 🎒",
+      "Romantik ❤️‍🔥"
+    ],
     "date_of_birth": "Doğum tarihi",
     "description": "Açıklama",
     "description_hint": "Buraya istediğiniz notları ekleyin...",
@@ -85,7 +86,6 @@
     "no_reminders": "Hatırlatıcı yok",
     "reminder_created": "Hatırlatıcı oluşturuldu!"
   },
-
   "archivedNotes": {
     "no_archived_notes": "Arşivlenmiş not yok!",
     "no_archived_notes_subtitle": "Silinen notlarınız burada görünecek.",
@@ -98,7 +98,6 @@
     "note_deleted": "Not silindi!",
     "note_restored": "Not geri yüklendi!"
   },
-
   "settingsScreen": {
     "app_name_and_version": "Inscribe, v$version",
     "theme": "Tema",
@@ -120,7 +119,6 @@
     "apply_change": "Değişiklik uygulansın mı?",
     "this_action_will_restart_the_app": "Bu işlem uygulamayı yeniden başlatacak"
   },
-
   "calendarScreen": {
     "birthday": "Doğum günü",
     "annualEvent": "Yıllık etkinlik",

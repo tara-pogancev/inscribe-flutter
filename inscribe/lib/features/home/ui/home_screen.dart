@@ -7,6 +7,7 @@ import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/widgets/app_scaffold.dart';
 import 'package:inscribe/core/router/app_router.dart';
 import 'package:inscribe/features/home/bloc/home_bloc.dart';
+import 'package:inscribe/features/home/ui/birthday_card.dart';
 import 'package:inscribe/features/home/ui/home_notes_grid.dart';
 import 'package:inscribe/features/home/ui/home_search_bar.dart';
 import 'package:inscribe/features/home/ui/no_notes_section.dart';
@@ -48,13 +49,28 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         child: const Icon(Icons.add),
       ),
-      child: Column(
-        children: [
-          const HomeSearchBar(),
-          BlocBuilder<HomeBloc, HomeState>(
-            bloc: bloc,
-            builder: (context, state) {
-              return Flexible(
+      child: BlocBuilder<HomeBloc, HomeState>(
+        bloc: bloc,
+        builder: (context, state) {
+          return Column(
+            children: [
+              const HomeSearchBar(),
+              if (state.isLoading == false)
+                Flexible(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount:
+                        state.notes.where((e) => e.isBirthdayToday()).length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return BirthdayCard(
+                        birthdayNote: state.notes
+                            .where((e) => e.isBirthdayToday())
+                            .toList()[index],
+                      );
+                    },
+                  ),
+                ),
+              Expanded(
                 child: (state.isLoading)
                     ? Container()
                     : AnimatedCrossFade(
@@ -64,10 +80,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             ? CrossFadeState.showFirst
                             : CrossFadeState.showSecond,
                         duration: Durations.long1),
-              );
-            },
-          ),
-        ],
+              )
+            ],
+          );
+        },
       ),
     );
   }

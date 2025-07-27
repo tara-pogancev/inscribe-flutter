@@ -59,7 +59,7 @@ class NotificationsRepositoryImpl implements NotificationsRepository {
           schedule: NotificationCalendar(
               month: birthdayNote.dateOfBirth!.month,
               day: birthdayNote.dateOfBirth!.day,
-              hour: 10,
+              hour: 9,
               minute: 0,
               second: 0,
               repeats: true,

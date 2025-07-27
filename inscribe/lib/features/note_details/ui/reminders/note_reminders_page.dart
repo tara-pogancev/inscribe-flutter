@@ -44,7 +44,7 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
     }
   }
 
-  _showEditReminderDialog(NoteReminder reminder) async {
+  void _showEditReminderDialog(NoteReminder reminder) async {
     final NoteReminder? shouldUpdate = await showModalBottomSheet(
       context: context,
       useRootNavigator: true,
@@ -60,7 +60,7 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
     }
   }
 
-  _deleteReminder(NoteReminder reminder) {
+  void _deleteReminder(NoteReminder reminder) {
     _bloc.add(DeleteReminderEvent(reminder: reminder));
     context.showSnackbar(
         snackbarText: Translations.of(context).newNoteScreen.reminder_deleted);

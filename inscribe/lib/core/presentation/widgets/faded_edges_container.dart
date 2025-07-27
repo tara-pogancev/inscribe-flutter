@@ -32,7 +32,7 @@ class FadedEdgesContainer extends StatelessWidget {
                 end: Alignment.bottomCenter,
                 colors: [
                   gradientColor,
-                  gradientColor.withOpacity(0),
+                  gradientColor.withAlpha(0),
                 ],
               ),
             ),
@@ -48,7 +48,7 @@ class FadedEdgesContainer extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  gradientColor.withOpacity(0),
+                  gradientColor.withAlpha(0),
                   gradientColor,
                 ],
               ),

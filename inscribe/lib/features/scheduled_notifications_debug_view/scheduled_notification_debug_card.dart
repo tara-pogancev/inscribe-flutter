@@ -60,7 +60,7 @@ class ScheduledNotificationDebugCard extends StatelessWidget {
               notification.schedule.toString(),
               style: AppTextStyles.of(context).cardTernaryText.copyWith(
                   fontStyle: FontStyle.italic,
-                  color: AppColorScheme.of(context).gray.withOpacity(0.5)),
+                  color: AppColorScheme.of(context).gray.withAlpha(112)),
             ),
             // Text(notification.toString() ?? "-"),
           ],

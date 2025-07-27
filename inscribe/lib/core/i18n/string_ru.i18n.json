@@ -5,11 +5,9 @@
   "undo": "Отменить",
   "edit": "Редактировать",
   "delete": "Удалить",
-
   "errorMessages": {
     "mandatory_field": "Это поле обязательно."
   },
-
   "drawer": {
     "memoirs": "Воспоминания",
     "archive": "Архив",
@@ -19,13 +17,11 @@
     "import": "Импорт",
     "debug_notifications": "[DEBUG] Уведомления"
   },
-
   "importExport": {
     "fileDownloaded": "Данные сохранены в вашу файловую систему.",
     "dataHasBeenImported": "Данные из файла были импортированы.",
     "error": "Произошла ошибка при импорте данных из файла."
   },
-
   "welcomeScreen": {
     "title": "Добро пожаловать в Inscribe!",
     "slides": [
@@ -37,7 +33,6 @@
     ],
     "startButton": "Начать записи!"
   },
-
   "homeScreen": {
     "welcome": "Добро пожаловать!",
     "no_notes_title": "Заметок не найдено!",
@@ -47,9 +42,9 @@
     "other": "Другие",
     "search": "Поиск",
     "pin_note": "Закрепить заметку",
-    "unpin_note": "Открепить заметку"
+    "unpin_note": "Открепить заметку",
+    "its_birthday_today": "🎂 Сегодня день рождения ${name}!"
   },
-
   "newNoteScreen": {
     "friend_name_hint": "Как его зовут?",
     "fields_missing_error": "Извините! Некоторые поля отсутствуют!",
@@ -91,7 +86,6 @@
     "no_reminders": "Нет напоминаний",
     "reminder_created": "Напоминание создано!"
   },
-
   "archivedNotes": {
     "no_archived_notes": "Архивных заметок нет!",
     "no_archived_notes_subtitle": "Ваши удаленные заметки появятся здесь.",
@@ -104,7 +98,6 @@
     "note_deleted": "Заметка удалена!",
     "note_restored": "Заметка восстановлена!"
   },
-
   "settingsScreen": {
     "app_name_and_version": "Inscribe, v$version",
     "theme": "Тема",
@@ -126,7 +119,6 @@
     "apply_change": "Применить изменения?",
     "this_action_will_restart_the_app": "Это действие перезапустит приложение"
   },
-
   "calendarScreen": {
     "birthday": "День рождения",
     "annualEvent": "Ежегодное событие",

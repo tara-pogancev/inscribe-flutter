@@ -65,7 +65,7 @@ class AdaptableFilledCell<T extends Object?> extends StatelessWidget {
             CircleAvatar(
               radius: highlightRadius,
               backgroundColor: shouldHighlight
-                  ? AppColorScheme.of(context).gray.withOpacity(0.75)
+                  ? AppColorScheme.of(context).gray.withAlpha(190)
                   : Colors.transparent,
               child: Text(
                 dateStringBuilder?.call(date) ?? "${date.day}",
@@ -74,7 +74,7 @@ class AdaptableFilledCell<T extends Object?> extends StatelessWidget {
                       ? AppColorScheme.of(context).white
                       : isInMonth
                           ? AppColorScheme.of(context).black
-                          : AppColorScheme.of(context).black.withOpacity(0.4),
+                          : AppColorScheme.of(context).black.withAlpha(90),
                   fontSize: 12,
                 ),
               ),

@@ -5,11 +5,9 @@
   "undo": "Poništi",
   "edit": "Izmeni",
   "delete": "Obriši",
-
   "errorMessages": {
     "mandatory_field": "Ovo polje je obavezno."
   },
-
   "drawer": {
     "memoirs": "Memoari",
     "archive": "Arhiva",
@@ -19,13 +17,11 @@
     "import": "Uvoz podataka",
     "debug_notifications": "[DEBUG] Obaveštenja"
   },
-
   "importExport": {
     "fileDownloaded": "Podaci su sačuvani na uređaju.",
     "dataHasBeenImported": "Podaci su uvezeni iz dokumenta.",
     "error": "Došlo je do greške prilikom uvoza podataka."
   },
-
   "welcomeScreen": {
     "title": "Dobrodošli u Inscribe!",
     "slides": [
@@ -37,7 +33,6 @@
     ],
     "startButton": "Započni beleženje!"
   },
-
   "homeScreen": {
     "welcome": "Dobrodošli!",
     "no_notes_title": "Nema beležaka!",
@@ -47,9 +42,9 @@
     "other": "Ostalo",
     "search": "Pretraga",
     "pin_note": "Prikvači belešku",
-    "unpin_note": "Otkvači belešku"
+    "unpin_note": "Otkvači belešku",
+    "its_birthday_today": "🎂 Danas je rođendan ${name}!"
   },
-
   "newNoteScreen": {
     "friend_name_hint": "Ime",
     "fields_missing_error": "Izvinjavamo se! Neka polja nedostaju!",
@@ -91,7 +86,6 @@
     "no_reminders": "Nema podsetnika",
     "reminder_created": "Podsetnik kreiran!"
   },
-
   "archivedNotes": {
     "no_archived_notes": "Nema arhiviranih beležaka!",
     "no_archived_notes_subtitle": "Vaše obrisane beleške će se pojaviti ovde.",
@@ -104,7 +98,6 @@
     "note_deleted": "Beleška obrisana!",
     "note_restored": "Beleška vraćena!"
   },
-
   "settingsScreen": {
     "app_name_and_version": "Inscribe, v$version",
     "theme": "Tema",
@@ -126,7 +119,6 @@
     "apply_change": "Primeni promenu?",
     "this_action_will_restart_the_app": "Ova akcija će restartovati aplikaciju"
   },
-
   "calendarScreen": {
     "birthday": "Rođendan",
     "annualEvent": "Godišnji događaj",

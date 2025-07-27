@@ -53,4 +53,10 @@ class Note with _$Note {
         'createdAt': createdAt?.toIso8601String(),
         'reminders': reminders.map((reminder) => reminder.toJson()).toList(),
       };
+
+  bool isBirthdayToday() {
+    if (dateOfBirth == null) return false;
+    final today = DateTime.now();
+    return dateOfBirth!.day == today.day && dateOfBirth!.month == today.month;
+  }
 }

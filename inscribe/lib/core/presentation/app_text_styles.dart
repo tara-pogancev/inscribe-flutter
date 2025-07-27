@@ -56,7 +56,7 @@ class AppTextStyles {
 
   TextStyle get whiteNameFormFieldHint {
     return GoogleFonts.montserrat(
-        color: lightAppColorScheme.white.withOpacity(0.6),
+        color: lightAppColorScheme.white.withAlpha(135),
         fontStyle: FontStyle.italic,
         fontWeight: FontWeight.w200,
         fontSize: 18);
@@ -71,7 +71,7 @@ class AppTextStyles {
 
   TextStyle get grayFormHint {
     return GoogleFonts.montserrat(
-      color: AppColorScheme.of(context).gray.withOpacity(0.5),
+      color: AppColorScheme.of(context).gray.withAlpha(127),
       fontStyle: FontStyle.italic,
     );
   }

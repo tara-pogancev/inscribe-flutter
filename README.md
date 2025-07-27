@@ -1,4 +1,5 @@
 # Inscribe - Companion Journal
+
 ![Build Status](https://app.bitrise.io/app/053180ea-3d4f-4655-b64c-b9fb9ab1d797/status.svg?token=lJlpdiRH-CJE_4oD8q0Fjw)
 
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
@@ -15,6 +16,7 @@ Inscribe is a **Flutter** mobile application designed for taking notes based on 
 Developed as a Flutter learning project, Inscribe tackles complex concepts and aims to be personally useful, reducing the need for multiple Google Calendar reminders and separate notes. The app adheres to **Clean Architecture Design** and employs **BLOC** for state management, utilizing both Blocs and Cubits for learning purposes, and incorporating the UseCase approach where applicable.
 
 ## 🌎 Supported Languages
+
 - 🇬🇧 English
 - 🇩🇪 German
 - 🇹🇷 Turkish
@@ -25,25 +27,28 @@ Developed as a Flutter learning project, Inscribe tackles complex concepts and a
 - 🇮🇹 Italian
 
 ## 🧠 Planned upcoming features
+
 - [x] So many great ideas...
 
-- [ ] Showing age and birthday on the cards on home screen
-- [ ] Gift ideas should be a list, not just a plain text field
-- [ ] Add image of persion in reninder view in the calendar
-- [ ] Weekly reminder view
+- [ ] Indicator for notification behavior
+- [x] Change notifications from 10 AM to 9 AM
+- [ ] Make daily notifications time configurable
+- [x] Add label on homescreen for current birthdays
+- [ ] Add name of the person in notifications for events
+- [x] Make app icon more bold
 
 ## 🐞 Known bugs
+
 - [x] Bugs will appear here...
 
 - [ ] Callendar slightly scrollable
-- [x] Caledar offset by 1 day
-- [x] Make reminders a sheet instead of a dialog
-- [x] Shorter name for name title
 
 #### Main libraries and practices
+
 Clean Architecture, BLOC, cubits, usecases, Hive, freezed, shared preferences, i18n + slang, getIt for DI, adaptive theme, awesome notifications.
 
 ### Features
+
 Creating and editing notes, custom images from photos galery, one-time and annual reminders, birthday notifications, archive for temporary deleted notes, multiple languages, dark theme, import and export of data from/to files, calendar screen, hand-drawn illustrations, and many more! :)
 
 ## 🖼 Screenshots
@@ -52,9 +57,10 @@ Creating and editing notes, custom images from photos galery, one-time and annua
 ![Inscribe](assets/feature_graphic.jpg)
 
 ## 📚 Resources
+
 [https://www.freepik.com/](https://www.freepik.com/) - Illustrations
 
-[Figma SVG Asset Pack](https://www.figma.com/file/qJfFm08K6qeLqT8enQNVer/Vector-Library---SVG-Assets-Pack-(Community)?type=design&mode=design&t=eGPguRAznDmO61Ju-0) - Wave SVGs
+[Figma SVG Asset Pack](<https://www.figma.com/file/qJfFm08K6qeLqT8enQNVer/Vector-Library---SVG-Assets-Pack-(Community)?type=design&mode=design&t=eGPguRAznDmO61Ju-0>) - Wave SVGs
 
 ## 💻 Development Commands
 

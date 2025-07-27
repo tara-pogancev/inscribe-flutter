@@ -22,7 +22,7 @@ class _NewReminderSheetState extends State<NewReminderSheet> {
   final _key = GlobalKey<FormState>();
 
   DateTime selectedDateTime = DateTime.now()
-      .copyWith(hour: 10, minute: 0, second: 0, millisecond: 0, microsecond: 0);
+      .copyWith(hour: 9, minute: 0, second: 0, millisecond: 0, microsecond: 0);
   String name = '';
   bool isAnual = false;
 

@@ -12,7 +12,7 @@ class NoteTabBar extends StatelessWidget implements PreferredSizeWidget {
       color: AppColorScheme.of(context).gray,
       child: TabBar(
         labelColor: AppColorScheme.of(context).beige,
-        unselectedLabelColor: AppColorScheme.of(context).beige.withOpacity(0.4),
+        unselectedLabelColor: AppColorScheme.of(context).beige.withAlpha(90),
         indicatorColor: AppColorScheme.of(context).beige,
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorPadding: const EdgeInsets.symmetric(vertical: 10),

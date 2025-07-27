@@ -29,16 +29,16 @@ class _HomeNotesGridState extends State<HomeNotesGrid> {
 
   Offset _tapPosition = const Offset(0, 0);
 
-  void _navigateNote(note) async {
+  void _navigateNote(Note note) async {
     await context.push(Routes.noteDetails, extra: note.id);
     _bloc.add(HomeFetchEvent());
   }
 
-  void _switchNotePin(note) async {
+  void _switchNotePin(Note note) async {
     _bloc.add(SwitchNotePinEvent(note: note));
   }
 
-  void _archiveNote(note) async {
+  void _archiveNote(Note note) async {
     final shouldDelete = await showDialog(
         context: context,
         builder: (context) => ArchiveNoteDialog(

@@ -47,7 +47,8 @@
     "other": "Other",
     "search": "Search",
     "pin_note": "Pin note",
-    "unpin_note": "Unpin note"
+    "unpin_note": "Unpin note",
+    "its_birthday_today": "🎂 It's ${name}'s birthday today!"
   },
 
   "newNoteScreen": {

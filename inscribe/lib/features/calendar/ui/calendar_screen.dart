@@ -128,7 +128,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     shouldHighlight: isToday,
                     backgroundColor: isInMonth
                         ? AppColorScheme.of(context).white
-                        : AppColorScheme.of(context).white.withOpacity(0.4),
+                        : AppColorScheme.of(context).white.withAlpha(90),
                     events: events,
                     onTileTap: (event, date) {},
                     hideDaysNotInMonth: hideDaysNotInMonth,

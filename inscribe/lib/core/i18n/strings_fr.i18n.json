@@ -5,11 +5,9 @@
   "undo": "Annuler",
   "edit": "Éditer",
   "delete": "Supprimer",
-
   "errorMessages": {
     "mandatory_field": "Ce champ est obligatoire."
   },
-
   "drawer": {
     "memoirs": "Mémoires",
     "archive": "Archive",
@@ -19,13 +17,11 @@
     "import": "Importer",
     "debug_notifications": "[DEBUG] Notifications"
   },
-
   "importExport": {
     "fileDownloaded": "Les données ont été enregistrées sur votre système de fichiers.",
     "dataHasBeenImported": "Les données du fichier ont été importées.",
     "error": "Une erreur est survenue lors de l'importation des données du fichier."
   },
-
   "welcomeScreen": {
     "title": "Bienvenue sur Inscribe !",
     "slides": [
@@ -37,7 +33,6 @@
     ],
     "startButton": "Commencez à noter !"
   },
-
   "homeScreen": {
     "welcome": "Bienvenue !",
     "no_notes_title": "Aucune note trouvée !",
@@ -47,9 +42,9 @@
     "other": "Autre",
     "search": "Rechercher",
     "pin_note": "Épingler la note",
-    "unpin_note": "Détacher la note"
+    "unpin_note": "Détacher la note",
+    "its_birthday_today": "🎂 C'est l'anniversaire de ${name} aujourd'hui !"
   },
-
   "newNoteScreen": {
     "friend_name_hint": "Comment s'appelle-t-il/elle ?",
     "fields_missing_error": "Désolé ! Certains champs sont manquants !",
@@ -91,7 +86,6 @@
     "no_reminders": "Aucun rappel",
     "reminder_created": "Rappel créé !"
   },
-
   "archivedNotes": {
     "no_archived_notes": "Aucune note archivée !",
     "no_archived_notes_subtitle": "Vos notes supprimées apparaîtront ici.",
@@ -104,7 +98,6 @@
     "note_deleted": "Note supprimée !",
     "note_restored": "Note restaurée !"
   },
-
   "settingsScreen": {
     "app_name_and_version": "Inscribe, v$version",
     "theme": "Thème",
@@ -126,7 +119,6 @@
     "apply_change": "Appliquer le changement ?",
     "this_action_will_restart_the_app": "Cette action redémarrera l'application"
   },
-
   "calendarScreen": {
     "birthday": "Anniversaire",
     "annualEvent": "Événement annuel",

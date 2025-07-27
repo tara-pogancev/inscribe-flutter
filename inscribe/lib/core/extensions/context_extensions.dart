@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 extension ContextExtensions on BuildContext {
   void showSnackbar(
-      {required snackbarText,
+      {required String snackbarText,
       String? actionText,
       Function? action,
       bool clearSnackbars = true}) {
