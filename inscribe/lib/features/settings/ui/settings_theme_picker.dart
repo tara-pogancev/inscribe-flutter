@@ -17,7 +17,7 @@ class _SettingsThemePickerState extends State<SettingsThemePicker> {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: AdaptiveTheme.of(context).modeChangeNotifier,
-      builder: (_, mode, __) => Padding(
+      builder: (_, mode, _) => Padding(
         padding: const EdgeInsets.symmetric(vertical: defaultScreenPadding / 2),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,

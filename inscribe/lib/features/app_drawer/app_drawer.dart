@@ -46,7 +46,10 @@ class _AppDrawerState extends State<AppDrawer> {
         "Inscribe_Export_${DateTime.now().formatFilenameDateString()}";
 
     final isExported = await FileSaver.instance.saveAs(
-        name: filename, bytes: bytes, ext: "json", mimeType: MimeType.json);
+        name: filename,
+        bytes: bytes,
+        fileExtension: "json",
+        mimeType: MimeType.json);
 
     if (isExported != null) {
       Scaffold.of(context).closeDrawer();

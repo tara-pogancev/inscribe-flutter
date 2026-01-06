@@ -6,17 +6,17 @@ part of 'note_reminder.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NoteReminderImpl _$$NoteReminderImplFromJson(Map<String, dynamic> json) =>
-    _$NoteReminderImpl(
-      id: json['id'] as String? ?? null,
-      noteId: json['noteId'] as String? ?? null,
-      personName: json['personName'] as String? ?? null,
+_NoteReminder _$NoteReminderFromJson(Map<String, dynamic> json) =>
+    _NoteReminder(
+      id: json['id'] as String?,
+      noteId: json['noteId'] as String?,
+      personName: json['personName'] as String?,
       name: json['name'] as String,
       date: DateTime.parse(json['date'] as String),
       isAnual: json['isAnual'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$NoteReminderImplToJson(_$NoteReminderImpl instance) =>
+Map<String, dynamic> _$NoteReminderToJson(_NoteReminder instance) =>
     <String, dynamic>{
       'id': instance.id,
       'noteId': instance.noteId,

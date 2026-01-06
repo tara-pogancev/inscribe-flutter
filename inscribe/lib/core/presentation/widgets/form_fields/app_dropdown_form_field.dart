@@ -60,7 +60,7 @@ class _AppDropdownFormFieldState extends State<AppDropdownFormField> {
           });
           widget.onChanged?.call(value);
         },
-        value: _selectedItem,
+        initialValue: _selectedItem,
         onSaved: (newValue) => widget.onSaved?.call(newValue),
         validator: (value) => widget.validator?.call(value),
         decoration: InputDecoration(
