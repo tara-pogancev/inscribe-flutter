@@ -53,6 +53,7 @@ class TranslationsDe extends Translations with BaseTranslations<AppLocale, Trans
 	@override late final _TranslationsNewNoteScreenDe newNoteScreen = _TranslationsNewNoteScreenDe._(_root);
 	@override late final _TranslationsArchivedNotesDe archivedNotes = _TranslationsArchivedNotesDe._(_root);
 	@override late final _TranslationsSettingsScreenDe settingsScreen = _TranslationsSettingsScreenDe._(_root);
+	@override late final _TranslationsAppColorThemesDe appColorThemes = _TranslationsAppColorThemesDe._(_root);
 	@override late final _TranslationsCalendarScreenDe calendarScreen = _TranslationsCalendarScreenDe._(_root);
 }
 
@@ -222,10 +223,24 @@ class _TranslationsSettingsScreenDe extends TranslationsSettingsScreenEn {
 	@override String get visual => 'Visuell';
 	@override String get system => 'System';
 	@override String get change_theme => 'Thema ändern';
+	@override String get select_theme => 'Thema auswählen';
 	@override String get apply_change => 'Änderung anwenden?';
 	@override String get this_action_will_restart_the_app => 'Diese Aktion wird die App neu starten';
 	@override String get remindersNote => '🔔 Erinnerungen Hinweis';
 	@override String get remindersNoteDescription => 'Wenn Sie Erinnerungen für diese App aktiviert haben, stellen Sie bitte sicher, dass Sie sie regelmäßig öffnen, um die geplanten Erinnerungen ordnungsgemäß zu erhalten. Aufgrund der vollständig offline funktionierenden Natur dieser App werden Erinnerungen nicht gesendet, wenn die App über einen längeren Zeitraum nicht geöffnet wird. Vielen Dank für Ihr Verständnis!';
+}
+
+// Path: appColorThemes
+class _TranslationsAppColorThemesDe extends TranslationsAppColorThemesEn {
+	_TranslationsAppColorThemesDe._(TranslationsDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get defaultLight => 'Standard Hell';
+	@override String get defaultDark => 'Standard Dunkel';
+	@override String get strawberryPink => 'Erdbeer-Rosa [Hell]';
+	@override String get forestGreen => 'Waldgrün [Dunkel]';
 }
 
 // Path: calendarScreen
@@ -346,10 +361,15 @@ extension on TranslationsDe {
 			'settingsScreen.visual' => 'Visuell',
 			'settingsScreen.system' => 'System',
 			'settingsScreen.change_theme' => 'Thema ändern',
+			'settingsScreen.select_theme' => 'Thema auswählen',
 			'settingsScreen.apply_change' => 'Änderung anwenden?',
 			'settingsScreen.this_action_will_restart_the_app' => 'Diese Aktion wird die App neu starten',
 			'settingsScreen.remindersNote' => '🔔 Erinnerungen Hinweis',
 			'settingsScreen.remindersNoteDescription' => 'Wenn Sie Erinnerungen für diese App aktiviert haben, stellen Sie bitte sicher, dass Sie sie regelmäßig öffnen, um die geplanten Erinnerungen ordnungsgemäß zu erhalten. Aufgrund der vollständig offline funktionierenden Natur dieser App werden Erinnerungen nicht gesendet, wenn die App über einen längeren Zeitraum nicht geöffnet wird. Vielen Dank für Ihr Verständnis!',
+			'appColorThemes.defaultLight' => 'Standard Hell',
+			'appColorThemes.defaultDark' => 'Standard Dunkel',
+			'appColorThemes.strawberryPink' => 'Erdbeer-Rosa [Hell]',
+			'appColorThemes.forestGreen' => 'Waldgrün [Dunkel]',
 			'calendarScreen.birthday' => 'Geburtstag',
 			'calendarScreen.annualEvent' => 'Jährliches Ereignis',
 			'calendarScreen.oneTimeReminder' => 'Einmalige Erinnerung',

@@ -116,10 +116,17 @@
     "visual": "Visuale",
     "system": "Sistema",
     "change_theme": "Cambia tema",
+    "select_theme": "Seleziona tema",
     "apply_change": "Applicare il cambiamento?",
     "this_action_will_restart_the_app": "Questa azione riavvierà l'app",
     "remindersNote": "🔔 Nota sui promemoria",
     "remindersNoteDescription": "Se hai attivato i promemoria per quest'app, assicurati di aprirla periodicamente per ricevere correttamente i promemoria programmati. A causa della natura completamente offline di quest'app, i promemoria non verranno inviati se l'app non viene aperta per un lungo periodo. Grazie per la comprensione!"
+  },
+  "appColorThemes": {
+    "defaultLight": "Predefinito Chiaro",
+    "defaultDark": "Predefinito Scuro",
+    "strawberryPink": "Rosa Fragola [Chiaro]",
+    "forestGreen": "Verde Foresta [Scuro]"
   },
   "calendarScreen": {
     "birthday": "Compleanno",

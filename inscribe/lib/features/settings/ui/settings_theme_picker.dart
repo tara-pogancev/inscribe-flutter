@@ -2,6 +2,7 @@ import 'package:colorist/colorist.dart';
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/consts.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
+import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 
 class SettingsThemePicker extends StatefulWidget {
@@ -12,43 +13,54 @@ class SettingsThemePicker extends StatefulWidget {
 }
 
 class _SettingsThemePickerState extends State<SettingsThemePicker> {
+  Map<InscribeColorTheme, String> get themeNames => {
+    inscribeAppThemes[0]: context.t.appColorThemes.defaultLight,
+    inscribeAppThemes[1]: context.t.appColorThemes.defaultDark,
+    inscribeAppThemes[2]: context.t.appColorThemes.strawberryPink,
+    inscribeAppThemes[3]: context.t.appColorThemes.forestGreen,
+  };
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: defaultScreenPadding / 2),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Flexible(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  Translations.of(context).settingsScreen.use_dark_theme,
-                  style: AppTextStyles.of(context).settingsTitle,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: formFieldBottomPadding),
+        child: DropdownButtonFormField<InscribeColorTheme>(
+          isExpanded: true,
+          borderRadius: BorderRadius.circular(defaultBorderRadius),
+          items: inscribeAppThemes
+              .map(
+                (e) => DropdownMenuItem(
+                  value: e,
+                  child: Text(
+                    themeNames[e]!,
+                    style: AppTextStyles.of(context).defaultText,
+                  ),
                 ),
-                Text(
-                  Translations.of(
-                    context,
-                  ).settingsScreen.dark_theme_description,
-                  style: AppTextStyles.of(context).settingsSubtitle,
-                ),
-              ],
+              )
+              .toList(),
+          onChanged: (value) {
+            if (value == null) return;
+
+            context.themeManager.setTheme(value);
+          },
+          initialValue: context.themeManager.currentTheme as InscribeColorTheme,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(defaultBorderRadius),
+              borderSide: BorderSide(color: context.colors.black),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(defaultBorderRadius),
+              borderSide: BorderSide(color: context.colors.black),
+            ),
+            label: Text(
+              context.t.settingsScreen.select_theme,
+              style: AppTextStyles.of(context).grayFormLabel,
             ),
           ),
-          const SizedBox(width: 10),
-          Switch(
-            value: context.isDarkMode,
-            onChanged: (value) {
-              if (value) {
-                context.themeManager.setBrightness(ThemeBrightness.dark);
-              } else {
-                context.themeManager.setBrightness(ThemeBrightness.light);
-              }
-            },
-          ),
-        ],
+        ),
       ),
     );
   }

@@ -67,6 +67,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	late final TranslationsNewNoteScreenEn newNoteScreen = TranslationsNewNoteScreenEn.internal(_root);
 	late final TranslationsArchivedNotesEn archivedNotes = TranslationsArchivedNotesEn.internal(_root);
 	late final TranslationsSettingsScreenEn settingsScreen = TranslationsSettingsScreenEn.internal(_root);
+	late final TranslationsAppColorThemesEn appColorThemes = TranslationsAppColorThemesEn.internal(_root);
 	late final TranslationsCalendarScreenEn calendarScreen = TranslationsCalendarScreenEn.internal(_root);
 }
 
@@ -403,6 +404,9 @@ class TranslationsSettingsScreenEn {
 	/// en: 'Change theme'
 	String get change_theme => 'Change theme';
 
+	/// en: 'Select theme'
+	String get select_theme => 'Select theme';
+
 	/// en: 'Apply change?'
 	String get apply_change => 'Apply change?';
 
@@ -414,6 +418,27 @@ class TranslationsSettingsScreenEn {
 
 	/// en: 'If you enabled reminders for this app, please make sure to periodically open it in order to recieve scheduled reminders properly. Due to the completely offline nature of this app, reminders will not be sent if the app is not opened for a long time. Thank you for understanding!'
 	String get remindersNoteDescription => 'If you enabled reminders for this app, please make sure to periodically open it in order to recieve scheduled reminders properly. Due to the completely offline nature of this app, reminders will not be sent if the app is not opened for a long time. Thank you for understanding!';
+}
+
+// Path: appColorThemes
+class TranslationsAppColorThemesEn {
+	TranslationsAppColorThemesEn.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Default Light'
+	String get defaultLight => 'Default Light';
+
+	/// en: 'Default Dark'
+	String get defaultDark => 'Default Dark';
+
+	/// en: 'Strawberry Pink [Light]'
+	String get strawberryPink => 'Strawberry Pink [Light]';
+
+	/// en: 'Forest Green [Dark]'
+	String get forestGreen => 'Forest Green [Dark]';
 }
 
 // Path: calendarScreen
@@ -540,10 +565,15 @@ extension on Translations {
 			'settingsScreen.visual' => 'Visual',
 			'settingsScreen.system' => 'System',
 			'settingsScreen.change_theme' => 'Change theme',
+			'settingsScreen.select_theme' => 'Select theme',
 			'settingsScreen.apply_change' => 'Apply change?',
 			'settingsScreen.this_action_will_restart_the_app' => 'This action will restart the app',
 			'settingsScreen.remindersNote' => '🔔 Reminders note',
 			'settingsScreen.remindersNoteDescription' => 'If you enabled reminders for this app, please make sure to periodically open it in order to recieve scheduled reminders properly. Due to the completely offline nature of this app, reminders will not be sent if the app is not opened for a long time. Thank you for understanding!',
+			'appColorThemes.defaultLight' => 'Default Light',
+			'appColorThemes.defaultDark' => 'Default Dark',
+			'appColorThemes.strawberryPink' => 'Strawberry Pink [Light]',
+			'appColorThemes.forestGreen' => 'Forest Green [Dark]',
 			'calendarScreen.birthday' => 'Birthday',
 			'calendarScreen.annualEvent' => 'Annual event',
 			'calendarScreen.oneTimeReminder' => 'One time reminder',

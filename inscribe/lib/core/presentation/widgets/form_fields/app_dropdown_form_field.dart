@@ -44,6 +44,8 @@ class _AppDropdownFormFieldState extends State<AppDropdownFormField> {
     return Padding(
       padding: const EdgeInsets.only(bottom: formFieldBottomPadding),
       child: DropdownButtonFormField<String>(
+        borderRadius: BorderRadius.circular(defaultBorderRadius),
+        isExpanded: true,
         items: widget.items
             .map(
               (String e) => DropdownMenuItem(

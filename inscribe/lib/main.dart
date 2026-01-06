@@ -101,7 +101,7 @@ class _InscribeAppState extends State<InscribeApp> {
   @override
   Widget build(BuildContext context) {
     return ThemeManager(
-      themes: [lightAppColorScheme, darkAppColorScheme],
+      themes: inscribeAppThemes,
       builder: (curentTheme) => MaterialApp.router(
         routerConfig: IC.getIt<GoRouter>(),
         debugShowCheckedModeBanner: false,

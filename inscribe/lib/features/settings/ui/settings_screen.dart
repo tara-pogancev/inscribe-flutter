@@ -50,6 +50,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Translations.of(context).settingsScreen.visual.toUpperCase(),
               style: AppTextStyles.of(context).subtitle,
             ),
+            SizedBox(height: defaultScreenPadding / 2),
             const SettingsThemePicker(),
             const SettingsNotesViewPicker(),
             const Divider(height: defaultScreenPadding),
@@ -57,6 +58,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Translations.of(context).settingsScreen.system.toUpperCase(),
               style: AppTextStyles.of(context).subtitle,
             ),
+            SizedBox(height: defaultScreenPadding / 2),
             const SettingsLanguagePicker(),
             SizedBox(height: defaultScreenPadding),
             Container(

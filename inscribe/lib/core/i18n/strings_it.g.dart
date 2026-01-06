@@ -53,6 +53,7 @@ class TranslationsIt extends Translations with BaseTranslations<AppLocale, Trans
 	@override late final _TranslationsNewNoteScreenIt newNoteScreen = _TranslationsNewNoteScreenIt._(_root);
 	@override late final _TranslationsArchivedNotesIt archivedNotes = _TranslationsArchivedNotesIt._(_root);
 	@override late final _TranslationsSettingsScreenIt settingsScreen = _TranslationsSettingsScreenIt._(_root);
+	@override late final _TranslationsAppColorThemesIt appColorThemes = _TranslationsAppColorThemesIt._(_root);
 	@override late final _TranslationsCalendarScreenIt calendarScreen = _TranslationsCalendarScreenIt._(_root);
 }
 
@@ -222,10 +223,24 @@ class _TranslationsSettingsScreenIt extends TranslationsSettingsScreenEn {
 	@override String get visual => 'Visuale';
 	@override String get system => 'Sistema';
 	@override String get change_theme => 'Cambia tema';
+	@override String get select_theme => 'Seleziona tema';
 	@override String get apply_change => 'Applicare il cambiamento?';
 	@override String get this_action_will_restart_the_app => 'Questa azione riavvierà l\'app';
 	@override String get remindersNote => '🔔 Nota sui promemoria';
 	@override String get remindersNoteDescription => 'Se hai attivato i promemoria per quest\'app, assicurati di aprirla periodicamente per ricevere correttamente i promemoria programmati. A causa della natura completamente offline di quest\'app, i promemoria non verranno inviati se l\'app non viene aperta per un lungo periodo. Grazie per la comprensione!';
+}
+
+// Path: appColorThemes
+class _TranslationsAppColorThemesIt extends TranslationsAppColorThemesEn {
+	_TranslationsAppColorThemesIt._(TranslationsIt root) : this._root = root, super.internal(root);
+
+	final TranslationsIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get defaultLight => 'Predefinito Chiaro';
+	@override String get defaultDark => 'Predefinito Scuro';
+	@override String get strawberryPink => 'Rosa Fragola [Chiaro]';
+	@override String get forestGreen => 'Verde Foresta [Scuro]';
 }
 
 // Path: calendarScreen
@@ -346,10 +361,15 @@ extension on TranslationsIt {
 			'settingsScreen.visual' => 'Visuale',
 			'settingsScreen.system' => 'Sistema',
 			'settingsScreen.change_theme' => 'Cambia tema',
+			'settingsScreen.select_theme' => 'Seleziona tema',
 			'settingsScreen.apply_change' => 'Applicare il cambiamento?',
 			'settingsScreen.this_action_will_restart_the_app' => 'Questa azione riavvierà l\'app',
 			'settingsScreen.remindersNote' => '🔔 Nota sui promemoria',
 			'settingsScreen.remindersNoteDescription' => 'Se hai attivato i promemoria per quest\'app, assicurati di aprirla periodicamente per ricevere correttamente i promemoria programmati. A causa della natura completamente offline di quest\'app, i promemoria non verranno inviati se l\'app non viene aperta per un lungo periodo. Grazie per la comprensione!',
+			'appColorThemes.defaultLight' => 'Predefinito Chiaro',
+			'appColorThemes.defaultDark' => 'Predefinito Scuro',
+			'appColorThemes.strawberryPink' => 'Rosa Fragola [Chiaro]',
+			'appColorThemes.forestGreen' => 'Verde Foresta [Scuro]',
 			'calendarScreen.birthday' => 'Compleanno',
 			'calendarScreen.annualEvent' => 'Evento annuale',
 			'calendarScreen.oneTimeReminder' => 'Promemoria una tantum',

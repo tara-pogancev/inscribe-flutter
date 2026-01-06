@@ -53,6 +53,7 @@ class TranslationsTr extends Translations with BaseTranslations<AppLocale, Trans
 	@override late final _TranslationsNewNoteScreenTr newNoteScreen = _TranslationsNewNoteScreenTr._(_root);
 	@override late final _TranslationsArchivedNotesTr archivedNotes = _TranslationsArchivedNotesTr._(_root);
 	@override late final _TranslationsSettingsScreenTr settingsScreen = _TranslationsSettingsScreenTr._(_root);
+	@override late final _TranslationsAppColorThemesTr appColorThemes = _TranslationsAppColorThemesTr._(_root);
 	@override late final _TranslationsCalendarScreenTr calendarScreen = _TranslationsCalendarScreenTr._(_root);
 }
 
@@ -222,10 +223,24 @@ class _TranslationsSettingsScreenTr extends TranslationsSettingsScreenEn {
 	@override String get visual => 'Görsel';
 	@override String get system => 'Sistem';
 	@override String get change_theme => 'Temayı değiştir';
+	@override String get select_theme => 'Tema seçin';
 	@override String get apply_change => 'Değişiklik uygulansın mı?';
 	@override String get this_action_will_restart_the_app => 'Bu işlem uygulamayı yeniden başlatacak';
 	@override String get remindersNote => '🔔 Hatırlatmalar notu';
 	@override String get remindersNoteDescription => 'Bu uygulama için hatırlatmaları etkinleştirdiyseniz, planlanan hatırlatmaları düzgün alabilmek için lütfen zaman zaman uygulamayı açtığınızdan emin olun. Bu uygulamanın tamamen çevrimdışı yapısı nedeniyle, uygulama uzun süre açılmadığında hatırlatmalar gönderilmeyecektir. Anlayışınız için teşekkürler!';
+}
+
+// Path: appColorThemes
+class _TranslationsAppColorThemesTr extends TranslationsAppColorThemesEn {
+	_TranslationsAppColorThemesTr._(TranslationsTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get defaultLight => 'Varsayılan Açık';
+	@override String get defaultDark => 'Varsayılan Koyu';
+	@override String get strawberryPink => 'Çilek Pembe [Açık]';
+	@override String get forestGreen => 'Orman Yeşili [Koyu]';
 }
 
 // Path: calendarScreen
@@ -346,10 +361,15 @@ extension on TranslationsTr {
 			'settingsScreen.visual' => 'Görsel',
 			'settingsScreen.system' => 'Sistem',
 			'settingsScreen.change_theme' => 'Temayı değiştir',
+			'settingsScreen.select_theme' => 'Tema seçin',
 			'settingsScreen.apply_change' => 'Değişiklik uygulansın mı?',
 			'settingsScreen.this_action_will_restart_the_app' => 'Bu işlem uygulamayı yeniden başlatacak',
 			'settingsScreen.remindersNote' => '🔔 Hatırlatmalar notu',
 			'settingsScreen.remindersNoteDescription' => 'Bu uygulama için hatırlatmaları etkinleştirdiyseniz, planlanan hatırlatmaları düzgün alabilmek için lütfen zaman zaman uygulamayı açtığınızdan emin olun. Bu uygulamanın tamamen çevrimdışı yapısı nedeniyle, uygulama uzun süre açılmadığında hatırlatmalar gönderilmeyecektir. Anlayışınız için teşekkürler!',
+			'appColorThemes.defaultLight' => 'Varsayılan Açık',
+			'appColorThemes.defaultDark' => 'Varsayılan Koyu',
+			'appColorThemes.strawberryPink' => 'Çilek Pembe [Açık]',
+			'appColorThemes.forestGreen' => 'Orman Yeşili [Koyu]',
 			'calendarScreen.birthday' => 'Doğum günü',
 			'calendarScreen.annualEvent' => 'Yıllık etkinlik',
 			'calendarScreen.oneTimeReminder' => 'Tek seferlik hatırlatıcı',

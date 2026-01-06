@@ -53,6 +53,7 @@ class TranslationsSrLatn extends Translations with BaseTranslations<AppLocale, T
 	@override late final _TranslationsNewNoteScreenSrLatn newNoteScreen = _TranslationsNewNoteScreenSrLatn._(_root);
 	@override late final _TranslationsArchivedNotesSrLatn archivedNotes = _TranslationsArchivedNotesSrLatn._(_root);
 	@override late final _TranslationsSettingsScreenSrLatn settingsScreen = _TranslationsSettingsScreenSrLatn._(_root);
+	@override late final _TranslationsAppColorThemesSrLatn appColorThemes = _TranslationsAppColorThemesSrLatn._(_root);
 	@override late final _TranslationsCalendarScreenSrLatn calendarScreen = _TranslationsCalendarScreenSrLatn._(_root);
 }
 
@@ -222,10 +223,24 @@ class _TranslationsSettingsScreenSrLatn extends TranslationsSettingsScreenEn {
 	@override String get visual => 'Vizuali';
 	@override String get system => 'Sistem';
 	@override String get change_theme => 'Promeni temu';
+	@override String get select_theme => 'Izaberi temu';
 	@override String get apply_change => 'Primeni promenu?';
 	@override String get this_action_will_restart_the_app => 'Ova akcija će restartovati aplikaciju';
 	@override String get remindersNote => '🔔 Napomena o podsetnicima';
 	@override String get remindersNoteDescription => 'Ako ste aktivirali podsetnike za ovu aplikaciju, molimo vas da je periodično otvarate kako biste ispravno primali zakazane podsetnike. Zbog potpuno offline prirode ove aplikacije, podsetnici neće biti poslati ako aplikacija nije otvorena duže vreme. Hvala na razumevanju!';
+}
+
+// Path: appColorThemes
+class _TranslationsAppColorThemesSrLatn extends TranslationsAppColorThemesEn {
+	_TranslationsAppColorThemesSrLatn._(TranslationsSrLatn root) : this._root = root, super.internal(root);
+
+	final TranslationsSrLatn _root; // ignore: unused_field
+
+	// Translations
+	@override String get defaultLight => 'Podrazumevana svetla';
+	@override String get defaultDark => 'Podrazumevana tamna';
+	@override String get strawberryPink => 'Jagoda ružičasta [Svetla]';
+	@override String get forestGreen => 'Šumsko zelena [Tamna]';
 }
 
 // Path: calendarScreen
@@ -346,10 +361,15 @@ extension on TranslationsSrLatn {
 			'settingsScreen.visual' => 'Vizuali',
 			'settingsScreen.system' => 'Sistem',
 			'settingsScreen.change_theme' => 'Promeni temu',
+			'settingsScreen.select_theme' => 'Izaberi temu',
 			'settingsScreen.apply_change' => 'Primeni promenu?',
 			'settingsScreen.this_action_will_restart_the_app' => 'Ova akcija će restartovati aplikaciju',
 			'settingsScreen.remindersNote' => '🔔 Napomena o podsetnicima',
 			'settingsScreen.remindersNoteDescription' => 'Ako ste aktivirali podsetnike za ovu aplikaciju, molimo vas da je periodično otvarate kako biste ispravno primali zakazane podsetnike. Zbog potpuno offline prirode ove aplikacije, podsetnici neće biti poslati ako aplikacija nije otvorena duže vreme. Hvala na razumevanju!',
+			'appColorThemes.defaultLight' => 'Podrazumevana svetla',
+			'appColorThemes.defaultDark' => 'Podrazumevana tamna',
+			'appColorThemes.strawberryPink' => 'Jagoda ružičasta [Svetla]',
+			'appColorThemes.forestGreen' => 'Šumsko zelena [Tamna]',
 			'calendarScreen.birthday' => 'Rođendan',
 			'calendarScreen.annualEvent' => 'Godišnji događaj',
 			'calendarScreen.oneTimeReminder' => 'Jednokratni podsetnik',

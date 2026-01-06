@@ -53,6 +53,7 @@ class TranslationsRu extends Translations with BaseTranslations<AppLocale, Trans
 	@override late final _TranslationsNewNoteScreenRu newNoteScreen = _TranslationsNewNoteScreenRu._(_root);
 	@override late final _TranslationsArchivedNotesRu archivedNotes = _TranslationsArchivedNotesRu._(_root);
 	@override late final _TranslationsSettingsScreenRu settingsScreen = _TranslationsSettingsScreenRu._(_root);
+	@override late final _TranslationsAppColorThemesRu appColorThemes = _TranslationsAppColorThemesRu._(_root);
 	@override late final _TranslationsCalendarScreenRu calendarScreen = _TranslationsCalendarScreenRu._(_root);
 }
 
@@ -222,10 +223,24 @@ class _TranslationsSettingsScreenRu extends TranslationsSettingsScreenEn {
 	@override String get visual => 'Визуализация';
 	@override String get system => 'Система';
 	@override String get change_theme => 'Изменить тему';
+	@override String get select_theme => 'Выберите тему';
 	@override String get apply_change => 'Применить изменения?';
 	@override String get this_action_will_restart_the_app => 'Это действие перезапустит приложение';
 	@override String get remindersNote => '🔔 Заметка о напоминаниях';
 	@override String get remindersNoteDescription => 'Если вы включили напоминания для этого приложения, пожалуйста, убедитесь, что периодически открываете его, чтобы получать запланированные напоминания должным образом. Из-за полностью оффлайн режима работы этого приложения, напоминания не будут отправляться, если приложение не открывалось долгое время. Спасибо за понимание!';
+}
+
+// Path: appColorThemes
+class _TranslationsAppColorThemesRu extends TranslationsAppColorThemesEn {
+	_TranslationsAppColorThemesRu._(TranslationsRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get defaultLight => 'Стандартная светлая';
+	@override String get defaultDark => 'Стандартная тёмная';
+	@override String get strawberryPink => 'Клубничный розовый [Светлый]';
+	@override String get forestGreen => 'Лесной зелёный [Тёмный]';
 }
 
 // Path: calendarScreen
@@ -346,10 +361,15 @@ extension on TranslationsRu {
 			'settingsScreen.visual' => 'Визуализация',
 			'settingsScreen.system' => 'Система',
 			'settingsScreen.change_theme' => 'Изменить тему',
+			'settingsScreen.select_theme' => 'Выберите тему',
 			'settingsScreen.apply_change' => 'Применить изменения?',
 			'settingsScreen.this_action_will_restart_the_app' => 'Это действие перезапустит приложение',
 			'settingsScreen.remindersNote' => '🔔 Заметка о напоминаниях',
 			'settingsScreen.remindersNoteDescription' => 'Если вы включили напоминания для этого приложения, пожалуйста, убедитесь, что периодически открываете его, чтобы получать запланированные напоминания должным образом. Из-за полностью оффлайн режима работы этого приложения, напоминания не будут отправляться, если приложение не открывалось долгое время. Спасибо за понимание!',
+			'appColorThemes.defaultLight' => 'Стандартная светлая',
+			'appColorThemes.defaultDark' => 'Стандартная тёмная',
+			'appColorThemes.strawberryPink' => 'Клубничный розовый [Светлый]',
+			'appColorThemes.forestGreen' => 'Лесной зелёный [Тёмный]',
 			'calendarScreen.birthday' => 'День рождения',
 			'calendarScreen.annualEvent' => 'Ежегодное событие',
 			'calendarScreen.oneTimeReminder' => 'Однократное напоминание',

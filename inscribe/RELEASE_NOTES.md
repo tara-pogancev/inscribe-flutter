@@ -1,6 +1,13 @@
 # 1.2.0
 
+⭐ New features:
 
+- Added support for new themes
+
+🐞 Bugfixes:
+
+- Added latest Android support
+- Fixed visual bug with new reminder bottom sheet
 
 # 1.1.3
 
@@ -19,6 +26,7 @@
 # 1.1.0
 
 New features:
+
 - Creating one-time and annual reminders for notes
 - Push notifications for custom made reminders and birthdays
 - Calendar screen with all events visible
@@ -28,6 +36,7 @@ New features:
 # 1.0.0
 
 Initial release of the Inscribe App!
+
 - Create friend notes
 - Use custom images
 - Notes archive
