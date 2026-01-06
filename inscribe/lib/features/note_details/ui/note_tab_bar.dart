@@ -9,18 +9,18 @@ class NoteTabBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColorScheme.of(context).gray,
+      color: context.colors.gray,
       child: TabBar(
-        labelColor: AppColorScheme.of(context).beige,
-        unselectedLabelColor: AppColorScheme.of(context).beige.withAlpha(90),
-        indicatorColor: AppColorScheme.of(context).beige,
+        labelColor: context.colors.beige,
+        unselectedLabelColor: context.colors.beige.withAlpha(90),
+        indicatorColor: context.colors.beige,
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorPadding: const EdgeInsets.symmetric(vertical: 10),
         indicatorWeight: 0.2,
         tabs: [
           Tab(text: Translations.of(context).newNoteScreen.overview),
           Tab(text: Translations.of(context).newNoteScreen.gift_ideas),
-          Tab(text: Translations.of(context).newNoteScreen.reminders)
+          Tab(text: Translations.of(context).newNoteScreen.reminders),
         ],
       ),
     );

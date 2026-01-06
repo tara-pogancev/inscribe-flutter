@@ -42,8 +42,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
             date: e.date,
             description: e.description,
             event: e.event,
-            color: (e.event as CalendarEventMetadata)
-                .getEventColorForType(context),
+            color: (e.event as CalendarEventMetadata).getEventColorForType(
+              context,
+            ),
           ),
         )
         .toList();
@@ -99,40 +100,43 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   headerBuilder: (date) => Center(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(date.formatMonthCalendarHeaderString(),
-                          style: AppTextStyles.of(context).cardPrimaryText),
+                      child: Text(
+                        date.formatMonthCalendarHeaderString(),
+                        style: AppTextStyles.of(context).cardPrimaryText,
+                      ),
                     ),
                   ),
                   startDay: WeekDays.monday,
                   weekDayBuilder: (dayNumber) => Container(
-                    color: AppColorScheme.of(context).white,
+                    color: context.colors.white,
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.all(4),
                         child: Text(
                           dayNumber.formatDayCalendar(),
-                          style: AppTextStyles.of(context)
-                              .defaultText
-                              .copyWith(fontWeight: FontWeight.bold),
+                          style: AppTextStyles.of(
+                            context,
+                          ).defaultText.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
                   ),
                   onPageChange: (date, page) => onMonthChange(date),
-                  borderColor: AppColorScheme.of(context).beige,
+                  borderColor: context.colors.beige,
                   showWeekTileBorder: false,
                   cellBuilder:
                       (date, events, isToday, isInMonth, hideDaysNotInMonth) =>
                           AdaptableFilledCell(
-                    date: date,
-                    shouldHighlight: isToday,
-                    backgroundColor: isInMonth
-                        ? AppColorScheme.of(context).white
-                        : AppColorScheme.of(context).white.withAlpha(90),
-                    events: events,
-                    onTileTap: (event, date) {},
-                    hideDaysNotInMonth: hideDaysNotInMonth,
-                  ),
+                            date: date,
+                            shouldHighlight: isToday,
+                            backgroundColor: isInMonth
+                                ? context.colors.white
+                                : context.colors.white.withAlpha(120),
+                            events: events,
+                            onTileTap: (event, date) =>
+                                showDailyEventsBottomSheet(date),
+                            hideDaysNotInMonth: hideDaysNotInMonth,
+                          ),
                   onCellTap: (events, date) => showDailyEventsBottomSheet(date),
                   onEventTap: (event, date) => showDailyEventsBottomSheet(date),
                 ),

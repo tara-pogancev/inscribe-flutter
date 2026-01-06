@@ -60,10 +60,7 @@ class _CircleImageState extends State<CircleImage> {
               height: 100,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(
-                  color: AppColorScheme.of(context).beige,
-                  width: 3,
-                ),
+                border: Border.all(color: context.colors.beige, width: 3),
               ),
               child: ClipOval(
                 child: (widget.note?.galleryImage != null)
@@ -72,17 +69,15 @@ class _CircleImageState extends State<CircleImage> {
                         fit: BoxFit.cover,
                       )
                     : (widget.note?.assetImage != null &&
-                            widget.note?.assetImage != "")
-                        ? Image.asset(
-                            (widget.note?.assetImage == null ||
-                                    widget.note?.assetImage == "")
-                                ? _getRandomProfileImageUseCase()
-                                : widget.note!.assetImage,
-                            fit: BoxFit.cover,
-                          )
-                        : Container(
-                            color: AppColorScheme.of(context).white,
-                          ),
+                          widget.note?.assetImage != "")
+                    ? Image.asset(
+                        (widget.note?.assetImage == null ||
+                                widget.note?.assetImage == "")
+                            ? _getRandomProfileImageUseCase()
+                            : widget.note!.assetImage,
+                        fit: BoxFit.cover,
+                      )
+                    : Container(color: context.colors.white),
               ),
             ),
           ),
@@ -114,17 +109,20 @@ class _CircleImageState extends State<CircleImage> {
                     PopupMenuItem(
                       value: selectImage,
                       child: Text(
-                          Translations.of(context).newNoteScreen.select_image),
+                        Translations.of(context).newNoteScreen.select_image,
+                      ),
                     ),
                     PopupMenuItem(
                       value: removeOrRandoizeImage,
-                      child: Text((widget.note?.galleryImage == null)
-                          ? Translations.of(context)
-                              .newNoteScreen
-                              .randomize_illusrtation
-                          : Translations.of(context)
-                              .newNoteScreen
-                              .remove_image),
+                      child: Text(
+                        (widget.note?.galleryImage == null)
+                            ? Translations.of(
+                                context,
+                              ).newNoteScreen.randomize_illusrtation
+                            : Translations.of(
+                                context,
+                              ).newNoteScreen.remove_image,
+                      ),
                     ),
                   ];
                 },

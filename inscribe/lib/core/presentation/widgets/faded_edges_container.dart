@@ -4,18 +4,14 @@ import 'package:inscribe/core/presentation/app_color_scheme.dart';
 const double gradientHeight = 20;
 
 class FadedEdgesContainer extends StatelessWidget {
-  const FadedEdgesContainer({
-    super.key,
-    this.color,
-    required this.child,
-  });
+  const FadedEdgesContainer({super.key, this.color, required this.child});
 
   final Color? color;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    final gradientColor = color ?? AppColorScheme.of(context).beige;
+    final gradientColor = color ?? context.colors.beige;
 
     return Stack(
       alignment: Alignment.topCenter,
@@ -30,10 +26,7 @@ class FadedEdgesContainer extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [
-                  gradientColor,
-                  gradientColor.withAlpha(0),
-                ],
+                colors: [gradientColor, gradientColor.withAlpha(0)],
               ),
             ),
           ),
@@ -47,14 +40,11 @@ class FadedEdgesContainer extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [
-                  gradientColor.withAlpha(0),
-                  gradientColor,
-                ],
+                colors: [gradientColor.withAlpha(0), gradientColor],
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

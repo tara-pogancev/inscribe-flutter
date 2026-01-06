@@ -48,36 +48,36 @@ class _HomeSearchBarState extends State<HomeSearchBar> {
         FocusScope.of(context).requestFocus(FocusNode());
       },
       decoration: InputDecoration(
-          fillColor: AppColorScheme.of(context).white,
-          filled: true,
-          border: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(defaultBorderRadius)),
-          hintStyle: AppTextStyles.of(context).defaultText,
-          hintText: Translations.of(context).homeScreen.welcome,
-          prefixIcon: IconButton(
-            icon: const Icon(
-              Icons.menu_rounded,
-            ),
-            onPressed: () {
-              _openDrawer();
-            },
-          ),
-          suffixIcon: BlocBuilder<HomeBloc, HomeState>(
-            bloc: _bloc,
-            builder: (context, state) {
-              return IconButton(
-                icon: Icon(
-                  (state.isGridView)
-                      ? Icons.grid_view_rounded
-                      : Icons.splitscreen_outlined,
-                ),
-                onPressed: () {
-                  _toggleViewMode();
-                },
-              );
-            },
-          )),
+        fillColor: context.colors.white,
+        filled: true,
+        border: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(defaultBorderRadius),
+        ),
+        hintStyle: AppTextStyles.of(context).defaultText,
+        hintText: Translations.of(context).homeScreen.welcome,
+        prefixIcon: IconButton(
+          icon: const Icon(Icons.menu_rounded),
+          onPressed: () {
+            _openDrawer();
+          },
+        ),
+        suffixIcon: BlocBuilder<HomeBloc, HomeState>(
+          bloc: _bloc,
+          builder: (context, state) {
+            return IconButton(
+              icon: Icon(
+                (state.isGridView)
+                    ? Icons.grid_view_rounded
+                    : Icons.splitscreen_outlined,
+              ),
+              onPressed: () {
+                _toggleViewMode();
+              },
+            );
+          },
+        ),
+      ),
     );
   }
 }

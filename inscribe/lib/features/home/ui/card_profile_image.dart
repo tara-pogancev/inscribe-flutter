@@ -20,17 +20,11 @@ class CardProfileImage extends StatelessWidget {
       height: cardProfileImageSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(
-          color: AppColorScheme.of(context).beige,
-          width: 3,
-        ),
+        border: Border.all(color: context.colors.beige, width: 3),
       ),
       child: ClipOval(
         child: (note.galleryImage != null)
-            ? Image.file(
-                File.fromUri(note.galleryImage!),
-                fit: BoxFit.cover,
-              )
+            ? Image.file(File.fromUri(note.galleryImage!), fit: BoxFit.cover)
             : Image.asset(
                 (note.assetImage == "")
                     ? _getRandomProfileImageUseCase()

@@ -9,28 +9,31 @@ class AppButtonStyles {
 
   ButtonStyle get black {
     return ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(defaultBorderRadius),
-        ),
-        foregroundColor: AppColorScheme.of(context).beige,
-        backgroundColor: AppColorScheme.of(context).black);
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(defaultBorderRadius),
+      ),
+      foregroundColor: context!.colors.beige,
+      backgroundColor: context!.colors.black,
+    );
   }
 
   ButtonStyle get white {
     return ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(defaultBorderRadius),
-        ),
-        foregroundColor: AppColorScheme.of(context).gray,
-        backgroundColor: AppColorScheme.of(context).beige);
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(defaultBorderRadius),
+      ),
+      foregroundColor: context!.colors.gray,
+      backgroundColor: context!.colors.beige,
+    );
   }
 
   ButtonStyle get gray {
     return ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(defaultBorderRadius),
-        ),
-        foregroundColor: AppColorScheme.of(context).beige,
-        backgroundColor: AppColorScheme.of(context).gray);
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(defaultBorderRadius),
+      ),
+      foregroundColor: context!.colors.beige,
+      backgroundColor: context!.colors.gray,
+    );
   }
 }

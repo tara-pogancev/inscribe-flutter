@@ -46,29 +46,38 @@ class _AppDrawerState extends State<AppDrawer> {
         "Inscribe_Export_${DateTime.now().formatFilenameDateString()}";
 
     final isExported = await FileSaver.instance.saveAs(
-        name: filename, bytes: bytes, ext: "json", mimeType: MimeType.json);
+      name: filename,
+      bytes: bytes,
+      fileExtension: "json",
+      mimeType: MimeType.json,
+    );
 
     if (isExported != null) {
       Scaffold.of(context).closeDrawer();
       context.showSnackbar(
-          snackbarText: Translations.of(context).importExport.fileDownloaded);
+        snackbarText: Translations.of(context).importExport.fileDownloaded,
+      );
     }
   }
 
   void importData() async {
-    FilePickerResult? result = await FilePicker.platform
-        .pickFiles(allowedExtensions: ["json"], type: FileType.custom);
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      allowedExtensions: ["json"],
+      type: FileType.custom,
+    );
 
     if (result != null) {
       File file = File(result.files.single.path!);
-      final importResult =
-          await IC.getIt<ImportExportRepository>().importFromFile(file);
+      final importResult = await IC
+          .getIt<ImportExportRepository>()
+          .importFromFile(file);
 
       Scaffold.of(context).closeDrawer();
       if (importResult) {
         context.showSnackbar(
-          snackbarText:
-              Translations.of(context).importExport.dataHasBeenImported,
+          snackbarText: Translations.of(
+            context,
+          ).importExport.dataHasBeenImported,
         );
       } else {
         context.showSnackbar(
@@ -81,15 +90,16 @@ class _AppDrawerState extends State<AppDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: AppColorScheme.of(context).beige,
+      backgroundColor: context.colors.beige,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/images/wave_profile_cover.png"),
-                  fit: BoxFit.cover),
+                image: AssetImage("assets/images/wave_profile_cover.png"),
+                fit: BoxFit.cover,
+              ),
             ),
             child: Align(
               alignment: Alignment.bottomLeft,

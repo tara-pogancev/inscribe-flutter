@@ -46,8 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
       includeDefaultPadding: true,
       enableDrawer: true,
       fab: FloatingActionButton(
-        backgroundColor: AppColorScheme.of(context).black,
-        foregroundColor: AppColorScheme.of(context).white,
+        backgroundColor: context.colors.black,
+        foregroundColor: context.colors.white,
         onPressed: () {
           _navigateNewNote(context);
         },
@@ -65,8 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: min(
-                      state.notes.where((e) => e.isBirthdayToday()).length,
-                      _maxBirtihdayCards),
+                    state.notes.where((e) => e.isBirthdayToday()).length,
+                    _maxBirtihdayCards,
+                  ),
                   itemBuilder: (BuildContext context, int index) {
                     return BirthdayCard(
                       birthdayNote: state.notes
@@ -77,12 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Expanded(
                   child: AnimatedCrossFade(
-                      firstChild: const NoNotesSection(),
-                      secondChild: const HomeNotesGrid(),
-                      crossFadeState: (state.notes.isEmpty)
-                          ? CrossFadeState.showFirst
-                          : CrossFadeState.showSecond,
-                      duration: Durations.long1),
+                    firstChild: const NoNotesSection(),
+                    secondChild: const HomeNotesGrid(),
+                    crossFadeState: (state.notes.isEmpty)
+                        ? CrossFadeState.showFirst
+                        : CrossFadeState.showSecond,
+                    duration: Durations.long1,
+                  ),
                 ),
               ],
             ],

@@ -4,11 +4,11 @@ part 'note_reminder.freezed.dart';
 part 'note_reminder.g.dart';
 
 @unfreezed
-class NoteReminder with _$NoteReminder {
+abstract class NoteReminder with _$NoteReminder {
   factory NoteReminder({
-    @Default(null) String? id,
-    @Default(null) String? noteId,
-    @Default(null) String? personName,
+    String? id,
+    String? noteId,
+    String? personName,
     required String name,
     required DateTime date,
     @Default(false) bool isAnual,

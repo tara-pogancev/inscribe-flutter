@@ -1,3 +1,4 @@
+import 'package:colorist/colorist.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/extensions/context_extensions.dart';
@@ -42,7 +43,7 @@ class WelcomeBasePage extends StatelessWidget {
   Widget _buildTextDescription(BuildContext context) {
     double containerHeight =
         (context.getScreenHeight() * welcomeBottomContainerHeightPercentage) +
-            (context.getScreenWidth() * waveDividerHeight / waveDividerWidth);
+        (context.getScreenWidth() * waveDividerHeight / waveDividerWidth);
 
     return Align(
       alignment: Alignment.bottomCenter,
@@ -66,15 +67,16 @@ class WelcomeBasePage extends StatelessWidget {
                     child: SizedBox(
                       width: double.infinity,
                       child: AppButton(
-                        text:
-                            Translations.of(context).welcomeScreen.startButton,
+                        text: Translations.of(
+                          context,
+                        ).welcomeScreen.startButton,
                         style: AppButtonStyles.of(context).white,
                         onPressed: () {
                           _navigateHome(context);
                         },
                       ),
                     ),
-                  )
+                  ),
               ],
             ),
           ),
@@ -88,7 +90,7 @@ class WelcomeBasePage extends StatelessWidget {
         (context.getScreenHeight() * welcomeBottomContainerHeightPercentage);
 
     String imageAssetPath =
-        "assets/images/wave_dividers/${context.getIsDarkTheme() ? 'dark' : 'light'}/wave_divider_${index + 1}.png";
+        "assets/images/wave_dividers/${context.isDarkMode ? 'dark' : 'light'}/wave_divider_${index + 1}.png";
 
     return Align(
       alignment: Alignment.bottomCenter,
@@ -97,29 +99,24 @@ class WelcomeBasePage extends StatelessWidget {
         children: [
           SizedBox(
             width: double.infinity,
-            child: Image.asset(
-              imageAssetPath,
-              fit: BoxFit.fitWidth,
-            ),
+            child: Image.asset(imageAssetPath, fit: BoxFit.fitWidth),
           ),
-          Container(
-            color: AppColorScheme.of(context).gray,
-            height: containerHeight,
-          ),
+          Container(color: context.colors.gray, height: containerHeight),
         ],
       ),
     );
   }
 
   Widget _buildIllustration(BuildContext context) {
-    double containerHeight = context.getScreenHeight() -
+    double containerHeight =
+        context.getScreenHeight() -
         ((context.getScreenHeight() *
                 welcomeBottomContainerHeightPercentage) + // Bottom container height
             (context.getScreenWidth() * waveDividerHeight / waveDividerWidth) *
                 0.5); // Wave divider height
 
     String imageAssetPath =
-        "assets/images/welcome_illustrations/${context.getIsDarkTheme() ? 'dark' : 'light'}/welcome_illustration_${index + 1}.png";
+        "assets/images/welcome_illustrations/${context.isDarkMode ? 'dark' : 'light'}/welcome_illustration_${index + 1}.png";
 
     return Align(
       alignment: Alignment.topCenter,
@@ -131,10 +128,7 @@ class WelcomeBasePage extends StatelessWidget {
           heightFactor: 0.8,
           child: Padding(
             padding: const EdgeInsets.only(top: 70),
-            child: Image.asset(
-              imageAssetPath,
-              fit: BoxFit.contain,
-            ),
+            child: Image.asset(imageAssetPath, fit: BoxFit.contain),
           ),
         ),
       ),
@@ -150,12 +144,11 @@ class WelcomeBasePage extends StatelessWidget {
         (context.getScreenHeight() * welcomeBottomContainerHeightPercentage);
 
     return Positioned(
-        bottom: bottomContainerHeight - 15,
-        height: 30,
-        left: 0,
-        right: 0,
-        child: Container(
-          color: AppColorScheme.of(context).black,
-        ));
+      bottom: bottomContainerHeight - 15,
+      height: 30,
+      left: 0,
+      right: 0,
+      child: Container(color: context.colors.black),
+    );
   }
 }

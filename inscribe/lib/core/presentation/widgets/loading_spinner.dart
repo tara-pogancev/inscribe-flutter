@@ -9,9 +9,7 @@ class LoadingSpinner extends StatelessWidget {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(30),
-        child: CircularProgressIndicator(
-          color: AppColorScheme.of(context).gray,
-        ),
+        child: CircularProgressIndicator(color: context.colors.gray),
       ),
     );
   }

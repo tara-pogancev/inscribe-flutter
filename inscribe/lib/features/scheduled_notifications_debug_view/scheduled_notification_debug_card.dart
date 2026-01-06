@@ -49,18 +49,17 @@ class ScheduledNotificationDebugCard extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Icon(Icons.repeat),
-                  )
+                  ),
               ],
             ),
 
-            Divider(
-              color: AppColorScheme.of(context).gray,
-            ),
+            Divider(color: context.colors.gray),
             Text(
               notification.schedule.toString(),
               style: AppTextStyles.of(context).cardTernaryText.copyWith(
-                  fontStyle: FontStyle.italic,
-                  color: AppColorScheme.of(context).gray.withAlpha(112)),
+                fontStyle: FontStyle.italic,
+                color: context.colors.gray.withAlpha(112),
+              ),
             ),
             // Text(notification.toString() ?? "-"),
           ],

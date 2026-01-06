@@ -10,10 +10,11 @@ class UnsavedChangesDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-       backgroundColor: AppColorScheme.of(context).beige,
+      backgroundColor: context.colors.beige,
       title: DialogText(Translations.of(context).newNoteScreen.unsaved_changes),
       content: DialogText(
-          Translations.of(context).newNoteScreen.save_changes_description),
+        Translations.of(context).newNoteScreen.save_changes_description,
+      ),
       actions: [
         TextButton(
           onPressed: () => context.pop(),
@@ -22,7 +23,7 @@ class UnsavedChangesDialog extends StatelessWidget {
         FilledButton(
           onPressed: () => context.pop(true),
           child: Text(Translations.of(context).newNoteScreen.save),
-        )
+        ),
       ],
     );
   }

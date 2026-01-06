@@ -23,7 +23,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return AppScaffold(
       child: SizedBox.expand(
         child: Container(
-          color: AppColorScheme.of(context).beige,
+          color: context.colors.beige,
           child: Stack(
             fit: StackFit.expand,
             children: [
@@ -54,11 +54,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   List<Widget> _getWelcomePageWidgets() {
     const maxPages = 5;
     return List.generate(
-        maxPages,
-        (index) => WelcomeBasePage(
-              index: index,
-              isLast: index == maxPages - 1,
-            ));
+      maxPages,
+      (index) => WelcomeBasePage(index: index, isLast: index == maxPages - 1),
+    );
   }
 
   Widget _buildPageIndicator() {
@@ -70,11 +68,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           activeIndex: activePageIndex,
           count: _getWelcomePageWidgets().length,
           effect: SwapEffect(
-              dotHeight: 10,
-              dotWidth: 10,
-              spacing: 15,
-              dotColor: AppColorScheme.of(context).beige.withAlpha(112),
-              activeDotColor: AppColorScheme.of(context).beige),
+            dotHeight: 10,
+            dotWidth: 10,
+            spacing: 15,
+            dotColor: context.colors.beige.withAlpha(112),
+            activeDotColor: context.colors.beige,
+          ),
         ),
       ),
     );

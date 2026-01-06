@@ -4,15 +4,16 @@ import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 
 class AppDropdownFormField extends StatefulWidget {
-  const AppDropdownFormField(
-      {super.key,
-      required this.label,
-      required this.items,
-      this.icon,
-      this.onSaved,
-      this.validator,
-      this.initialValue,
-      this.onChanged});
+  const AppDropdownFormField({
+    super.key,
+    required this.label,
+    required this.items,
+    this.icon,
+    this.onSaved,
+    this.validator,
+    this.initialValue,
+    this.onChanged,
+  });
 
   final String label;
   final List<String> items;
@@ -43,14 +44,13 @@ class _AppDropdownFormFieldState extends State<AppDropdownFormField> {
     return Padding(
       padding: const EdgeInsets.only(bottom: formFieldBottomPadding),
       child: DropdownButtonFormField<String>(
+        borderRadius: BorderRadius.circular(defaultBorderRadius),
+        isExpanded: true,
         items: widget.items
             .map(
               (String e) => DropdownMenuItem(
                 value: e,
-                child: Text(
-                  e,
-                  style: AppTextStyles.of(context).defaultText,
-                ),
+                child: Text(e, style: AppTextStyles.of(context).defaultText),
               ),
             )
             .toList(),
@@ -60,17 +60,17 @@ class _AppDropdownFormFieldState extends State<AppDropdownFormField> {
           });
           widget.onChanged?.call(value);
         },
-        value: _selectedItem,
+        initialValue: _selectedItem,
         onSaved: (newValue) => widget.onSaved?.call(newValue),
         validator: (value) => widget.validator?.call(value),
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(defaultBorderRadius),
-            borderSide: BorderSide(color: AppColorScheme.of(context).black),
+            borderSide: BorderSide(color: context.colors.black),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(defaultBorderRadius),
-            borderSide: BorderSide(color: AppColorScheme.of(context).black),
+            borderSide: BorderSide(color: context.colors.black),
           ),
           suffixIcon: (widget.icon != null) ? Icon(widget.icon) : null,
           label: Text(

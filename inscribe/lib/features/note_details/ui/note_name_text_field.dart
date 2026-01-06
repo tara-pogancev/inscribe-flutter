@@ -70,35 +70,37 @@ class _NoteNameTextFieldState extends State<NoteNameTextField> {
           }
         },
         decoration: InputDecoration(
-            counterText: "",
-            hintText: Translations.of(context).newNoteScreen.friend_name_hint,
-            hintStyle: AppTextStyles.of(context).whiteNameFormFieldHint,
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                  color: lightAppColorScheme.beige
-                      .withAlpha(45)), // Line color when not focused
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                  color: lightAppColorScheme.beige), // Line color when focused
-            ),
-            focusedErrorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                  color:
-                      lightAppColorScheme.red), // Line color when not focused
-            ),
-            errorBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                  color:
-                      lightAppColorScheme.red), // Line color when not focused
-            ),
-            errorStyle: AppTextStyles.of(context).red,
-            prefix: const SizedBox(
-              width:
-                  48, // This gap matches the width of the suffix icon for better visual symetry
-            ),
-            suffixIcon: const Icon(Icons.edit_outlined),
-            suffixIconColor: lightAppColorScheme.beige),
+          counterText: "",
+          hintText: Translations.of(context).newNoteScreen.friend_name_hint,
+          hintStyle: AppTextStyles.of(context).whiteNameFormFieldHint,
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: lightAppColorScheme.beige.withAlpha(45),
+            ), // Line color when not focused
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: lightAppColorScheme.beige,
+            ), // Line color when focused
+          ),
+          focusedErrorBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: lightAppColorScheme.red,
+            ), // Line color when not focused
+          ),
+          errorBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: lightAppColorScheme.red,
+            ), // Line color when not focused
+          ),
+          errorStyle: AppTextStyles.of(context).red,
+          prefix: const SizedBox(
+            width:
+                48, // This gap matches the width of the suffix icon for better visual symetry
+          ),
+          suffixIcon: const Icon(Icons.edit_outlined),
+          suffixIconColor: lightAppColorScheme.beige,
+        ),
       ),
     );
   }
