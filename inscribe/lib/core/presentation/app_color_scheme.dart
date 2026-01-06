@@ -36,7 +36,7 @@ final lightAppColorScheme = InscribeColorTheme(
   primary: const Color.fromARGB(255, 187, 187, 187),
   black: const Color(0xff1A1D22),
   gray: const Color(0xff282D33),
-  beige: const Color(0xffE5E2DD),
+  beige: const Color.fromRGBO(229, 226, 221, 1),
   white: const Color(0xffFFFFFF),
   red: const Color(0xffde7878),
   mediumGray: const Color(0xFF515C69),

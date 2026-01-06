@@ -3,6 +3,7 @@
 ⭐ New features:
 
 - Added support for new themes
+- Monochrome adaptive icon
 
 🐞 Bugfixes:
 

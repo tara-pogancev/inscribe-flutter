@@ -13,7 +13,8 @@
     <application
         android:label="Inscribe"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/inscribe_icon"
+        android:roundIcon="@mipmap/inscribe_icon_round">
         <activity
             android:name=".MainActivity"
             android:exported="true"
