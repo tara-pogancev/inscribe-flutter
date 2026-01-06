@@ -1,7 +1,7 @@
+import 'package:colorist/colorist.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:inscribe/core/consts.dart';
-import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/injection_container.dart';
 import 'package:inscribe/core/presentation/app_button_styles.dart';
@@ -24,7 +24,7 @@ class NoNotesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final assetImagePath =
-        "assets/images/empty_illustration_${context.getIsDarkTheme() ? 'dark' : 'light'}.png";
+        "assets/images/empty_illustration_${context.isDarkMode ? 'dark' : 'light'}.png";
 
     return FractionallySizedBox(
       widthFactor: 0.7,
@@ -34,16 +34,12 @@ class NoNotesSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: defaultScreenPadding),
-            child: Image.asset(
-              assetImagePath,
-              width: double.infinity,
+            padding: const EdgeInsets.symmetric(
+              horizontal: defaultScreenPadding,
             ),
+            child: Image.asset(assetImagePath, width: double.infinity),
           ),
-          const SizedBox(
-            height: defaultScreenPadding,
-          ),
+          const SizedBox(height: defaultScreenPadding),
           Text(
             Translations.of(context).homeScreen.no_notes_title,
             style: AppTextStyles.of(context).boldTitle,
@@ -54,9 +50,7 @@ class NoNotesSection extends StatelessWidget {
             style: AppTextStyles.of(context).defaultText,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(
-            height: defaultScreenPadding,
-          ),
+          const SizedBox(height: defaultScreenPadding),
           SizedBox(
             width: double.infinity,
             child: AppButton(
@@ -67,9 +61,7 @@ class NoNotesSection extends StatelessWidget {
               },
             ),
           ),
-          const SizedBox(
-            height: defaultScreenPadding,
-          ),
+          const SizedBox(height: defaultScreenPadding),
         ],
       ),
     );

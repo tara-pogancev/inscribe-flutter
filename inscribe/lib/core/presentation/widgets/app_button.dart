@@ -3,8 +3,12 @@ import 'package:inscribe/core/presentation/app_button_styles.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 
 class AppButton extends StatelessWidget {
-  const AppButton(
-      {super.key, required this.text, required this.onPressed, this.style});
+  const AppButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    this.style,
+  });
 
   final String text;
   final Function() onPressed;
@@ -21,8 +25,11 @@ class AppButton extends StatelessWidget {
 }
 
 class AppFloatingActionButton extends StatelessWidget {
-  const AppFloatingActionButton(
-      {super.key, required this.onPressed, required this.icon});
+  const AppFloatingActionButton({
+    super.key,
+    required this.onPressed,
+    required this.icon,
+  });
 
   final Function() onPressed;
   final Icon icon;
@@ -31,8 +38,8 @@ class AppFloatingActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: onPressed,
-      backgroundColor: AppColorScheme.of(context).black,
-      foregroundColor: AppColorScheme.of(context).beige,
+      backgroundColor: context.colors.black,
+      foregroundColor: context.colors.beige,
       child: icon,
     );
   }

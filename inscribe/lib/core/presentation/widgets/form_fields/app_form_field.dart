@@ -4,18 +4,19 @@ import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 
 class AppFormField extends StatelessWidget {
-  const AppFormField(
-      {super.key,
-      this.label,
-      this.hint,
-      this.icon,
-      this.keyboardType = TextInputType.text,
-      this.minLines = 1,
-      this.maxLines = 1,
-      this.onSaved,
-      this.onChanged,
-      this.validator,
-      this.initialValue});
+  const AppFormField({
+    super.key,
+    this.label,
+    this.hint,
+    this.icon,
+    this.keyboardType = TextInputType.text,
+    this.minLines = 1,
+    this.maxLines = 1,
+    this.onSaved,
+    this.onChanged,
+    this.validator,
+    this.initialValue,
+  });
 
   final String? label;
   final String? hint;
@@ -44,26 +45,24 @@ class AppFormField extends StatelessWidget {
         onTapOutside: (event) {
           FocusScope.of(context).requestFocus(FocusNode());
         },
-        style: TextStyle(color: AppColorScheme.of(context).black),
+        style: TextStyle(color: context.colors.black),
         decoration: InputDecoration(
-            alignLabelWithHint: true,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(defaultBorderRadius),
-              borderSide: BorderSide(color: AppColorScheme.of(context).black),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(defaultBorderRadius),
-              borderSide: BorderSide(color: AppColorScheme.of(context).black),
-            ),
-            suffixIcon: (icon != null) ? Icon(icon!) : null,
-            label: (label != null)
-                ? Text(
-                    label!,
-                    style: AppTextStyles.of(context).grayFormLabel,
-                  )
-                : null,
-            hintText: hint,
-            hintStyle: AppTextStyles.of(context).grayFormHint),
+          alignLabelWithHint: true,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(defaultBorderRadius),
+            borderSide: BorderSide(color: context.colors.black),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(defaultBorderRadius),
+            borderSide: BorderSide(color: context.colors.black),
+          ),
+          suffixIcon: (icon != null) ? Icon(icon!) : null,
+          label: (label != null)
+              ? Text(label!, style: AppTextStyles.of(context).grayFormLabel)
+              : null,
+          hintText: hint,
+          hintStyle: AppTextStyles.of(context).grayFormHint,
+        ),
       ),
     );
   }

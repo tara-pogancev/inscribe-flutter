@@ -32,15 +32,15 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
       context: context,
       useRootNavigator: true,
       isScrollControlled: true,
-      backgroundColor: AppColorScheme.of(context).beige,
+      backgroundColor: context.colors.beige,
       builder: (context) => const NewReminderSheet(),
     );
 
     if (reminder != null) {
       _bloc.add(CreateOrUpdateReminderEvent(reminder: reminder));
       context.showSnackbar(
-          snackbarText:
-              Translations.of(context).newNoteScreen.reminder_created);
+        snackbarText: Translations.of(context).newNoteScreen.reminder_created,
+      );
     }
   }
 
@@ -49,10 +49,8 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
       context: context,
       useRootNavigator: true,
       isScrollControlled: true,
-      backgroundColor: AppColorScheme.of(context).beige,
-      builder: (context) => NewReminderSheet(
-        noteReminder: reminder,
-      ),
+      backgroundColor: context.colors.beige,
+      builder: (context) => NewReminderSheet(noteReminder: reminder),
     );
 
     if (shouldUpdate != null) {
@@ -63,7 +61,8 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
   void _deleteReminder(NoteReminder reminder) {
     _bloc.add(DeleteReminderEvent(reminder: reminder));
     context.showSnackbar(
-        snackbarText: Translations.of(context).newNoteScreen.reminder_deleted);
+      snackbarText: Translations.of(context).newNoteScreen.reminder_deleted,
+    );
   }
 
   @override
@@ -91,9 +90,7 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       separatorBuilder: (BuildContext context, int index) {
-                        return const SizedBox(
-                          height: 10,
-                        );
+                        return const SizedBox(height: 10);
                       },
                       itemBuilder: (BuildContext context, int index) {
                         final reminder = state.note.reminders[index];

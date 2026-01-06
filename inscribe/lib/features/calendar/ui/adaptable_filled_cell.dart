@@ -58,23 +58,21 @@ class AdaptableFilledCell<T extends Object?> extends StatelessWidget {
       color: backgroundColor,
       child: Column(
         children: [
-          const SizedBox(
-            height: 5.0,
-          ),
+          const SizedBox(height: 5.0),
           if (!(!isInMonth && hideDaysNotInMonth))
             CircleAvatar(
               radius: highlightRadius,
               backgroundColor: shouldHighlight
-                  ? AppColorScheme.of(context).gray.withAlpha(190)
+                  ? context.colors.gray.withAlpha(190)
                   : Colors.transparent,
               child: Text(
                 dateStringBuilder?.call(date) ?? "${date.day}",
                 style: TextStyle(
                   color: shouldHighlight
-                      ? AppColorScheme.of(context).white
+                      ? context.colors.white
                       : isInMonth
-                          ? AppColorScheme.of(context).black
-                          : AppColorScheme.of(context).black.withAlpha(90),
+                      ? context.colors.black
+                      : context.colors.black.withAlpha(90),
                   fontSize: 12,
                 ),
               ),
@@ -103,7 +101,9 @@ class AdaptableFilledCell<T extends Object?> extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4.0),
                           ),
                           margin: const EdgeInsets.symmetric(
-                              vertical: 2.0, horizontal: 3.0),
+                            vertical: 2.0,
+                            horizontal: 3.0,
+                          ),
                           padding: const EdgeInsets.all(2.0),
                           alignment: Alignment.center,
                           child: Row(
@@ -113,7 +113,8 @@ class AdaptableFilledCell<T extends Object?> extends StatelessWidget {
                                   events[index].title,
                                   overflow: TextOverflow.clip,
                                   maxLines: 1,
-                                  style: events[index].titleStyle ??
+                                  style:
+                                      events[index].titleStyle ??
                                       TextStyle(
                                         color: events[index].color.accent,
                                         fontSize: 12,

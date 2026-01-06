@@ -4,13 +4,14 @@ import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/features/app_drawer/app_drawer.dart';
 
 class AppScaffold extends StatelessWidget {
-  const AppScaffold(
-      {super.key,
-      required this.child,
-      this.includeDefaultPadding = false,
-      this.ignoreAllPadding = false,
-      this.enableDrawer = false,
-      this.fab});
+  const AppScaffold({
+    super.key,
+    required this.child,
+    this.includeDefaultPadding = false,
+    this.ignoreAllPadding = false,
+    this.enableDrawer = false,
+    this.fab,
+  });
 
   final Widget child;
   final bool includeDefaultPadding;
@@ -22,7 +23,7 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColorScheme.of(context).beige,
+      backgroundColor: context.colors.beige,
       floatingActionButton: fab,
       drawer: (enableDrawer) ? const AppDrawer() : null,
       body: SafeArea(

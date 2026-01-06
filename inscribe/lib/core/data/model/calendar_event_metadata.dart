@@ -1,7 +1,7 @@
+import 'package:colorist/colorist.dart';
 import 'package:flutter/material.dart';
 import 'package:inscribe/core/data/model/note/note.dart';
 import 'package:inscribe/core/data/model/reminder/note_reminder.dart';
-import 'package:inscribe/core/extensions/context_extensions.dart';
 import 'package:inscribe/core/i18n/strings.g.dart';
 import 'package:inscribe/core/presentation/app_color_scheme.dart';
 
@@ -10,33 +10,29 @@ class CalendarEventMetadata {
   Note? note;
   NoteReminder? reminder;
 
-  CalendarEventMetadata({
-    required this.type,
-    this.note,
-    this.reminder,
-  });
+  CalendarEventMetadata({required this.type, this.note, this.reminder});
 
   Color getEventColorForType(BuildContext context) {
     switch (type) {
       case CalendarEventType.birthday:
-        return AppColorScheme.of(context).red;
+        return context.colors.red;
       case CalendarEventType.anualEvent:
-        return AppColorScheme.of(context).mediumGray;
+        return context.colors.mediumGray;
       case CalendarEventType.oneTimeEvent:
-        return AppColorScheme.of(context).black;
+        return context.colors.black;
     }
   }
 
   Color getEventTextColorForType(BuildContext context) {
     switch (type) {
       case CalendarEventType.birthday:
-        return AppColorScheme.of(context).white;
+        return context.colors.white;
       case CalendarEventType.anualEvent:
-        return (context.getIsDarkTheme())
-            ? AppColorScheme.of(context).black
-            : AppColorScheme.of(context).white;
+        return (context.isDarkMode)
+            ? context.colors.black
+            : context.colors.white;
       case CalendarEventType.oneTimeEvent:
-        return AppColorScheme.of(context).white;
+        return context.colors.white;
     }
   }
 

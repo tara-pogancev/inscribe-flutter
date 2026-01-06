@@ -13,12 +13,12 @@ class ArchiveNoteDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-       backgroundColor: AppColorScheme.of(context).beige,
+      backgroundColor: context.colors.beige,
       title: DialogText(Translations.of(context).newNoteScreen.archive_note),
       content: DialogText(
-        Translations.of(context)
-            .newNoteScreen
-            .archive_note_are_you_sure(name: note.name),
+        Translations.of(
+          context,
+        ).newNoteScreen.archive_note_are_you_sure(name: note.name),
       ),
       actions: [
         TextButton(
@@ -28,7 +28,7 @@ class ArchiveNoteDialog extends StatelessWidget {
         FilledButton(
           onPressed: () => context.pop(true),
           child: Text(Translations.of(context).confirm),
-        )
+        ),
       ],
     );
   }

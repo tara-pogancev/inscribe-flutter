@@ -10,10 +10,7 @@ class AppBoxDecorations {
   BoxDecoration get outlined {
     return BoxDecoration(
       borderRadius: BorderRadius.circular(defaultBorderRadius),
-      border: Border.all(
-        color: AppColorScheme.of(context).black,
-        width: 3,
-      ),
+      border: Border.all(color: context!.colors.black, width: 3),
     );
   }
 
@@ -21,8 +18,9 @@ class AppBoxDecorations {
     return BoxDecoration(
       borderRadius: BorderRadius.circular(defaultBorderRadius),
       image: const DecorationImage(
-          image: AssetImage("assets/images/wave_profile_cover.png"),
-          fit: BoxFit.cover),
+        image: AssetImage("assets/images/wave_profile_cover.png"),
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

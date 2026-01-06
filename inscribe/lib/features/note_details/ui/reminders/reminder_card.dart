@@ -9,11 +9,12 @@ import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 
 class ReminderCard extends StatefulWidget {
-  const ReminderCard(
-      {super.key,
-      required this.reminder,
-      required this.onEdit,
-      required this.onDelete});
+  const ReminderCard({
+    super.key,
+    required this.reminder,
+    required this.onEdit,
+    required this.onDelete,
+  });
 
   final NoteReminder reminder;
 
@@ -42,8 +43,12 @@ class _ReminderCardState extends State<ReminderCard> {
         context: context,
         position: RelativeRect.fromRect(
           Rect.fromLTWH(_tapPosition.dx, _tapPosition.dy, 100, 100),
-          Rect.fromLTWH(0, 0, overlay.paintBounds.size.width,
-              overlay.paintBounds.size.height),
+          Rect.fromLTWH(
+            0,
+            0,
+            overlay.paintBounds.size.width,
+            overlay.paintBounds.size.height,
+          ),
         ),
         items: <PopupMenuItem>[
           PopupMenuItem(
@@ -85,19 +90,17 @@ class _ReminderCardState extends State<ReminderCard> {
                       style: AppTextStyles.of(context).cardPrimaryText,
                     ),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
+                  const SizedBox(width: 10),
                   Flexible(
                     child: Text(
                       (widget.reminder.isAnual)
                           ? widget.reminder.date
-                              .formatFullDateTimeNoYearString()
+                                .formatFullDateTimeNoYearString()
                           : widget.reminder.date.formatFullDateTimeString(),
                       style: AppTextStyles.of(context).cardSecondaryText,
                       textAlign: TextAlign.end,
                     ),
-                  )
+                  ),
                 ],
               ),
               if (widget.reminder.isAnual)
@@ -107,17 +110,16 @@ class _ReminderCardState extends State<ReminderCard> {
                     children: [
                       Icon(
                         Icons.event_repeat_outlined,
-                        color: AppColorScheme.of(context).gray,
+                        color: context.colors.gray,
                         size: 15,
                       ),
-                      const SizedBox(
-                        width: 10,
-                      ),
+                      const SizedBox(width: 10),
                       Text(
-                          Translations.of(context)
-                              .newNoteScreen
-                              .this_reminder_will_be_repeated_every_year,
-                          style: AppTextStyles.of(context).cardTernaryText),
+                        Translations.of(context)
+                            .newNoteScreen
+                            .this_reminder_will_be_repeated_every_year,
+                        style: AppTextStyles.of(context).cardTernaryText,
+                      ),
                     ],
                   ),
                 ),

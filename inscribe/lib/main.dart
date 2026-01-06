@@ -1,5 +1,5 @@
-import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:colorist/colorist.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -32,17 +32,16 @@ void main() async {
   GoogleFonts.config.allowRuntimeFetching = true;
 
   // Firebase
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   if (kReleaseMode) {
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   }
 
   // Initialize application language
-  final savedAppLocale =
-      IC.getIt<SharedPreferencesRepository>().getSavedAppLocale();
+  final savedAppLocale = IC
+      .getIt<SharedPreferencesRepository>()
+      .getSavedAppLocale();
   if (savedAppLocale == null) {
     LocaleSettings.useDeviceLocale();
   } else {
@@ -50,25 +49,27 @@ void main() async {
   }
 
   // Notifications
-  AwesomeNotifications().initialize(
-      "resource://drawable/res_app_icon",
-      [
-        NotificationChannel(
-            channelGroupKey: remindersChannelGroupKey,
-            channelKey: remindersChannelKey,
-            channelName: remindersChannelName,
-            channelDescription: remindersChannelDescription,
-            defaultColor: lightAppColorScheme.beige,
-            ledColor: Colors.white),
-        NotificationChannel(
-            channelGroupKey: birthdayChannelGroupKey,
-            channelKey: birthdayChannelKey,
-            channelName: birthdayChannelName,
-            channelDescription: birthdayChannelDescription,
-            defaultColor: lightAppColorScheme.beige,
-            ledColor: Colors.white)
-      ],
-      debug: kDebugMode);
+  AwesomeNotifications().initialize("resource://drawable/res_app_icon", [
+    NotificationChannel(
+      channelGroupKey: remindersChannelGroupKey,
+      channelKey: remindersChannelKey,
+      channelName: remindersChannelName,
+      channelDescription: remindersChannelDescription,
+      defaultColor: lightAppColorScheme.beige,
+      ledColor: Colors.white,
+    ),
+    NotificationChannel(
+      channelGroupKey: birthdayChannelGroupKey,
+      channelKey: birthdayChannelKey,
+      channelName: birthdayChannelName,
+      channelDescription: birthdayChannelDescription,
+      defaultColor: lightAppColorScheme.beige,
+      ledColor: Colors.white,
+    ),
+  ], debug: kDebugMode);
+
+  // Colorist
+  await ThemeManager.init();
 
   WidgetsFlutterBinding.ensureInitialized();
   runApp(TranslationProvider(child: const InscribeApp()));
@@ -85,24 +86,23 @@ class _InscribeAppState extends State<InscribeApp> {
   @override
   void initState() {
     AwesomeNotifications().setListeners(
-        onActionReceivedMethod: NotificationController.onActionReceivedMethod,
-        onNotificationCreatedMethod:
-            NotificationController.onNotificationCreatedMethod,
-        onNotificationDisplayedMethod:
-            NotificationController.onNotificationDisplayedMethod,
-        onDismissActionReceivedMethod:
-            NotificationController.onDismissActionReceivedMethod);
+      onActionReceivedMethod: NotificationController.onActionReceivedMethod,
+      onNotificationCreatedMethod:
+          NotificationController.onNotificationCreatedMethod,
+      onNotificationDisplayedMethod:
+          NotificationController.onNotificationDisplayedMethod,
+      onDismissActionReceivedMethod:
+          NotificationController.onDismissActionReceivedMethod,
+    );
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return AdaptiveTheme(
-      light: lightTheme,
-      dark: darkTheme,
-      initial: AdaptiveThemeMode.system,
-      builder: (theme, darkTheme) => MaterialApp.router(
+    return ThemeManager(
+      themes: [lightAppColorScheme, darkAppColorScheme],
+      builder: (curentTheme) => MaterialApp.router(
         routerConfig: IC.getIt<GoRouter>(),
         debugShowCheckedModeBanner: false,
         title: Translations.of(context).appName,
@@ -113,8 +113,7 @@ class _InscribeAppState extends State<InscribeApp> {
         ],
         locale: TranslationProvider.of(context).flutterLocale,
         supportedLocales: AppLocaleUtils.supportedLocales,
-        theme: theme,
-        darkTheme: darkTheme,
+        theme: curentTheme,
       ),
     );
   }

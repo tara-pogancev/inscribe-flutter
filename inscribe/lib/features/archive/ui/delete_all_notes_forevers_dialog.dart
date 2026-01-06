@@ -10,13 +10,17 @@ class DeleteAllNotesForeversDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: AppColorScheme.of(context).beige,
-      title: DialogText(Translations.of(context)
-          .archivedNotes
-          .delete_all_notes_forever_dialog_title),
-      content: DialogText(Translations.of(context)
-          .archivedNotes
-          .delete_all_notes_forever_dialog_subtitle),
+      backgroundColor: context.colors.beige,
+      title: DialogText(
+        Translations.of(
+          context,
+        ).archivedNotes.delete_all_notes_forever_dialog_title,
+      ),
+      content: DialogText(
+        Translations.of(
+          context,
+        ).archivedNotes.delete_all_notes_forever_dialog_subtitle,
+      ),
       actions: [
         TextButton(
           onPressed: () => context.pop(),
@@ -25,7 +29,7 @@ class DeleteAllNotesForeversDialog extends StatelessWidget {
         FilledButton(
           onPressed: () => context.pop(true),
           child: Text(Translations.of(context).confirm),
-        )
+        ),
       ],
     );
   }

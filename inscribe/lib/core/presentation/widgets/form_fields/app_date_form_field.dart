@@ -5,15 +5,16 @@ import 'package:inscribe/core/presentation/app_color_scheme.dart';
 import 'package:inscribe/core/presentation/app_text_styles.dart';
 
 class AppDateFormField extends StatefulWidget {
-  const AppDateFormField(
-      {super.key,
-      required this.label,
-      this.onSaved,
-      this.onChanged,
-      this.validator,
-      this.initialValue,
-      this.includeFutureDates = false,
-      this.includePastDates = false});
+  const AppDateFormField({
+    super.key,
+    required this.label,
+    this.onSaved,
+    this.onChanged,
+    this.validator,
+    this.initialValue,
+    this.includeFutureDates = false,
+    this.includePastDates = false,
+  });
 
   final String label;
   final Function(String? value)? onSaved;
@@ -72,12 +73,11 @@ class _AppDateFormFieldState extends State<AppDateFormField> {
         onSaved: (newValue) => widget.onSaved?.call(newValue),
         onChanged: (newValue) => widget.onChanged?.call(newValue),
         validator: (value) => widget.validator?.call(value),
-        style: TextStyle(color: AppColorScheme.of(context).black),
+        style: TextStyle(color: context.colors.black),
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(defaultBorderRadius),
-            borderSide: BorderSide(
-                color: AppColorScheme.of(context).black.withAlpha(127)),
+            borderSide: BorderSide(color: context.colors.black.withAlpha(127)),
           ),
           suffixIcon: IconButton(
             icon: const Icon(Icons.calendar_month_outlined),
@@ -85,7 +85,7 @@ class _AppDateFormFieldState extends State<AppDateFormField> {
               _showDatePickerDialog();
             },
           ),
-          suffixIconColor: AppColorScheme.of(context).gray,
+          suffixIconColor: context.colors.gray,
           label: Text(
             widget.label,
             style: AppTextStyles.of(context).grayFormLabel,

@@ -44,29 +44,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DefaultAppHeader(
-              title: Translations.of(context).drawer.settings,
-            ),
-            const SizedBox(
-              height: defaultScreenPadding,
-            ),
+            DefaultAppHeader(title: Translations.of(context).drawer.settings),
+            const SizedBox(height: defaultScreenPadding),
             Text(
               Translations.of(context).settingsScreen.visual.toUpperCase(),
               style: AppTextStyles.of(context).subtitle,
             ),
             const SettingsThemePicker(),
             const SettingsNotesViewPicker(),
-            const Divider(
-              height: defaultScreenPadding,
-            ),
+            const Divider(height: defaultScreenPadding),
             Text(
               Translations.of(context).settingsScreen.system.toUpperCase(),
               style: AppTextStyles.of(context).subtitle,
             ),
             const SettingsLanguagePicker(),
-            SizedBox(
-              height: defaultScreenPadding,
-            ),
+            SizedBox(height: defaultScreenPadding),
             Container(
               padding: EdgeInsets.all(15),
               decoration: AppBoxDecorations.of(context).outlined,
@@ -77,37 +69,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   Text(
                     Translations.of(context).settingsScreen.remindersNote,
                     style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppColorScheme.of(context).black),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: context.colors.black,
+                    ),
                     textAlign: TextAlign.start,
                   ),
                   Text(
-                    Translations.of(context)
-                        .settingsScreen
-                        .remindersNoteDescription,
+                    Translations.of(
+                      context,
+                    ).settingsScreen.remindersNoteDescription,
                     textAlign: TextAlign.start,
-                    style: TextStyle(color: AppColorScheme.of(context).gray),
-                  )
+                    style: TextStyle(color: context.colors.gray),
+                  ),
                 ],
               ),
             ),
-            SizedBox(
-              height: defaultScreenPadding,
-            ),
+            SizedBox(height: defaultScreenPadding),
             SizedBox(
               width: double.infinity,
               child: Padding(
                 padding: const EdgeInsets.all(30),
                 child: Text(
-                  Translations.of(context)
-                      .settingsScreen
-                      .app_name_and_version(version: appVersion),
+                  Translations.of(
+                    context,
+                  ).settingsScreen.app_name_and_version(version: appVersion),
                   textAlign: TextAlign.center,
                   style: AppTextStyles.of(context).defaultText,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

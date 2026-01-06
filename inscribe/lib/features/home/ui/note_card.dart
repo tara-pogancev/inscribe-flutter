@@ -7,11 +7,7 @@ import 'package:inscribe/core/presentation/app_text_styles.dart';
 import 'package:inscribe/features/home/ui/card_profile_image.dart';
 
 class NoteCard extends StatelessWidget {
-  const NoteCard({
-    super.key,
-    required this.note,
-    this.onClick,
-  });
+  const NoteCard({super.key, required this.note, this.onClick});
 
   final Note note;
   final Function()? onClick;
@@ -20,7 +16,7 @@ class NoteCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textColor = (note.isPinned)
         ? lightAppColorScheme.white
-        : AppColorScheme.of(context).black;
+        : context.colors.black;
 
     final boxDecoration = (note.isPinned && !note.isDeleted)
         ? AppBoxDecorations.of(context).wavesBackground
@@ -43,10 +39,11 @@ class NoteCard extends StatelessWidget {
                 decoration: boxDecoration,
                 child: Padding(
                   padding: const EdgeInsets.only(
-                      left: 15,
-                      right: 15,
-                      bottom: 15,
-                      top: ((cardProfileImageSize / 2) + 10)),
+                    left: 15,
+                    right: 15,
+                    bottom: 15,
+                    top: ((cardProfileImageSize / 2) + 10),
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,20 +51,18 @@ class NoteCard extends StatelessWidget {
                       Flexible(
                         child: Text(
                           note.name,
-                          style: AppTextStyles.of(context)
-                              .cardTitle
-                              .copyWith(color: textColor),
+                          style: AppTextStyles.of(
+                            context,
+                          ).cardTitle.copyWith(color: textColor),
                         ),
                       ),
-                      const SizedBox(
-                        height: 5,
-                      ),
+                      const SizedBox(height: 5),
                       Flexible(
                         child: Text(
                           note.type?.getString(context) ?? "-",
-                          style: AppTextStyles.of(context)
-                              .cardSubtitle
-                              .copyWith(color: textColor),
+                          style: AppTextStyles.of(
+                            context,
+                          ).cardSubtitle.copyWith(color: textColor),
                         ),
                       ),
                     ],
