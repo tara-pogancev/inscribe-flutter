@@ -54,7 +54,7 @@ class _NoteRemindersPageState extends State<NoteRemindersPage>
     );
 
     if (shouldUpdate != null) {
-      _bloc.add(CreateOrUpdateReminderEvent(reminder: reminder));
+      _bloc.add(CreateOrUpdateReminderEvent(reminder: shouldUpdate));
     }
   }
 

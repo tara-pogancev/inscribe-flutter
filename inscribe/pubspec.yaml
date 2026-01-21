@@ -1,7 +1,7 @@
 name: inscribe
 description: "Celebrate friendships with personalized notes on likes, birthdays, and gift ideas."
 
-version: 1.2.0+8
+version: 1.2.1+9
 
 environment:
   sdk: ^3.10.4
