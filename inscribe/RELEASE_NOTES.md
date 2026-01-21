@@ -1,3 +1,9 @@
+# 1.2.1
+
+🐞 Bugfixes:
+
+- Fixed reminder updates
+
 # 1.2.0
 
 ⭐ New features:
